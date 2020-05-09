@@ -27,6 +27,7 @@ typedef NSPoint POINT_CLASS;
 */
 @interface ARtcVideoCanvas : NSObject
 
+
 @property (strong, nonatomic) VIEW_CLASS* _Nullable view;
 /** 视频显示模式 */
 @property (assign, nonatomic) ARVideoRenderMode renderMode;
@@ -39,7 +40,7 @@ typedef NSPoint POINT_CLASS;
 */
 @property (copy, nonatomic) NSString * _Nullable channelId;
 /** 用户id */
-@property (copy, nonatomic) NSString * _Nullable uid;
+@property (copy, nonatomic) NSString * _Nonnull uid;
 @property (assign, nonatomic) ARVideoMirrorMode mirrorMode;
 
 @end

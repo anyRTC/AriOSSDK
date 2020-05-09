@@ -102,6 +102,24 @@
 */
 - (void)rtcEngineConnectionDidLost:(ARtcEngineKit *_Nonnull)engine;
 
+/** Token 服务即将过期回调
+
+ 在调用 joinChannelByToken 时如果指定了 Token，由于 Token 具有一定的时效，在通话过程中如果 Token 即将失效，SDK 会提前 30 秒触发该回调，提醒应用程序更新 Token。 当收到该回调时，用户需要重新在服务端生成新的 Token，然后调用 renewToken 将新生成的 Token 传给 SDK。
+
+ @param engine ARtcEngineKit 对象
+ @param token  即将服务失效的 Token
+ */
+- (void)rtcEngine:(ARtcEngineKit * _Nonnull)engine tokenPrivilegeWillExpire:(NSString *_Nonnull)token;
+
+/** Token 过期回调
+
+ 在调用 joinChannelByToken 时如果指定了 Token，由于 Token 具有一定的时效，在通话过程中 SDK 可能由于网络原因和服务器失去连接，重连时可能需要新的 Token。 该回调通知 App 需要生成新的 Token，并需调用 renewToken 为 SDK 指定新的 Token。
+
+ @param engine ARtcEngineKit 对象
+ */
+- (void)rtcEngineRequestToken:(ARtcEngineKit * _Nonnull)engine;
+
+
 //MARK: - Media Delegate Methods
 
 /** 提示频道内谁正在说话、说话者音量及本地用户是否在说话的回调
@@ -222,19 +240,41 @@
 */
 - (void)rtcEngine:(ARtcEngineKit *_Nonnull)engine remoteVideoStateChangedOfUid:(NSString *_Nonnull)uid state:(ARVideoRemoteState)state reason:(ARVideoRemoteStateReason)reason elapsed:(NSInteger)elapsed;
 
-//已显示远端视频首帧回调(废弃)
+//MARK: - Methods
+
+/** 已显示远端视频首帧回调
+
+@param engine ARtcEngineKit 对象
+@param uid 发生视频状态改变的远端用户 ID。
+@param size 视频大小
+@param elapsed 从本地用户调用 joinChannel 方法到发生本事件经历的时间，单位为 ms。
+*/
 - (void)rtcEngine:(ARtcEngineKit *_Nonnull)engine firstRemoteVideoFrameOfUid:(NSString *_Nonnull)uid size:(CGSize)size elapsed:(NSInteger)elapsed;
 
-//已完成远端视频首帧解码回调（废弃）
+/** 已完成远端视频首帧解码回调
+
+@param engine ARtcEngineKit 对象
+@param uid 发生视频状态改变的远端用户 ID。
+@param size 视频大小
+@param elapsed 从本地用户调用 joinChannel 方法到发生本事件经历的时间，单位为 ms。
+*/
 - (void)rtcEngine:(ARtcEngineKit *_Nonnull)engine firstRemoteVideoDecodedOfUid:(NSString *_Nonnull)uid size:(CGSize)size elapsed:(NSInteger)elapsed;
 
-////已接收远端音频首帧的回调（废弃）
+/** 已接收远端音频首帧的回调
+
+@param engine ARtcEngineKit 对象
+@param uid 发生视频状态改变的远端用户 ID。
+@param elapsed 从本地用户调用 joinChannel 方法到发生本事件经历的时间，单位为 ms。
+*/
 - (void)rtcEngine:(ARtcEngineKit *_Nonnull)engine firstRemoteAudioFrameOfUid:(NSString *_Nonnull)uid elapsed:(NSInteger)elapsed;
 
-//已解码远端音频首帧的回调（废弃）
-- (void)rtcEngine:(ARtcEngineKit *_Nonnull)engine firstRemoteAudioFrameDecodedOfUid:(NSString *_Nonnull)uid elapsed:(NSInteger)elapsed;
+/** 已解码远端音频首帧的回调
 
-//MARK: - Fallback Delegate Methods
+@param engine ARtcEngineKit 对象
+@param uid 发生视频状态改变的远端用户 ID。
+@param elapsed 从本地用户调用 joinChannel 方法到发生本事件经历的时间，单位为 ms。
+*/
+- (void)rtcEngine:(ARtcEngineKit *_Nonnull)engine firstRemoteAudioFrameDecodedOfUid:(NSString *_Nonnull)uid elapsed:(NSInteger)elapsed;
 
 //MARK: - Device Delegate Methods
 
@@ -246,18 +286,6 @@
  @param routing 设置语音路由: ARAudioOutputRouting
  */
 - (void)rtcEngine:(ARtcEngineKit * _Nonnull)engine didAudioRouteChanged:(ARAudioOutputRouting)routing;
-
-//MARK: - Statistics Delegate Methods
-
-//MARK: - Audio Player Delegate Methods
-
-//MARK: - CDN Publisher Delegate Methods
-
-//MARK: - Inject Stream URL Delegate Methods
-
-//MARK: - Stream Message Delegate Methods
-
-//MARK: - Miscellaneous Delegate Methods
 
 @end
 

@@ -15,8 +15,10 @@
 		637A3BC12456A58400561446 /* AppID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637A3BC02456A58400561446 /* AppID.swift */; };
 		637A3BC52456A5B500561446 /* Log.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 637A3BC42456A5B500561446 /* Log.storyboard */; };
 		637A3BC92456A7B400561446 /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637A3BC82456A7B400561446 /* LogViewController.swift */; };
-		63A62E10245AE31D004EE2F1 /* ARtcKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63A62E0E245AE315004EE2F1 /* ARtcKit.framework */; };
-		63A62E11245AE31D004EE2F1 /* ARtcKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63A62E0E245AE315004EE2F1 /* ARtcKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		637BA1822463AAEB00BE0FC8 /* ARVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637BA1812463AAEB00BE0FC8 /* ARVideoView.swift */; };
+		637BA1842463AAF900BE0FC8 /* ARVideoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 637BA1832463AAF900BE0FC8 /* ARVideoView.xib */; };
+		637BA2082466C63900BE0FC8 /* ARtcKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 637BA2062466C62B00BE0FC8 /* ARtcKit.framework */; };
+		637BA2092466C63900BE0FC8 /* ARtcKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 637BA2062466C62B00BE0FC8 /* ARtcKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,7 +28,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				63A62E11245AE31D004EE2F1 /* ARtcKit.framework in Embed Frameworks */,
+				637BA2092466C63900BE0FC8 /* ARtcKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -44,7 +46,9 @@
 		637A3BC02456A58400561446 /* AppID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppID.swift; sourceTree = "<group>"; };
 		637A3BC42456A5B500561446 /* Log.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Log.storyboard; sourceTree = "<group>"; };
 		637A3BC82456A7B400561446 /* LogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
-		63A62E0E245AE315004EE2F1 /* ARtcKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ARtcKit.framework; sourceTree = "<group>"; };
+		637BA1812463AAEB00BE0FC8 /* ARVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARVideoView.swift; sourceTree = "<group>"; };
+		637BA1832463AAF900BE0FC8 /* ARVideoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ARVideoView.xib; sourceTree = "<group>"; };
+		637BA2062466C62B00BE0FC8 /* ARtcKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ARtcKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,7 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63A62E10245AE31D004EE2F1 /* ARtcKit.framework in Frameworks */,
+				637BA2082466C63900BE0FC8 /* ARtcKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,7 +82,7 @@
 		637A3BA9245692C600561446 /* AR-iOS-Tutorial */ = {
 			isa = PBXGroup;
 			children = (
-				63A62E0E245AE315004EE2F1 /* ARtcKit.framework */,
+				637BA2062466C62B00BE0FC8 /* ARtcKit.framework */,
 				637A3BBE2456930600561446 /* VideoChatViewController.swift */,
 				637A3BC82456A7B400561446 /* LogViewController.swift */,
 				637A3BAA245692C600561446 /* AppDelegate.swift */,
@@ -88,6 +92,8 @@
 				637A3BB3245692C800561446 /* Assets.xcassets */,
 				637A3BB5245692C800561446 /* LaunchScreen.storyboard */,
 				637A3BB8245692C800561446 /* Info.plist */,
+				637BA1812463AAEB00BE0FC8 /* ARVideoView.swift */,
+				637BA1832463AAF900BE0FC8 /* ARVideoView.xib */,
 			);
 			path = "AR-iOS-Tutorial";
 			sourceTree = "<group>";
@@ -125,6 +131,7 @@
 				TargetAttributes = {
 					637A3BA6245692C600561446 = {
 						CreatedOnToolsVersion = 11.3;
+						LastSwiftMigration = 1130;
 					};
 				};
 			};
@@ -155,6 +162,7 @@
 				637A3BB4245692C800561446 /* Assets.xcassets in Resources */,
 				637A3BC52456A5B500561446 /* Log.storyboard in Resources */,
 				632F79B5245860FE00CC2F79 /* Main.storyboard in Resources */,
+				637BA1842463AAF900BE0FC8 /* ARVideoView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,6 +175,7 @@
 			files = (
 				637A3BC12456A58400561446 /* AppID.swift in Sources */,
 				637A3BAB245692C600561446 /* AppDelegate.swift in Sources */,
+				637BA1822463AAEB00BE0FC8 /* ARVideoView.swift in Sources */,
 				637A3BBF2456930600561446 /* VideoChatViewController.swift in Sources */,
 				637A3BC92456A7B400561446 /* LogViewController.swift in Sources */,
 			);
@@ -304,6 +313,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5543CP4MRT;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -318,6 +328,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "AR.AR-iOS-Tutorial";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -327,6 +338,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5543CP4MRT;
 				FRAMEWORK_SEARCH_PATHS = (

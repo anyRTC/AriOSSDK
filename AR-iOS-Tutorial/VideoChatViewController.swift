@@ -10,28 +10,16 @@ import UIKit
 import ARtcKit
 
 class VideoChatViewController: UIViewController {
-    @IBOutlet weak var localVideo: UIView!
-    @IBOutlet weak var remoteVideo: UIView!
-    @IBOutlet weak var remoteVideoMutedIndicator: UIImageView!
-    @IBOutlet weak var localVideoMutedIndicator: UIView!
     @IBOutlet weak var micButton: UIButton!
     @IBOutlet weak var cameraButton: UIButton!
     
     weak var logVC: LogViewController?
     var rtcKit: ARtcEngineKit!
-    
-    var isRemoteVideoRender: Bool = true {
-        didSet {
-            remoteVideoMutedIndicator.isHidden = isRemoteVideoRender
-            remoteVideo.isHidden = !isRemoteVideoRender
-        }
-    }
-    
-    var isLocalVideoRender: Bool = false {
-        didSet {
-            localVideoMutedIndicator.isHidden = isLocalVideoRender
-        }
-    }
+    var videoArr: NSMutableArray!
+    var localVideo: ARVideoView!
+    var placeholderView: ARVideoView!
+    var video_width: CGFloat!
+    var video_height: CGFloat!
     
     var isStartCalling: Bool = true {
         didSet {
@@ -45,13 +33,14 @@ class VideoChatViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        video_width = view.frame.size.width/3
+        video_height = video_width * 4/3
         // This is our usual steps for joining
         // a channel and starting a call.
         initializeEngine()
         setupVideo()
         setupLocalVideo()
         joinChannel()
-        localVideoMutedIndicator.isHidden = true;
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -79,6 +68,10 @@ class VideoChatViewController: UIViewController {
     }
     
     func setupLocalVideo() {
+        localVideo = ARVideoView.loadVideoView(uid: nil)
+        localVideo.frame = CGRect.init(x: view.frame.size.width - 25 - video_width/1.3, y: 36, width: video_width/1.3, height: video_height/1.3)
+        localVideo.videoMutedIndicator.isHidden = true
+        view.addSubview(localVideo)
         // This is used to set a local preview.
         // The steps setting local and remote view are very similar.
         // But note that if the local user do not have a uid or do
@@ -91,12 +84,16 @@ class VideoChatViewController: UIViewController {
         videoCanvas.view = localVideo
         videoCanvas.renderMode = .hidden
         rtcKit.setupLocalVideo(videoCanvas);
-        rtcKit.startPreview();
+        
+        placeholderView = ARVideoView.loadVideoView(uid: "")
+        placeholderView.frame = view.bounds
+        placeholderView.videoMutedIndicator.isHidden = false
+        placeholderView.videoMutedIndicator.backgroundColor = UIColor.init(red: 72/256, green: 65/256, blue: 88/256, alpha: 1)
+        view.insertSubview(placeholderView, at: 0)
     }
-        
-        
     
     func joinChannel() {
+        rtcKit.startPreview()
         // Set audio route to speaker
         rtcKit.setDefaultAudioRouteToSpeakerphone(true)
         
@@ -106,23 +103,66 @@ class VideoChatViewController: UIViewController {
         // you use to generate this token.
         rtcKit.joinChannel(byToken: "", channelId: "demoChannel1", uid: nil) { [unowned self] (channel, uid, elapsed) -> Void in
             // Did join channel "demoChannel1"
-            self.isLocalVideoRender = true
             self.logVC?.log(type: .info, content: "did join channel")
+            self.localVideo.uid = uid
+            self.localVideo.videoMutedIndicator.isHidden = true
         }
         
+        videoArr = NSMutableArray.init();
         isStartCalling = true
         UIApplication.shared.isIdleTimerDisabled = true
     }
     
     func leaveChannel() {
         // leave channel and end chat
-        rtcKit.leaveChannel(nil)
+        localVideo.videoMutedIndicator.isHidden = false
+        placeholderView.isHidden = false
+        for video in videoArr {
+            let videoView = video as! ARVideoView
+            videoView.removeFromSuperview()
+        }
+        videoArr.removeAllObjects()
+        videoLayout()
         
-        isRemoteVideoRender = false
-        isLocalVideoRender = false
+        rtcKit.leaveChannel(nil)
         isStartCalling = false
         UIApplication.shared.isIdleTimerDisabled = false
         self.logVC?.log(type: .info, content: "did leave channel")
+    }
+    
+    func videoLayout() {
+        if videoArr.count <= 1 {
+            if videoArr.count == 0 {
+                placeholderView.isHidden = false
+            } else {
+                let remoteVideo:ARVideoView! = videoArr?[0] as? ARVideoView
+                remoteVideo.frame = view.bounds
+                view.insertSubview(remoteVideo, at: 1)
+            }
+            localVideo.frame = CGRect.init(x: view.frame.size.width - 25 - video_width/1.3, y: 36, width: video_width/1.3, height: video_height/1.3)
+            
+        } else {
+            placeholderView.isHidden = true
+            
+            let video_width: CGFloat = view.frame.size.width/3;
+            let video_height: CGFloat = video_width * 4/3;
+            
+            let allVideo = NSMutableArray.init(array: videoArr)
+            allVideo.insert(localVideo as Any, at: 0)
+            for (index,video) in allVideo.enumerated() {
+                let row: NSInteger = index / 3
+                let col: NSInteger = index % 3
+                let margin: CGFloat = (self.view.bounds.size.width - (video_width * 3)) / (3 + 1)
+                let picX: CGFloat = margin + (video_width + margin) * CGFloat(col);
+                let picY: CGFloat = margin + (video_height + margin) * CGFloat(row);
+                let videoView = video as! ARVideoView
+                videoView.frame = CGRect.init(x: picX, y: picY, width: video_width, height: video_height)
+            }
+        }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        localVideo.frame = CGRect.init(x: 0, y: 0, width: 120, height: 160);
     }
     
     @IBAction func didClickHangUpButton(_ sender: UIButton) {
@@ -149,24 +189,34 @@ class VideoChatViewController: UIViewController {
 extension VideoChatViewController: ARtcEngineDelegate {
     // first remote video frame
     func rtcEngine(_ engine: ARtcEngineKit, firstRemoteVideoFrameOfUid uid: String, size: CGSize, elapsed: Int) {
-        isRemoteVideoRender = true
+        let remoteView = ARVideoView.loadVideoView(uid: uid)
+        view.addSubview(remoteView)
+        videoArr.add(remoteView)
         
         // Only one remote video view is available for this
         // tutorial. Here we check if there exists a surface
         // view tagged as this uid.
         let videoCanvas = ARtcVideoCanvas()
         videoCanvas.uid = uid
-        videoCanvas.view = remoteVideo
+        videoCanvas.view = remoteView
         videoCanvas.renderMode = .hidden
         rtcKit.setupRemoteVideo(videoCanvas)
+        videoLayout()
     }
 
     func rtcEngine(_ engine: ARtcEngineKit, didOfflineOfUid uid: String, reason: ARUserOfflineReason) {
-        isRemoteVideoRender = false
+        for video in videoArr {
+            let videoVideo = video as! ARVideoView
+            if videoVideo.uid == uid {
+                videoArr.remove(videoVideo)
+                videoVideo.removeFromSuperview()
+            }
+        }
+        videoLayout()
     }
 
     func rtcEngine(_ engine: ARtcEngineKit, didVideoMuted muted: Bool, byUid uid: String) {
-        isRemoteVideoRender = !muted
+
     }
     
     func rtcEngine(_ engine: ARtcEngineKit, didOccurWarning warningCode: ARWarningCode) {
