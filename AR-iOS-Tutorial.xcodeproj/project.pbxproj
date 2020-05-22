@@ -7,7 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		631CBA7924754105003A0D1B /* big_logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 631CBA6B24754105003A0D1B /* big_logo@3x.png */; };
+		631CBA7A24754105003A0D1B /* logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 631CBA6C24754105003A0D1B /* logo@3x.png */; };
+		631CBA7B24754105003A0D1B /* big_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 631CBA6D24754105003A0D1B /* big_logo@2x.png */; };
+		631CBA7C24754105003A0D1B /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 631CBA6E24754105003A0D1B /* logo@2x.png */; };
 		632F79B5245860FE00CC2F79 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 632F79B4245860FE00CC2F79 /* Main.storyboard */; };
+		6366B8E02476AF8300E424A1 /* video_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6366B8CE2476AF8200E424A1 /* video_close@2x.png */; };
+		6366B8E12476AF8300E424A1 /* video_close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6366B8CF2476AF8200E424A1 /* video_close@3x.png */; };
+		6366B8E22476AF8300E424A1 /* switch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6366B8D02476AF8200E424A1 /* switch@2x.png */; };
+		6366B8E32476AF8300E424A1 /* video_open@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6366B8D12476AF8200E424A1 /* video_open@3x.png */; };
+		6366B8E42476AF8300E424A1 /* mic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6366B8D22476AF8200E424A1 /* mic@2x.png */; };
+		6366B8E52476AF8300E424A1 /* audio_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6366B8D32476AF8200E424A1 /* audio_close@2x.png */; };
+		6366B8E62476AF8300E424A1 /* audio_open@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6366B8D42476AF8200E424A1 /* audio_open@2x.png */; };
+		6366B8E72476AF8300E424A1 /* end@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6366B8D52476AF8200E424A1 /* end@3x.png */; };
+		6366B8E82476AF8300E424A1 /* start@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6366B8D62476AF8200E424A1 /* start@3x.png */; };
+		6366B8E92476AF8300E424A1 /* switch@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6366B8D72476AF8300E424A1 /* switch@3x.png */; };
+		6366B8EA2476AF8300E424A1 /* audio_open@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6366B8D82476AF8300E424A1 /* audio_open@3x.png */; };
+		6366B8EB2476AF8300E424A1 /* end@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6366B8D92476AF8300E424A1 /* end@2x.png */; };
+		6366B8EC2476AF8300E424A1 /* video_open@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6366B8DA2476AF8300E424A1 /* video_open@2x.png */; };
+		6366B8ED2476AF8300E424A1 /* mic@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6366B8DB2476AF8300E424A1 /* mic@3x.png */; };
+		6366B8EE2476AF8300E424A1 /* unmic@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6366B8DC2476AF8300E424A1 /* unmic@3x.png */; };
+		6366B8EF2476AF8300E424A1 /* start@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6366B8DD2476AF8300E424A1 /* start@2x.png */; };
+		6366B8F02476AF8300E424A1 /* audio_close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6366B8DE2476AF8300E424A1 /* audio_close@3x.png */; };
+		6366B8F12476AF8300E424A1 /* unmic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6366B8DF2476AF8300E424A1 /* unmic@2x.png */; };
+		63686B272477ED6D00EEC199 /* Bugly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63686B262477ED6D00EEC199 /* Bugly.framework */; };
+		63686B2F247801EF00EEC199 /* ARtcKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63686B2D247801D200EEC199 /* ARtcKit.framework */; };
+		63686B30247801EF00EEC199 /* ARtcKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63686B2D247801D200EEC199 /* ARtcKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		637A3BAB245692C600561446 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637A3BAA245692C600561446 /* AppDelegate.swift */; };
 		637A3BB4245692C800561446 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 637A3BB3245692C800561446 /* Assets.xcassets */; };
 		637A3BB7245692C800561446 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 637A3BB5245692C800561446 /* LaunchScreen.storyboard */; };
@@ -17,8 +42,6 @@
 		637A3BC92456A7B400561446 /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637A3BC82456A7B400561446 /* LogViewController.swift */; };
 		637BA1822463AAEB00BE0FC8 /* ARVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637BA1812463AAEB00BE0FC8 /* ARVideoView.swift */; };
 		637BA1842463AAF900BE0FC8 /* ARVideoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 637BA1832463AAF900BE0FC8 /* ARVideoView.xib */; };
-		637BA2082466C63900BE0FC8 /* ARtcKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 637BA2062466C62B00BE0FC8 /* ARtcKit.framework */; };
-		637BA2092466C63900BE0FC8 /* ARtcKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 637BA2062466C62B00BE0FC8 /* ARtcKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,7 +51,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				637BA2092466C63900BE0FC8 /* ARtcKit.framework in Embed Frameworks */,
+				63686B30247801EF00EEC199 /* ARtcKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -36,7 +59,32 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		631CBA6B24754105003A0D1B /* big_logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "big_logo@3x.png"; sourceTree = "<group>"; };
+		631CBA6C24754105003A0D1B /* logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@3x.png"; sourceTree = "<group>"; };
+		631CBA6D24754105003A0D1B /* big_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "big_logo@2x.png"; sourceTree = "<group>"; };
+		631CBA6E24754105003A0D1B /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
 		632F79B4245860FE00CC2F79 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		6366B8CE2476AF8200E424A1 /* video_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "video_close@2x.png"; sourceTree = "<group>"; };
+		6366B8CF2476AF8200E424A1 /* video_close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "video_close@3x.png"; sourceTree = "<group>"; };
+		6366B8D02476AF8200E424A1 /* switch@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switch@2x.png"; sourceTree = "<group>"; };
+		6366B8D12476AF8200E424A1 /* video_open@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "video_open@3x.png"; sourceTree = "<group>"; };
+		6366B8D22476AF8200E424A1 /* mic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mic@2x.png"; sourceTree = "<group>"; };
+		6366B8D32476AF8200E424A1 /* audio_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "audio_close@2x.png"; sourceTree = "<group>"; };
+		6366B8D42476AF8200E424A1 /* audio_open@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "audio_open@2x.png"; sourceTree = "<group>"; };
+		6366B8D52476AF8200E424A1 /* end@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "end@3x.png"; sourceTree = "<group>"; };
+		6366B8D62476AF8200E424A1 /* start@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "start@3x.png"; sourceTree = "<group>"; };
+		6366B8D72476AF8300E424A1 /* switch@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switch@3x.png"; sourceTree = "<group>"; };
+		6366B8D82476AF8300E424A1 /* audio_open@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "audio_open@3x.png"; sourceTree = "<group>"; };
+		6366B8D92476AF8300E424A1 /* end@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "end@2x.png"; sourceTree = "<group>"; };
+		6366B8DA2476AF8300E424A1 /* video_open@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "video_open@2x.png"; sourceTree = "<group>"; };
+		6366B8DB2476AF8300E424A1 /* mic@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mic@3x.png"; sourceTree = "<group>"; };
+		6366B8DC2476AF8300E424A1 /* unmic@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unmic@3x.png"; sourceTree = "<group>"; };
+		6366B8DD2476AF8300E424A1 /* start@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "start@2x.png"; sourceTree = "<group>"; };
+		6366B8DE2476AF8300E424A1 /* audio_close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "audio_close@3x.png"; sourceTree = "<group>"; };
+		6366B8DF2476AF8300E424A1 /* unmic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unmic@2x.png"; sourceTree = "<group>"; };
+		63686B262477ED6D00EEC199 /* Bugly.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bugly.framework; sourceTree = "<group>"; };
+		63686B282477EDF700EEC199 /* bridging-header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bridging-header.h"; sourceTree = "<group>"; };
+		63686B2D247801D200EEC199 /* ARtcKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ARtcKit.framework; sourceTree = "<group>"; };
 		637A3BA7245692C600561446 /* AR-iOS-Tutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AR-iOS-Tutorial.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		637A3BAA245692C600561446 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		637A3BB3245692C800561446 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -48,7 +96,6 @@
 		637A3BC82456A7B400561446 /* LogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
 		637BA1812463AAEB00BE0FC8 /* ARVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARVideoView.swift; sourceTree = "<group>"; };
 		637BA1832463AAF900BE0FC8 /* ARVideoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ARVideoView.xib; sourceTree = "<group>"; };
-		637BA2062466C62B00BE0FC8 /* ARtcKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ARtcKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,13 +103,43 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				637BA2082466C63900BE0FC8 /* ARtcKit.framework in Frameworks */,
+				63686B272477ED6D00EEC199 /* Bugly.framework in Frameworks */,
+				63686B2F247801EF00EEC199 /* ARtcKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		631CBA6324754105003A0D1B /* resource */ = {
+			isa = PBXGroup;
+			children = (
+				6366B8D32476AF8200E424A1 /* audio_close@2x.png */,
+				6366B8DE2476AF8300E424A1 /* audio_close@3x.png */,
+				6366B8D42476AF8200E424A1 /* audio_open@2x.png */,
+				6366B8D82476AF8300E424A1 /* audio_open@3x.png */,
+				6366B8D92476AF8300E424A1 /* end@2x.png */,
+				6366B8D52476AF8200E424A1 /* end@3x.png */,
+				6366B8D22476AF8200E424A1 /* mic@2x.png */,
+				6366B8DB2476AF8300E424A1 /* mic@3x.png */,
+				6366B8DD2476AF8300E424A1 /* start@2x.png */,
+				6366B8D62476AF8200E424A1 /* start@3x.png */,
+				6366B8D02476AF8200E424A1 /* switch@2x.png */,
+				6366B8D72476AF8300E424A1 /* switch@3x.png */,
+				6366B8DF2476AF8300E424A1 /* unmic@2x.png */,
+				6366B8DC2476AF8300E424A1 /* unmic@3x.png */,
+				6366B8CE2476AF8200E424A1 /* video_close@2x.png */,
+				6366B8CF2476AF8200E424A1 /* video_close@3x.png */,
+				6366B8DA2476AF8300E424A1 /* video_open@2x.png */,
+				6366B8D12476AF8200E424A1 /* video_open@3x.png */,
+				631CBA6B24754105003A0D1B /* big_logo@3x.png */,
+				631CBA6C24754105003A0D1B /* logo@3x.png */,
+				631CBA6D24754105003A0D1B /* big_logo@2x.png */,
+				631CBA6E24754105003A0D1B /* logo@2x.png */,
+			);
+			path = resource;
+			sourceTree = "<group>";
+		};
 		637A3B9E245692C600561446 = {
 			isa = PBXGroup;
 			children = (
@@ -82,7 +159,9 @@
 		637A3BA9245692C600561446 /* AR-iOS-Tutorial */ = {
 			isa = PBXGroup;
 			children = (
-				637BA2062466C62B00BE0FC8 /* ARtcKit.framework */,
+				63686B2D247801D200EEC199 /* ARtcKit.framework */,
+				63686B262477ED6D00EEC199 /* Bugly.framework */,
+				631CBA6324754105003A0D1B /* resource */,
 				637A3BBE2456930600561446 /* VideoChatViewController.swift */,
 				637A3BC82456A7B400561446 /* LogViewController.swift */,
 				637A3BAA245692C600561446 /* AppDelegate.swift */,
@@ -94,6 +173,7 @@
 				637A3BB8245692C800561446 /* Info.plist */,
 				637BA1812463AAEB00BE0FC8 /* ARVideoView.swift */,
 				637BA1832463AAF900BE0FC8 /* ARVideoView.xib */,
+				63686B282477EDF700EEC199 /* bridging-header.h */,
 			);
 			path = "AR-iOS-Tutorial";
 			sourceTree = "<group>";
@@ -158,11 +238,33 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6366B8E92476AF8300E424A1 /* switch@3x.png in Resources */,
+				6366B8E32476AF8300E424A1 /* video_open@3x.png in Resources */,
+				6366B8E62476AF8300E424A1 /* audio_open@2x.png in Resources */,
+				6366B8F02476AF8300E424A1 /* audio_close@3x.png in Resources */,
+				6366B8EF2476AF8300E424A1 /* start@2x.png in Resources */,
+				6366B8E22476AF8300E424A1 /* switch@2x.png in Resources */,
 				637A3BB7245692C800561446 /* LaunchScreen.storyboard in Resources */,
+				6366B8F12476AF8300E424A1 /* unmic@2x.png in Resources */,
+				6366B8ED2476AF8300E424A1 /* mic@3x.png in Resources */,
+				6366B8E12476AF8300E424A1 /* video_close@3x.png in Resources */,
+				6366B8EA2476AF8300E424A1 /* audio_open@3x.png in Resources */,
 				637A3BB4245692C800561446 /* Assets.xcassets in Resources */,
+				6366B8E82476AF8300E424A1 /* start@3x.png in Resources */,
 				637A3BC52456A5B500561446 /* Log.storyboard in Resources */,
+				6366B8EC2476AF8300E424A1 /* video_open@2x.png in Resources */,
+				631CBA7924754105003A0D1B /* big_logo@3x.png in Resources */,
+				631CBA7C24754105003A0D1B /* logo@2x.png in Resources */,
+				6366B8E72476AF8300E424A1 /* end@3x.png in Resources */,
+				6366B8E42476AF8300E424A1 /* mic@2x.png in Resources */,
 				632F79B5245860FE00CC2F79 /* Main.storyboard in Resources */,
+				631CBA7A24754105003A0D1B /* logo@3x.png in Resources */,
+				631CBA7B24754105003A0D1B /* big_logo@2x.png in Resources */,
 				637BA1842463AAF900BE0FC8 /* ARVideoView.xib in Resources */,
+				6366B8EB2476AF8300E424A1 /* end@2x.png in Resources */,
+				6366B8E02476AF8300E424A1 /* video_close@2x.png in Resources */,
+				6366B8EE2476AF8300E424A1 /* unmic@3x.png in Resources */,
+				6366B8E52476AF8300E424A1 /* audio_close@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,6 +416,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5543CP4MRT;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -328,6 +431,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "AR.AR-iOS-Tutorial";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/a1/Desktop/AriOSSDK/AR-iOS-Tutorial/bridging-header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -339,6 +444,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5543CP4MRT;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -353,6 +459,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "AR.AR-iOS-Tutorial";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/a1/Desktop/AriOSSDK/AR-iOS-Tutorial/bridging-header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -2266,8 +2266,14 @@ struct ScreenCaptureParameters
 	- false: Do not capture the mouse.
      */
     bool captureMouseCursor;
+	/** Sets whether or not to capture the speaker audio for screen sharing:
 
-    ScreenCaptureParameters() : dimensions(1920, 1080), frameRate(5), bitrate(STANDARD_BITRATE), captureMouseCursor(true) {}
+	- true: Capture the speaker audio.
+	- false: (Default) Do not capture the speaker audio.
+	 */
+	bool captureAudio;
+
+    ScreenCaptureParameters() : dimensions(1920, 1080), frameRate(5), bitrate(STANDARD_BITRATE), captureMouseCursor(true), captureAudio(false) {}
     ScreenCaptureParameters(const VideoDimensions& d, int f, int b, bool c) : dimensions(d), frameRate(f), bitrate(b), captureMouseCursor(c) {}
     ScreenCaptureParameters(int width, int height, int f, int b, bool c) : dimensions(width, height), frameRate(f), bitrate(b), captureMouseCursor(c) {}
 };

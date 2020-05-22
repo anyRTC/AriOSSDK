@@ -108,7 +108,10 @@ Warning: 一个 ARtcEngineKit 实例对象只能使用一个 App ID。如需更�
  * 空格
  * "!", "#", "$", "%", "&", "(", ")", "+", "-", ":", ";", "<", "=", ".", ">", "?", "@", "[", "]", "^", "_", "{", "}", "|", "~", ","
 
-@param uid 用户 ID，32 位无符号整数。建议设置范围：1到 (2<sup>32</sup>-1)，并保证唯一性。如果不填或设置为nil，SDK 会自动分配一个，并在 joinSuccessBlock 回调方法中返回，App 层必须记住该返回值并维护，SDK 不对该返回值进行维护。
+@param uid 用户 ID，建议设置长度1~48，确保uid符合规则，并保证唯一性。如果不填或设置为nil，SDK 会自动分配一个，并在 joinSuccessBlock 回调方法中返回，App 层必须记住该返回值并维护，SDK 不对该返回值进行维护。
+ * 26 个小写英文字母 a-z
+ * 26 个大写英文字母 A-Z
+ * 10 个数字 0-9
 @param joinSuccessBlock 成功加入频道回调。joinSuccessBlock 优先级高于 didJoinChannel，2 个同时存在时，didJoinChannel 会被忽略。 需要有 didJoinChannel 回调时，请将 joinSuccessBlock 设置为 nil 。
 
 @return 0方法调用成功，<0方法调用失败
@@ -173,7 +176,7 @@ Warning: 一个 ARtcEngineKit 实例对象只能使用一个 App ID。如需更�
 
  @return 0方法调用成功，<0方法调用失败
  */
-- (int)leaveChannel:(void ( ^ _Nullable ) ( ARChannelStats *_Nonnull stat ))leaveChannelBlock;
+- (int)leaveChannel:(void (^ _Nullable) (ARChannelStats *_Nonnull stat))leaveChannelBlock;
 
 /** 更新 Token
 
@@ -638,6 +641,8 @@ Warning: 一个 ARtcEngineKit 实例对象只能使用一个 App ID。如需更�
  */
 - (int)setDefaultMuteAllRemoteVideoStreams:(BOOL)mute;
 
+//MARK: - 视频前处理及后处理
+
 //MARK: - 音频播放路由
 #if TARGET_OS_IPHONE
 /** 设置默认的语音路由
@@ -713,6 +718,10 @@ Warning: 一个 ARtcEngineKit 实例对象只能使用一个 App ID。如需更�
 - (int)setInEarMonitoringVolume:(NSInteger)volume;
 #endif
 
+//MARK: - 语音音效设置
+
+//MARK: - 音乐文件播放及混音设置
+
 //MARK: - 音效文件播放管理
 
 /** 获取音效文件播放音量
@@ -768,8 +777,8 @@ Warning: 一个 ARtcEngineKit 实例对象只能使用一个 App ID。如需更�
  @param gain 设置音效的音量。取值范围为 [0.0,100.0]。默认值为 100.0。取值越小，则音效的音量越低。
  @param publish 设置是否将音效传到远端
 
- * YES: 音效文件在本地播放的同时，会发布到 Agora 云上，因此远端用户也能听到该音效
- * NO: 音效文件不会发布到 Agora 云上，因此只能在本地听到该音效
+ * YES: 音效文件在本地播放的同时，会发布到 anyRTC 云上，因此远端用户也能听到该音效
+ * NO: 音效文件不会发布到anyRTC云上，因此只能在本地听到该音效
 
  @return 0方法调用成功，<0方法调用失败
  */
@@ -846,6 +855,26 @@ Warning: 一个 ARtcEngineKit 实例对象只能使用一个 App ID。如需更�
  */
 - (int)resumeAllEffects;
 
+//MARK: - 音频录制
+
+//MARK: - 开启声卡采集
+
+//MARK: - 音频其他方法
+
+//MARK: - 网络相关测试
+
+//MARK: - 自定义视频模块
+
+//MARK: - 音频自采集 (仅适用于 push 模式)
+
+//MARK: - 视频自采集 (仅适用于 push 模式)
+
+//MARK: - 原始音频数据处理
+
+//MARK: - 直播视频水印
+
+//MARK: - 直播音视频流回退
+
 //MARK: - 视频双流模式
 
 /** 开关视频双流模式
@@ -874,6 +903,14 @@ Warning: 一个 ARtcEngineKit 实例对象只能使用一个 App ID。如需更�
  @return 0方法调用成功，<0方法调用失败
  */
 - (int)setRemoteDefaultVideoStreamType:(ARVideoStreamType)streamType;
+
+//MARK: - 加密
+
+//MARK: - 直播输入在线媒体流
+
+//MARK: - CDN 旁路推流
+
+//MARK: - 数据流
 
 //MARK: - 其他视频控制
 
@@ -990,7 +1027,14 @@ Warning: 一个 ARtcEngineKit 实例对象只能使用一个 App ID。如需更�
 */
 - (BOOL)setCameraAutoFocusFaceModeEnabled:(BOOL)enable;
 
+//MARK: - 屏幕共享
+
+//MARK: - 音视频设备管理 (macOS)
+
+//MARK: - 媒体附属信息
+
 //MARK: - 其他方法
+
 
 /** 获取通话 ID
 

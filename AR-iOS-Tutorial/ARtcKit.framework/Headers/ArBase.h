@@ -390,8 +390,6 @@ enum ERROR_CODE_TYPE
     ERR_ENCRYPTED_STREAM_NOT_ALLOWED_PUBLISH = 130,
     /** 134: The user account is invalid. */
     ERR_INVALID_USER_ACCOUNT = 134,
-    /** 140: The user id is invalid. */
-    ERR_INVALID_USER_ID = 140,
     
     /** 151: CDN related errors. Remove the original URL address and add a new one by calling the \ref ar::rtc::IRtcEngine::removePublishStreamUrl "removePublishStreamUrl" and \ref ar::rtc::IRtcEngine::addPublishStreamUrl "addPublishStreamUrl" methods.
      */

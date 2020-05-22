@@ -303,7 +303,7 @@ ARDegradationPreference，有如下选项：
                               bitrate:(NSInteger)bitrate
                       orientationMode:(ARVideoOutputOrientationMode)orientationMode;
 
-/** 指定视频宽和高并初始化一个 AgoraVideoEncoderConfiguration 对象
+/** 指定视频宽和高并初始化一个 ARVideoEncoderConfiguration 对象
 
  @param width 视频宽度
  @param height 视频高度
@@ -357,6 +357,137 @@ ARDegradationPreference，有如下选项：
 @property (assign, nonatomic) ARCameraDirection cameraDirection;
 #endif
 
+@end
+
+/** 远端音频统计信息
+ */
+__attribute__((visibility("default"))) @interface ARtcRemoteAudioStats : NSObject
+/** 用户 ID，指定是哪个用户/主播的音频流
+ */
+@property (copy, nonatomic) NSString *uid;
+/** 远端用户发送的音频流质量：
+ 0：质量未知
+ 1：质量极好
+ 2：用户主观感觉和极好差不多 ，但码率可能略低于极好
+ 3：用户主观感受有瑕疵，但不影响沟通
+ 4：勉强能沟通但不顺畅
+ 5：网络质量非常差，基本不能沟通
+ 6：网络连接已断开，完全无法沟通
+ */
+@property (assign, nonatomic) ARNetworkQuality quality;
+/** 音频发送端到接收端的网络延迟（毫秒）
+ */
+@property (assign, nonatomic) NSUInteger networkTransportDelay;
+/** 接收端到网络抖动缓冲的网络延迟（毫秒）
+ */
+@property (assign, nonatomic) NSUInteger jitterBufferDelay;
+/** 统计周期内的远端音频流的丢帧率(%)
+ */
+@property (assign, nonatomic) NSUInteger audioLossRate;
+/** 声道数
+ */
+@property (assign, nonatomic) NSUInteger numChannels;
+/** 统计周期内接收到的远端音频采样率（Hz）
+ */
+@property (assign, nonatomic) NSUInteger receivedSampleRate;
+/** 接收流在统计周期内的平均码率（Kbps）
+ */
+@property (assign, nonatomic) NSUInteger receivedBitrate;
+/** 远端用户在加入频道后发生音频卡顿的累计时长（ms）
+ */
+@property (assign, nonatomic) NSUInteger totalFrozenTime;
+/** 远端用户在加入频道后发生音频卡顿的累计时长占音频总有效时长的百分比（%）。音频有效时长是指远端用户加入频道后音频未被停止发送或禁用的时长。
+ */
+@property (assign, nonatomic) NSUInteger frozenRate;
+@end
+
+/** 本地视频统计回调
+ */
+__attribute__((visibility("default"))) @interface ARtcLocalVideoStats : NSObject
+/** 实际发送码率 (Kbps) : 不包含丢包后重传视频等的发送码率 */
+@property (assign, nonatomic) NSUInteger sentBitrate;
+/** 实际发送帧率 (fps) : 不包含丢包后重传视频等的发送帧率 */
+@property (assign, nonatomic) NSUInteger sentFrameRate;
+/** 本地视频编码器的输出帧率，单位为 fps */
+@property (assign, nonatomic) NSUInteger encoderOutputFrameRate;
+/** 本地视频渲染器的输出帧率，单位为 fps */
+@property (assign, nonatomic) NSUInteger rendererOutputFrameRate;
+/** 当前编码器的目标编码码率，单位为 Kbps，该码率为 SDK 根据当前网络状况预估的一个值。*/
+@property (assign, nonatomic) NSUInteger sentTargetBitrate;
+/** 当前编码器的目标编码帧率，单位为 fps */
+@property (assign, nonatomic) NSUInteger sentTargetFrameRate;
+/** 统计周期内本地视频质量（基于目标帧率和目标码率）的自适应情况，详见 ARVideoQualityAdaptIndication。 */
+@property (assign, nonatomic) ARVideoQualityAdaptIndication qualityAdaptIndication;
+/** 视频编码码率（Kbps）。
+ */
+@property (assign, nonatomic) NSUInteger encodedBitrate;
+/** 视频编码宽度（px）。
+ */
+@property (assign, nonatomic) NSUInteger encodedFrameWidth;
+/** 视频编码高度（px）。
+ */
+@property (assign, nonatomic) NSUInteger encodedFrameHeight;
+/** 视频发送的帧数，累计值。
+ */
+@property (assign, nonatomic) NSUInteger encodedFrameCount;
+/** 视频的编码类型：
+
+ * ARVideoCodecTypeVP8 = 1: VP8。
+ * ARVideoCodecTypeH264 = 2: （默认值）H.264。
+ */
+@property (assign, nonatomic) ARVideoCodecType codecType;
+@end
+
+/** 本地音频统计信息
+ */
+__attribute__((visibility("default"))) @interface ARtcLocalAudioStats : NSObject
+/** 声道数。
+ */
+@property (assign, nonatomic) NSUInteger numChannels;
+/** 发送的采样率，单位为 Hz。
+ */
+@property (assign, nonatomic) NSUInteger sentSampleRate;
+/** 发送码率的平均值，单位为 Kbps。
+ */
+@property (assign, nonatomic) NSUInteger sentBitrate;
+@end
+
+/** 远端视频统计回调。
+ */
+__attribute__((visibility("default"))) @interface ARtcRemoteVideoStats : NSObject
+/** 用户 ID，指定远程视频来自哪个用户
+ */
+@property (copy, nonatomic) NSString * uid;
+/** 延时(毫秒)，已废弃（Deprecated）
+*/
+@property (assign, nonatomic) NSUInteger delay;
+/** 视频流宽（像素）
+ */
+@property (assign, nonatomic) NSUInteger width;
+/** 视频流高（像素）
+ */
+@property (assign, nonatomic) NSUInteger height;
+/** 接收流的平均码率（Kbps）
+ */
+@property (assign, nonatomic) NSUInteger receivedBitrate;
+/** 远端视频解码器的输出帧率，单位为 fps
+ */
+@property (assign, nonatomic) NSUInteger decoderOutputFrameRate;
+/** 远端视频渲染器的输出帧率，单位为 fps
+ */
+@property (assign, nonatomic) NSUInteger rendererOutputFrameRate;
+/** 远端视频在使用抗丢包技术之后的丢包率(%)。
+ */
+@property (assign, nonatomic) NSUInteger packetLossRate;
+/** 视频流类型，大流或小流: ARVideoStreamType
+ */
+@property (assign, nonatomic) ARVideoStreamType rxStreamType;
+/** 远端用户在加入频道后发生视频卡顿的累计时长（ms）。通话过程中，视频帧率设置不低于 5 fps 时，连续渲染的两帧视频之间间隔超过 500 ms，则计为一次视频卡顿。
+ */
+@property (assign, nonatomic) NSUInteger totalFrozenTime;
+/** 远端用户在加入频道后发生视频卡顿的累计时长占视频总有效时长的百分比（%）。视频有效时长是指远端用户加入频道后视频未被停止发送或禁用的时长。
+ */
+@property (assign, nonatomic) NSUInteger frozenRate;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -174,8 +174,6 @@ typedef NS_ENUM(NSInteger, ARErrorCode) {
     ARErrorCodeEncryptedStreamNotAllowedPublish = 130,
     /** 134: 无效的 User Account。*/
     ARErrorCodeInvalidUserAccount = 134,
-    /** 140:  */
-    ARErrorCodeInvalidUid = 140,
     /** 151: CDN 相关错误。请调用 removePublishStreamUrl 方法删除原来的推流地址，然后调用 addPublishStreamUrl 方法重新推流到新地址。 */
     ARErrorCodePublishStreamCDNError = 151,
     /** 152: 单个主播的推流地址数目达到上限 10。请删掉一些不用的推流地址再增加推流地址。*/
@@ -401,27 +399,26 @@ typedef NS_ENUM(NSUInteger, ARVideoRemoteState) {
 
 /** 远端视频流状态改变的具体原因 */
 typedef NS_ENUM(NSUInteger, ARVideoRemoteStateReason ) {
-
-   ARVideoRemoteStateReasonInternal = 0,
-
-   ARVideoRemoteStateReasonNetworkCongestion = 1,
-
-   ARVideoRemoteStateReasonNetworkRecovery = 2,
-
-   ARVideoRemoteStateReasonLocalMuted = 3,
-
-   ARVideoRemoteStateReasonLocalUnmuted = 4,
-
-   ARVideoRemoteStateReasonRemoteMuted = 5,
-
-   ARVideoRemoteStateReasonRemoteUnmuted = 6,
-
-   ARVideoRemoteStateReasonRemoteOffline = 7,
-
-   ARVideoRemoteStateReasonAudioFallback = 8,
-
-   ARVideoRemoteStateReasonAudioFallbackRecovery = 9,
-
+    /** 0: 内部原因。 */
+    ARVideoRemoteStateReasonInternal = 0,
+    /** 1: 网络阻塞。 */
+    ARVideoRemoteStateReasonNetworkCongestion = 1,
+    /** 2: 网络恢复正常。 */
+    ARVideoRemoteStateReasonNetworkRecovery = 2,
+    /** 3: 本地用户停止接收远端视频流或本地用户禁用视频模块。 */
+    ARVideoRemoteStateReasonLocalMuted = 3,
+    /** 4: 本地用户恢复接收远端视频流或本地用户启动视频模块。 */
+    ARVideoRemoteStateReasonLocalUnmuted = 4,
+    /** 5: 远端用户停止发送视频流或远端用户禁用视频模块。 */
+    ARVideoRemoteStateReasonRemoteMuted = 5,
+    /** 6: 远端用户恢复发送视频流或远端用户启用视频模块。 */
+    ARVideoRemoteStateReasonRemoteUnmuted = 6,
+    /** 7: 远端用户离开频道。 */
+    ARVideoRemoteStateReasonRemoteOffline = 7,
+    /** 8: 远端视频流已回退为音频流。 */
+    ARVideoRemoteStateReasonAudioFallback = 8,
+    /** 9: 回退的远端音频流恢复为视频流。 */
+    ARVideoRemoteStateReasonAudioFallbackRecovery = 9
 };
 
 /** 选择高码率高分辨率视频或低码率低分辨率视频 */
@@ -678,7 +675,50 @@ typedef NS_ENUM(NSInteger, ARStreamFallbackOptions ) {
     ARStreamFallbackOptionVideoStreamLow = 1,
     /** 上行网络较弱时，只发布音频流；下行网络较弱时，先尝试只接收视频小流（低分辨率、低码率视频流），如果网络环境无法显示视频，则再回退到只接收音频流。 */
     ARStreamFallbackOptionAudioOnly = 2,
+};
 
+/** 视频的编码类型 */
+typedef NS_ENUM(NSInteger, ARVideoCodecType) {
+    /** 1: VP8. */
+    ARVideoCodecTypeVP8 = 1,
+    /** 2: （默认值）H.264。 */
+    ARVideoCodecTypeH264 = 2,
+    /** 3:  VP8. */
+    ARVideoCodecTypeEVP = 3,
+    /** 4:  H264. */
+    ARVideoCodecTypeE264 = 4,
+};
+
+/** 自上次统计后本地视频质量的自适应情况（基于目标帧率和目标码率） */
+typedef NS_ENUM(NSInteger, ARVideoQualityAdaptIndication) {
+  /** 本地视频质量不变 */
+  ARVideoQualityAdaptNone = 0,
+  /** 因网络带宽增加，本地视频质量改善 */
+  ARVideoQualityAdaptUpBandwidth = 1,
+  /** 因网络带宽减少，本地视频质量变差 */
+  ARVideoQualityAdaptDownBandwidth = 2,
+};
+
+/** 网络质量 */
+typedef NS_ENUM(NSUInteger, ARNetworkQuality) {
+    /** 网络质量未知 */
+    AgoraNetworkQualityUnknown = 0,
+    /** 网络质量极好 */
+    AgoraNetworkQualityExcellent = 1,
+    /** 用户主观感觉和 excellent 差不多，但码率可能略低于 excellent */
+    AgoraNetworkQualityGood = 2,
+    /** 用户主观感受有瑕疵但不影响沟通 */
+    AgoraNetworkQualityPoor = 3,
+    /** 勉强能沟通但不顺畅 */
+    AgoraNetworkQualityBad = 4,
+     /** 网络质量非常差，基本不能沟通 */
+    AgoraNetworkQualityVBad = 5,
+     /** 网络连接已断开，完全无法沟通 */
+    AgoraNetworkQualityDown = 6,
+     /** 网络质量探测功能不可使用 (目前没有使用) */
+    AgoraNetworkQualityUnsupported = 7,
+     /** 网络质量探测中 */
+    AgoraNetworkQualityDetecting = 8,
 };
 
 #endif /* AREnumerates_h */
