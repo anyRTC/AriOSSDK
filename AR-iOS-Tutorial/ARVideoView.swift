@@ -16,9 +16,9 @@ class ARVideoView: UIView {
     
     class func loadVideoView(uid: String?)-> ARVideoView{
         let video = Bundle.main.loadNibNamed("ARVideoView", owner: self, options: nil)?.first as! ARVideoView
-        video.frame = CGRect.zero
         video.uid = uid
         video.videoMutedIndicator.isHidden = true
+        video.frame = CGRect.zero
         return video
     }
 }

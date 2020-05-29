@@ -1,0 +1,6091 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>ARtcEngineKit Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">AriOSSDK 4.0.0 </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">anyRTC</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+	<optgroup label="Properties">
+		
+		<option value="//api/name/delegate">delegate</option>
+		
+	</optgroup>
+	
+
+	
+	<optgroup label="Class Methods">
+		
+		<option value="//api/name/destroy">+ destroy</option>
+		
+		<option value="//api/name/getErrorDescription:">+ getErrorDescription:</option>
+		
+		<option value="//api/name/getSdkVersion">+ getSdkVersion</option>
+		
+		<option value="//api/name/sharedEngineWithAppId:delegate:">+ sharedEngineWithAppId:delegate:</option>
+		
+	</optgroup>
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/adjustAudioMixingVolume:">- adjustAudioMixingVolume:</option>
+		
+		<option value="//api/name/adjustPlaybackSignalVolume:">- adjustPlaybackSignalVolume:</option>
+		
+		<option value="//api/name/adjustRecordingSignalVolume:">- adjustRecordingSignalVolume:</option>
+		
+		<option value="//api/name/adjustUserPlaybackSignalVolume:volume:">- adjustUserPlaybackSignalVolume:volume:</option>
+		
+		<option value="//api/name/disableAudio">- disableAudio</option>
+		
+		<option value="//api/name/disableVideo">- disableVideo</option>
+		
+		<option value="//api/name/enableAudio">- enableAudio</option>
+		
+		<option value="//api/name/enableAudioVolumeIndication:smooth:report_vad:">- enableAudioVolumeIndication:smooth:report_vad:</option>
+		
+		<option value="//api/name/enableDualStreamMode:">- enableDualStreamMode:</option>
+		
+		<option value="//api/name/enableInEarMonitoring:">- enableInEarMonitoring:</option>
+		
+		<option value="//api/name/enableLocalAudio:">- enableLocalAudio:</option>
+		
+		<option value="//api/name/enableLocalVideo:">- enableLocalVideo:</option>
+		
+		<option value="//api/name/enableMainQueueDispatch:">- enableMainQueueDispatch:</option>
+		
+		<option value="//api/name/enableVideo">- enableVideo</option>
+		
+		<option value="//api/name/getCallId">- getCallId</option>
+		
+		<option value="//api/name/getConnectionState">- getConnectionState</option>
+		
+		<option value="//api/name/getEffectsVolume">- getEffectsVolume</option>
+		
+		<option value="//api/name/getNativeHandle">- getNativeHandle</option>
+		
+		<option value="//api/name/getParameter:args:">- getParameter:args:</option>
+		
+		<option value="//api/name/isCameraAutoFocusFaceModeSupported">- isCameraAutoFocusFaceModeSupported</option>
+		
+		<option value="//api/name/isCameraExposurePositionSupported">- isCameraExposurePositionSupported</option>
+		
+		<option value="//api/name/isCameraFocusPositionInPreviewSupported">- isCameraFocusPositionInPreviewSupported</option>
+		
+		<option value="//api/name/isCameraTorchSupported">- isCameraTorchSupported</option>
+		
+		<option value="//api/name/isCameraZoomSupported">- isCameraZoomSupported</option>
+		
+		<option value="//api/name/isSpeakerphoneEnabled">- isSpeakerphoneEnabled</option>
+		
+		<option value="//api/name/joinChannelByToken:channelId:uid:joinSuccess:">- joinChannelByToken:channelId:uid:joinSuccess:</option>
+		
+		<option value="//api/name/leaveChannel:">- leaveChannel:</option>
+		
+		<option value="//api/name/muteAllRemoteAudioStreams:">- muteAllRemoteAudioStreams:</option>
+		
+		<option value="//api/name/muteAllRemoteVideoStreams:">- muteAllRemoteVideoStreams:</option>
+		
+		<option value="//api/name/muteLocalAudioStream:">- muteLocalAudioStream:</option>
+		
+		<option value="//api/name/muteLocalVideoStream:">- muteLocalVideoStream:</option>
+		
+		<option value="//api/name/muteRemoteAudioStream:mute:">- muteRemoteAudioStream:mute:</option>
+		
+		<option value="//api/name/muteRemoteVideoStream:mute:">- muteRemoteVideoStream:mute:</option>
+		
+		<option value="//api/name/pauseAllEffects">- pauseAllEffects</option>
+		
+		<option value="//api/name/pauseAudioMixing">- pauseAudioMixing</option>
+		
+		<option value="//api/name/pauseEffect:">- pauseEffect:</option>
+		
+		<option value="//api/name/playEffect:filePath:loopCount:pitch:pan:gain:publish:">- playEffect:filePath:loopCount:pitch:pan:gain:publish:</option>
+		
+		<option value="//api/name/preloadEffect:filePath:">- preloadEffect:filePath:</option>
+		
+		<option value="//api/name/renewToken:">- renewToken:</option>
+		
+		<option value="//api/name/resumeAllEffects">- resumeAllEffects</option>
+		
+		<option value="//api/name/resumeAudioMixing">- resumeAudioMixing</option>
+		
+		<option value="//api/name/resumeEffect:">- resumeEffect:</option>
+		
+		<option value="//api/name/setAudioProfile:scenario:">- setAudioProfile:scenario:</option>
+		
+		<option value="//api/name/setCameraAutoFocusFaceModeEnabled:">- setCameraAutoFocusFaceModeEnabled:</option>
+		
+		<option value="//api/name/setCameraCapturerConfiguration:">- setCameraCapturerConfiguration:</option>
+		
+		<option value="//api/name/setCameraExposurePosition:">- setCameraExposurePosition:</option>
+		
+		<option value="//api/name/setCameraFocusPositionInPreview:">- setCameraFocusPositionInPreview:</option>
+		
+		<option value="//api/name/setCameraTorchOn:">- setCameraTorchOn:</option>
+		
+		<option value="//api/name/setCameraZoomFactor:">- setCameraZoomFactor:</option>
+		
+		<option value="//api/name/setChannelProfile:">- setChannelProfile:</option>
+		
+		<option value="//api/name/setClientRole:">- setClientRole:</option>
+		
+		<option value="//api/name/setDefaultAudioRouteToSpeakerphone:">- setDefaultAudioRouteToSpeakerphone:</option>
+		
+		<option value="//api/name/setDefaultMuteAllRemoteAudioStreams:">- setDefaultMuteAllRemoteAudioStreams:</option>
+		
+		<option value="//api/name/setDefaultMuteAllRemoteVideoStreams:">- setDefaultMuteAllRemoteVideoStreams:</option>
+		
+		<option value="//api/name/setEffectsVolume:">- setEffectsVolume:</option>
+		
+		<option value="//api/name/setEnableSpeakerphone:">- setEnableSpeakerphone:</option>
+		
+		<option value="//api/name/setInEarMonitoringVolume:">- setInEarMonitoringVolume:</option>
+		
+		<option value="//api/name/setLocalRenderMode:mirrorMode:">- setLocalRenderMode:mirrorMode:</option>
+		
+		<option value="//api/name/setLogFile:">- setLogFile:</option>
+		
+		<option value="//api/name/setLogFileSize:">- setLogFileSize:</option>
+		
+		<option value="//api/name/setLogFilter:">- setLogFilter:</option>
+		
+		<option value="//api/name/setParameters:">- setParameters:</option>
+		
+		<option value="//api/name/setRemoteDefaultVideoStreamType:">- setRemoteDefaultVideoStreamType:</option>
+		
+		<option value="//api/name/setRemoteRenderMode:renderMode:mirrorMode:">- setRemoteRenderMode:renderMode:mirrorMode:</option>
+		
+		<option value="//api/name/setRemoteVideoStream:type:">- setRemoteVideoStream:type:</option>
+		
+		<option value="//api/name/setVideoEncoderConfiguration:">- setVideoEncoderConfiguration:</option>
+		
+		<option value="//api/name/setVolumeOfEffect:withVolume:">- setVolumeOfEffect:withVolume:</option>
+		
+		<option value="//api/name/setupLocalVideo:">- setupLocalVideo:</option>
+		
+		<option value="//api/name/setupRemoteVideo:">- setupRemoteVideo:</option>
+		
+		<option value="//api/name/startAudioMixing:loopback:replace:cycle:">- startAudioMixing:loopback:replace:cycle:</option>
+		
+		<option value="//api/name/startPreview">- startPreview</option>
+		
+		<option value="//api/name/stopAllEffects">- stopAllEffects</option>
+		
+		<option value="//api/name/stopAudioMixing">- stopAudioMixing</option>
+		
+		<option value="//api/name/stopEffect:">- stopEffect:</option>
+		
+		<option value="//api/name/stopPreview">- stopPreview</option>
+		
+		<option value="//api/name/switchCamera">- switchCamera</option>
+		
+		<option value="//api/name/switchChannelByToken:channelId:joinSuccess:">- switchChannelByToken:channelId:joinSuccess:</option>
+		
+		<option value="//api/name/unloadEffect:">- unloadEffect:</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">ARtcEngineKit Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>ARtcEngineKit.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						<a title="核心方法" name="task_核心方法"></a>
+						<h2 class="task-title">核心方法</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/sharedEngineWithAppId:delegate:" title="sharedEngineWithAppId:delegate:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sharedEngineWithAppId:delegate:">+&nbsp;sharedEngineWithAppId:delegate:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>实例化ARtcEngineKit对象</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (instancetype _Nonnull)sharedEngineWithAppId:(NSString *_Nonnull)<em>appId</em> delegate:(id&lt;ARtcEngineDelegate&gt; _Nullable)<em>delegate</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>appId</code></th>
+						<td><p>ar云平台 为 App 开发者签发的 App ID。每个项目都应该有一个独一无二的 App ID。如果你的开发包里没有 App ID，请从ar云平台官网申请一个新的 App ID。在你调用 joinChannelByToken:channelId:info:uid:joinSuccess: 加入ar云平台的全球网络实现一对一或一对多直播通信时需要：</p>
+
+<ul>
+<li>用 App ID 标示你的项目和所属组织</li>
+<li>用一个独一无二的频道名称</li>
+</ul>
+</td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>delegate</code></th>
+						<td><p><a href="../Protocols/ARtcEngineDelegate.html">ARtcEngineDelegate</a>.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>一个 ARtcEngineKit 实例对象</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>实例化ARtcEngineKit对象</p>
+
+<p>该方法初始化一个 ARtcEngineKit 单例。使用 ARtcEngineKit，必须先调用该接口进行初始化。</p>
+
+<p><strong>Note</strong></p>
+
+<p>请确保在调用其他 API 前先调用该方法创建并初始化 ARtcEngineKit。 一个 ARtcEngineKit 实例对象只能使用一个 App ID。如需更换 App ID，必须先调用 <a href="#//api/name/destroy">destroy</a> 销毁当前实例，再调用本方法重新创建实例。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/destroy" title="destroy"></a>
+	<h3 class="method-title"><code><a href="#//api/name/destroy">+&nbsp;destroy</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>销毁 RtcEngine 实例</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)destroy</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>销毁 RtcEngine 实例</p>
+
+<p>该方法用于释放SDK 使用的所有对象资源。帮助偶尔使用音视频通话的 App 在无需通话时释放资源。一旦 App 调用了 destroy 接口销毁创建的 ARtcEngineKit 实例，将无法调用 SDK 内的任何方法也不再会有任何回调产生。如需重启通话，请调用初始化方法 <a href="#//api/name/sharedEngineWithAppId:delegate:">sharedEngineWithAppId:delegate:</a> 创建一个新的 ARtcEngineKit 实例。</p>
+
+<p><strong>Note</strong></p>
+
+<ul>
+<li>该方法需要在子线程中操作</li>
+<li>该方法为同步调用。 App 不得在 SDK 生成的回调中调用该方法，不然 SDK 只能等候该回调返回才能重新获取相应的对象资源造成死锁。</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setChannelProfile:" title="setChannelProfile:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setChannelProfile:">&ndash;&nbsp;setChannelProfile:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设置频道使用场景</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)setChannelProfile:(ARChannelProfile)<em>profile</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>profile</code></th>
+						<td><p>频道使用场景，详见ARChannelProfile。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>设置频道使用场景</p>
+
+<ul>
+<li>为保证实时音视频质量，我们建议相同频道内的用户使用同一种频道场景。</li>
+<li>该方法必须在加入频道前调用，进入频道后无法再设置频道场景。</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setClientRole:" title="setClientRole:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setClientRole:">&ndash;&nbsp;setClientRole:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设置用户角色</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)setClientRole:(ARClientRole)<em>role</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>role</code></th>
+						<td><p>直播场景里的用户角色</p>
+
+<ul>
+<li>ARClientRoleBroadcaster = 1; 主播</li>
+<li>ARClientRoleAudience = 2; 观众(默认)</li>
+</ul>
+</td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>设置用户角色</p>
+
+<p>该方法仅适用于直播场景。在加入频道前，用户需要通过本方法设置观众(默认)或主播角色。在加入频道后，用户可以通过本方法切换用户角色。</p>
+
+<p>如果你在加入频道后调用该方法切换用户角色，调用成功后，本地会触发 didClientRoleChanged 回调；远端会触发 didJoinedOfUid 或 didOfflineOfUid(ARUserOfflineReasonBecomeAudience) 回调。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/joinChannelByToken:channelId:uid:joinSuccess:" title="joinChannelByToken:channelId:uid:joinSuccess:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/joinChannelByToken:channelId:uid:joinSuccess:">&ndash;&nbsp;joinChannelByToken:channelId:uid:joinSuccess:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>加入频道</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)joinChannelByToken:(NSString *_Nullable)<em>token</em> channelId:(NSString *_Nonnull)<em>channelId</em> uid:(NSString *_Nullable)<em>uid</em> joinSuccess:(void ( ^ _Nullable ) ( NSString *_Nonnull channel , NSString *_Nonnull uid , NSInteger elapsed ))<em>joinSuccessBlock</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>token</code></th>
+						<td><p>动态密钥</p>
+
+<ul>
+<li>安全要求不高: 将值设为 nil</li>
+<li>安全要求高: 将值设置为 Token。如果你已经启用了 App Certificate，请务必使用 Token。</li>
+<li>请务必确保用于生成 Token 的 App ID 和 sharedEngineWithappId 方法初始化引擎时用的是同一个 App ID。</li>
+</ul>
+</td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>channelId</code></th>
+						<td><p>标识通话频道的字符串，长度在 64 字节以内的字符串。
+以下为支持的字符集范围（共 89 个字符）:</p>
+
+<ul>
+<li>26 个小写英文字母 a-z</li>
+<li>26 个大写英文字母 A-Z</li>
+<li>10 个数字 0-9</li>
+<li>空格</li>
+<li>&ldquo;!&rdquo;, &ldquo;#&rdquo;, &ldquo;$&rdquo;, &ldquo;%&rdquo;, &ldquo;&amp;&rdquo;, &ldquo;(&rdquo;, &ldquo;)&rdquo;, &ldquo;+&rdquo;, &ldquo;-&rdquo;, &ldquo;:&rdquo;, &ldquo;;&rdquo;, &ldquo;&lt;&rdquo;, &ldquo;=&rdquo;, &ldquo;.&rdquo;, &ldquo;>&rdquo;, &ldquo;?&rdquo;, &ldquo;@&rdquo;, &ldquo;[&rdquo;, &ldquo;]&rdquo;, &ldquo;^&rdquo;, &ldquo;_&rdquo;, &ldquo;{&rdquo;, &ldquo;}&rdquo;, &ldquo;|&rdquo;, &ldquo;~&rdquo;, &ldquo;,&rdquo;</li>
+</ul>
+</td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>uid</code></th>
+						<td><p>用户 ID，建议设置长度1~48，确保uid符合规则，并保证唯一性。如果不填或设置为nil，SDK 会自动分配一个，并在 joinSuccessBlock 回调方法中返回，App 层必须记住该返回值并维护，SDK 不对该返回值进行维护。</p>
+
+<ul>
+<li>26 个小写英文字母 a-z</li>
+<li>26 个大写英文字母 A-Z</li>
+<li>10 个数字 0-9</li>
+</ul>
+</td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>joinSuccessBlock</code></th>
+						<td><p>成功加入频道回调。joinSuccessBlock 优先级高于 didJoinChannel，2 个同时存在时，didJoinChannel 会被忽略。 需要有 didJoinChannel 回调时，请将 joinSuccessBlock 设置为 nil 。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+
+<ul>
+<li>ARErrorCodeInvalidArgument(-2)</li>
+<li>ARErrorCodeNotReady(-3)</li>
+<li>ARErrorCodeRefused(-5)</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>加入频道</p>
+
+<p>该方法让用户加入通话频道，在同一个频道内的用户可以互相通话，多个用户加入同一个频道，可以群聊。 使用不同 App ID 的 App 是不能互通的。如果已在通话中，用户必须调用 leaveChannel 退出当前通话，才能进入下一个频道。SDK 在通话中使用 iOS 系统的 AVAudioSession 共享对象进行录音和播放， App 对该对象的操作可能会影响 SDK 的音频相关功能。</p>
+
+<p>调用该 API 后会触发 joinSuccessBlock 或 didJoinChannel 回调。block 比 <a href="#//api/name/delegate">delegate</a> 优先级高，如果两种回调都实现了，只有 block 会触发。</p>
+
+<p>我们建议你将 joinSuccessBlock 设置为 nil，使用 <a href="#//api/name/delegate">delegate</a> 回调。</p>
+
+<p>加入频道后，本地会触发 didJoinChannel 回调；通信场景下的用户和直播场景下的主播加入频道后，远端会触发 didJoinedOfUid 回调。</p>
+
+<p>在网络状况不理想的情况下，客户端可能会与 ar云平台 的服务器失去连接；SDK 会自动尝试重连，重连成功后，本地会触发 didRejoinChannel 回调。</p>
+
+<p><strong>Note</strong></p>
+
+<ul>
+<li>频道内每个用户的 UID 必须是唯一的。如果将 UID 设为 nil，系统将自动分配一个 UID。如果想要从不同的设备同时接入同一个频道，请确保每个设备上使用的 UID 是不同的。</li>
+<li>在加入频道时，SDK 调用 setCategory(AVAudioSessionCategoryPlayAndRecord) 将 AVAudioSession 设置到 PlayAndRecord 模式， App 不应将其设置到其他模式。设置该模式时，正在播放的声音会被打断（比如正在播放的响铃声）。</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/switchChannelByToken:channelId:joinSuccess:" title="switchChannelByToken:channelId:joinSuccess:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/switchChannelByToken:channelId:joinSuccess:">&ndash;&nbsp;switchChannelByToken:channelId:joinSuccess:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>快速切换直播频道。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)switchChannelByToken:(NSString *_Nullable)<em>token</em> channelId:(NSString *_Nonnull)<em>channelId</em> joinSuccess:(void ( ^ _Nullable ) ( NSString *_Nonnull channel , NSString *_Nonnull uid , NSInteger elapsed ))<em>joinSuccessBlock</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>token</code></th>
+						<td><p>动态密钥</p>
+
+<ul>
+<li>安全要求不高: 将值设为 nil</li>
+<li>安全要求高: 将值设置为 Token。如果你已经启用了 App Certificate，请务必使用 Token。</li>
+<li>请务必确保用于生成 Token 的 App ID 和 sharedEngineWithappId 方法初始化引擎时用的是同一个 App ID。</li>
+</ul>
+</td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>channelId</code></th>
+						<td><p>标识通话频道的字符串，长度在 64 字节以内的字符串。
+以下为支持的字符集范围（共 89 个字符）:</p>
+
+<ul>
+<li>26 个小写英文字母 a-z</li>
+<li>26 个大写英文字母 A-Z</li>
+<li>10 个数字 0-9</li>
+<li>空格</li>
+<li>&ldquo;!&rdquo;, &ldquo;#&rdquo;, &ldquo;$&rdquo;, &ldquo;%&rdquo;, &ldquo;&amp;&rdquo;, &ldquo;(&rdquo;, &ldquo;)&rdquo;, &ldquo;+&rdquo;, &ldquo;-&rdquo;, &ldquo;:&rdquo;, &ldquo;;&rdquo;, &ldquo;&lt;&rdquo;, &ldquo;=&rdquo;, &ldquo;.&rdquo;, &ldquo;>&rdquo;, &ldquo;?&rdquo;, &ldquo;@&rdquo;, &ldquo;[&rdquo;, &ldquo;]&rdquo;, &ldquo;^&rdquo;, &ldquo;_&rdquo;, &ldquo;{&rdquo;, &ldquo;}&rdquo;, &ldquo;|&rdquo;, &ldquo;~&rdquo;, &ldquo;,&rdquo;</li>
+</ul>
+</td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>joinSuccessBlock</code></th>
+						<td><p>成功加入频道回调。joinSuccessBlock 优先级高于 didJoinChannel，2 个同时存在时，didJoinChannel 会被忽略。 需要有 didJoinChannel 回调时，请将 joinSuccessBlock 设置为 nil 。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>快速切换直播频道。</p>
+
+<p>当直播频道中的观众想从一个频道切换到另一个频道时，可以调用该方法，实现快速切换。</p>
+
+<p>成功调用该方切换频道后，本地会先收到离开原频道的回调 didLeaveChannelWithStats，再收到成功加入新频道的回调 didJoinChannel。</p>
+
+<p><strong>Note</strong></p>
+
+<p>该方法仅适用直播频道中的观众用户。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/leaveChannel:" title="leaveChannel:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/leaveChannel:">&ndash;&nbsp;leaveChannel:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>离开频道</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)leaveChannel:(void ( ^ _Nullable ) ( ARChannelStats *_Nonnull stat ))<em>leaveChannelBlock</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>leaveChannelBlock</code></th>
+						<td><p>成功离开频道的回调，提供通话相关的统计信息，详见 <a href="../Classes/ARChannelStats.html">ARChannelStats</a></p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>离开频道</p>
+
+<p>离开频道，即挂断或退出通话。</p>
+
+<p>当调用 joinChannelByToken 方法后，必须调用 leaveChannel 结束通话，否则无法开始下一次通话。 不管当前是否在通话中，都可以调用本方法，没有副作用。该方法会把会话相关的所有资源释放掉。该方法是异步操作，调用返回时并没有真正退出频道。</p>
+
+<ul>
+<li>成功调用该方法离开频道后，本地会触发 didLeaveChannelWithStats 回调；</li>
+<li>通信场景下的用户和直播场景下的主播离开频道后，远端会触发 didOfflineOfUid(ARUserOfflineReasonBecomeAudience) 回调。</li>
+</ul>
+
+
+<p><strong>Note</strong></p>
+
+<ul>
+<li>如果你调用了本方法后立即调用 <a href="#//api/name/destroy">destroy</a> 方法，SDK 将无法触发 didLeaveChannelWithStats 回调。</li>
+<li>如果你在旁路推流时调用本方法， SDK 将自动调用 removePublishStreamUrl 方法。</li>
+<li>在调用本方法时，iOS 默认情况下 SDK 会停用 audio session，可能会对其他应用程序造成影响。如果想改变这种默认行为，可以通过setAudioSessionOperationRestriction 方法设置 ARAudioSessionOperationRestrictionDeactivateSession，这样在 leaveChannel 时，SDK 不会停用 audio session。</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/renewToken:" title="renewToken:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/renewToken:">&ndash;&nbsp;renewToken:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>更新 Token</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)renewToken:(NSString *_Nonnull)<em>token</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>token</code></th>
+						<td><p>新的 Token</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>更新 Token</p>
+
+<p>该方法用于更新 Token。如果启用了 Token 机制，过一段时间后使用的 Token 会失效。当以下任意一种情况发生时：</p>
+
+<ul>
+<li>tokenPrivilegeWillExpire 回调。</li>
+<li>connectionChangedToState 回调的 reason 参数报告 ARConnectionChangedTokenExpired(9)。</li>
+</ul>
+
+
+<p><strong>Note</strong></p>
+
+<p>App 应重新获取 Token，然后调用该 API 更新 Token，否则 SDK 无法和服务器建立连接。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getConnectionState" title="getConnectionState"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getConnectionState">&ndash;&nbsp;getConnectionState</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取当前网络连接状态</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (ARConnectionStateType)getConnectionState</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>当前的网络连接状态，详见 ARConnectionStateType。</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>获取当前网络连接状态</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="音频核心方法" name="task_音频核心方法"></a>
+						<h2 class="task-title">音频核心方法</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/enableAudio" title="enableAudio"></a>
+	<h3 class="method-title"><code><a href="#//api/name/enableAudio">&ndash;&nbsp;enableAudio</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>启用音频模块</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)enableAudio</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>启用音频模块</p>
+
+<p>本方法可以启用音频模块，默认开启状态。</p>
+
+<p><strong>Note</strong></p>
+
+<ul>
+<li>该方法设置的是内部引擎为开启状态，在频道内和频道外均可调用，且在 leaveChannel 后仍然有效。</li>
+<li><p>该方法重置整个引擎，响应速度较慢，因此 ar云平台 建议使用如下方法来控制音频模块：</p>
+
+<ul>
+<li>enableLocalAudio：是否启动麦克风采集并创建本地音频流</li>
+<li>muteLocalAudioStream：是否发布本地音频流</li>
+<li>muteRemoteAudioStream：是否接收并播放远端音频流</li>
+<li>muteAllRemoteAudioStreams：是否接收并播放所有远端音频流</li>
+</ul>
+</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/disableAudio" title="disableAudio"></a>
+	<h3 class="method-title"><code><a href="#//api/name/disableAudio">&ndash;&nbsp;disableAudio</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>关闭音频模块</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)disableAudio</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>关闭音频模块</p>
+
+<p><strong>Note</strong></p>
+
+<ul>
+<li>该方法设置的是内部引擎为禁用状态，在频道内和频道外均可调用，且在 leaveChannel 后仍然有效。</li>
+<li><p>该方法重置整个引擎，响应速度较慢，因此建议使用如下方法来控制音频模块：</p>
+
+<ul>
+<li>enableLocalAudio：是否启动麦克风采集并创建本地音频流</li>
+<li>muteLocalAudioStream：是否发布本地音频流</li>
+<li>muteRemoteAudioStream：是否接收并播放远端音频流</li>
+<li>muteAllRemoteAudioStreams：是否接收并播放所有远端音频流</li>
+</ul>
+</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setAudioProfile:scenario:" title="setAudioProfile:scenario:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setAudioProfile:scenario:">&ndash;&nbsp;setAudioProfile:scenario:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设置音频编码配置</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)setAudioProfile:(ARAudioProfile)<em>profile</em> scenario:(ARAudioScenario)<em>scenario</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>profile</code></th>
+						<td><p><a href="../Constants/ARAudioProfile.html">ARAudioProfile</a></p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>scenario</code></th>
+						<td><p>设置音频应用场景，详细定义见 ARAudioScenario。不同的音频场景下，设备的系统音量是不同的。详见 如何区分媒体音量和通话音量。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>设置音频编码配置</p>
+
+<p><strong>Note</strong></p>
+
+<ul>
+<li>该方法需要在 joinChannelByToken 之前设置好，joinChannelByToken 之后设置不生效。</li>
+<li>通信场景下，该方法设置 profile 生效，设置 scenario 不生效。</li>
+<li>通信和直播场景下，音质（码率）会有网络自适应的调整，通过该方法设置的是一个最高码率。</li>
+<li>在有高音质需求的场景（例如音乐教学场景）中，建议将 profile 设置为 ARAudioProfileMusicHighQuality(4)，scenario 设置为 ARAudioScenarioGameStreaming(3)</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/adjustRecordingSignalVolume:" title="adjustRecordingSignalVolume:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/adjustRecordingSignalVolume:">&ndash;&nbsp;adjustRecordingSignalVolume:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>调节录音音量</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)adjustRecordingSignalVolume:(NSInteger)<em>volume</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>volume</code></th>
+						<td><p>录音音量可在 0~400 范围内进行调节:</p>
+
+<ul>
+<li>0: 静音</li>
+<li>100: 原始音量</li>
+<li>400: 最大可为原始音量的 4 倍(自带溢出保护)</li>
+</ul>
+</td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>调节录音音量</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/adjustPlaybackSignalVolume:" title="adjustPlaybackSignalVolume:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/adjustPlaybackSignalVolume:">&ndash;&nbsp;adjustPlaybackSignalVolume:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>调节本地播放的所有远端用户音量</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)adjustPlaybackSignalVolume:(NSInteger)<em>volume</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>volume</code></th>
+						<td><p>播放音量，取值范围为 [0,400]。</p>
+
+<ul>
+<li>0: 静音</li>
+<li>100: 原始音量</li>
+<li>400: 最大可为原始音量的 4 倍(自带溢出保护)</li>
+</ul>
+</td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>调节本地播放的所有远端用户音量</p>
+
+<p><strong>Note</strong></p>
+
+<ul>
+<li>该方法调节的是本地播放的所有远端用户混音后的音量。</li>
+<li>静音本地音频需同时调用 adjustPlaybackSignalVolume 和 adjustAudioMixingPlayoutVolume 方法，并将 volume 参数设置为 0。</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/enableAudioVolumeIndication:smooth:report_vad:" title="enableAudioVolumeIndication:smooth:report_vad:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/enableAudioVolumeIndication:smooth:report_vad:">&ndash;&nbsp;enableAudioVolumeIndication:smooth:report_vad:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>启用说话者音量提示</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)enableAudioVolumeIndication:(NSInteger)<em>interval</em> smooth:(NSInteger)<em>smooth</em> report_vad:(BOOL)<em>report_vad</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>interval</code></th>
+						<td><p>指定音量提示的时间间隔</p>
+
+<ul>
+<li>&lt;= 0: 禁用音量提示功能</li>
+<li><blockquote><p>0: 提示间隔，单位为毫秒。建议设置到大于 200 毫秒。最小不得少于 10 毫秒。启用该方法后，无论频道内是否有人说话，都会在 reportAudioVolumeIndicationOfSpeakers 及 audioVolumeIndicationBlock 回调中按设置的时间间隔返回音量提示</p></blockquote></li>
+</ul>
+</td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>smooth</code></th>
+						<td><p>指定音量提示的灵敏度。取值范围为 [0,10]，建议值为 3，数字越大，波动越灵敏；数字越小，波动越平滑。</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>report_vad</code></th>
+						<td><p>本地人声检测功能</p>
+
+<ul>
+<li>YES：开启本地人声检测功能。开启后， reportAudioVolumeIndicationOfSpeakers 回调的 vad 参数会报告是否在本地检测到人声。</li>
+<li>NO：（默认）关闭本地人声检测功能。除引擎自动进行本地人声检测的场景外， reportAudioVolumeIndicationOfSpeakers 回调的 vad 参数不会报告是否在本地检测到人声。</li>
+</ul>
+</td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>启用说话者音量提示</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/enableLocalAudio:" title="enableLocalAudio:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/enableLocalAudio:">&ndash;&nbsp;enableLocalAudio:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>开关本地音频采集</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)enableLocalAudio:(BOOL)<em>enabled</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>enabled</code></th>
+						<td><p>开关本地音频采集</p>
+
+<ul>
+<li>YES: 重新开启本地语音功能，即开启本地语音采集（默认）</li>
+<li>NO: 关闭本地语音功能，即停止本地语音采集或处理</li>
+</ul>
+</td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>开关本地音频采集</p>
+
+<p>当用户加入频道时，它的语音功能默认是开启的。该方法可以关闭或重新开启本地语音功能，即停止或重新开启本地音频采集。</p>
+
+<p>该方法不影响接收或播放远端音频流，enableLocalAudio(NO) 适用于只听不发的用户场景。</p>
+
+<p>语音功能关闭或重新开启后，会收到回调 didMicrophoneEnabled。</p>
+
+<p><strong>Note</strong></p>
+
+<p>该方法与 muteLocalAudioStream 的区别在于：</p>
+
+<ul>
+<li>enableLocalAudio：开启或关闭本地语音采集及处理。使用 enableLocalAudio 关闭或开启本地采集后，本地听远端播放会有短暂中断。</li>
+<li>muteLocalAudioStream：停止或继续发送本地音频流。</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/muteLocalAudioStream:" title="muteLocalAudioStream:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/muteLocalAudioStream:">&ndash;&nbsp;muteLocalAudioStream:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>开关本地音频发送</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)muteLocalAudioStream:(BOOL)<em>mute</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>mute</code></th>
+						<td><p>是否发送本地音频流</p>
+
+<ul>
+<li>YES: 停止发送本地音频流</li>
+<li>NO: （默认）继续发送本地音频流</li>
+</ul>
+</td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>开关本地音频发送</p>
+
+<p>该方法用于允许/禁止往网络发送本地音频流。成功调用该方法后，远端会触发 remoteAudioStateChangedOfUid 回调。</p>
+
+<p><strong>Note</strong></p>
+
+<ul>
+<li>该方法不影响录音状态，并没有禁用麦克风。</li>
+<li>如果你在该方法后调用 setChannelProfile 方法，SDK 会根据你设置的频道场景以及用户角色，重新设置是否停止发送本地音频。因此我们建议在 setChannelProfile 后调用该方法。</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/muteRemoteAudioStream:mute:" title="muteRemoteAudioStream:mute:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/muteRemoteAudioStream:mute:">&ndash;&nbsp;muteRemoteAudioStream:mute:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>停止/恢复接收指定用户的音频流</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)muteRemoteAudioStream:(NSString *_Nonnull)<em>uid</em> mute:(BOOL)<em>mute</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>uid</code></th>
+						<td><p>指定用户的用户 ID</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>mute</code></th>
+						<td><p>停止/恢复接收指定用户的音频流:</p>
+
+<ul>
+<li>YES: 停止接收指定音频流</li>
+<li>NO: 继续接收指定音频流（默认）</li>
+</ul>
+</td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>停止/恢复接收指定用户的音频流</p>
+
+<p><strong>Note</strong></p>
+
+<p>如果之前有调用过 muteAllRemoteAudioStreams(YES) 对所有远端音频进行静音，在调用本 API 之前请确保你已调用 muteAllRemoteAudioStreams(NO)。 muteAllRemoteAudioStreams 是全局控制，muteRemoteAudioStream 是精细控制。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/muteAllRemoteAudioStreams:" title="muteAllRemoteAudioStreams:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/muteAllRemoteAudioStreams:">&ndash;&nbsp;muteAllRemoteAudioStreams:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>停止/恢复接收所有远端音频流</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)muteAllRemoteAudioStreams:(BOOL)<em>mute</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>mute</code></th>
+						<td><p>YES: 停止接收所有远端音频流；NO: 继续接收所有远端音频流（默认）。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>停止/恢复接收所有远端音频流</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setDefaultMuteAllRemoteAudioStreams:" title="setDefaultMuteAllRemoteAudioStreams:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setDefaultMuteAllRemoteAudioStreams:">&ndash;&nbsp;setDefaultMuteAllRemoteAudioStreams:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设置是否默认接收音频流</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)setDefaultMuteAllRemoteAudioStreams:(BOOL)<em>mute</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>mute</code></th>
+						<td><p>Sets whether to receive/stop receiving all remote audio streams by default:</p>
+
+<ul>
+<li>YES: 默认停止接收所有远端音频流</li>
+<li>NO: 默认继续接收所有远端音频流（默认）</li>
+</ul>
+</td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>设置是否默认接收音频流</p>
+
+<p>该方法在加入频道前后都可调用。如果在加入频道后调用 setDefaultMuteAllRemoteAudioStreams (YES)，会接收不到设置后加入频道的用户的音频流。</p>
+
+<p><strong>Note</strong></p>
+
+<p>停止接收音频流后，如果想要恢复接收，请调用 muteRemoteAudioStream (NO)，并指定你想要接收的远端用户 uid；如果想恢复接收多个用户的音频流，则需要多次调用 muteRemoteAudioStream。setDefaultMuteAllRemoteAudioStreams (NO) 只能恢复接收后面加入频道的用户的音频流。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/adjustUserPlaybackSignalVolume:volume:" title="adjustUserPlaybackSignalVolume:volume:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/adjustUserPlaybackSignalVolume:volume:">&ndash;&nbsp;adjustUserPlaybackSignalVolume:volume:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>调节本地播放的指定远端用户音量</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)adjustUserPlaybackSignalVolume:(NSString *_Nonnull)<em>uid</em> volume:(int)<em>volume</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>uid</code></th>
+						<td><p>远端用户 ID，需和远端用户加入频道时用的 uid 一致。</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>volume</code></th>
+						<td><p>播放音量，取值范围为 [0,100]。</p>
+
+<ul>
+<li>0: 静音</li>
+<li>100: 原始音量</li>
+</ul>
+</td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>调节本地播放的指定远端用户音量</p>
+
+<p>加入频道后，你可以多次调用该方法调节不同远端用户在本地播放的音量，或对某个远端用户在本地播放的音量调节多次。</p>
+
+<p><strong>Note</strong></p>
+
+<ul>
+<li>该方法要在加入频道后调用。</li>
+<li>该方法调节的是本地播放的指定远端用户混音后的音量。</li>
+<li>该方法每次只能调整一位远端用户在本地播放的音量。若需调整多位远端用户在本地播放的音量，则需多次调用该方法。</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="视频核心方法" name="task_视频核心方法"></a>
+						<h2 class="task-title">视频核心方法</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/enableVideo" title="enableVideo"></a>
+	<h3 class="method-title"><code><a href="#//api/name/enableVideo">&ndash;&nbsp;enableVideo</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>启用视频模块</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)enableVideo</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>启用视频模块</p>
+
+<p>该方法用于打开视频模式。可以在加入频道前或者通话中调用，在加入频道前调用，则自动开启视频模式，在通话中调用则由音频模式切换为视频模式。调用 <a href="#//api/name/disableVideo">disableVideo</a> 方法可关闭视频模式。</p>
+
+<p>成功调用该方法后，远端会触发 didVideoEnabled(YES) 和 remoteVideoStateChangedOfUid 回调。</p>
+
+<p><strong>Note</strong></p>
+
+<ul>
+<li>该方法设置的是内部引擎为启用状态，在 leaveChannel 后仍然有效。</li>
+<li><p>该方法重置整个引擎，响应速度较慢，因此建议使用如下方法来控制视频模块：</p></li>
+<li><p>enableLocalVideo：是否启动摄像头采集并创建本地视频流</p></li>
+<li>muteLocalVideoStream：是否发布本地视频流</li>
+<li>muteRemoteVideoStream：是否接收并播放远端视频流</li>
+<li>muteAllRemoteVideoStreams：是否接收并播放所有远端视频流</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/disableVideo" title="disableVideo"></a>
+	<h3 class="method-title"><code><a href="#//api/name/disableVideo">&ndash;&nbsp;disableVideo</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>关闭视频模块</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)disableVideo</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>关闭视频模块</p>
+
+<p>该方法用于关闭视频。可以在加入频道前或者通话中调用，在加入频道前调用，则自动开启纯音频模式，在通话中调用则由视频模式切换为纯音频模式。调用 <a href="#//api/name/enableVideo">enableVideo</a> 方法可开启视频模式。</p>
+
+<p>成功调用该方法后，远端会触发remoteVideoStateChangedOfUid回调。</p>
+
+<p><strong>Note</strong></p>
+
+<ul>
+<li>该方法设置的是内部引擎为启用状态，在 leaveChannel 后仍然有效。</li>
+<li><p>该方法重置整个引擎，响应速度较慢，因此建议使用如下方法来控制视频模块：</p>
+
+<ul>
+<li>enableLocalVideo：是否启动摄像头采集并创建本地视频流</li>
+<li>muteLocalVideoStream：是否发布本地视频流</li>
+<li>muteRemoteVideoStream：是否接收并播放远端视频流</li>
+<li>muteAllRemoteVideoStreams：是否接收并播放所有远端视频流</li>
+</ul>
+</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setVideoEncoderConfiguration:" title="setVideoEncoderConfiguration:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setVideoEncoderConfiguration:">&ndash;&nbsp;setVideoEncoderConfiguration:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设置视频编码配置</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)setVideoEncoderConfiguration:(ARVideoEncoderConfiguration *_Nonnull)<em>config</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>config</code></th>
+						<td><p>视频编码器配置的属性</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>设置视频编码配置</p>
+
+<p>该方法设置视频编码配置。每个配置对应一套视频参数，如分辨率、帧率、码率、视频方向等。 所有设置的参数均为理想情况下的最大值。当视频引擎因网络环境等原因无法达到设置的分辨率、帧率或码率的最大值时，会取最接近最大值的那个值。</p>
+
+<p>如果加入频道后不需要重新设置视频编码配置，建议在 <a href="#//api/name/enableVideo">enableVideo</a> 之前调用该方法，可以加快首帧出图时间。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setupLocalVideo:" title="setupLocalVideo:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setupLocalVideo:">&ndash;&nbsp;setupLocalVideo:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>初始化本地视图</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)setupLocalVideo:(ARtcVideoCanvas *_Nullable)<em>local</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>local</code></th>
+						<td><p>通过 <a href="../Classes/ARtcVideoCanvas.html">ARtcVideoCanvas</a> 设置本地视频显示属性。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>初始化本地视图</p>
+
+<p>该方法初始化本地视图并设置本地用户视频显示信息，只影响本地用户看到的视频画面，不影响本地发布视频。调用该方法绑定本地视频流的显示视窗(view)，并设置本地用户视图的渲染模式和镜像模式。在 App 开发中，通常在初始化后调用该方法进行本地视频设置，然后再加入频道。退出频道后，绑定仍然有效，如果需要解除绑定，可以指定空 (nil) view 调用本方法。</p>
+
+<p><strong>Note</strong></p>
+
+<ul>
+<li>请在加入频道前调用该方法。</li>
+<li>如果你希望在通话中更新本地用户视图的渲染或镜像模式，请使用 setLocalRenderMode 方法。</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setupRemoteVideo:" title="setupRemoteVideo:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setupRemoteVideo:">&ndash;&nbsp;setupRemoteVideo:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>初始化远端用户视图</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)setupRemoteVideo:(ARtcVideoCanvas *_Nonnull)<em>remote</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>remote</code></th>
+						<td><p>通过 <a href="../Classes/ARtcVideoCanvas.html">ARtcVideoCanvas</a> 设置远端视频显示属性：</p>
+
+<ul>
+<li>view 视频显示视窗</li>
+<li>renderMode: 视频显示模式
+
+<ul>
+<li>ARVideoRenderModeHidden (1)：优先保证视窗被填满。因视频尺寸与显示视窗尺寸不一致而多出的视频将被截掉。</li>
+<li>ARVideoRenderModeFit (2)：优先保证视频内容全部显示。因视频尺寸与显示视窗尺寸不一致造成的视窗未被填满的区域填充黑色。</li>
+</ul>
+</li>
+<li>uid: 用户 ID，指定要显示视窗的远端用户。</li>
+</ul>
+</td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>初始化远端用户视图</p>
+
+<p>该方法绑定远端用户和显示视图，并设置远端用户视图在本地显示时的渲染模式和镜像模式，只影响本地用户看到的视频画面。调用该接口时需要指定远端用户的 uid，一般可以在进频道前提前设置好。</p>
+
+<p>如果 App 不能事先知道对方的 uid，可以在 APP 收到 didJoinedOfUid 事件时设置。如果启用了视频录制功能，视频录制服务会做为一个哑客户端加入频道，因此其他客户端也会收到它的 didJoinedOfUid 事件，App 不应给它绑定视图（因为它不会发送视频流），如果 App 不能识别哑客户端，可以在 firstRemoteVideoDecodedOfUid 事件时再绑定视图。解除某个用户的绑定视图可以把 view 设置为空。退出频道后，SDK 会把远端用户的绑定关系清除掉。</p>
+
+<p><strong>Note</strong></p>
+
+<p>如果你希望在通话中更新远端用户视图的渲染或镜像模式，请使用 setRemoteRenderMode 方法。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setLocalRenderMode:mirrorMode:" title="setLocalRenderMode:mirrorMode:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setLocalRenderMode:mirrorMode:">&ndash;&nbsp;setLocalRenderMode:mirrorMode:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>更新本地视图显示模式</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)setLocalRenderMode:(ARVideoRenderMode)<em>renderMode</em> mirrorMode:(ARVideoMirrorMode)<em>mirrorMode</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>renderMode</code></th>
+						<td><p>本地视图的渲染模式，详见 <a href="../Constants/ARVideoRenderMode.html">ARVideoRenderMode</a></p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>mirrorMode</code></th>
+						<td><p>本地视图的镜像模式，详见 ARVideoMirrorMode。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>更新本地视图显示模式</p>
+
+<p>初始化本地用户视图后，你可以调用该方法更新本地用户视图的渲染和镜像模式。该方法只影响本地用户看到的视频画面，不影响本地发布视频。</p>
+
+<p><strong>Note</strong></p>
+
+<ul>
+<li>如果你使用前置摄像头，默认启动本地用户视图镜像模式；如果你使用后置摄像头，默认关闭本地视图镜像模式。</li>
+<li>请在调用 setupLocalVideo 方法初始化本地视图后，调用该方法。</li>
+<li>你可以在通话中多次调用该方法，多次更新本地用户视图的显示模式。</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setRemoteRenderMode:renderMode:mirrorMode:" title="setRemoteRenderMode:renderMode:mirrorMode:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setRemoteRenderMode:renderMode:mirrorMode:">&ndash;&nbsp;setRemoteRenderMode:renderMode:mirrorMode:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>更新远端视图显示模式</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)setRemoteRenderMode:(NSString *_Nonnull)<em>uid</em> renderMode:(ARVideoRenderMode)<em>renderMode</em> mirrorMode:(ARVideoMirrorMode)<em>mirrorMode</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>uid</code></th>
+						<td><p>用户 ID</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>renderMode</code></th>
+						<td><p>远端用户视图的渲染模式，详见 <a href="../Constants/ARVideoRenderMode.html">ARVideoRenderMode</a> 。</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>mirrorMode</code></th>
+						<td><p>远端用户视图的镜像模式，详见 <a href="../Constants/ARVideoMirrorMode.html">ARVideoMirrorMode</a> 。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>更新远端视图显示模式</p>
+
+<p>初始化远端用户视图后，你可以调用该方法更新远端用户视图在本地显示时的渲染和镜像模式。该方法只影响本地用户看到的视频画面。</p>
+
+<p><strong>Note</strong></p>
+
+<ul>
+<li>请在调用 setupRemoteVideo 方法初始化远端视图后，调用该方法。</li>
+<li>你可以在通话中多次调用该方法，多次更新远端用户视图的显示模式。</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/startPreview" title="startPreview"></a>
+	<h3 class="method-title"><code><a href="#//api/name/startPreview">&ndash;&nbsp;startPreview</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>开启视频预览</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)startPreview</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>开启视频预览</p>
+
+<p>该方法用于在进入频道前启动本地视频预览。本地预览默认开启镜像功能。</p>
+
+<p>调用该 API 前，必须：</p>
+
+<ul>
+<li>调用 setupLocalVideo 设置预览窗口及属性</li>
+<li>调用 <a href="#//api/name/enableVideo">enableVideo</a> 开启视频功能</li>
+</ul>
+
+
+<p><strong>Note</strong></p>
+
+<p>启用了本地视频预览后，如果调用 leaveChannel退出频道，本地预览依然处于启动状态，如需要关闭本地预览，需要调用 <a href="#//api/name/stopPreview">stopPreview</a> 。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/stopPreview" title="stopPreview"></a>
+	<h3 class="method-title"><code><a href="#//api/name/stopPreview">&ndash;&nbsp;stopPreview</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>停止本地视频预览</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)stopPreview</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>停止本地视频预览</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/enableLocalVideo:" title="enableLocalVideo:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/enableLocalVideo:">&ndash;&nbsp;enableLocalVideo:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>开关本地视频采集</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)enableLocalVideo:(BOOL)<em>enabled</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>enabled</code></th>
+						<td><p>是否启用本地视频:</p>
+
+<ul>
+<li>YES: 开启本地视频采集和渲染（默认）</li>
+<li>NO: 关闭使用本地摄像头设备。关闭后远端用户会接收不到本地用户的视频流；但本地用户依然可以接收远端用户的视频流。设置为 NO 时，该方法不需要本地有摄像头。</li>
+</ul>
+</td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>开关本地视频采集</p>
+
+<p>该方法禁用或重新启用本地视频采集，不影响接收远端视频。</p>
+
+<p>调用 <a href="#//api/name/enableVideo">enableVideo</a> 后，本地视频即默认开启。你可以调用 enableLocalVideo(NO) 关闭本地视频采集。关闭后如果想要重新开启，则可调用 enableLocalVideo(YES)。</p>
+
+<p>成功禁用或启用本地视频采集后，远端会触发 didLocalVideoEnabled 回调。</p>
+
+<p><strong>Note</strong></p>
+
+<p>该方法设置的是内部引擎为启用/禁用状态，在 leaveChannel 后仍然有效。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/muteLocalVideoStream:" title="muteLocalVideoStream:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/muteLocalVideoStream:">&ndash;&nbsp;muteLocalVideoStream:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>开关本地视频发送</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)muteLocalVideoStream:(BOOL)<em>mute</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>mute</code></th>
+						<td><p>是否发送本地视频流</p>
+
+<ul>
+<li>YES: 不发送本地视频流</li>
+<li>NO: 发送本地视频流（默认）</li>
+</ul>
+</td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>开关本地视频发送</p>
+
+<p>成功调用该方法后，远端会触发 didVideoMuted 回调。</p>
+
+<p><strong>Note</strong></p>
+
+<ul>
+<li>调用该方法时，SDK 不再发送本地视频流，但摄像头仍然处于工作状态。相比于 enableLocalVideo 用于控制本地视频流发送的方法，该方法响应速度更快。该方法不影响本地视频流获取，没有禁用摄像头。</li>
+<li>如果你在该方法后调用 setChannelProfile 方法，SDK 会根据你设置的频道场景以及用户角色，重新设置是否停止发送本地视频。因此我们建议在 setChannelProfile 后调用该方法。</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/muteAllRemoteVideoStreams:" title="muteAllRemoteVideoStreams:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/muteAllRemoteVideoStreams:">&ndash;&nbsp;muteAllRemoteVideoStreams:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>停止/恢复接收所有视频流</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)muteAllRemoteVideoStreams:(BOOL)<em>mute</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>mute</code></th>
+						<td><p>禁止/允许接收所有人的视频流</p>
+
+<ul>
+<li>YES: 停止接收所有视频流</li>
+<li>NO: 允许接收所有视频流（默认）</li>
+</ul>
+</td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>停止/恢复接收所有视频流</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/muteRemoteVideoStream:mute:" title="muteRemoteVideoStream:mute:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/muteRemoteVideoStream:mute:">&ndash;&nbsp;muteRemoteVideoStream:mute:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>停止/恢复接收指定视频流</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)muteRemoteVideoStream:(NSString *_Nonnull)<em>uid</em> mute:(BOOL)<em>mute</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>uid</code></th>
+						<td><p>远端用户ID</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>mute</code></th>
+						<td><p>Sets whether to receive/stop receiving a specified remote user’s video stream.</p>
+
+<ul>
+<li>YES: 停止接收指定用户的视频流</li>
+<li>NO: 允许接收指定用户的视频流（默认）</li>
+</ul>
+</td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>停止/恢复接收指定视频流</p>
+
+<p><strong>Note</strong></p>
+
+<p>如果之前有调用过 muteAllRemoteVideoStreams(YES) 暂停接收所有远端视频，在调用本 API 之前请确保你已调用 muteAllRemoteVideoStreams(NO)。 muteAllRemoteVideoStreams 是全局控制，muteRemoteVideoStream 是精细控制。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setDefaultMuteAllRemoteVideoStreams:" title="setDefaultMuteAllRemoteVideoStreams:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setDefaultMuteAllRemoteVideoStreams:">&ndash;&nbsp;setDefaultMuteAllRemoteVideoStreams:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设置是否默认接收视频流
+  该方法在加入频道前后都可调用。如果在加入频道后调用setDefaultMuteAllRemoteVideoStreams(YES)，会接收不到设置后加入频道的用户的视频流。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)setDefaultMuteAllRemoteVideoStreams:(BOOL)<em>mute</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>mute</code></th>
+						<td><p>是否默认接收视频流</p>
+
+<ul>
+<li>YES: 不接收</li>
+<li>NO: 接收</li>
+</ul>
+</td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>设置是否默认接收视频流
+  该方法在加入频道前后都可调用。如果在加入频道后调用setDefaultMuteAllRemoteVideoStreams(YES)，会接收不到设置后加入频道的用户的视频流。</p>
+
+<p>  <strong>Note</strong></p>
+
+<p>停止接收视频流后，如果想要恢复接收，请调用 muteRemoteVideoStream (NO)，并指定你想要接收的远端用户 uid；如果想恢复接收多个用户的视频流，则需要多次调用 muteRemoteVideoStream。setDefaultMuteAllRemoteVideoStreams (NO) 只能恢复接收后面加入频道的用户的视频流。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="音频播放路由" name="task_音频播放路由"></a>
+						<h2 class="task-title">音频播放路由</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/setDefaultAudioRouteToSpeakerphone:" title="setDefaultAudioRouteToSpeakerphone:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setDefaultAudioRouteToSpeakerphone:">&ndash;&nbsp;setDefaultAudioRouteToSpeakerphone:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设置默认的语音路由</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)setDefaultAudioRouteToSpeakerphone:(BOOL)<em>defaultToSpeaker</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>defaultToSpeaker</code></th>
+						<td><p>默认的语音路由:</p>
+
+<ul>
+<li>YES: 默认从外放（扬声器）出声。如果设备连接了耳机或蓝牙，则无法切换到外放。</li>
+<li>NO: （默认）默认从听筒出声。如果设备连接了耳机，则语音路由走耳机。</li>
+</ul>
+</td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>设置默认的语音路由</p>
+
+<p>该方法设置接收到的语音从听筒或扬声器出声。如果用户不调用本方法，语音默认从听筒出声。</p>
+
+<p><strong>Note</strong></p>
+
+<ul>
+<li>该方法仅使用于通信场景。</li>
+<li>该方法只在纯音频模式下工作，在有视频的模式下不工作。</li>
+</ul>
+
+
+<p>各频道场景下默认的语音路由：</p>
+
+<ul>
+<li>通信：听筒。</li>
+<li>直播：扬声器。</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setEnableSpeakerphone:" title="setEnableSpeakerphone:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setEnableSpeakerphone:">&ndash;&nbsp;setEnableSpeakerphone:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>启用/关闭扬声器播放</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)setEnableSpeakerphone:(BOOL)<em>enableSpeaker</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>enableSpeaker</code></th>
+						<td><p>启用/关闭扬声器播放:</p>
+
+<ul>
+<li>YES: 切换到外放。如果设备连接了耳机或蓝牙，则无法切换到外放。</li>
+<li>NO: 切换到听筒。如果设备连接了耳机，则语音路由走耳机。</li>
+</ul>
+</td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>启用/关闭扬声器播放</p>
+
+<p>该方法设置是否将语音路由到扬声器（外放）。调用该方法后，SDK 将返回 didAudioRouteChanged 回调提示状态已更改。</p>
+
+<p><strong>Note</strong></p>
+
+<ul>
+<li>请确保在调用此方法前已调用过 joinChannelByToken 方法。</li>
+<li>SDK 会调用 setCategory(AVAudioSessionCategoryPlayAndRecord) 并配置耳麦或者外放，所以调用该方法后所有声音的路由都会按照该方法设置。</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/isSpeakerphoneEnabled" title="isSpeakerphoneEnabled"></a>
+	<h3 class="method-title"><code><a href="#//api/name/isSpeakerphoneEnabled">&ndash;&nbsp;isSpeakerphoneEnabled</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>查询扬声器启用状态</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)isSpeakerphoneEnabled</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<ul>
+<li>YES: 扬声器已开启，语音会输出到扬声器</li>
+<li>NO: 扬声器未开启，语音会输出到非扬声器（听筒、耳机等）</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>查询扬声器启用状态</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="耳返设置" name="task_耳返设置"></a>
+						<h2 class="task-title">耳返设置</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/enableInEarMonitoring:" title="enableInEarMonitoring:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/enableInEarMonitoring:">&ndash;&nbsp;enableInEarMonitoring:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>开启耳返功能</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)enableInEarMonitoring:(BOOL)<em>enabled</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>enabled</code></th>
+						<td><p>Sets whether to enable/disable in-ear monitoring.</p>
+
+<ul>
+<li>YES: 开启耳返功能</li>
+<li>NO: 关闭耳返功能（默认）</li>
+</ul>
+</td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>开启耳返功能</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setInEarMonitoringVolume:" title="setInEarMonitoringVolume:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setInEarMonitoringVolume:">&ndash;&nbsp;setInEarMonitoringVolume:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设置耳返音量</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)setInEarMonitoringVolume:(NSInteger)<em>volume</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>volume</code></th>
+						<td><p>设置耳返音量，取值范围在 [0,100]。默认值为 100</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>设置耳返音量</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="音乐文件播放及混音设置" name="task_音乐文件播放及混音设置"></a>
+						<h2 class="task-title">音乐文件播放及混音设置</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/startAudioMixing:loopback:replace:cycle:" title="startAudioMixing:loopback:replace:cycle:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/startAudioMixing:loopback:replace:cycle:">&ndash;&nbsp;startAudioMixing:loopback:replace:cycle:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>开始播放音乐文件</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)startAudioMixing:(NSString *_Nonnull)<em>filePath</em> loopback:(BOOL)<em>loopback</em> replace:(BOOL)<em>replace</em> cycle:(NSInteger)<em>cycle</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>filePath</code></th>
+						<td><p>指定需要混音的音频文件名和文件路径名，例如: /var/mobile/Containers/Data/audio.mp4。建议填写文件后缀名。若无法确定文件后缀名，可不填。支持以下音频格式: mp3，aac，m4a，3gp，wav</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>loopback</code></th>
+						<td><p>设置哪些用户可以听到音频混合:
+* YES: 只有本地可以听到混音或替换后的音频流
+* NO: 本地和对方都可以听到混音或替换后的音频流</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>replace</code></th>
+						<td><p>Sets the audio mixing content:
+* YES: 只推送设置的本地音频文件或者线上音频文件，不传输麦克风收录的音频。
+* NO: 音频文件内容将会和麦克风采集的音频流进行混音</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>cycle</code></th>
+						<td><p>指定音频文件循环播放的次数:</p>
+
+<ul>
+<li>正整数: 循环的次数</li>
+<li>-1：无限循环</li>
+</ul>
+</td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>开始播放音乐文件</p>
+
+<p>指定本地或在线音频文件来和麦克风采集的音频流进行混音或替换。替换是指用指定的音频文件替换麦克风采集到的音频流。该方法可以选择是否让对方听到本地播放的音频，并指定循环播放的次数。</p>
+
+<p>成功调用该方法后，本地会触发 localAudioMixingStateDidChanged(ARAudioMixingStatePlaying) 回调。播放结束后，会收到 localAudioMixingStateDidChanged(ARAudioMixingStateStopped) 回调。</p>
+
+<p><strong>Note</strong></p>
+
+<ul>
+<li>使用本方法前请确保你的 iOS 设备版本不低于 8.0。</li>
+<li>请在频道内调用该方法，如果在频道外调用该方法可能会出现问题。</li>
+<li>如果播放的是在线音乐文件，请确保重复调用该 API 的间隔超过 100 ms，否则 SDK 会返回 AudioFileOpenTooFrequent（702）警告码，表示音乐文件打开过于频繁。</li>
+<li>如果本地音乐文件不存在、文件格式不支持、无法访问在线音乐文件 URL 都会返回警告码 ARWarningCodeAudioMixingOpenError = 701。</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/stopAudioMixing" title="stopAudioMixing"></a>
+	<h3 class="method-title"><code><a href="#//api/name/stopAudioMixing">&ndash;&nbsp;stopAudioMixing</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>停止播放音乐文件</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)stopAudioMixing</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>停止播放音乐文件</p>
+
+<p>请在频道内调用该方法。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/pauseAudioMixing" title="pauseAudioMixing"></a>
+	<h3 class="method-title"><code><a href="#//api/name/pauseAudioMixing">&ndash;&nbsp;pauseAudioMixing</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>暂停播放音乐文件</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)pauseAudioMixing</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>暂停播放音乐文件</p>
+
+<p>请在频道内调用该方法。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/resumeAudioMixing" title="resumeAudioMixing"></a>
+	<h3 class="method-title"><code><a href="#//api/name/resumeAudioMixing">&ndash;&nbsp;resumeAudioMixing</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>恢复播放音乐文件</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)resumeAudioMixing</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>恢复播放音乐文件</p>
+
+<p>请在频道内调用该方法。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/adjustAudioMixingVolume:" title="adjustAudioMixingVolume:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/adjustAudioMixingVolume:">&ndash;&nbsp;adjustAudioMixingVolume:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>调节音乐文件在本地播放的音量</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)adjustAudioMixingVolume:(NSInteger)<em>volume</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>volume</code></th>
+						<td><p>音乐文件播放音量范围为 0~100。默认 100 为原始文件音量</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>调节音乐文件在本地播放的音量</p>
+
+<p><strong>Note</strong></p>
+
+<p>该方法调节混音的音乐文件在本地播放的音量大小。请在频道内调用该方法。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="音效文件播放管理" name="task_音效文件播放管理"></a>
+						<h2 class="task-title">音效文件播放管理</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/getEffectsVolume" title="getEffectsVolume"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getEffectsVolume">&ndash;&nbsp;getEffectsVolume</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取音效文件播放音量</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (double)getEffectsVolume</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>方法调用成功返回音效的音量值，&lt; 0: 方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>获取音效文件播放音量</p>
+
+<p>范围为 [0.0,100.0]。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setEffectsVolume:" title="setEffectsVolume:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setEffectsVolume:">&ndash;&nbsp;setEffectsVolume:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设置音效文件播放音量</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)setEffectsVolume:(double)<em>volume</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>volume</code></th>
+						<td><p>取值范围为 [0.0,100.0]。 100.0 为默认值</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>设置音效文件播放音量</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setVolumeOfEffect:withVolume:" title="setVolumeOfEffect:withVolume:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setVolumeOfEffect:withVolume:">&ndash;&nbsp;setVolumeOfEffect:withVolume:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>实时调整音效文件播放音量</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)setVolumeOfEffect:(int)<em>soundId</em> withVolume:(double)<em>volume</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>soundId</code></th>
+						<td><p>自行设定的音效 ID，需保证唯一性。</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>volume</code></th>
+						<td><p>取值范围为 [0.0,100.0]。100.0 为默认值</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>实时调整音效文件播放音量</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/playEffect:filePath:loopCount:pitch:pan:gain:publish:" title="playEffect:filePath:loopCount:pitch:pan:gain:publish:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/playEffect:filePath:loopCount:pitch:pan:gain:publish:">&ndash;&nbsp;playEffect:filePath:loopCount:pitch:pan:gain:publish:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>播放指定音效文件</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)playEffect:(int)<em>soundId</em> filePath:(NSString *_Nullable)<em>filePath</em> loopCount:(int)<em>loopCount</em> pitch:(double)<em>pitch</em> pan:(double)<em>pan</em> gain:(double)<em>gain</em> publish:(BOOL)<em>publish</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>soundId</code></th>
+						<td><p>自行设定的音效 ID，需保证唯一性。 如果你已通过 preloadEffect 将音效加载至内存，确保这里设置的 soundId 与 preloadEffect 设置的 soundId 相同。</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>filePath</code></th>
+						<td><p>指定音效文件的绝对路径或 URL 地址（包含文件后缀名），例如：/var/mobile/Containers/Data/audio.mp4。支持以下音频格式: mp3、mp4、aac、m4a、3gp、wav。</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>loopCount</code></th>
+						<td><p>设置音效文件循环播放的次数：</p>
+
+<ul>
+<li>0: 播放音效文件一次</li>
+<li>1: 循环播放音效文件两次</li>
+<li>-1: 无限循环播放音效文件，直至调用 stopEffect 或 <a href="#//api/name/stopAllEffects">stopAllEffects</a> 后停止</li>
+</ul>
+</td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>pitch</code></th>
+						<td><p>设置音效的音调 取值范围为 [0.5,2]。默认值为 1.0，表示不需要修改音调。取值越小，则音调越低</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>pan</code></th>
+						<td><p>设置音效的空间位置。取值范围为 [-1.0,1.0]：</p>
+
+<ul>
+<li>0.0: 音效出现在正前方</li>
+<li>1.0: 音效出现在右边</li>
+<li>-1.0: 音效出现在左边</li>
+</ul>
+</td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>gain</code></th>
+						<td><p>设置音效的音量。取值范围为 [0.0,100.0]。默认值为 100.0。取值越小，则音效的音量越低。</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>publish</code></th>
+						<td><p>设置是否将音效传到远端</p>
+
+<ul>
+<li>YES: 音效文件在本地播放的同时，会发布到 ar云平台 云上，因此远端用户也能听到该音效</li>
+<li>NO: 音效文件不会发布到ar云平台云上，因此只能在本地听到该音效</li>
+</ul>
+</td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>播放指定音效文件</p>
+
+<p>该方法可以播放指定的本地或在线音效文件来给应用增加音效，比如游戏中特定操作的音效。</p>
+
+<p>你可以在该方法中设置音效文件的播放次数、音调、音效的空间位置和增益，以及远端用户是否能听到该音效。你可以多次调用该方法，通过传入不同的音效文件的 soundID 和 filePath，同时播放多个音效文件，实现音效叠加。为获得最佳用户体验，我们建议同时播放的音效文件不要超过 3 个。</p>
+
+<p>调用该方法播放音效结束后，会触发 rtcEngineDidAudioEffectFinish 回调。</p>
+
+<p><strong>Note</strong> macOS 上不支持同时播放多个在线音效文件。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/stopEffect:" title="stopEffect:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/stopEffect:">&ndash;&nbsp;stopEffect:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>停止播放指定音效文件</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)stopEffect:(int)<em>soundId</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>soundId</code></th>
+						<td><p>自行设定的音效 ID，需保证唯一性。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>停止播放指定音效文件</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/stopAllEffects" title="stopAllEffects"></a>
+	<h3 class="method-title"><code><a href="#//api/name/stopAllEffects">&ndash;&nbsp;stopAllEffects</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>停止播放所有音效文件</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)stopAllEffects</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>停止播放所有音效文件</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/preloadEffect:filePath:" title="preloadEffect:filePath:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/preloadEffect:filePath:">&ndash;&nbsp;preloadEffect:filePath:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>将指定音效文件预加载至内存</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)preloadEffect:(int)<em>soundId</em> filePath:(NSString *_Nullable)<em>filePath</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>soundId</code></th>
+						<td><p>自行设定的音效 ID，需保证唯一性。</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>filePath</code></th>
+						<td><p>音效文件的绝对路径</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>将指定音效文件预加载至内存</p>
+
+<p>为保证通信畅通，请注意控制预加载音效文件的大小，并在 joinChannelByToken 前就使用该方法完成音效预加载。</p>
+
+<p>音效文件支持以下音频格式: mp3，aac，m4a，3gp，wav</p>
+
+<p><strong>Note</strong> 该方法不支持在线音效文件。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/unloadEffect:" title="unloadEffect:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/unloadEffect:">&ndash;&nbsp;unloadEffect:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>从内存释放某个预加载的音效文件</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)unloadEffect:(int)<em>soundId</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>soundId</code></th>
+						<td><p>自行设定的音效 ID，需保证唯一性。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>从内存释放某个预加载的音效文件</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/pauseEffect:" title="pauseEffect:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/pauseEffect:">&ndash;&nbsp;pauseEffect:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>暂停音效文件播放</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)pauseEffect:(int)<em>soundId</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>soundId</code></th>
+						<td><p>自行设定的音效 ID，需保证唯一性。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>暂停音效文件播放</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/pauseAllEffects" title="pauseAllEffects"></a>
+	<h3 class="method-title"><code><a href="#//api/name/pauseAllEffects">&ndash;&nbsp;pauseAllEffects</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>暂停所有音效文件播放</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)pauseAllEffects</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>暂停所有音效文件播放</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/resumeEffect:" title="resumeEffect:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/resumeEffect:">&ndash;&nbsp;resumeEffect:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>恢复播放指定音效文件</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)resumeEffect:(int)<em>soundId</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>soundId</code></th>
+						<td><p>自行设定的音效 ID，需保证唯一性。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>恢复播放指定音效文件</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/resumeAllEffects" title="resumeAllEffects"></a>
+	<h3 class="method-title"><code><a href="#//api/name/resumeAllEffects">&ndash;&nbsp;resumeAllEffects</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>恢复播放所有音效文件</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)resumeAllEffects</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>恢复播放所有音效文件</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="视频双流模式" name="task_视频双流模式"></a>
+						<h2 class="task-title">视频双流模式</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/enableDualStreamMode:" title="enableDualStreamMode:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/enableDualStreamMode:">&ndash;&nbsp;enableDualStreamMode:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>开关视频双流模式</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)enableDualStreamMode:(BOOL)<em>enabled</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>enabled</code></th>
+						<td><p>YES双流模式，NO单流模式，默认单流模式</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>开关视频双流模式</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setRemoteVideoStream:type:" title="setRemoteVideoStream:type:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setRemoteVideoStream:type:">&ndash;&nbsp;setRemoteVideoStream:type:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设置订阅的视频流类型</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)setRemoteVideoStream:(NSString *_Nonnull)<em>uid</em> type:(ARVideoStreamType)<em>streamType</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>uid</code></th>
+						<td><p>用户 ID</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>streamType</code></th>
+						<td><p>设置视频流大小，<a href="../Constants/ARVideoStreamType.html">ARVideoStreamType</a></p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>设置订阅的视频流类型</p>
+
+<p>如果发送端选择发送视频双流（大流或小流），接收端可以选择接收大流还是小流。其中大流可以理解为高分辨率高码率的视频流，小流则是低分辨率低码率的视频流。该方法可以根据视频窗口的大小动态调整对应视频流的大小，以节约带宽和计算资源。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setRemoteDefaultVideoStreamType:" title="setRemoteDefaultVideoStreamType:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setRemoteDefaultVideoStreamType:">&ndash;&nbsp;setRemoteDefaultVideoStreamType:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设置默认订阅的视频流类型</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)setRemoteDefaultVideoStreamType:(ARVideoStreamType)<em>streamType</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>streamType</code></th>
+						<td><p>设置默认接收的视频流类型，详见 <a href="../Constants/ARVideoStreamType.html">ARVideoStreamType</a> 。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>设置默认订阅的视频流类型</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="其他视频控制" name="task_其他视频控制"></a>
+						<h2 class="task-title">其他视频控制</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/setCameraCapturerConfiguration:" title="setCameraCapturerConfiguration:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setCameraCapturerConfiguration:">&ndash;&nbsp;setCameraCapturerConfiguration:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设置摄像头采集偏好</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)setCameraCapturerConfiguration:(ARCameraCapturerConfiguration *_Nullable)<em>configuration</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>configuration</code></th>
+						<td><p>摄像头采集偏好，详见 <a href="../Classes/ARCameraCapturerConfiguration.html">ARCameraCapturerConfiguration</a></p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>设置摄像头采集偏好</p>
+
+<p>一般的视频通话或直播中，默认由 SDK 自动控制摄像头的输出参数。在如下特殊场景中，默认的参数通常无法满足需求，或可能引起设备性能问题，我们推荐调用该方法设置摄像头的采集偏好：</p>
+
+<ul>
+<li>使用原始音视频数据自采集接口时，如果 SDK 输出的分辨率和帧率高于 setVideoEncoderConfiguration 中指定的参数，在后续处理视频帧的时候，比如美颜功能时，会需要更高的 CPU 及内存，容易导致性能问题。在这种情况下，我们推荐将摄像头采集偏好设置为 ARCameraCaptureOutputPreferencePerformance(1)，避免性能问题。</li>
+<li>如果没有本地预览功能或者对预览质量没有要求，我们推荐将采集偏好设置为 ARCameraCaptureOutputPreferencePerformance(1)，以优化 CPU 和内存的资源分配。</li>
+<li>如果用户希望本地预览视频比实际编码发送的视频清晰，可以将采集偏好设置为 ARCameraCaptureOutputPreferencePreview(2)。</li>
+</ul>
+
+
+<p><strong>Note</strong></p>
+
+<p>请在启动摄像头之前调用该方法，如 joinChannelByToken，<a href="#//api/name/enableVideo">enableVideo</a> 或者 enableLocalVideo 之前。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="摄像头控制" name="task_摄像头控制"></a>
+						<h2 class="task-title">摄像头控制</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/switchCamera" title="switchCamera"></a>
+	<h3 class="method-title"><code><a href="#//api/name/switchCamera">&ndash;&nbsp;switchCamera</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>切换前置/后置摄像头</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)switchCamera</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>0方法调用成功，&lt;0方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>切换前置/后置摄像头</p>
+
+<p>本方法仅适用于 iOS 平台，不适用于 macOS。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/isCameraZoomSupported" title="isCameraZoomSupported"></a>
+	<h3 class="method-title"><code><a href="#//api/name/isCameraZoomSupported">&ndash;&nbsp;isCameraZoomSupported</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>检测设备是否支持摄像头缩放功能</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)isCameraZoomSupported</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>YES: 设备支持摄像头缩放功能; NO: 设备不支持摄像头缩放功能。</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>检测设备是否支持摄像头缩放功能</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/isCameraTorchSupported" title="isCameraTorchSupported"></a>
+	<h3 class="method-title"><code><a href="#//api/name/isCameraTorchSupported">&ndash;&nbsp;isCameraTorchSupported</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>检测设备是否支持闪光灯常开</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)isCameraTorchSupported</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>YES: 设备支持闪光灯常开; NO：设备不支持闪光灯常开。</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>检测设备是否支持闪光灯常开</p>
+
+<ul>
+<li>本方法仅适用于 iOS 平台，不适用于 macOS。</li>
+<li>一般情况下，App 默认开启前置摄像头，因此如果你的前置摄像头不支持闪光灯常开，直接使用该方法会返回 NO。如果需要检查后置摄像头是否支持闪光灯常开，需要先使用 <a href="#//api/name/switchCamera">switchCamera</a> 切换摄像头，再使用该方法。</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/isCameraFocusPositionInPreviewSupported" title="isCameraFocusPositionInPreviewSupported"></a>
+	<h3 class="method-title"><code><a href="#//api/name/isCameraFocusPositionInPreviewSupported">&ndash;&nbsp;isCameraFocusPositionInPreviewSupported</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>检测设备是否支持手动对焦功能</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)isCameraFocusPositionInPreviewSupported</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>YES: 设备支持手动对焦功能；NO: 设备不支持手动对焦功能。</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>检测设备是否支持手动对焦功能</p>
+
+<p>本方法仅适用于 iOS 平台，不适用于 macOS。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/isCameraExposurePositionSupported" title="isCameraExposurePositionSupported"></a>
+	<h3 class="method-title"><code><a href="#//api/name/isCameraExposurePositionSupported">&ndash;&nbsp;isCameraExposurePositionSupported</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>检测设备是否支持手动曝光功能</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)isCameraExposurePositionSupported</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>YES: 设备支持手动曝光功能；NO: 设备不支持手动曝光功能。</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>检测设备是否支持手动曝光功能</p>
+
+<p>本方法仅适用于 iOS 平台，不适用于 macOS。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/isCameraAutoFocusFaceModeSupported" title="isCameraAutoFocusFaceModeSupported"></a>
+	<h3 class="method-title"><code><a href="#//api/name/isCameraAutoFocusFaceModeSupported">&ndash;&nbsp;isCameraAutoFocusFaceModeSupported</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>检测设备是否支持人脸对焦功能</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)isCameraAutoFocusFaceModeSupported</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>YES: 设备支持人脸对焦功能；NO: 设备不支持人脸对焦功能。</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>检测设备是否支持人脸对焦功能</p>
+
+<p>本方法仅适用于 iOS 平台，不适用于 macOS。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setCameraZoomFactor:" title="setCameraZoomFactor:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setCameraZoomFactor:">&ndash;&nbsp;setCameraZoomFactor:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设置摄像头缩放比例</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (CGFloat)setCameraZoomFactor:(CGFloat)<em>zoomFactor</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>zoomFactor</code></th>
+						<td><p>摄像头缩放比例，有效范围是 1.0 到设备支持的最大缩放比例。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>设置成功返回设置的 factor 值，设置失败返回 &lt; 0</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>设置摄像头缩放比例</p>
+
+<p>本方法仅适用于 iOS 平台，不适用于 macOS。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setCameraFocusPositionInPreview:" title="setCameraFocusPositionInPreview:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setCameraFocusPositionInPreview:">&ndash;&nbsp;setCameraFocusPositionInPreview:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设置手动对焦位置，并触发对焦</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)setCameraFocusPositionInPreview:(CGPoint)<em>position</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>position</code></th>
+						<td><p>触摸点相对于视图的坐标</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>YES方法调用成功，NO方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>设置手动对焦位置，并触发对焦</p>
+
+<p>本方法仅适用于 iOS 平台，不适用于 macOS。成功调用该方法后，本地会触发 cameraFocusDidChangedToRect 回调。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setCameraExposurePosition:" title="setCameraExposurePosition:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setCameraExposurePosition:">&ndash;&nbsp;setCameraExposurePosition:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设置摄像头曝光位置</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)setCameraExposurePosition:(CGPoint)<em>positionInView</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>positionInView</code></th>
+						<td><p>触摸点相对于视图的横坐标和纵坐标</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>YES方法调用成功，NO方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>设置摄像头曝光位置</p>
+
+<p>本方法仅适用于 iOS 平台，不适用于 macOS。成功调用该方法后，本地会触发 cameraExposureDidChangedToRect 回调。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setCameraTorchOn:" title="setCameraTorchOn:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setCameraTorchOn:">&ndash;&nbsp;setCameraTorchOn:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设置是否打开闪光灯</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)setCameraTorchOn:(BOOL)<em>isOn</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>isOn</code></th>
+						<td><p>YES打开，NO关闭</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>YES方法调用成功，NO方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>设置是否打开闪光灯</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setCameraAutoFocusFaceModeEnabled:" title="setCameraAutoFocusFaceModeEnabled:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setCameraAutoFocusFaceModeEnabled:">&ndash;&nbsp;setCameraAutoFocusFaceModeEnabled:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设置是否开启人脸对焦功能</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)setCameraAutoFocusFaceModeEnabled:(BOOL)<em>enable</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>enable</code></th>
+						<td><p>YES开启，NO关闭，默认关闭</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>YES方法调用成功，NO方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>设置是否开启人脸对焦功能</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="其它方法" name="task_其它方法"></a>
+						<h2 class="task-title">其它方法</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/getCallId" title="getCallId"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getCallId">&ndash;&nbsp;getCallId</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取通话 ID</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSString *_Nullable)getCallId</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>当前通话 ID</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>获取通话 ID</p>
+
+<p>客户端在每次 joinChannelByToken 后会生成一个对应的 CallId，标识该客户端的此次通话。有些方法如 rate，complain需要在通话结束后调用，向 SDK 提交反馈，这些方法必须指定 CallId 参数。使用这些反馈方法，需要在通话过程中调用 getCallId 方法获取 CallId，在通话结束后在反馈方法中作为参数传入。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/enableMainQueueDispatch:" title="enableMainQueueDispatch:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/enableMainQueueDispatch:">&ndash;&nbsp;enableMainQueueDispatch:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>分发／不分发回调至主队列</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)enableMainQueueDispatch:(BOOL)<em>enabled</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>enabled</code></th>
+						<td><p>设置是否将委托方法分发到主队列:</p>
+
+<ul>
+<li>YES: 分发回调方法到主队列</li>
+<li>NO: 不分发回调方法到主队列</li>
+</ul>
+</td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>YES方法调用成功，NO方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>分发／不分发回调至主队列</p>
+
+<p>如果不分发回调方法到主队列， App 应将 UI 操作分发到主队列。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getSdkVersion" title="getSdkVersion"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getSdkVersion">+&nbsp;getSdkVersion</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>查询 SDK 版本号</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (NSString *_Nonnull)getSdkVersion</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>当前的 SDK 版本号，格式为字符串，如 4.0.0</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>查询 SDK 版本号</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getErrorDescription:" title="getErrorDescription:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getErrorDescription:">+&nbsp;getErrorDescription:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取警告或错误描述。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (NSString *_Nullable)getErrorDescription:(NSInteger)<em>code</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>code</code></th>
+						<td><p>didOccurWarning 或 didOccurError 提供的警告码或错误码。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p><a href="../Constants/ARWarningCode.html">ARWarningCode</a> or <a href="../Constants/ARErrorCode.html">ARErrorCode</a>.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>获取警告或错误描述。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setLogFile:" title="setLogFile:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setLogFile:">&ndash;&nbsp;setLogFile:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设置日志文件路径</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)setLogFile:(NSString *_Nonnull)<em>filePath</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>filePath</code></th>
+						<td><p>日志文件的完整路径。该日志文件为 UTF-8 编码。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>YES方法调用成功，NO方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>设置日志文件路径</p>
+
+<p>设置 SDK 的输出 log 文件。SDK 运行时产生的所有 log 将写入该文件。 App 必须保证指定的目录存在而且可写。</p>
+
+<p><strong>Note</strong></p>
+
+<ul>
+<li>日志文件的默认地址如下:
+
+<ul>
+<li>iOS: <code>App Sandbox/Library/caches/sdk.log</code></li>
+<li>macOS
+
+<ul>
+<li>开启沙盒: <code>App Sandbox/Library/Logs/sdk.log</code>, 例如 <code>/Users/&lt;username&gt;/Library/Containers/&lt;App Bundle Identifier&gt;/Data/Library/Logs/sdk.log</code>.</li>
+<li>关闭沙盒: <code>～/Library/Logs/sdk.log</code>.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>如需调用本方法，请在调用 sharedEngineWithAppId 方法初始化 ARtcEngineKit 对象后立即调用，否则可能造成输出日志不完整。</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setLogFileSize:" title="setLogFileSize:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setLogFileSize:">&ndash;&nbsp;setLogFileSize:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设置日志文件大小</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)setLogFileSize:(NSUInteger)<em>fileSizeInKBytes</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>fileSizeInKBytes</code></th>
+						<td><p>指定 SDK 输出日志文件的内存大小，单位为 KB。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>YES方法调用成功，NO方法调用失败，有可能是因为传入的参数无效</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>设置日志文件大小</p>
+
+<p>设置 SDK 输出的日志文件大小，单位为 KB。</p>
+
+<p>SDK 设有 2 个日志文件，每个文件大小为 512 KB。如果你将 fileSizeInKByte 设置为 1024 KB， SDK 会最多输出 2 MB 的日志文件。如果日志文件大小超出设置值，新的日志会覆盖之前的日志。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setLogFilter:" title="setLogFilter:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setLogFilter:">&ndash;&nbsp;setLogFilter:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设置日志输出等级</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)setLogFilter:(ARLogFilter)<em>filter</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>filter</code></th>
+						<td><p>日志输出等级</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>YES方法调用成功，NO方法调用失败</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>设置日志输出等级</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getNativeHandle" title="getNativeHandle"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getNativeHandle">&ndash;&nbsp;getNativeHandle</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取 Native SDK Engine Handle</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void *_Nullable)getNativeHandle</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>获取 Native SDK Engine Handle</p>
+
+<p>该方法获取 native SDK engine 的 C++ handle，用于包括注册音视频帧观测器在内的特殊场景。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/delegate" title="delegate"></a>
+	<h3 class="method-title"><code><a href="#//api/name/delegate">&nbsp;&nbsp;delegate</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设置／获取 <a href="../Protocols/ARtcEngineDelegate.html">ARtcEngineDelegate</a></p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, weak) id&lt;ARtcEngineDelegate&gt; _Nullable delegate</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>设置／获取 <a href="../Protocols/ARtcEngineDelegate.html">ARtcEngineDelegate</a></p>
+
+<p>ar云平台 Native SDK 通过指定的 delegate 通知 App 引擎运行时的事件。Delegate 中定义的所有方法都是可选实现的。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="定制方法" name="task_定制方法"></a>
+						<h2 class="task-title">定制方法</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/setParameters:" title="setParameters:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setParameters:">&ndash;&nbsp;setParameters:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>通过 JSON 配置 SDK 提供技术预览或特别定制功能</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)setParameters:(NSString *_Nonnull)<em>options</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>options</code></th>
+						<td><p>JSON 格式的 SDK 选项</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>通过 JSON 配置 SDK 提供技术预览或特别定制功能</p>
+
+<p><strong>Note</strong></p>
+
+<p>JSON 选项默认不公开。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getParameter:args:" title="getParameter:args:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getParameter:args:">&ndash;&nbsp;getParameter:args:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>获取 ar云平台 SDK 可供自定义的参数</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSString *_Nullable)getParameter:(NSString *_Nonnull)<em>parameter</em> args:(NSString *_Nullable)<em>args</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>parameter</code></th>
+						<td><p>定制参数</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>args</code></th>
+						<td><p>参数</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>获取 ar云平台 SDK 可供自定义的参数</p>
+
+<p><strong>Note</strong></p>
+
+<p>该方法未公开，请联系ar云平台支持 hi@dync.cc 获取详情。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineKit.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2020 anyRTC. All rights reserved. Updated: 2020-05-29</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

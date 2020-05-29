@@ -140,7 +140,7 @@
                 <viewControllerPlaceholder storyboardName="Log" referencedIdentifier="LogViewController" id="2sX-hm-eZ5" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="leT-4V-T2L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-927" y="533"/>
+            <point key="canvasLocation" x="-760" y="536"/>
         </scene>
     </scenes>
     <resources>

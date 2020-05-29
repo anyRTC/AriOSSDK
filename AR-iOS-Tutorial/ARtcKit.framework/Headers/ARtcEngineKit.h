@@ -15,21 +15,24 @@ NS_ASSUME_NONNULL_BEGIN
 @class ARtcEngineKit;
 @class ARtcChannel;
 
-@interface ARtcEngineKit : NSObject
+__attribute__((visibility("default"))) @interface ARtcEngineKit : NSObject
 
 //MARK: - 核心方法
+
+/**-----------------------------------------------------------------------------
+* @name 核心方法
+* -----------------------------------------------------------------------------
+*/
 
 /** 实例化ARtcEngineKit对象
 
 该方法初始化一个 ARtcEngineKit 单例。使用 ARtcEngineKit，必须先调用该接口进行初始化。
 
-Note: 请确保在调用其他 API 前先调用该方法创建并初始化 ARtcEngineKit。
-
-Warning: 必须使用同一个 App ID 才能进行通话。
-
-Warning: 一个 ARtcEngineKit 实例对象只能使用一个 App ID。如需更换 App ID，必须先调用 destroy 销毁当前实例，再调用本方法重新创建实例。
+**Note**
  
-@param appId    anyRTC 为 App 开发者签发的 App ID。每个项目都应该有一个独一无二的 App ID。如果你的开发包里没有 App ID，请从anyRTC官网申请一个新的 App ID。在你调用 joinChannelByToken:channelId:info:uid:joinSuccess: 加入anyRTC的全球网络实现一对一或一对多直播通信时需要：
+请确保在调用其他 API 前先调用该方法创建并初始化 ARtcEngineKit。 一个 ARtcEngineKit 实例对象只能使用一个 App ID。如需更换 App ID，必须先调用 destroy 销毁当前实例，再调用本方法重新创建实例。
+ 
+@param appId    ar云平台 为 App 开发者签发的 App ID。每个项目都应该有一个独一无二的 App ID。如果你的开发包里没有 App ID，请从ar云平台官网申请一个新的 App ID。在你调用 joinChannelByToken:channelId:info:uid:joinSuccess: 加入ar云平台的全球网络实现一对一或一对多直播通信时需要：
  
  * 用 App ID 标示你的项目和所属组织
  * 用一个独一无二的频道名称
@@ -43,7 +46,7 @@ Warning: 一个 ARtcEngineKit 实例对象只能使用一个 App ID。如需更�
 
  该方法用于释放SDK 使用的所有对象资源。帮助偶尔使用音视频通话的 App 在无需通话时释放资源。一旦 App 调用了 destroy 接口销毁创建的 ARtcEngineKit 实例，将无法调用 SDK 内的任何方法也不再会有任何回调产生。如需重启通话，请调用初始化方法 sharedEngineWithAppId:delegate: 创建一个新的 ARtcEngineKit 实例。
 
- **Note:**
+**Note**
 
  * 该方法需要在子线程中操作
  * 该方法为同步调用。 App 不得在 SDK 生成的回调中调用该方法，不然 SDK 只能等候该回调返回才能重新获取相应的对象资源造成死锁。
@@ -86,9 +89,9 @@ Warning: 一个 ARtcEngineKit 实例对象只能使用一个 App ID。如需更�
 
 加入频道后，本地会触发 didJoinChannel 回调；通信场景下的用户和直播场景下的主播加入频道后，远端会触发 didJoinedOfUid 回调。
 
-在网络状况不理想的情况下，客户端可能会与 anyRTC 的服务器失去连接；SDK 会自动尝试重连，重连成功后，本地会触发 didRejoinChannel 回调。
+在网络状况不理想的情况下，客户端可能会与 ar云平台 的服务器失去连接；SDK 会自动尝试重连，重连成功后，本地会触发 didRejoinChannel 回调。
 
-**Note:**
+**Note**
 
  * 频道内每个用户的 UID 必须是唯一的。如果将 UID 设为 nil，系统将自动分配一个 UID。如果想要从不同的设备同时接入同一个频道，请确保每个设备上使用的 UID 是不同的。
  * 在加入频道时，SDK 调用 setCategory(AVAudioSessionCategoryPlayAndRecord) 将 AVAudioSession 设置到 PlayAndRecord 模式， App 不应将其设置到其他模式。设置该模式时，正在播放的声音会被打断（比如正在播放的响铃声）。
@@ -109,6 +112,7 @@ Warning: 一个 ARtcEngineKit 实例对象只能使用一个 App ID。如需更�
  * "!", "#", "$", "%", "&", "(", ")", "+", "-", ":", ";", "<", "=", ".", ">", "?", "@", "[", "]", "^", "_", "{", "}", "|", "~", ","
 
 @param uid 用户 ID，建议设置长度1~48，确保uid符合规则，并保证唯一性。如果不填或设置为nil，SDK 会自动分配一个，并在 joinSuccessBlock 回调方法中返回，App 层必须记住该返回值并维护，SDK 不对该返回值进行维护。
+ 
  * 26 个小写英文字母 a-z
  * 26 个大写英文字母 A-Z
  * 10 个数字 0-9
@@ -116,9 +120,9 @@ Warning: 一个 ARtcEngineKit 实例对象只能使用一个 App ID。如需更�
 
 @return 0方法调用成功，<0方法调用失败
 
- * ARErrorCodeInvalidArgument`(-2)
- * ARErrorCodeNotReady`(-3)
- * ARErrorCodeRefused`(-5)
+ * ARErrorCodeInvalidArgument(-2)
+ * ARErrorCodeNotReady(-3)
+ * ARErrorCodeRefused(-5)
 */
 - (int)joinChannelByToken:(NSString * _Nullable)token
                 channelId:(NSString * _Nonnull)channelId
@@ -131,7 +135,7 @@ Warning: 一个 ARtcEngineKit 实例对象只能使用一个 App ID。如需更�
 
  成功调用该方切换频道后，本地会先收到离开原频道的回调 didLeaveChannelWithStats，再收到成功加入新频道的回调 didJoinChannel。
  
- **Note:**
+**Note**
  
  该方法仅适用直播频道中的观众用户。
 
@@ -166,7 +170,7 @@ Warning: 一个 ARtcEngineKit 实例对象只能使用一个 App ID。如需更�
  * 成功调用该方法离开频道后，本地会触发 didLeaveChannelWithStats 回调；
  * 通信场景下的用户和直播场景下的主播离开频道后，远端会触发 didOfflineOfUid(ARUserOfflineReasonBecomeAudience) 回调。
 
-**Note:**
+**Note**
 
 - 如果你调用了本方法后立即调用 destroy 方法，SDK 将无法触发 didLeaveChannelWithStats 回调。
 - 如果你在旁路推流时调用本方法， SDK 将自动调用 removePublishStreamUrl 方法。
@@ -185,7 +189,7 @@ Warning: 一个 ARtcEngineKit 实例对象只能使用一个 App ID。如需更�
  * tokenPrivilegeWillExpire 回调。
  * connectionChangedToState 回调的 reason 参数报告 ARConnectionChangedTokenExpired(9)。
 
- **Note:**
+**Note**
 
  App 应重新获取 Token，然后调用该 API 更新 Token，否则 SDK 无法和服务器建立连接。
 
@@ -203,14 +207,19 @@ Warning: 一个 ARtcEngineKit 实例对象只能使用一个 App ID。如需更�
 
 //MARK: - 音频核心方法
 
+/**-----------------------------------------------------------------------------
+* @name 音频核心方法
+* -----------------------------------------------------------------------------
+*/
+
 /** 启用音频模块
 
  本方法可以启用音频模块，默认开启状态。
 
- **Note:**
+**Note**
 
  * 该方法设置的是内部引擎为开启状态，在频道内和频道外均可调用，且在 leaveChannel 后仍然有效。
- * 该方法重置整个引擎，响应速度较慢，因此 anyRTC 建议使用如下方法来控制音频模块：
+ * 该方法重置整个引擎，响应速度较慢，因此 ar云平台 建议使用如下方法来控制音频模块：
 
     * enableLocalAudio：是否启动麦克风采集并创建本地音频流
     * muteLocalAudioStream：是否发布本地音频流
@@ -223,7 +232,7 @@ Warning: 一个 ARtcEngineKit 实例对象只能使用一个 App ID。如需更�
 
 /** 关闭音频模块
 
- **Note:**
+ **Note**
 
  * 该方法设置的是内部引擎为禁用状态，在频道内和频道外均可调用，且在 leaveChannel 后仍然有效。
  * 该方法重置整个引擎，响应速度较慢，因此建议使用如下方法来控制音频模块：
@@ -239,7 +248,7 @@ Warning: 一个 ARtcEngineKit 实例对象只能使用一个 App ID。如需更�
 
 /** 设置音频编码配置
 
- **Note:**
+**Note**
 
  * 该方法需要在 joinChannelByToken 之前设置好，joinChannelByToken 之后设置不生效。
  * 通信场景下，该方法设置 profile 生效，设置 scenario 不生效。
@@ -308,7 +317,7 @@ Warning: 一个 ARtcEngineKit 实例对象只能使用一个 App ID。如需更�
 
 语音功能关闭或重新开启后，会收到回调 didMicrophoneEnabled。
 
-**Note:**
+**Note**
  
  该方法与 muteLocalAudioStream 的区别在于：
 
@@ -328,7 +337,7 @@ Warning: 一个 ARtcEngineKit 实例对象只能使用一个 App ID。如需更�
 
  该方法用于允许/禁止往网络发送本地音频流。成功调用该方法后，远端会触发 remoteAudioStateChangedOfUid 回调。
 
- **Note:**
+ **Note**
 
  * 该方法不影响录音状态，并没有禁用麦克风。
  * 如果你在该方法后调用 setChannelProfile 方法，SDK 会根据你设置的频道场景以及用户角色，重新设置是否停止发送本地音频。因此我们建议在 setChannelProfile 后调用该方法。
@@ -344,7 +353,7 @@ Warning: 一个 ARtcEngineKit 实例对象只能使用一个 App ID。如需更�
 
 /** 停止/恢复接收指定用户的音频流
 
- **Note:**
+**Note**
 
  如果之前有调用过 muteAllRemoteAudioStreams(YES) 对所有远端音频进行静音，在调用本 API 之前请确保你已调用 muteAllRemoteAudioStreams(NO)。 muteAllRemoteAudioStreams 是全局控制，muteRemoteAudioStream 是精细控制。
 
@@ -370,7 +379,7 @@ Warning: 一个 ARtcEngineKit 实例对象只能使用一个 App ID。如需更�
 
 该方法在加入频道前后都可调用。如果在加入频道后调用 setDefaultMuteAllRemoteAudioStreams (YES)，会接收不到设置后加入频道的用户的音频流。
  
- **Note:**
+**Note**
  
  停止接收音频流后，如果想要恢复接收，请调用 muteRemoteAudioStream (NO)，并指定你想要接收的远端用户 uid；如果想恢复接收多个用户的音频流，则需要多次调用 muteRemoteAudioStream。setDefaultMuteAllRemoteAudioStreams (NO) 只能恢复接收后面加入频道的用户的音频流。
 
@@ -405,13 +414,18 @@ Warning: 一个 ARtcEngineKit 实例对象只能使用一个 App ID。如需更�
 
 //MARK: - 视频核心方法
 
+/**-----------------------------------------------------------------------------
+* @name 视频核心方法
+* -----------------------------------------------------------------------------
+*/
+
 /** 启用视频模块
 
 该方法用于打开视频模式。可以在加入频道前或者通话中调用，在加入频道前调用，则自动开启视频模式，在通话中调用则由音频模式切换为视频模式。调用 disableVideo 方法可关闭视频模式。
 
 成功调用该方法后，远端会触发 didVideoEnabled(YES) 和 remoteVideoStateChangedOfUid 回调。
 
-**Note:**
+**Note**
 
 - 该方法设置的是内部引擎为启用状态，在 leaveChannel 后仍然有效。
 - 该方法重置整个引擎，响应速度较慢，因此建议使用如下方法来控制视频模块：
@@ -439,7 +453,7 @@ Warning: 一个 ARtcEngineKit 实例对象只能使用一个 App ID。如需更�
 
 成功调用该方法后，远端会触发remoteVideoStateChangedOfUid回调。
 
- **Note:**
+**Note**
 
 - 该方法设置的是内部引擎为启用状态，在 leaveChannel 后仍然有效。
 - 该方法重置整个引擎，响应速度较慢，因此建议使用如下方法来控制视频模块：
@@ -469,7 +483,7 @@ Warning: 一个 ARtcEngineKit 实例对象只能使用一个 App ID。如需更�
 
  该方法初始化本地视图并设置本地用户视频显示信息，只影响本地用户看到的视频画面，不影响本地发布视频。调用该方法绑定本地视频流的显示视窗(view)，并设置本地用户视图的渲染模式和镜像模式。在 App 开发中，通常在初始化后调用该方法进行本地视频设置，然后再加入频道。退出频道后，绑定仍然有效，如果需要解除绑定，可以指定空 (nil) view 调用本方法。
 
- **Note**
+**Note**
  
  - 请在加入频道前调用该方法。
  - 如果你希望在通话中更新本地用户视图的渲染或镜像模式，请使用 setLocalRenderMode 方法。
@@ -486,7 +500,7 @@ Warning: 一个 ARtcEngineKit 实例对象只能使用一个 App ID。如需更�
 
 如果 App 不能事先知道对方的 uid，可以在 APP 收到 didJoinedOfUid 事件时设置。如果启用了视频录制功能，视频录制服务会做为一个哑客户端加入频道，因此其他客户端也会收到它的 didJoinedOfUid 事件，App 不应给它绑定视图（因为它不会发送视频流），如果 App 不能识别哑客户端，可以在 firstRemoteVideoDecodedOfUid 事件时再绑定视图。解除某个用户的绑定视图可以把 view 设置为空。退出频道后，SDK 会把远端用户的绑定关系清除掉。
  
- **Note:**
+**Note**
 
 如果你希望在通话中更新远端用户视图的渲染或镜像模式，请使用 setRemoteRenderMode 方法。
  
@@ -545,7 +559,7 @@ Warning: 一个 ARtcEngineKit 实例对象只能使用一个 App ID。如需更�
  - 调用 setupLocalVideo 设置预览窗口及属性
  - 调用 enableVideo 开启视频功能
 
-**Note:**
+**Note**
 
 启用了本地视频预览后，如果调用 leaveChannel退出频道，本地预览依然处于启动状态，如需要关闭本地预览，需要调用 stopPreview 。
 
@@ -567,7 +581,7 @@ Warning: 一个 ARtcEngineKit 实例对象只能使用一个 App ID。如需更�
 
  成功禁用或启用本地视频采集后，远端会触发 didLocalVideoEnabled 回调。
      
- **Note:**
+**Note**
 
  该方法设置的是内部引擎为启用/禁用状态，在 leaveChannel 后仍然有效。
 
@@ -584,7 +598,7 @@ Warning: 一个 ARtcEngineKit 实例对象只能使用一个 App ID。如需更�
 
 成功调用该方法后，远端会触发 didVideoMuted 回调。
  
- **Note:**
+**Note**
 
  * 调用该方法时，SDK 不再发送本地视频流，但摄像头仍然处于工作状态。相比于 enableLocalVideo 用于控制本地视频流发送的方法，该方法响应速度更快。该方法不影响本地视频流获取，没有禁用摄像头。
  * 如果你在该方法后调用 setChannelProfile 方法，SDK 会根据你设置的频道场景以及用户角色，重新设置是否停止发送本地视频。因此我们建议在 setChannelProfile 后调用该方法。
@@ -611,7 +625,7 @@ Warning: 一个 ARtcEngineKit 实例对象只能使用一个 App ID。如需更�
 
 /** 停止/恢复接收指定视频流
 
-**Note:**
+**Note**
 
  如果之前有调用过 muteAllRemoteVideoStreams(YES) 暂停接收所有远端视频，在调用本 API 之前请确保你已调用 muteAllRemoteVideoStreams(NO)。 muteAllRemoteVideoStreams 是全局控制，muteRemoteVideoStream 是精细控制。
 
@@ -628,7 +642,7 @@ Warning: 一个 ARtcEngineKit 实例对象只能使用一个 App ID。如需更�
 /** 设置是否默认接收视频流
   该方法在加入频道前后都可调用。如果在加入频道后调用setDefaultMuteAllRemoteVideoStreams(YES)，会接收不到设置后加入频道的用户的视频流。
  
-  **Note:**
+  **Note**
   
  停止接收视频流后，如果想要恢复接收，请调用 muteRemoteVideoStream (NO)，并指定你想要接收的远端用户 uid；如果想恢复接收多个用户的视频流，则需要多次调用 muteRemoteVideoStream。setDefaultMuteAllRemoteVideoStreams (NO) 只能恢复接收后面加入频道的用户的视频流。
 
@@ -644,12 +658,18 @@ Warning: 一个 ARtcEngineKit 实例对象只能使用一个 App ID。如需更�
 //MARK: - 视频前处理及后处理
 
 //MARK: - 音频播放路由
+
+/**-----------------------------------------------------------------------------
+* @name 音频播放路由
+* -----------------------------------------------------------------------------
+*/
+
 #if TARGET_OS_IPHONE
 /** 设置默认的语音路由
 
 该方法设置接收到的语音从听筒或扬声器出声。如果用户不调用本方法，语音默认从听筒出声。
 
- **Note:**
+**Note**
 
  * 该方法仅使用于通信场景。
  * 该方法只在纯音频模式下工作，在有视频的模式下不工作。
@@ -672,7 +692,7 @@ Warning: 一个 ARtcEngineKit 实例对象只能使用一个 App ID。如需更�
 
 该方法设置是否将语音路由到扬声器（外放）。调用该方法后，SDK 将返回 didAudioRouteChanged 回调提示状态已更改。
 
- **Note:**
+**Note**
 
  * 请确保在调用此方法前已调用过 joinChannelByToken 方法。
  * SDK 会调用 setCategory(AVAudioSessionCategoryPlayAndRecord) 并配置耳麦或者外放，所以调用该方法后所有声音的路由都会按照该方法设置。
@@ -695,6 +715,10 @@ Warning: 一个 ARtcEngineKit 实例对象只能使用一个 App ID。如需更�
 #endif
 
 //MARK: - 耳返设置
+/**-----------------------------------------------------------------------------
+* @name 耳返设置
+* -----------------------------------------------------------------------------
+*/
 
 #if TARGET_OS_IPHONE
 
@@ -721,8 +745,84 @@ Warning: 一个 ARtcEngineKit 实例对象只能使用一个 App ID。如需更�
 //MARK: - 语音音效设置
 
 //MARK: - 音乐文件播放及混音设置
+/**-----------------------------------------------------------------------------
+* @name 音乐文件播放及混音设置
+* -----------------------------------------------------------------------------
+*/
+
+/** 开始播放音乐文件
+
+ 指定本地或在线音频文件来和麦克风采集的音频流进行混音或替换。替换是指用指定的音频文件替换麦克风采集到的音频流。该方法可以选择是否让对方听到本地播放的音频，并指定循环播放的次数。
+
+ 成功调用该方法后，本地会触发 localAudioMixingStateDidChanged(ARAudioMixingStatePlaying) 回调。播放结束后，会收到 localAudioMixingStateDidChanged(ARAudioMixingStateStopped) 回调。
+
+**Note**
+
+ * 使用本方法前请确保你的 iOS 设备版本不低于 8.0。
+ * 请在频道内调用该方法，如果在频道外调用该方法可能会出现问题。
+ * 如果播放的是在线音乐文件，请确保重复调用该 API 的间隔超过 100 ms，否则 SDK 会返回 AudioFileOpenTooFrequent（702）警告码，表示音乐文件打开过于频繁。
+ * 如果本地音乐文件不存在、文件格式不支持、无法访问在线音乐文件 URL 都会返回警告码 ARWarningCodeAudioMixingOpenError = 701。
+
+ @param filePath 指定需要混音的音频文件名和文件路径名，例如: /var/mobile/Containers/Data/audio.mp4。建议填写文件后缀名。若无法确定文件后缀名，可不填。支持以下音频格式: mp3，aac，m4a，3gp，wav
+ @param loopback 设置哪些用户可以听到音频混合:
+ * YES: 只有本地可以听到混音或替换后的音频流
+ * NO: 本地和对方都可以听到混音或替换后的音频流
+ @param replace Sets the audio mixing content:
+ * YES: 只推送设置的本地音频文件或者线上音频文件，不传输麦克风收录的音频。
+ * NO: 音频文件内容将会和麦克风采集的音频流进行混音
+ @param cycle 指定音频文件循环播放的次数:
+
+ * 正整数: 循环的次数
+ * -1：无限循环
+
+ @return 0方法调用成功，<0方法调用失败
+ */
+- (int)startAudioMixing:(NSString *  _Nonnull)filePath
+               loopback:(BOOL)loopback
+                replace:(BOOL)replace
+                  cycle:(NSInteger)cycle;
+
+/** 停止播放音乐文件
+
+ 请在频道内调用该方法。
+
+ @return 0方法调用成功，<0方法调用失败
+ */
+- (int)stopAudioMixing;
+
+/** 暂停播放音乐文件
+
+ 请在频道内调用该方法。
+
+ @return 0方法调用成功，<0方法调用失败
+ */
+- (int)pauseAudioMixing;
+
+/** 恢复播放音乐文件
+
+ 请在频道内调用该方法。
+
+ @return 0方法调用成功，<0方法调用失败
+ */
+- (int)resumeAudioMixing;
+
+/** 调节音乐文件在本地播放的音量
+ 
+**Note**
+ 
+ 该方法调节混音的音乐文件在本地播放的音量大小。请在频道内调用该方法。
+
+ @param volume 音乐文件播放音量范围为 0~100。默认 100 为原始文件音量
+ @return 0方法调用成功，<0方法调用失败
+ */
+- (int)adjustAudioMixingVolume:(NSInteger)volume;
 
 //MARK: - 音效文件播放管理
+
+/**-----------------------------------------------------------------------------
+* @name 音效文件播放管理
+* -----------------------------------------------------------------------------
+*/
 
 /** 获取音效文件播放音量
 
@@ -758,7 +858,7 @@ Warning: 一个 ARtcEngineKit 实例对象只能使用一个 App ID。如需更�
 
 调用该方法播放音效结束后，会触发 rtcEngineDidAudioEffectFinish 回调。
 
-**Note:** macOS 上不支持同时播放多个在线音效文件。
+**Note** macOS 上不支持同时播放多个在线音效文件。
  @param soundId 自行设定的音效 ID，需保证唯一性。 如果你已通过 preloadEffect 将音效加载至内存，确保这里设置的 soundId 与 preloadEffect 设置的 soundId 相同。
  @param filePath 指定音效文件的绝对路径或 URL 地址（包含文件后缀名），例如：/var/mobile/Containers/Data/audio.mp4。支持以下音频格式: mp3、mp4、aac、m4a、3gp、wav。
  @param loopCount 设置音效文件循环播放的次数：
@@ -777,8 +877,8 @@ Warning: 一个 ARtcEngineKit 实例对象只能使用一个 App ID。如需更�
  @param gain 设置音效的音量。取值范围为 [0.0,100.0]。默认值为 100.0。取值越小，则音效的音量越低。
  @param publish 设置是否将音效传到远端
 
- * YES: 音效文件在本地播放的同时，会发布到 anyRTC 云上，因此远端用户也能听到该音效
- * NO: 音效文件不会发布到anyRTC云上，因此只能在本地听到该音效
+ * YES: 音效文件在本地播放的同时，会发布到 ar云平台 云上，因此远端用户也能听到该音效
+ * NO: 音效文件不会发布到ar云平台云上，因此只能在本地听到该音效
 
  @return 0方法调用成功，<0方法调用失败
  */
@@ -810,7 +910,7 @@ Warning: 一个 ARtcEngineKit 实例对象只能使用一个 App ID。如需更�
 
  音效文件支持以下音频格式: mp3，aac，m4a，3gp，wav
 
- **Note:** 该方法不支持在线音效文件。
+**Note** 该方法不支持在线音效文件。
  @param soundId 自行设定的音效 ID，需保证唯一性。
  @param filePath 音效文件的绝对路径
 
@@ -876,6 +976,10 @@ Warning: 一个 ARtcEngineKit 实例对象只能使用一个 App ID。如需更�
 //MARK: - 直播音视频流回退
 
 //MARK: - 视频双流模式
+/**-----------------------------------------------------------------------------
+* @name 视频双流模式
+* -----------------------------------------------------------------------------
+*/
 
 /** 开关视频双流模式
 
@@ -913,6 +1017,10 @@ Warning: 一个 ARtcEngineKit 实例对象只能使用一个 App ID。如需更�
 //MARK: - 数据流
 
 //MARK: - 其他视频控制
+/**-----------------------------------------------------------------------------
+* @name 其他视频控制
+* -----------------------------------------------------------------------------
+*/
 
 /** 设置摄像头采集偏好
 
@@ -922,7 +1030,7 @@ Warning: 一个 ARtcEngineKit 实例对象只能使用一个 App ID。如需更�
 * 如果没有本地预览功能或者对预览质量没有要求，我们推荐将采集偏好设置为 ARCameraCaptureOutputPreferencePerformance(1)，以优化 CPU 和内存的资源分配。
 * 如果用户希望本地预览视频比实际编码发送的视频清晰，可以将采集偏好设置为 ARCameraCaptureOutputPreferencePreview(2)。
 
-**Note:**
+**Note**
 
 请在启动摄像头之前调用该方法，如 joinChannelByToken，enableVideo 或者 enableLocalVideo 之前。
 
@@ -933,6 +1041,10 @@ Warning: 一个 ARtcEngineKit 实例对象只能使用一个 App ID。如需更�
 - (int)setCameraCapturerConfiguration:(ARCameraCapturerConfiguration * _Nullable)configuration;
 
 //MARK: - 摄像头控制
+/**-----------------------------------------------------------------------------
+* @name 摄像头控制
+* -----------------------------------------------------------------------------
+*/
 
 /** 切换前置/后置摄像头
 
@@ -1033,8 +1145,11 @@ Warning: 一个 ARtcEngineKit 实例对象只能使用一个 App ID。如需更�
 
 //MARK: - 媒体附属信息
 
-//MARK: - 其他方法
-
+//MARK: - 其它方法
+/**-----------------------------------------------------------------------------
+* @name 其它方法
+* -----------------------------------------------------------------------------
+*/
 
 /** 获取通话 ID
 
@@ -1075,7 +1190,7 @@ Warning: 一个 ARtcEngineKit 实例对象只能使用一个 App ID。如需更�
 
 设置 SDK 的输出 log 文件。SDK 运行时产生的所有 log 将写入该文件。 App 必须保证指定的目录存在而且可写。
 
- **Note:**
+**Note**
 
  - 日志文件的默认地址如下:
    - iOS: `App Sandbox/Library/caches/sdk.log`
@@ -1118,15 +1233,19 @@ SDK 设有 2 个日志文件，每个文件大小为 512 KB。如果你将 fileS
 
 /** 设置／获取 ARtcEngineDelegate
 
- anyRTC Native SDK 通过指定的 delegate 通知 App 引擎运行时的事件。Delegate 中定义的所有方法都是可选实现的。
+ ar云平台 Native SDK 通过指定的 delegate 通知 App 引擎运行时的事件。Delegate 中定义的所有方法都是可选实现的。
  */
 @property (nonatomic, weak) id<ARtcEngineDelegate> _Nullable delegate;
 
 //MARK: - 定制方法
+/**-----------------------------------------------------------------------------
+* @name 定制方法
+* -----------------------------------------------------------------------------
+*/
 
 /** 通过 JSON 配置 SDK 提供技术预览或特别定制功能
 
- **Note:**
+**Note**
 
  JSON 选项默认不公开。
 
@@ -1134,11 +1253,14 @@ SDK 设有 2 个日志文件，每个文件大小为 512 KB。如果你将 fileS
  */
 - (int)setParameters:(NSString * _Nonnull)options;
 
-/** 获取 anyRTC SDK 可供自定义的参数
+/** 获取 ar云平台 SDK 可供自定义的参数
 
- **Note:**
+**Note**
 
- 该方法未公开，请联系anyRTC支持 hi@dync.cc 获取详情。
+ 该方法未公开，请联系ar云平台支持 hi@dync.cc 获取详情。
+ 
+ @param parameter 定制参数
+ @param args 参数
  */
 - (NSString * _Nullable)getParameter:(NSString * _Nonnull)parameter args:(NSString * _Nullable)args;
 

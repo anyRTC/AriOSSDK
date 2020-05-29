@@ -25,7 +25,7 @@ typedef NSPoint POINT_CLASS;
 
 /** 视频画布对象的属性
 */
-@interface ARtcVideoCanvas : NSObject
+__attribute__((visibility("default"))) @interface ARtcVideoCanvas : NSObject
 
 
 @property (strong, nonatomic) VIEW_CLASS* _Nullable view;
@@ -48,7 +48,7 @@ typedef NSPoint POINT_CLASS;
 
 /** 通话相关的统计信息
 */
-@interface ARChannelStats : NSObject
+__attribute__((visibility("default"))) @interface ARChannelStats : NSObject
 
 /** 通话时长，单位为秒，累计值
  */
@@ -114,26 +114,26 @@ typedef NSPoint POINT_CLASS;
  */
 @property (assign, nonatomic) NSInteger gatewayRtt;
 /** 当前 App 的内存占比 (%)
- *Note**
- *该值仅作参考。受系统限制可能无法获取。
+ 
+**Note**
+ 
+该值仅作参考。受系统限制可能无法获取。
  */
 @property (assign, nonatomic) double memoryAppUsageRatio;
 /** 当前系统的内存占比 (%)
- *Note**
- *该值仅作参考。受系统限制可能无法获取。
+
+**Note**
+
+ 该值仅作参考。受系统限制可能无法获取。
  */
 @property (assign, nonatomic) double memoryTotalUsageRatio;
 /** 当前 App 的内存大小 (KB)
- * Note** 该值仅作参考。
- * 受系统限制可能无法获取。
+
+**Note**
+ 
+ 该值仅作参考。受系统限制可能无法获取。
  */
 @property (assign, nonatomic) NSInteger memoryAppUsageInKbytes;
-
-@end
-
-NS_ASSUME_NONNULL_BEGIN
-
-@interface ARObjects : NSObject
 
 @end
 
@@ -145,7 +145,7 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 /** 视频编码器配置的属性 */
-@interface ARVideoEncoderConfiguration : NSObject
+__attribute__((visibility("default"))) @interface ARVideoEncoderConfiguration : NSObject
 
 /** 视频编码的分辨率 (px)，用于衡量编码质量，以长x宽表示，默认值为 640 x 360。
  
@@ -171,7 +171,7 @@ NS_ASSUME_NONNULL_BEGIN
  - ARVideoDimension2540x1440 (macOS only)
  - ARVideoDimension3840x2160 (macOS only)
 
- Note:
+**Note**
 
  * 该值不代表最终视频输出的方向。请查阅 ARVideoOutputOrientationMode 了解设置视频方向
  * 视频能否达到 720P 的分辨率取决于设备的性能，在性能配备较低的设备上有可能无法实现。如果采用 720P 分辨率而设备性能跟不上，则有可能出现帧率过低的情况。
@@ -246,7 +246,7 @@ NS_ASSUME_NONNULL_BEGIN
 | 3840 &times; 2160     | 60                   | 6500                                       | 6500                                        |
 
 
-**Note:**
+**Note**
 
 该表中的基准码率适用于通信场景。直播场景下通常需要较大码率来提升视频质量。推荐通过设置 ARVideoBitrateStandard 模式来实现。你也可以直接将码率值设为基准码率值 x 2。
 */
@@ -258,7 +258,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 SDK会根据网络状况自动调整视频编码码率。将参数设为高于默认值可强制视频编码器输出高质量图片，但在网络状况不佳的情况下可能导致网络丢包并影响视频播放的流畅度造成卡顿。因此如非对画质有特殊需求，建议不要修改该参数的值。
 
-**Note:**
+**Note**
  
 该参数仅适用于直播场景。
  */
@@ -286,7 +286,7 @@ ARDegradationPreference，有如下选项：
 
 /** 设置本地发送视频的镜像模式，只影响远端用户看到的视频画面。详见 ARVideoMirrorMode
  
- <p>默认关闭镜像模式</p>
+ * 默认关闭镜像模式
  */
 @property (assign, nonatomic) ARVideoMirrorMode mirrorMode;
 
@@ -321,7 +321,7 @@ ARDegradationPreference，有如下选项：
 @end
 
 /** 音量信息的属性 */
-@interface ARtcAudioVolumeInfo : NSObject
+__attribute__((visibility("default"))) @interface ARtcAudioVolumeInfo : NSObject
 
 /** 说话者的用户 ID。如果报告的 uid 为 0，则默认为本地用户 */
 @property (assign, nonatomic) NSString * _Nonnull uid;
@@ -332,7 +332,7 @@ ARDegradationPreference，有如下选项：
  * 0: 本地用户不在说话。
  * 1: 本地用户在说话。
 
- **Note**
+**Note**
 
  * vad 无法报告远端用户的人声状态。对于远端用户，vad 的值始终为 0。
  * 若需使用此参数，请在 enableAudioVolumeIndication 方法中设置 report_vad 为 YES。
@@ -343,7 +343,7 @@ ARDegradationPreference，有如下选项：
 @end
 
 /** 摄像头采集偏好设置 */
-@interface ARCameraCapturerConfiguration : NSObject
+__attribute__((visibility("default"))) @interface ARCameraCapturerConfiguration : NSObject
 
 /** 摄像头采集偏好，详见 ARCameraCaptureOutputPreference
  */
@@ -364,7 +364,7 @@ ARDegradationPreference，有如下选项：
 __attribute__((visibility("default"))) @interface ARtcRemoteAudioStats : NSObject
 /** 用户 ID，指定是哪个用户/主播的音频流
  */
-@property (copy, nonatomic) NSString *uid;
+@property (copy, nonatomic) NSString * _Nonnull uid;
 /** 远端用户发送的音频流质量：
  0：质量未知
  1：质量极好
@@ -457,7 +457,7 @@ __attribute__((visibility("default"))) @interface ARtcLocalAudioStats : NSObject
 __attribute__((visibility("default"))) @interface ARtcRemoteVideoStats : NSObject
 /** 用户 ID，指定远程视频来自哪个用户
  */
-@property (copy, nonatomic) NSString * uid;
+@property (copy, nonatomic) NSString * _Nonnull uid;
 /** 延时(毫秒)，已废弃（Deprecated）
 */
 @property (assign, nonatomic) NSUInteger delay;
@@ -489,5 +489,3 @@ __attribute__((visibility("default"))) @interface ARtcRemoteVideoStats : NSObjec
  */
 @property (assign, nonatomic) NSUInteger frozenRate;
 @end
-
-NS_ASSUME_NONNULL_END

@@ -1,0 +1,1617 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>ARErrorCode Constants Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">AriOSSDK 4.0.0 </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">anyRTC</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+
+	
+
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">ARErrorCode Constants Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Declared in</th>
+	<td>AREnumerates.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+
+					
+
+                    
+                    <h3 class="subsubtitle method-title">ARErrorCode</h3>
+                    
+					
+					<div class="section section-overview">
+                        <p>错误代码</p>
+
+<p>错误代码表示 SDK 运行时出现了（网络或媒体相关的）错误。通常情况下，SDK 上报的错误意味着 SDK 无法自动恢复，需要 App 干预或提示用户。 比如启动通话失败时，SDK 会上报 ARErrorCodeStartCall = 1002 错误。App可以提示用户启动通话失败，并调用 leaveChannel 退出频道。</p>
+					</div>
+					
+					
+                    <div class="section">
+                        <!-- display enum values -->
+                        
+                        <h4 class="method-subtitle">Definition</h4>
+                        <code>typedef NS_ENUM(NSInteger, ARErrorCode ) {<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeNoError</a> = 0,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeFailed</a> = 1,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeInvalidArgument</a> = 2,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeNotReady</a> = 3,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeNotSupported</a> = 4,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeRefused</a> = 5,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeBufferTooSmall</a> = 6,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeNotInitialized</a> = 7,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeNoPermission</a> = 9,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeTimedOut</a> = 10,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeCanceled</a> = 11,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeTooOften</a> = 12,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeBindSocket</a> = 13,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeNetDown</a> = 14,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeNoBufs</a> = 15,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeJoinChannelRejected</a> = 17,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeLeaveChannelRejected</a> = 18,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeAlreadyInUse</a> = 19,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeAbort</a> = 20,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeInitNetEngine</a> = 21,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeResourceLimited</a> = 22,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeInvalidAppId</a> = 101,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeInvalidChannelId</a> = 102,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeTokenExpired</a> = 109,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeInvalidToken</a> = 110,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeConnectionInterrupted</a> = 111,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeConnectionLost</a> = 112,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeNotInChannel</a> = 113,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeSizeTooLarge</a> = 114,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeBitrateLimit</a> = 115,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeTooManyDataStreams</a> = 116,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeDecryptionFailed</a> = 120,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeWatermarkParam</a> = 124,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeWatermarkPath</a> = 125,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeWatermarkPng</a> = 126,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeWatermarkInfo</a> = 127,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeWatermarkAGRB</a> = 128,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeWatermarkRead</a> = 129,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeEncryptedStreamNotAllowedPublish</a> = 130,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeInvalidUserAccount</a> = 134,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodePublishStreamCDNError</a> = 151,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodePublishStreamNumReachLimit</a> = 152,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodePublishStreamNotAuthorized</a> = 153,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodePublishStreamInternalServerError</a> = 154,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodePublishStreamNotFound</a> = 155,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodePublishStreamFormatNotSuppported</a> = 156,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeLoadMediaEngine</a> = 1001,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeStartCall</a> = 1002,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeStartCamera</a> = 1003,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeStartVideoRender</a> = 1004,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeAdmGeneralError</a> = 1005,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeAdmJavaResource</a> = 1006,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeAdmSampleRate</a> = 1007,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeAdmInitPlayout</a> = 1008,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeAdmStartPlayout</a> = 1009,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeAdmStopPlayout</a> = 1010,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeAdmInitRecording</a> = 1011,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeAdmStartRecording</a> = 1012,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeAdmStopRecording</a> = 1013,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeAdmRuntimePlayoutError</a> = 1015,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeAdmRuntimeRecordingError</a> = 1017,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeAdmRecordAudioFailed</a> = 1018,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeAdmPlayAbnormalFrequency</a> = 1020,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeAdmRecordAbnormalFrequency</a> = 1021,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeAdmInitLoopback</a> = 1022,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeAdmStartLoopback</a> = 1023,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeAdmNoPermission</a> = 1027,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeAdmNoRecordingDevice</a> = 1359,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeAdmNoPlayoutDevice</a> = 1360,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeVdmCameraNotAuthorized</a> = 1501,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeVcmUnknownError</a> = 1600,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeVcmEncoderInitError</a> = 1601,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARErrorCodeVcmEncoderEncodeError</a> = 1602,<br>
+                            
+                            };</code>
+                    
+                    </div>
+                    
+                    <div class="section section-methods">
+                        <h4 class="method-subtitle">Constants</h4>
+                        <dl class="termdef">
+                            
+                            <dt><a name="" title="ARErrorCodeNoError"></a><code>ARErrorCodeNoError</code></dt>
+<dd>
+
+
+<pre><code> 0: 没有错误。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeFailed"></a><code>ARErrorCodeFailed</code></dt>
+<dd>
+
+
+<pre><code> 1: 一般性的错误（没有明确归类的错误原因）。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeInvalidArgument"></a><code>ARErrorCodeInvalidArgument</code></dt>
+<dd>
+
+
+<pre><code> 2: API 调用了无效的参数。例如指定的频道名含有非法字符。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeNotReady"></a><code>ARErrorCodeNotReady</code></dt>
+<dd>
+
+
+<pre><code> 3: SDK 未准备好。
+ 处理方法：
+ * 检查音频设备状态
+ * 检查程序集完整性
+ * 尝试重新初始化 SDK
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeNotSupported"></a><code>ARErrorCodeNotSupported</code></dt>
+<dd>
+
+
+<pre><code> 4: SDK 当前状态不支持此操作，因此不能进行此操作。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeRefused"></a><code>ARErrorCodeRefused</code></dt>
+<dd>
+
+
+<pre><code> 5: 调用被拒绝。仅供 SDK 内部使用，不通过 API 或者回调事件返回给 App。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeBufferTooSmall"></a><code>ARErrorCodeBufferTooSmall</code></dt>
+<dd>
+
+
+<pre><code> 6: 传入的缓冲区大小不足以存放返回的数据。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeNotInitialized"></a><code>ARErrorCodeNotInitialized</code></dt>
+<dd>
+
+
+<pre><code> 7: SDK 尚未初始化，就调用其 API。请确认在调用 API 之前已创建 ARtcEngineKit 对象并完成初始化。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeNoPermission"></a><code>ARErrorCodeNoPermission</code></dt>
+<dd>
+
+
+<pre><code> 9: 没有操作权限，请检查用户是否授予 app 音视频设备使用权限。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeTimedOut"></a><code>ARErrorCodeTimedOut</code></dt>
+<dd>
+
+
+<pre><code> 10: API 调用超时。有些 API 调用需要 SDK 返回结果，如果 SDK 处理时间过长，超过 10 秒没有返回，会出现此错误。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeCanceled"></a><code>ARErrorCodeCanceled</code></dt>
+<dd>
+
+
+<pre><code> 11: 请求被取消。仅供 SDK 内部使用，不通过 API 或者回调事件返回给 App。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeTooOften"></a><code>ARErrorCodeTooOften</code></dt>
+<dd>
+
+
+<pre><code> 12: 调用频率太高。仅供 SDK 内部使用，不通过 API 或者回调事件返回给 App。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeBindSocket"></a><code>ARErrorCodeBindSocket</code></dt>
+<dd>
+
+
+<pre><code> 13: SDK 内部绑定到网络 Socket 失败。仅供 SDK 内部使用，不通过 API 或者回调事件返回给 App。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeNetDown"></a><code>ARErrorCodeNetDown</code></dt>
+<dd>
+
+
+<pre><code> 14: 网络不可用。仅供 SDK 内部使用，不通过 API 或者回调事件返回给 App。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeNoBufs"></a><code>ARErrorCodeNoBufs</code></dt>
+<dd>
+
+
+<pre><code> 15: 没有网络缓冲区可用。仅供 SDK 内部使用，不通过 API 或者回调事件返回给 App。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeJoinChannelRejected"></a><code>ARErrorCodeJoinChannelRejected</code></dt>
+<dd>
+
+
+<pre><code> 17: 加入频道被拒绝。
+ 一般有以下原因:
+ * 用户已进入频道，再次调用加入频道的 API，例如 joinChannelByToken，会返回此错误。停止调用该 API 即可。
+ * 用户在做 Echo 测试时尝试加入频道。等待 Echo test 结束后再加入频道即可。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeLeaveChannelRejected"></a><code>ARErrorCodeLeaveChannelRejected</code></dt>
+<dd>
+
+
+<pre><code> 18: 离开频道失败。
+ 一般有以下原因：
+ * 用户已离开频道，再次调用退出频道的 API，例如 leaveChannel，会返回此错误。停止调用该 API 即可。
+ * 用户尚未加入频道，就调用退出频道的 API。这种情况下无需额外操作。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeAlreadyInUse"></a><code>ARErrorCodeAlreadyInUse</code></dt>
+<dd>
+
+
+<pre><code> 19: 资源已被占用，不能重复使用。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeAbort"></a><code>ARErrorCodeAbort</code></dt>
+<dd>
+
+
+<pre><code> 20: SDK 放弃请求，可能由于请求次数太多。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeInitNetEngine"></a><code>ARErrorCodeInitNetEngine</code></dt>
+<dd>
+
+
+<pre><code> 21: Windows 下特定的防火墙设置导致 SDK 初始化失败然后崩溃。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeResourceLimited"></a><code>ARErrorCodeResourceLimited</code></dt>
+<dd>
+
+
+<pre><code> 22: 当用户 App 占用资源过多，或系统资源耗尽时，SDK 分配资源失败会返回该错误。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeInvalidAppId"></a><code>ARErrorCodeInvalidAppId</code></dt>
+<dd>
+
+
+<pre><code> 101: 不是有效的 App ID。请更换有效的 App ID 重新加入频道。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeInvalidChannelId"></a><code>ARErrorCodeInvalidChannelId</code></dt>
+<dd>
+
+
+<pre><code> 102: 不是有效的频道名。请更换有效的频道名重新加入频道。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeTokenExpired"></a><code>ARErrorCodeTokenExpired</code></dt>
+<dd>
+
+
+<pre><code> 109: 当前使用的 Token 过期，不再有效。
+ connectionChangedToState 回调中 reason 参数的 ARConnectionChangedTokenExpired(9)。
+ 一般有以下原因：
+ * Token 授权时间戳无效：Token 授权时间戳为 Token 生成时的时间戳，自 1970 年 1 月 1 日开始到当前时间的描述。授权该 Token 在生成后的 24 小时内可以访问 anyRTC 服务。如果 24 小时内没有访问，则该 Token 无法再使用。需要重新在服务端申请生成 Token。
+ * Token 服务到期时间戳已过期：用户设置的服务到期时间戳小于当前时间戳，无法继续使用 anyRTC 服务（比如正在进行的通话会被强制终止）；设置服务到期时间并不意味着 Token 失效，而仅仅用于限制用户使用当前服务的时间。需要重新在服务端申请生成 Token。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeInvalidToken"></a><code>ARErrorCodeInvalidToken</code></dt>
+<dd>
+
+
+<pre><code> 110: 生成的 Token 无效。
+ connectionChangedToState 回调中 reason 参数的 ARConnectionChangedInvalidToken(8)。
+ 一般有以下原因：
+ * 用户在控制台上启用了 App Certificate，但仍旧在代码里仅使用了 App ID。当启用了 App Certificate，必须使用 Token。
+ * 字段 uid 为生成 Token 的必须字段，用户在调用 joinChannelByToken 加入频道时必须设置相同的 uid。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeConnectionInterrupted"></a><code>ARErrorCodeConnectionInterrupted</code></dt>
+<dd>
+
+
+<pre><code> 111: 网络连接中断。仅适用于 anyRTC Web SDK。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeConnectionLost"></a><code>ARErrorCodeConnectionLost</code></dt>
+<dd>
+
+
+<pre><code> 112: 网络连接丢失。仅适用于 anyRTC Web SDK。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeNotInChannel"></a><code>ARErrorCodeNotInChannel</code></dt>
+<dd>
+
+
+<pre><code> 113: 在调用 sendStreamMessage 时，如果用户不在频道内，会发生该错误。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeSizeTooLarge"></a><code>ARErrorCodeSizeTooLarge</code></dt>
+<dd>
+
+
+<pre><code> 114: 在调用 sendStreamMessage 时，当发送的数据长度大于 1024 个字节时，会发生该错误。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeBitrateLimit"></a><code>ARErrorCodeBitrateLimit</code></dt>
+<dd>
+
+
+<pre><code> 115: 在调用 sendStreamMessage 时，当发送的数据码率超过限制时 (6 Kbps)，会发生该错误。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeTooManyDataStreams"></a><code>ARErrorCodeTooManyDataStreams</code></dt>
+<dd>
+
+
+<pre><code> 116: 在调用 createDataStream 时，如果创建的数据通道过多(超过 5 个通道)，会发生该错误。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeDecryptionFailed"></a><code>ARErrorCodeDecryptionFailed</code></dt>
+<dd>
+
+
+<pre><code> 120: 解密失败，可能是用户加入频道用了不同的密码。请检查加入频道时的设置，或尝试重新加入频道。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeWatermarkParam"></a><code>ARErrorCodeWatermarkParam</code></dt>
+<dd>
+
+
+<pre><code> 124: 水印文件参数错误。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeWatermarkPath"></a><code>ARErrorCodeWatermarkPath</code></dt>
+<dd>
+
+
+<pre><code> 125: 水印文件路径错误。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeWatermarkPng"></a><code>ARErrorCodeWatermarkPng</code></dt>
+<dd>
+
+
+<pre><code> 126: 水印文件格式错误。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeWatermarkInfo"></a><code>ARErrorCodeWatermarkInfo</code></dt>
+<dd>
+
+
+<pre><code> 127: 水印文件信息错误。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeWatermarkAGRB"></a><code>ARErrorCodeWatermarkAGRB</code></dt>
+<dd>
+
+
+<pre><code> 128: 水印文件数据格式错误。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeWatermarkRead"></a><code>ARErrorCodeWatermarkRead</code></dt>
+<dd>
+
+
+<pre><code> 129: 水印文件读取错误。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeEncryptedStreamNotAllowedPublish"></a><code>ARErrorCodeEncryptedStreamNotAllowedPublish</code></dt>
+<dd>
+
+
+<pre><code> 130: 推流已加密不能推流。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeInvalidUserAccount"></a><code>ARErrorCodeInvalidUserAccount</code></dt>
+<dd>
+
+
+<pre><code> 134: 无效的 User Account。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodePublishStreamCDNError"></a><code>ARErrorCodePublishStreamCDNError</code></dt>
+<dd>
+
+
+<pre><code> 151: CDN 相关错误。请调用 removePublishStreamUrl 方法删除原来的推流地址，然后调用 addPublishStreamUrl 方法重新推流到新地址。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodePublishStreamNumReachLimit"></a><code>ARErrorCodePublishStreamNumReachLimit</code></dt>
+<dd>
+
+
+<pre><code> 152: 单个主播的推流地址数目达到上限 10。请删掉一些不用的推流地址再增加推流地址。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodePublishStreamNotAuthorized"></a><code>ARErrorCodePublishStreamNotAuthorized</code></dt>
+<dd>
+
+
+<pre><code> 153: 操作不属于主播自己的流，例如更新其他主播的流参数、停止其他主播的流。请检查 App 逻辑。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodePublishStreamInternalServerError"></a><code>ARErrorCodePublishStreamInternalServerError</code></dt>
+<dd>
+
+
+<pre><code> 154: 推流服务器出现错误。请调用 addPublishStreamUrl 重新推流。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodePublishStreamNotFound"></a><code>ARErrorCodePublishStreamNotFound</code></dt>
+<dd>
+
+
+<pre><code> 155: 服务器未找到这个流。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodePublishStreamFormatNotSuppported"></a><code>ARErrorCodePublishStreamFormatNotSuppported</code></dt>
+<dd>
+
+
+<pre><code> 156: 推流地址格式有错误。请检查推流地址格式是否正确。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeLoadMediaEngine"></a><code>ARErrorCodeLoadMediaEngine</code></dt>
+<dd>
+
+
+<pre><code> 1001: 加载媒体引擎失败。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeStartCall"></a><code>ARErrorCodeStartCall</code></dt>
+<dd>
+
+
+<pre><code> 1002: 启动媒体引擎开始通话失败。请尝试重新进入频道。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeStartCamera"></a><code>ARErrorCodeStartCamera</code></dt>
+<dd>
+
+
+<pre><code> 1003: 启动摄像头失败，请检查摄像头是否被其他应用占用，或者尝试重新进入频道。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeStartVideoRender"></a><code>ARErrorCodeStartVideoRender</code></dt>
+<dd>
+
+
+<pre><code> 1004: 启动视频渲染模块失败。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeAdmGeneralError"></a><code>ARErrorCodeAdmGeneralError</code></dt>
+<dd>
+
+
+<pre><code> 1005: 音频设备模块：音频设备出现错误（未明确指明为何种错误）。请检查音频设备是否被其它应用占用，或者尝试重新进入频道。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeAdmJavaResource"></a><code>ARErrorCodeAdmJavaResource</code></dt>
+<dd>
+
+
+<pre><code> 1006: 音频设备模块：使用 java 资源出现错误。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeAdmSampleRate"></a><code>ARErrorCodeAdmSampleRate</code></dt>
+<dd>
+
+
+<pre><code> 1007: 音频设备模块：设置的采样频率出现错误。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeAdmInitPlayout"></a><code>ARErrorCodeAdmInitPlayout</code></dt>
+<dd>
+
+
+<pre><code> 1008: 音频设备模块：初始化播放设备出现错误。请检查播放设备是否被其他应用占用，或者尝试重新进入频道。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeAdmStartPlayout"></a><code>ARErrorCodeAdmStartPlayout</code></dt>
+<dd>
+
+
+<pre><code> 1009: 音频设备模块：启动播放设备出现错误。请检查播放设备是否正常，或者尝试重新进入频道。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeAdmStopPlayout"></a><code>ARErrorCodeAdmStopPlayout</code></dt>
+<dd>
+
+
+<pre><code> 1010: 音频设备模块：停止播放设备出现错误。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeAdmInitRecording"></a><code>ARErrorCodeAdmInitRecording</code></dt>
+<dd>
+
+
+<pre><code> 1011: 音频设备模块：初始化录音设备时出现错误。请检查录音设备是否正常，或者尝试重新进入频道。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeAdmStartRecording"></a><code>ARErrorCodeAdmStartRecording</code></dt>
+<dd>
+
+
+<pre><code> 1012: 音频设备模块：启动录音设备出现错误。请检查录音设备是否正常，或者尝试重新进入频道。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeAdmStopRecording"></a><code>ARErrorCodeAdmStopRecording</code></dt>
+<dd>
+
+
+<pre><code> 1013: 音频设备模块：停止录音设备出现错误。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeAdmRuntimePlayoutError"></a><code>ARErrorCodeAdmRuntimePlayoutError</code></dt>
+<dd>
+
+
+<pre><code> 1015: 音频设备模块：运行时播放出现错误。请检查播放设备是否正常，或者尝试重新进入频道。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeAdmRuntimeRecordingError"></a><code>ARErrorCodeAdmRuntimeRecordingError</code></dt>
+<dd>
+
+
+<pre><code> 1017: 音频设备模块：运行时录音错误。请检查录音设备是否正常，或者尝试重新进入频道。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeAdmRecordAudioFailed"></a><code>ARErrorCodeAdmRecordAudioFailed</code></dt>
+<dd>
+
+
+<pre><code> 1018: 音频设备模块：录音失败。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeAdmPlayAbnormalFrequency"></a><code>ARErrorCodeAdmPlayAbnormalFrequency</code></dt>
+<dd>
+
+
+<pre><code> 1020: 音频设备模块：回放频率异常。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeAdmRecordAbnormalFrequency"></a><code>ARErrorCodeAdmRecordAbnormalFrequency</code></dt>
+<dd>
+
+
+<pre><code> 1021: 音频设备模块：录制频率异常。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeAdmInitLoopback"></a><code>ARErrorCodeAdmInitLoopback</code></dt>
+<dd>
+
+
+<pre><code> 1022: 音频设备模块：初始化 Loopback 设备错误。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeAdmStartLoopback"></a><code>ARErrorCodeAdmStartLoopback</code></dt>
+<dd>
+
+
+<pre><code> 1023: 音频设备模块：启动 Loopback 设备错误。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeAdmNoPermission"></a><code>ARErrorCodeAdmNoPermission</code></dt>
+<dd>
+
+
+<pre><code> 1027: 音频设备模块:  在没有录音权限时发生错误。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeAdmNoRecordingDevice"></a><code>ARErrorCodeAdmNoRecordingDevice</code></dt>
+<dd>
+
+
+<pre><code> 1359: 音频设备模块：无录制设备。请检查是否有可用的录放音设备或者录放音设备是否已经被其他应用占用。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeAdmNoPlayoutDevice"></a><code>ARErrorCodeAdmNoPlayoutDevice</code></dt>
+<dd>
+
+
+<pre><code> 1360: 音频设备模块：无播放设备。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeVdmCameraNotAuthorized"></a><code>ARErrorCodeVdmCameraNotAuthorized</code></dt>
+<dd>
+
+
+<pre><code> 1501: 视频设备模块：没有摄像头使用权限。请检查是否已经打开摄像头权限。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeVcmUnknownError"></a><code>ARErrorCodeVcmUnknownError</code></dt>
+<dd>
+
+
+<pre><code> 1600: 视频设备模块：未知错误。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeVcmEncoderInitError"></a><code>ARErrorCodeVcmEncoderInitError</code></dt>
+<dd>
+
+
+<pre><code> 1601: 视频设备模块：视频编码器初始化错误。该错误为严重错误，请尝试重新加入频道。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARErrorCodeVcmEncoderEncodeError"></a><code>ARErrorCodeVcmEncoderEncodeError</code></dt>
+<dd>
+
+
+<pre><code> 1602: 视频设备模块：视频编码器错误。该错误为严重错误，请尝试重新加入频道。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                        </dl>
+                    </div>
+                    
+
+                    
+                    
+
+                    
+
+                    
+                    <div class="method-subsection declared-in-section">
+                        <h4 class="method-subtitle">Declared In</h4>
+                        <p><code class="declared-in-ref">AREnumerates.h</code></p>
+                    </div>
+                    
+                    
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2020 anyRTC. All rights reserved. Updated: 2020-05-29</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

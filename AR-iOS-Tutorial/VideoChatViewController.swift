@@ -65,7 +65,6 @@ class VideoChatViewController: UIViewController {
     
     func setupLocalVideo() {
         localVideo = ARVideoView.loadVideoView(uid: nil)
-        localVideo.frame = CGRect.init(x: 0, y: 0, width: 0, height: 0)
         view.insertSubview(localVideo, at: 0)
         // This is used to set a local preview.
         // The steps setting local and remote view are very similar.
@@ -137,6 +136,10 @@ class VideoChatViewController: UIViewController {
         UIApplication.shared.isIdleTimerDisabled = false
         self.logVC?.log(type: .info, content: "did leave channel")
         UIApplication.shared.isIdleTimerDisabled = false
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
     func videoLayout() {

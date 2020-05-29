@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>ARVideoEncoderConfiguration Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">AriOSSDK 4.0.0 </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">anyRTC</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+	<optgroup label="Properties">
+		
+		<option value="//api/name/bitrate">bitrate</option>
+		
+		<option value="//api/name/degradationPreference">degradationPreference</option>
+		
+		<option value="//api/name/dimensions">dimensions</option>
+		
+		<option value="//api/name/frameRate">frameRate</option>
+		
+		<option value="//api/name/minBitrate">minBitrate</option>
+		
+		<option value="//api/name/minFrameRate">minFrameRate</option>
+		
+		<option value="//api/name/mirrorMode">mirrorMode</option>
+		
+		<option value="//api/name/orientationMode">orientationMode</option>
+		
+	</optgroup>
+	
+
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/initWithSize:frameRate:bitrate:orientationMode:">- initWithSize:frameRate:bitrate:orientationMode:</option>
+		
+		<option value="//api/name/initWithWidth:height:frameRate:bitrate:orientationMode:">- initWithWidth:height:frameRate:bitrate:orientationMode:</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">ARVideoEncoderConfiguration Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>ARObjects.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>视频编码器配置的属性</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/dimensions" title="dimensions"></a>
+	<h3 class="method-title"><code><a href="#//api/name/dimensions">&nbsp;&nbsp;dimensions</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>视频编码的分辨率 (px)，用于衡量编码质量，以长x宽表示，默认值为 640 x 360。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (assign, nonatomic) CGSize dimensions</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>视频编码的分辨率 (px)，用于衡量编码质量，以长x宽表示，默认值为 640 x 360。</p>
+
+<p>用户可以自行设置分辨率，也可以在如下列表中直接选择想要的分辨率：</p>
+
+<ul>
+<li>ARVideoDimension120x120</li>
+<li>ARVideoDimension160x120</li>
+<li>ARVideoDimension180x180</li>
+<li>ARVideoDimension240x180</li>
+<li>ARVideoDimension320x180</li>
+<li>ARVideoDimension240x240</li>
+<li>ARVideoDimension320x240</li>
+<li>ARVideoDimension424x240</li>
+<li>ARVideoDimension360x360</li>
+<li>ARVideoDimension480x360</li>
+<li>ARVideoDimension640x360</li>
+<li>ARVideoDimension480x480</li>
+<li>ARVideoDimension640x480</li>
+<li>ARVideoDimension840x480</li>
+<li>ARVideoDimension960x720</li>
+<li>ARVideoDimension1280x720</li>
+<li>ARVideoDimension1920x1080 (macOS only)</li>
+<li>ARVideoDimension2540x1440 (macOS only)</li>
+<li>ARVideoDimension3840x2160 (macOS only)</li>
+</ul>
+
+
+<p><strong>Note</strong></p>
+
+<ul>
+<li>该值不代表最终视频输出的方向。请查阅 <a href="../Constants/ARVideoOutputOrientationMode.html">ARVideoOutputOrientationMode</a> 了解设置视频方向</li>
+<li>视频能否达到 720P 的分辨率取决于设备的性能，在性能配备较低的设备上有可能无法实现。如果采用 720P 分辨率而设备性能跟不上，则有可能出现帧率过低的情况。</li>
+<li>iPhone 不支持 720P 以上的分辨率。</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARObjects.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/frameRate" title="frameRate"></a>
+	<h3 class="method-title"><code><a href="#//api/name/frameRate">&nbsp;&nbsp;frameRate</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>视频编码的帧率（fps）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (assign, nonatomic) NSInteger frameRate</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>视频编码的帧率（fps）</p>
+
+<p>用户可以自行设置帧率，也可以在如下列表中直接选择想要的帧率。默认值为 15 帧。建议不要超过 30 帧。</p>
+
+<ul>
+<li>ARVideoFrameRateFps1(1): 1 fps</li>
+<li>ARVideoFrameRateFps7(7): 7 fps</li>
+<li>ARVideoFrameRateFps10(10): 10 fps</li>
+<li>ARVideoFrameRateFps15(15): 15 fps</li>
+<li>ARVideoFrameRateFps24(24): 24 fps</li>
+<li>ARVideoFrameRateFps30(30): 30 fps</li>
+<li>ARVideoFrameRateFps60(30): 60 fps (macOS only)</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARObjects.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/minFrameRate" title="minFrameRate"></a>
+	<h3 class="method-title"><code><a href="#//api/name/minFrameRate">&nbsp;&nbsp;minFrameRate</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>最低视频编码帧率（fps）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (assign, nonatomic) NSInteger minFrameRate</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>最低视频编码帧率（fps）</p>
+
+<p>单位为 fps，默认值为 -1，表示使用系统默认的最低编码帧率。关于该参数的适用场景及注意事项，请参考 设置视频属性（iOS） 或 设置视频属性（macOS）。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARObjects.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/bitrate" title="bitrate"></a>
+	<h3 class="method-title"><code><a href="#//api/name/bitrate">&nbsp;&nbsp;bitrate</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>视频编码的码率</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (assign, nonatomic) NSInteger bitrate</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>视频编码的码率</p>
+
+<p>该参数设置视频编码码率，单位为 Kbps。你可以根据场景需要，参考下表，手动设置你想要的码率。若设置的视频码率超出合理范围，SDK 会自动按照合理区间处理码率。你也可以直接选择如下任意一种模式进行设置：</p>
+
+<p>ARVideoBitrateStandard: （推荐）标准码率模式。该模式下，视频在通信和直播场景下的码率有所不同：通信场景下，码率与基准码率一致；直播场景下，码率对照基准码率翻倍。
+ARVideoBitrateCompatible: 适配码率模式。该模式下，视频在通信和直播场景下的码率均与基准码率一致。直播下如果选择该场景，视频帧率可能会低于设置的值。
+在通信和直播场景下采用不同的编码方式，以提升不同场景下的用户体验。通信场景保证流畅，而直播场景则更注重画面质量，因此直播场景对码率的需求大于通信场景。所以推荐将该参数设置为 ARVideoBitrateStandard。</p>
+
+<p><strong>视频码率参考表</strong></p>
+
+<table>
+<thead>
+<tr>
+<th> Resolution            </th>
+<th> Frame Rate (fps)     </th>
+<th> Base Bitrate (Kbps, for Communication)     </th>
+<th> Live Bitrate (Kbps, for Live Broadcast)     </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> 160 &times; 120       </td>
+<td> 15                   </td>
+<td> 65                                         </td>
+<td> 130                                         </td>
+</tr>
+<tr>
+<td> 120 &times; 120       </td>
+<td> 15                   </td>
+<td> 50                                         </td>
+<td> 100                                         </td>
+</tr>
+<tr>
+<td> 320 &times; 180       </td>
+<td> 15                   </td>
+<td> 140                                        </td>
+<td> 280                                         </td>
+</tr>
+<tr>
+<td> 180 &times; 180       </td>
+<td> 15                   </td>
+<td> 100                                        </td>
+<td> 200                                         </td>
+</tr>
+<tr>
+<td> 240 &times; 180       </td>
+<td> 15                   </td>
+<td> 120                                        </td>
+<td> 240                                         </td>
+</tr>
+<tr>
+<td> 320 &times; 240       </td>
+<td> 15                   </td>
+<td> 200                                        </td>
+<td> 400                                         </td>
+</tr>
+<tr>
+<td> 240 &times; 240       </td>
+<td> 15                   </td>
+<td> 140                                        </td>
+<td> 280                                         </td>
+</tr>
+<tr>
+<td> 424 &times; 240       </td>
+<td> 15                   </td>
+<td> 220                                        </td>
+<td> 440                                         </td>
+</tr>
+<tr>
+<td> 640 &times; 360       </td>
+<td> 15                   </td>
+<td> 400                                        </td>
+<td> 800                                         </td>
+</tr>
+<tr>
+<td> 360 &times; 360       </td>
+<td> 15                   </td>
+<td> 260                                        </td>
+<td> 520                                         </td>
+</tr>
+<tr>
+<td> 640 &times; 360       </td>
+<td> 30                   </td>
+<td> 600                                        </td>
+<td> 1200                                        </td>
+</tr>
+<tr>
+<td> 360 &times; 360       </td>
+<td> 30                   </td>
+<td> 400                                        </td>
+<td> 800                                         </td>
+</tr>
+<tr>
+<td> 480 &times; 360       </td>
+<td> 15                   </td>
+<td> 320                                        </td>
+<td> 640                                         </td>
+</tr>
+<tr>
+<td> 480 &times; 360       </td>
+<td> 30                   </td>
+<td> 490                                        </td>
+<td> 980                                         </td>
+</tr>
+<tr>
+<td> 640 &times; 480       </td>
+<td> 15                   </td>
+<td> 500                                        </td>
+<td> 1000                                        </td>
+</tr>
+<tr>
+<td> 480 &times; 480       </td>
+<td> 15                   </td>
+<td> 400                                        </td>
+<td> 800                                         </td>
+</tr>
+<tr>
+<td> 640 &times; 480       </td>
+<td> 30                   </td>
+<td> 750                                        </td>
+<td> 1500                                        </td>
+</tr>
+<tr>
+<td> 480 &times; 480       </td>
+<td> 30                   </td>
+<td> 600                                        </td>
+<td> 1200                                        </td>
+</tr>
+<tr>
+<td> 848 &times; 480       </td>
+<td> 15                   </td>
+<td> 610                                        </td>
+<td> 1220                                        </td>
+</tr>
+<tr>
+<td> 848 &times; 480       </td>
+<td> 30                   </td>
+<td> 930                                        </td>
+<td> 1860                                        </td>
+</tr>
+<tr>
+<td> 640 &times; 480       </td>
+<td> 10                   </td>
+<td> 400                                        </td>
+<td> 800                                         </td>
+</tr>
+<tr>
+<td> 1280 &times; 720      </td>
+<td> 15                   </td>
+<td> 1130                                       </td>
+<td> 2260                                        </td>
+</tr>
+<tr>
+<td> 1280 &times; 720      </td>
+<td> 30                   </td>
+<td> 1710                                       </td>
+<td> 3420                                        </td>
+</tr>
+<tr>
+<td> 960 &times; 720       </td>
+<td> 15                   </td>
+<td> 910                                        </td>
+<td> 1820                                        </td>
+</tr>
+<tr>
+<td> 960 &times; 720       </td>
+<td> 30                   </td>
+<td> 1380                                       </td>
+<td> 2760                                        </td>
+</tr>
+<tr>
+<td> 1920 &times; 1080     </td>
+<td> 15                   </td>
+<td> 2080                                       </td>
+<td> 4160                                        </td>
+</tr>
+<tr>
+<td> 1920 &times; 1080     </td>
+<td> 30                   </td>
+<td> 3150                                       </td>
+<td> 6300                                        </td>
+</tr>
+<tr>
+<td> 1920 &times; 1080     </td>
+<td> 60                   </td>
+<td> 4780                                       </td>
+<td> 6500                                        </td>
+</tr>
+<tr>
+<td> 2560 &times; 1440     </td>
+<td> 30                   </td>
+<td> 4850                                       </td>
+<td> 6500                                        </td>
+</tr>
+<tr>
+<td> 2560 &times; 1440     </td>
+<td> 60                   </td>
+<td> 6500                                       </td>
+<td> 6500                                        </td>
+</tr>
+<tr>
+<td> 3840 &times; 2160     </td>
+<td> 30                   </td>
+<td> 6500                                       </td>
+<td> 6500                                        </td>
+</tr>
+<tr>
+<td> 3840 &times; 2160     </td>
+<td> 60                   </td>
+<td> 6500                                       </td>
+<td> 6500                                        </td>
+</tr>
+</tbody>
+</table>
+
+
+<p><strong>Note</strong></p>
+
+<p>该表中的基准码率适用于通信场景。直播场景下通常需要较大码率来提升视频质量。推荐通过设置 ARVideoBitrateStandard 模式来实现。你也可以直接将码率值设为基准码率值 x 2。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARObjects.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/minBitrate" title="minBitrate"></a>
+	<h3 class="method-title"><code><a href="#//api/name/minBitrate">&nbsp;&nbsp;minBitrate</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>最低编码码率</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (assign, nonatomic) NSInteger minBitrate</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>最低编码码率</p>
+
+<p>该参数设置最低编码码率，单位为 Kbps。</p>
+
+<p>SDK会根据网络状况自动调整视频编码码率。将参数设为高于默认值可强制视频编码器输出高质量图片，但在网络状况不佳的情况下可能导致网络丢包并影响视频播放的流畅度造成卡顿。因此如非对画质有特殊需求，建议不要修改该参数的值。</p>
+
+<p><strong>Note</strong></p>
+
+<p>该参数仅适用于直播场景。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARObjects.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/orientationMode" title="orientationMode"></a>
+	<h3 class="method-title"><code><a href="#//api/name/orientationMode">&nbsp;&nbsp;orientationMode</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>视频编码的方向模式</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (assign, nonatomic) ARVideoOutputOrientationMode orientationMode</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>视频编码的方向模式</p>
+
+<ul>
+<li>ARVideoOutputOrientationModeAdaptative(0): （默认）该模式下 SDK 输出的视频方向与采集到的视频方向一致。接收端会根据收到的视频旋转信息对视频进行旋转。该模式适用于接收端可以调整视频方向的场景:
+
+<ul>
+<li>如果采集的视频是横屏模式，则输出的视频也是横屏模式。</li>
+<li>如果采集的视频是竖屏模式，则输出的视频也是竖屏模式。</li>
+</ul>
+</li>
+<li>ARVideoOutputOrientationModeFixedLandscape(1): 该模式下 SDK 固定输出风景（横屏）模式的视频。如果采集到的视频是竖屏模式，则视频编码器会对其进行裁剪。该模式适用于当接收端无法调整视频方向时，如使用旁路推流场景下。</li>
+<li>ARVideoOutputOrientationModeFixedPortrait(2): 该模式下 SDK 固定输出人像（竖屏）模式的视频，如果采集到的视频是横屏模式，则视频编码器会对其进行裁剪。该模式适用于当接收端无法调整视频方向时，如使用旁路推流场景下。</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARObjects.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/degradationPreference" title="degradationPreference"></a>
+	<h3 class="method-title"><code><a href="#//api/name/degradationPreference">&nbsp;&nbsp;degradationPreference</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>带宽受限时的视频编码降级偏好</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (assign, nonatomic) ARDegradationPreference degradationPreference</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>带宽受限时的视频编码降级偏好</p>
+
+<p>ARDegradationPreference，有如下选项：</p>
+
+<ul>
+<li>ARDegradationMaintainQuality(0)：（默认）降低编码帧率以保证视频质量</li>
+<li>ARDegradationMaintainFramerate(1)：降低视频质量以保证编码帧率</li>
+<li>ARDegradationMaintainFramerate(2)：（预留参数，暂不支持）在编码帧率和视频质量之间保持平衡。</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARObjects.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/mirrorMode" title="mirrorMode"></a>
+	<h3 class="method-title"><code><a href="#//api/name/mirrorMode">&nbsp;&nbsp;mirrorMode</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>设置本地发送视频的镜像模式，只影响远端用户看到的视频画面。详见 <a href="../Constants/ARVideoMirrorMode.html">ARVideoMirrorMode</a></p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (assign, nonatomic) ARVideoMirrorMode mirrorMode</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>设置本地发送视频的镜像模式，只影响远端用户看到的视频画面。详见 <a href="../Constants/ARVideoMirrorMode.html">ARVideoMirrorMode</a></p>
+
+<ul>
+<li>默认关闭镜像模式</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARObjects.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/initWithSize:frameRate:bitrate:orientationMode:" title="initWithSize:frameRate:bitrate:orientationMode:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithSize:frameRate:bitrate:orientationMode:">&ndash;&nbsp;initWithSize:frameRate:bitrate:orientationMode:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>指定视频分辨率并初始化一个 ARVideoEncoderConfiguration 对象</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (instancetype _Nonnull)initWithSize:(CGSize)<em>size</em> frameRate:(ARVideoFrameRate)<em>frameRate</em> bitrate:(NSInteger)<em>bitrate</em> orientationMode:(ARVideoOutputOrientationMode)<em>orientationMode</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>size</code></th>
+						<td><p>视频分辨率</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>frameRate</code></th>
+						<td><p>视频帧率，详见 <a href="../Constants/ARVideoFrameRate.html">ARVideoFrameRate</a></p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>bitrate</code></th>
+						<td><p>视频码率</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>orientationMode</code></th>
+						<td><p>视频方向，详见 <a href="../Constants/ARVideoOutputOrientationMode.html">ARVideoOutputOrientationMode</a></p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>初始化的 ARVideoEncoderConfiguration 对象</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>指定视频分辨率并初始化一个 ARVideoEncoderConfiguration 对象</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARObjects.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/initWithWidth:height:frameRate:bitrate:orientationMode:" title="initWithWidth:height:frameRate:bitrate:orientationMode:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithWidth:height:frameRate:bitrate:orientationMode:">&ndash;&nbsp;initWithWidth:height:frameRate:bitrate:orientationMode:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>指定视频宽和高并初始化一个 ARVideoEncoderConfiguration 对象</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (instancetype _Nonnull)initWithWidth:(NSInteger)<em>width</em> height:(NSInteger)<em>height</em> frameRate:(ARVideoFrameRate)<em>frameRate</em> bitrate:(NSInteger)<em>bitrate</em> orientationMode:(ARVideoOutputOrientationMode)<em>orientationMode</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>width</code></th>
+						<td><p>视频宽度</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>height</code></th>
+						<td><p>视频高度</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>frameRate</code></th>
+						<td><p>视频帧率，详见 <a href="../Constants/ARVideoFrameRate.html">ARVideoFrameRate</a></p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>bitrate</code></th>
+						<td><p>视频码率</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>orientationMode</code></th>
+						<td><p>视频方向，详见 <a href="../Constants/ARVideoOutputOrientationMode.html">ARVideoOutputOrientationMode</a></p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>初始化的 ARVideoEncoderConfiguration 对象</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>指定视频宽和高并初始化一个 ARVideoEncoderConfiguration 对象</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARObjects.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2020 anyRTC. All rights reserved. Updated: 2020-05-29</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

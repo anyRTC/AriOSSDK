@@ -17,7 +17,11 @@
 
 @optional
 
-//MARK: - Core Delegate Methods
+//MARK: - 核心事件回调
+/**-----------------------------------------------------------------------------
+* @name 核心事件回调
+* -----------------------------------------------------------------------------
+*/
 
 /** 发生警告回调
 
@@ -75,7 +79,7 @@
 /** 远端用户/主播加入回调
 
 @param engine   ARtcEngineKit对象
-@param uid   新加入频道的远端用户/主播 ID。如果 joinChannelByToken 中指定了 uid，则此处返回该 ID；否则使用anyRTC服务器自动分配的 ID。
+@param uid   新加入频道的远端用户/主播 ID。如果 joinChannelByToken 中指定了 uid，则此处返回该 ID；否则使用ar云平台服务器自动分配的 ID。
 @param elapsed   从本地用户加入频道 joinChannelByToken 或 joinChannelByUserAccount 开始到发生此事件过去的时间（ms）。
 */
 - (void)rtcEngine:(ARtcEngineKit *_Nonnull)engine didJoinedOfUid:(NSString *_Nonnull)uid elapsed:(NSInteger)elapsed;
@@ -129,7 +133,11 @@
 - (void)rtcEngineRequestToken:(ARtcEngineKit * _Nonnull)engine;
 
 
-//MARK: - Media Delegate Methods
+//MARK: - 媒体事件回调
+/**-----------------------------------------------------------------------------
+* @name 媒体事件回调
+* -----------------------------------------------------------------------------
+*/
 
 /** 提示频道内谁正在说话、说话者音量及本地用户是否在说话的回调
 
@@ -240,7 +248,11 @@
  */
 - (void)rtcEngine:(ARtcEngineKit * _Nonnull)engine localVideoStateChange:(ARLocalVideoStreamState)state error:(ARLocalVideoStreamError)error;
 
-//MARK: - Statistics Delegate Methods
+//MARK: - 统计数据事件回调
+/**-----------------------------------------------------------------------------
+* @name 统计数据事件回调
+* -----------------------------------------------------------------------------
+*/
 
 /** 通话中远端音频流的统计信息回调，用于取代 audioQualityOfUid
 
@@ -293,7 +305,11 @@
  */
 - (void)rtcEngine:(ARtcEngineKit * _Nonnull)engine remoteVideoStats:(ARtcRemoteVideoStats * _Nonnull)stats;
 
-//MARK: - Audio Player Delegate Methods
+//MARK: - 音频播放事件回调
+/**-----------------------------------------------------------------------------
+* @name 频播放事件回调
+* -----------------------------------------------------------------------------
+*/
 
 /** 本地音效文件播放已结束回调
 
@@ -314,8 +330,11 @@
 
 //MARK: - Fallback Delegate Methods
 
-//MARK: - Device Delegate Methods
-
+//MARK: - 媒体设备事件回调
+/**-----------------------------------------------------------------------------
+* @name 媒体设备事件回调
+* -----------------------------------------------------------------------------
+*/
 /** 语音路由已发生变化回调
 
 当语音路由发生变化时，SDK 会触发此回调。
@@ -325,11 +344,15 @@
  */
 - (void)rtcEngine:(ARtcEngineKit * _Nonnull)engine didAudioRouteChanged:(ARAudioOutputRouting)routing;
 
-//MARK: - additional Methods(Not recommended)
+//MARK: - 其它回调方法(不推荐使用)
+/**-----------------------------------------------------------------------------
+* @name 其它回调方法
+* -----------------------------------------------------------------------------
+*/
 
 /** 已显示远端视频首帧回调
  
-**Note:**
+**Note**
  
 推荐使用remoteVideoStateChangedOfUid回调。
  
@@ -342,7 +365,7 @@
 
 /** 已完成远端视频首帧解码回调
  
- **Note:**
+**Note**
  
 收到该回调，可调用setupRemoteVideo方法显示远端视图。推荐使用 remoteVideoStateChangedOfUid 回调的 ARVideoRemoteStateStarting(1) 和 ARVideoRemoteStateDecoding(2)
  
@@ -355,7 +378,7 @@
 
 /** 已接收远端音频首帧的回调
  
- **Note:**
+**Note**
    
 推荐使用 remoteAudioStateChangedOfUid 回调。
 
@@ -367,7 +390,7 @@
 
 /** 已解码远端音频首帧的回调
 
- **Note:**
+**Note**
     
 推荐使用 remoteAudioStateChangedOfUid 回调。SDK 完成远端音频首帧解码，并发送给音频模块用以播放时，会触发此回调。有两种情况：
  
@@ -386,7 +409,7 @@
 
 /** 远端用户暂停/重新发送视频回调（由muteLocalVideoStream触发 ）
 
- **Note:**
+**Note**
  
  推荐使用 remoteVideoStateChangedOfUid 回调的：
  
@@ -409,7 +432,7 @@
  
  该回调是由远端用户调用 muteLocalAudioStream 方法关闭或开启音频发送触发的。当频道内的用户或主播人数超过 20 时，该回调不生效。
 
- **Note:**
+**Note**
     
 推荐使用 remoteAudioStateChangedOfUid 回调：
  * ARAudioRemoteReasonRemoteMuted(5)
@@ -423,7 +446,7 @@
 
 /** 其他用户启用/关闭视频回调（enableVideo 或 disableVideo触发）
 
- **Note:**
+**Note**
     
 推荐使用 remoteVideoStateChangedOfUid 回调的：
  
@@ -443,7 +466,7 @@
 
 /** 其他用户启用/关闭本地视频回调（enableLocalVideo触发）
 
- **Note:**
+**Note**
     
 推荐使用 remoteVideoStateChangedOfUid 回调的：
  
@@ -462,7 +485,7 @@
  
  该回调是由本地用户调用 enableLocalAudio 方法开启或关闭本地音频采集触发的。
 
- **Note:**
+**Note**
     
 推荐使用 localAudioStateChange 回调的： ARAudioLocalStateStopped(0) 或 ARAudioLocalStateRecording(1)。
 
@@ -481,7 +504,7 @@
  rtcEngineConnectionDidLost 回调是无论之前加入频道是否连接成功，只要 10 秒内和服务器无法建立连接都会触发。
  如果 SDK 在断开连接后，20 分钟内还是没能重新加入频道，SDK 会停止尝试重连。
 
- **Note:**
+**Note**
     
 推荐使用connectionChangedToState回调。
 
@@ -493,7 +516,7 @@
  
  当你被服务端禁掉连接的权限时，会触发该回调。
 
- **Note:**
+**Note**
     
 推荐使用connectionChangedToState回调。
 
@@ -509,7 +532,7 @@
  
  和 remoteAudioStats 回调相比，该回调以数据展示当前网络状态，因此更客观。
  
- **Note:**
+**Note**
      
  推荐使用remoteAudioStats回调。
 
@@ -529,7 +552,7 @@
 
  和 remoteVideoStats 回调相比，该回调以数据展示当前网络状态，因此更客观。
  
- **Note:**
+**Note**
      
  推荐使用remoteVideoStats回调。
 
@@ -545,7 +568,7 @@
 
  该回调描述远端用户在通话中的音频质量，针对每个远端用户/主播每 2 秒触发一次。如果远端同时存在多个用户/主播，该回调每 2 秒会被触发多次。
  
- **Note:**
+**Note**
      
  推荐使用remoteVideoStats回调。
 
@@ -561,7 +584,7 @@
  
  提示已成功打开摄像头，可以开始捕获视频。
  
- **Note:**
+**Note**
      
  推荐使用localVideoStateChange回调 state 参数中的 ARLocalVideoStreamStateCapturing(1)。
  
@@ -573,7 +596,7 @@
  
  提示视频功能已停止。 App 如需在停止视频后对 view 做其他处理（比如显示其他画面），可以在这个回调中进行。
 
- **Note:**
+**Note**
      
  推荐使用localVideoStateChange回调 state 参数中的 ARLocalVideoStreamStateCapturing(0)。
 

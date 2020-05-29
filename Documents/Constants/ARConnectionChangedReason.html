@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>ARConnectionChangedReason Constants Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">AriOSSDK 4.0.0 </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">anyRTC</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+
+	
+
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">ARConnectionChangedReason Constants Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Declared in</th>
+	<td>AREnumerates.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+
+					
+
+                    
+                    <h3 class="subsubtitle method-title">ARConnectionChangedReason</h3>
+                    
+					
+					<div class="section section-overview">
+                        <p>引起网络连接状态发生改变的原因</p>
+					</div>
+					
+					
+                    <div class="section">
+                        <!-- display enum values -->
+                        
+                        <h4 class="method-subtitle">Definition</h4>
+                        <code>typedef NS_ENUM(NSUInteger, ARConnectionChangedReason ) {<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARConnectionChangedConnecting</a> = 0,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARConnectionChangedJoinSuccess</a> = 1,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARConnectionChangedInterrupted</a> = 2,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARConnectionChangedBannedByServer</a> = 3,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARConnectionChangedJoinFailed</a> = 4,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARConnectionChangedLeaveChannel</a> = 5,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARConnectionChangedInvalidAppId</a> = 6,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARConnectionChangedInvalidChannelName</a> = 7,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARConnectionChangedInvalidToken</a> = 8,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARConnectionChangedTokenExpired</a> = 9,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARConnectionChangedRejectedByServer</a> = 10,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARConnectionChangedSettingProxyServer</a> = 11,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARConnectionChangedRenewToken</a> = 12,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARConnectionChangedClientIpAddressChanged</a> = 13,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARConnectionChangedKeepAliveTimeout</a> = 14,<br>
+                            
+                            };</code>
+                    
+                    </div>
+                    
+                    <div class="section section-methods">
+                        <h4 class="method-subtitle">Constants</h4>
+                        <dl class="termdef">
+                            
+                            <dt><a name="" title="ARConnectionChangedConnecting"></a><code>ARConnectionChangedConnecting</code></dt>
+<dd>
+
+
+<pre><code> 0: 建立网络连接中。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARConnectionChangedJoinSuccess"></a><code>ARConnectionChangedJoinSuccess</code></dt>
+<dd>
+
+
+<pre><code> 1: 成功加入频道。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARConnectionChangedInterrupted"></a><code>ARConnectionChangedInterrupted</code></dt>
+<dd>
+
+
+<pre><code> 2: 网络连接中断。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARConnectionChangedBannedByServer"></a><code>ARConnectionChangedBannedByServer</code></dt>
+<dd>
+
+
+<pre><code> 3: 网络连接被服务器禁止。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARConnectionChangedJoinFailed"></a><code>ARConnectionChangedJoinFailed</code></dt>
+<dd>
+
+
+<pre><code> 4: 加入频道失败。SDK 在尝试加入频道 20 分钟后还是没能加入频道，会返回该状态，并停止尝试重连。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARConnectionChangedLeaveChannel"></a><code>ARConnectionChangedLeaveChannel</code></dt>
+<dd>
+
+
+<pre><code> 5: 离开频道。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARConnectionChangedInvalidAppId"></a><code>ARConnectionChangedInvalidAppId</code></dt>
+<dd>
+
+
+<pre><code> 6: 不是有效的 APP ID。请更换有效的 APP ID 重新加入频道。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARConnectionChangedInvalidChannelName"></a><code>ARConnectionChangedInvalidChannelName</code></dt>
+<dd>
+
+
+<pre><code> 7: 不是有效的频道名。请更换有效的频道名重新加入频道。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARConnectionChangedInvalidToken"></a><code>ARConnectionChangedInvalidToken</code></dt>
+<dd>
+
+
+<pre><code> 8: 生成的 Token 无效。一般有以下原因：
+ * 在控制台上启用了 App Certificate，但加入频道未使用 Token。当启用了 App Certificate，必须使用 Token。
+ * 在调用 joinChannelByToken 加入频道时指定的 uid 与生成 Token 时传入的 uid 不一致。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARConnectionChangedTokenExpired"></a><code>ARConnectionChangedTokenExpired</code></dt>
+<dd>
+
+
+<pre><code> 9: 当前使用的 Token 过期，不再有效，需要重新在你的服务端申请生成 Token。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARConnectionChangedRejectedByServer"></a><code>ARConnectionChangedRejectedByServer</code></dt>
+<dd>
+
+
+<pre><code> 10: 此用户被服务器禁止。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARConnectionChangedSettingProxyServer"></a><code>ARConnectionChangedSettingProxyServer</code></dt>
+<dd>
+
+
+<pre><code> 11: 由于设置了代理服务器，SDK 尝试重连。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARConnectionChangedRenewToken"></a><code>ARConnectionChangedRenewToken</code></dt>
+<dd>
+
+
+<pre><code> 12: 更新 Token 引起网络连接状态改变。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARConnectionChangedClientIpAddressChanged"></a><code>ARConnectionChangedClientIpAddressChanged</code></dt>
+<dd>
+
+
+<pre><code> 13: 客户端 IP 地址变更，可能是由于网络类型，或网络运营商的 IP 或端口发生改变引起。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARConnectionChangedKeepAliveTimeout"></a><code>ARConnectionChangedKeepAliveTimeout</code></dt>
+<dd>
+
+
+<pre><code> 14: SDK 和服务器连接保活超时，进入自动重连状态 ARConnectionStateReconnecting(4).
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                        </dl>
+                    </div>
+                    
+
+                    
+                    
+
+                    
+
+                    
+                    <div class="method-subsection declared-in-section">
+                        <h4 class="method-subtitle">Declared In</h4>
+                        <p><code class="declared-in-ref">AREnumerates.h</code></p>
+                    </div>
+                    
+                    
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2020 anyRTC. All rights reserved. Updated: 2020-05-29</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

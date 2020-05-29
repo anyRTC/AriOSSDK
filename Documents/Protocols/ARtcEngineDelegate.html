@@ -1,0 +1,3426 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>ARtcEngineDelegate Protocol Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">AriOSSDK 4.0.0 </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">anyRTC</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/rtcEngine:audioQualityOfUid:quality:delay:lost:">- rtcEngine:audioQualityOfUid:quality:delay:lost:</option>
+		
+		<option value="//api/name/rtcEngine:audioTransportStatsOfUid:delay:lost:rxKBitRate:">- rtcEngine:audioTransportStatsOfUid:delay:lost:rxKBitRate:</option>
+		
+		<option value="//api/name/rtcEngine:connectionChangedToState:reason:">- rtcEngine:connectionChangedToState:reason:</option>
+		
+		<option value="//api/name/rtcEngine:didAudioMuted:byUid:">- rtcEngine:didAudioMuted:byUid:</option>
+		
+		<option value="//api/name/rtcEngine:didAudioRouteChanged:">- rtcEngine:didAudioRouteChanged:</option>
+		
+		<option value="//api/name/rtcEngine:didClientRoleChanged:newRole:">- rtcEngine:didClientRoleChanged:newRole:</option>
+		
+		<option value="//api/name/rtcEngine:didJoinChannel:withUid:elapsed:">- rtcEngine:didJoinChannel:withUid:elapsed:</option>
+		
+		<option value="//api/name/rtcEngine:didJoinedOfUid:elapsed:">- rtcEngine:didJoinedOfUid:elapsed:</option>
+		
+		<option value="//api/name/rtcEngine:didLeaveChannelWithStats:">- rtcEngine:didLeaveChannelWithStats:</option>
+		
+		<option value="//api/name/rtcEngine:didLocalVideoEnabled:byUid:">- rtcEngine:didLocalVideoEnabled:byUid:</option>
+		
+		<option value="//api/name/rtcEngine:didMicrophoneEnabled:">- rtcEngine:didMicrophoneEnabled:</option>
+		
+		<option value="//api/name/rtcEngine:didOccurError:">- rtcEngine:didOccurError:</option>
+		
+		<option value="//api/name/rtcEngine:didOccurWarning:">- rtcEngine:didOccurWarning:</option>
+		
+		<option value="//api/name/rtcEngine:didOfflineOfUid:reason:">- rtcEngine:didOfflineOfUid:reason:</option>
+		
+		<option value="//api/name/rtcEngine:didRejoinChannel:withUid:elapsed:">- rtcEngine:didRejoinChannel:withUid:elapsed:</option>
+		
+		<option value="//api/name/rtcEngine:didVideoEnabled:byUid:">- rtcEngine:didVideoEnabled:byUid:</option>
+		
+		<option value="//api/name/rtcEngine:didVideoMuted:byUid:">- rtcEngine:didVideoMuted:byUid:</option>
+		
+		<option value="//api/name/rtcEngine:firstLocalAudioFrame:">- rtcEngine:firstLocalAudioFrame:</option>
+		
+		<option value="//api/name/rtcEngine:firstLocalVideoFrameWithSize:elapsed:">- rtcEngine:firstLocalVideoFrameWithSize:elapsed:</option>
+		
+		<option value="//api/name/rtcEngine:firstRemoteAudioFrameDecodedOfUid:elapsed:">- rtcEngine:firstRemoteAudioFrameDecodedOfUid:elapsed:</option>
+		
+		<option value="//api/name/rtcEngine:firstRemoteAudioFrameOfUid:elapsed:">- rtcEngine:firstRemoteAudioFrameOfUid:elapsed:</option>
+		
+		<option value="//api/name/rtcEngine:firstRemoteVideoDecodedOfUid:size:elapsed:">- rtcEngine:firstRemoteVideoDecodedOfUid:size:elapsed:</option>
+		
+		<option value="//api/name/rtcEngine:firstRemoteVideoFrameOfUid:size:elapsed:">- rtcEngine:firstRemoteVideoFrameOfUid:size:elapsed:</option>
+		
+		<option value="//api/name/rtcEngine:localAudioStateChange:error:">- rtcEngine:localAudioStateChange:error:</option>
+		
+		<option value="//api/name/rtcEngine:localAudioStats:">- rtcEngine:localAudioStats:</option>
+		
+		<option value="//api/name/rtcEngine:localVideoStateChange:error:">- rtcEngine:localVideoStateChange:error:</option>
+		
+		<option value="//api/name/rtcEngine:localVideoStats:">- rtcEngine:localVideoStats:</option>
+		
+		<option value="//api/name/rtcEngine:networkTypeChangedToType:">- rtcEngine:networkTypeChangedToType:</option>
+		
+		<option value="//api/name/rtcEngine:remoteAudioStateChangedOfUid:state:reason:elapsed:">- rtcEngine:remoteAudioStateChangedOfUid:state:reason:elapsed:</option>
+		
+		<option value="//api/name/rtcEngine:remoteAudioStats:">- rtcEngine:remoteAudioStats:</option>
+		
+		<option value="//api/name/rtcEngine:remoteVideoStateChangedOfUid:state:reason:elapsed:">- rtcEngine:remoteVideoStateChangedOfUid:state:reason:elapsed:</option>
+		
+		<option value="//api/name/rtcEngine:remoteVideoStats:">- rtcEngine:remoteVideoStats:</option>
+		
+		<option value="//api/name/rtcEngine:reportAudioVolumeIndicationOfSpeakers:totalVolume:">- rtcEngine:reportAudioVolumeIndicationOfSpeakers:totalVolume:</option>
+		
+		<option value="//api/name/rtcEngine:reportRtcStats:">- rtcEngine:reportRtcStats:</option>
+		
+		<option value="//api/name/rtcEngine:tokenPrivilegeWillExpire:">- rtcEngine:tokenPrivilegeWillExpire:</option>
+		
+		<option value="//api/name/rtcEngine:videoSizeChangedOfUid:size:rotation:">- rtcEngine:videoSizeChangedOfUid:size:rotation:</option>
+		
+		<option value="//api/name/rtcEngine:videoTransportStatsOfUid:delay:lost:rxKBitRate:">- rtcEngine:videoTransportStatsOfUid:delay:lost:rxKBitRate:</option>
+		
+		<option value="//api/name/rtcEngineCameraDidReady:">- rtcEngineCameraDidReady:</option>
+		
+		<option value="//api/name/rtcEngineConnectionDidBanned:">- rtcEngineConnectionDidBanned:</option>
+		
+		<option value="//api/name/rtcEngineConnectionDidInterrupted:">- rtcEngineConnectionDidInterrupted:</option>
+		
+		<option value="//api/name/rtcEngineConnectionDidLost:">- rtcEngineConnectionDidLost:</option>
+		
+		<option value="//api/name/rtcEngineDidAudioEffectFinish:soundId:">- rtcEngineDidAudioEffectFinish:soundId:</option>
+		
+		<option value="//api/name/rtcEngineRequestToken:">- rtcEngineRequestToken:</option>
+		
+		<option value="//api/name/rtcEngineVideoDidStop:">- rtcEngineVideoDidStop:</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">ARtcEngineDelegate Protocol Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Conforms to</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>ARtcEngineDelegate.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						<a title="核心事件回调" name="task_核心事件回调"></a>
+						<h2 class="task-title">核心事件回调</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/rtcEngine:didOccurWarning:" title="rtcEngine:didOccurWarning:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rtcEngine:didOccurWarning:">&ndash;&nbsp;rtcEngine:didOccurWarning:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>发生警告回调</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)rtcEngine:(ARtcEngineKit *_Nonnull)<em>engine</em> didOccurWarning:(ARWarningCode)<em>warningCode</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>engine</code></th>
+						<td><p>ARtcEngineKit对象</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>warningCode</code></th>
+						<td><p><a href="../Constants/ARWarningCode.html">ARWarningCode</a></p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>发生警告回调</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/rtcEngine:didOccurError:" title="rtcEngine:didOccurError:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rtcEngine:didOccurError:">&ndash;&nbsp;rtcEngine:didOccurError:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>发生错误回调</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)rtcEngine:(ARtcEngineKit *_Nonnull)<em>engine</em> didOccurError:(ARErrorCode)<em>errorCode</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>engine</code></th>
+						<td><p>ARtcEngineKit对象</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>errorCode</code></th>
+						<td><p><a href="../Constants/ARErrorCode.html">ARErrorCode</a></p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>发生错误回调</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/rtcEngine:didJoinChannel:withUid:elapsed:" title="rtcEngine:didJoinChannel:withUid:elapsed:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rtcEngine:didJoinChannel:withUid:elapsed:">&ndash;&nbsp;rtcEngine:didJoinChannel:withUid:elapsed:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>加入频道回调</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)rtcEngine:(ARtcEngineKit *_Nonnull)<em>engine</em> didJoinChannel:(NSString *_Nonnull)<em>channel</em> withUid:(NSString *_Nonnull)<em>uid</em> elapsed:(NSInteger)<em>elapsed</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>engine</code></th>
+						<td><p>ARtcEngineKit对象</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>channel</code></th>
+						<td><p>频道名称</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>uid</code></th>
+						<td><p>用户ID</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>elapsed</code></th>
+						<td><p>从调用joinChannelByToken开始到发生此事件过去的时间（ms)。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>加入频道回调</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/rtcEngine:didRejoinChannel:withUid:elapsed:" title="rtcEngine:didRejoinChannel:withUid:elapsed:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rtcEngine:didRejoinChannel:withUid:elapsed:">&ndash;&nbsp;rtcEngine:didRejoinChannel:withUid:elapsed:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>重新加入频道回调</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)rtcEngine:(ARtcEngineKit *_Nonnull)<em>engine</em> didRejoinChannel:(NSString *_Nonnull)<em>channel</em> withUid:(NSString *_Nonnull)<em>uid</em> elapsed:(NSInteger)<em>elapsed</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>engine</code></th>
+						<td><p>ARtcEngineKit对象</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>channel</code></th>
+						<td><p>频道名称</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>uid</code></th>
+						<td><p>用户ID</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>elapsed</code></th>
+						<td><p>从开始重连到重连成功的时间（ms）。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>重新加入频道回调</p>
+
+<p>有时候由于网络原因，客户端可能会和服务器失去连接，SDK 会进行自动重连，自动重连成功后触发此回调方法。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/rtcEngine:didLeaveChannelWithStats:" title="rtcEngine:didLeaveChannelWithStats:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rtcEngine:didLeaveChannelWithStats:">&ndash;&nbsp;rtcEngine:didLeaveChannelWithStats:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>已离开频道回调</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)rtcEngine:(ARtcEngineKit *_Nonnull)<em>engine</em> didLeaveChannelWithStats:(ARChannelStats *_Nonnull)<em>stats</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>engine</code></th>
+						<td><p>ARtcEngineKit对象</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>stats</code></th>
+						<td><p>通话相关的统计信息：<a href="../Classes/ARChannelStats.html">ARChannelStats</a></p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>已离开频道回调</p>
+
+<p>当用户调用 leaveChannel 离开频道后，SDK 会触发该回调。在该回调方法中，App 可以得到此次通话的总通话时长、SDK 收发数据的流量等信息。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/rtcEngine:didClientRoleChanged:newRole:" title="rtcEngine:didClientRoleChanged:newRole:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rtcEngine:didClientRoleChanged:newRole:">&ndash;&nbsp;rtcEngine:didClientRoleChanged:newRole:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>用户角色已切换回调</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)rtcEngine:(ARtcEngineKit *_Nonnull)<em>engine</em> didClientRoleChanged:(ARClientRole)<em>oldRole</em> newRole:(ARClientRole)<em>newRole</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>engine</code></th>
+						<td><p>ARtcEngineKit对象</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>oldRole</code></th>
+						<td><p>切换前的角色</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>newRole</code></th>
+						<td><p>切换后的角色</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>用户角色已切换回调</p>
+
+<p>直播场景下，当本地用户在加入频道后调用 setClientRole 切换角色时会触发此回调，即主播切换为观众时，或观众切换为主播时。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/rtcEngine:didJoinedOfUid:elapsed:" title="rtcEngine:didJoinedOfUid:elapsed:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rtcEngine:didJoinedOfUid:elapsed:">&ndash;&nbsp;rtcEngine:didJoinedOfUid:elapsed:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>远端用户/主播加入回调</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)rtcEngine:(ARtcEngineKit *_Nonnull)<em>engine</em> didJoinedOfUid:(NSString *_Nonnull)<em>uid</em> elapsed:(NSInteger)<em>elapsed</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>engine</code></th>
+						<td><p>ARtcEngineKit对象</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>uid</code></th>
+						<td><p>新加入频道的远端用户/主播 ID。如果 joinChannelByToken 中指定了 uid，则此处返回该 ID；否则使用ar云平台服务器自动分配的 ID。</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>elapsed</code></th>
+						<td><p>从本地用户加入频道 joinChannelByToken 或 joinChannelByUserAccount 开始到发生此事件过去的时间（ms）。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>远端用户/主播加入回调</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/rtcEngine:didOfflineOfUid:reason:" title="rtcEngine:didOfflineOfUid:reason:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rtcEngine:didOfflineOfUid:reason:">&ndash;&nbsp;rtcEngine:didOfflineOfUid:reason:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>远端用户（通信场景）/主播（直播场景）离开当前频道回调</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)rtcEngine:(ARtcEngineKit *_Nonnull)<em>engine</em> didOfflineOfUid:(NSString *_Nonnull)<em>uid</em> reason:(ARUserOfflineReason)<em>reason</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>engine</code></th>
+						<td><p>ARtcEngineKit对象</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>uid</code></th>
+						<td><p>离线的用户 ID。</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>reason</code></th>
+						<td><p>离线原因，详见 ARUserOfflineReason。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>远端用户（通信场景）/主播（直播场景）离开当前频道回调</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/rtcEngine:connectionChangedToState:reason:" title="rtcEngine:connectionChangedToState:reason:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rtcEngine:connectionChangedToState:reason:">&ndash;&nbsp;rtcEngine:connectionChangedToState:reason:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>网络连接状态已改变回调</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)rtcEngine:(ARtcEngineKit *_Nonnull)<em>engine</em> connectionChangedToState:(ARConnectionStateType)<em>state</em> reason:(ARConnectionChangedReason)<em>reason</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>engine</code></th>
+						<td><p>ARtcEngineKit对象</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>state</code></th>
+						<td><p>当前的网络连接状态，详见 ARConnectionStateType。</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>reason</code></th>
+						<td><p>引起网络连接状态发生改变的原因，详见 ARConnectionChangedReason。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>网络连接状态已改变回调</p>
+
+<p>该回调在网络连接状态发生改变的时候触发，并告知用户当前的网络连接状态，和引起网络状态改变的原因。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/rtcEngine:networkTypeChangedToType:" title="rtcEngine:networkTypeChangedToType:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rtcEngine:networkTypeChangedToType:">&ndash;&nbsp;rtcEngine:networkTypeChangedToType:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>本地网络类型发生改变回调</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)rtcEngine:(ARtcEngineKit *_Nonnull)<em>engine</em> networkTypeChangedToType:(ARNetworkType)<em>type</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>engine</code></th>
+						<td><p>ARtcEngineKit对象</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>type</code></th>
+						<td><p>网络连接类型，详见 ARNetworkType。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>本地网络类型发生改变回调</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/rtcEngineConnectionDidLost:" title="rtcEngineConnectionDidLost:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rtcEngineConnectionDidLost:">&ndash;&nbsp;rtcEngineConnectionDidLost:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>网络连接中断，且 SDK 无法在 10 秒内连接服务器回调</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)rtcEngineConnectionDidLost:(ARtcEngineKit *_Nonnull)<em>engine</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>engine</code></th>
+						<td><p>ARtcEngineKit对象</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>网络连接中断，且 SDK 无法在 10 秒内连接服务器回调</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/rtcEngine:tokenPrivilegeWillExpire:" title="rtcEngine:tokenPrivilegeWillExpire:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rtcEngine:tokenPrivilegeWillExpire:">&ndash;&nbsp;rtcEngine:tokenPrivilegeWillExpire:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Token 服务即将过期回调</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)rtcEngine:(ARtcEngineKit *_Nonnull)<em>engine</em> tokenPrivilegeWillExpire:(NSString *_Nonnull)<em>token</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>engine</code></th>
+						<td><p><a href="../Classes/ARtcEngineKit.html">ARtcEngineKit</a> 对象</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>token</code></th>
+						<td><p>即将服务失效的 Token</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Token 服务即将过期回调</p>
+
+<p>在调用 joinChannelByToken 时如果指定了 Token，由于 Token 具有一定的时效，在通话过程中如果 Token 即将失效，SDK 会提前 30 秒触发该回调，提醒应用程序更新 Token。 当收到该回调时，用户需要重新在服务端生成新的 Token，然后调用 renewToken 将新生成的 Token 传给 SDK。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/rtcEngineRequestToken:" title="rtcEngineRequestToken:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rtcEngineRequestToken:">&ndash;&nbsp;rtcEngineRequestToken:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Token 过期回调</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)rtcEngineRequestToken:(ARtcEngineKit *_Nonnull)<em>engine</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>engine</code></th>
+						<td><p><a href="../Classes/ARtcEngineKit.html">ARtcEngineKit</a> 对象</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Token 过期回调</p>
+
+<p>在调用 joinChannelByToken 时如果指定了 Token，由于 Token 具有一定的时效，在通话过程中 SDK 可能由于网络原因和服务器失去连接，重连时可能需要新的 Token。 该回调通知 App 需要生成新的 Token，并需调用 renewToken 为 SDK 指定新的 Token。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="媒体事件回调" name="task_媒体事件回调"></a>
+						<h2 class="task-title">媒体事件回调</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/rtcEngine:reportAudioVolumeIndicationOfSpeakers:totalVolume:" title="rtcEngine:reportAudioVolumeIndicationOfSpeakers:totalVolume:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rtcEngine:reportAudioVolumeIndicationOfSpeakers:totalVolume:">&ndash;&nbsp;rtcEngine:reportAudioVolumeIndicationOfSpeakers:totalVolume:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>提示频道内谁正在说话、说话者音量及本地用户是否在说话的回调</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)rtcEngine:(ARtcEngineKit *_Nonnull)<em>engine</em> reportAudioVolumeIndicationOfSpeakers:(NSArray&lt;ARtcAudioVolumeInfo*&gt; *_Nonnull)<em>speakers</em> totalVolume:(NSInteger)<em>totalVolume</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>engine</code></th>
+						<td><p><a href="../Classes/ARtcEngineKit.html">ARtcEngineKit</a> 对象</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>speakers</code></th>
+						<td><p><a href="../Classes/ARtcAudioVolumeInfo.html">ARtcAudioVolumeInfo</a> 数组。</p>
+
+<ul>
+<li><p>在本地用户的回调中，此数组中包含以下成员：</p>
+
+<ul>
+<li><code>uid</code> = 0,</li>
+<li>volume 等于 totalVolume，返回本地用户混音后的音量；</li>
+<li>vad，返回本地用户人声状态。</li>
+</ul>
+</li>
+<li><p>在远端用户的回调中，此数组中包含以下成员：</p>
+
+<ul>
+<li>uid 为每位说话者各自的用户 ID；</li>
+<li>volume 为说话者各自混音后的音量；</li>
+<li>vad = 0，对远端用户无效。 如果报告的 speakers 数组为空，则表示此时远端没有人说话。</li>
+</ul>
+</li>
+</ul>
+</td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>totalVolume</code></th>
+						<td><p>（混音后的）总音量，取值范围为 [0,255]。</p>
+
+<ul>
+<li>在本地用户的回调中，totalVolume 为本地用户混音后的音量。</li>
+<li>在远端用户的回调中，totalVolume 为所有说话者混音后的总音量。</li>
+</ul>
+</td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>提示频道内谁正在说话、说话者音量及本地用户是否在说话的回调</p>
+
+<p>与 audioVolumeIndicationBlock 相同。</p>
+
+<p>该回调报告频道内瞬时音量最高的几个用户（最多三个用户）的用户 ID、他们的音量及本地用户是否在说话。</p>
+
+<p>该回调默认禁用。可以通过 enableAudioVolumeIndication 方法开启；开启后，无论频道内是否有人说话，SDK 都会按 enableAudioVolumeIndication 方法中设置的时间间隔触发 reportAudioVolumeIndicationOfSpeakers 回调。每次触发，用户会收到两个独立的 reportAudioVolumeIndicationOfSpeakers 回调，其中一个包含本地用户的音量信息，另一个包含远端所有用户的音量信息，详见下方参数描述。</p>
+
+<p><strong>Note:</strong></p>
+
+<ul>
+<li>若需使用该回调 speakers 数组中的 vad 参数（即本地人声检测功能），请在 enableAudioVolumeIndication 方法中设置 report_vad 为 YES 。</li>
+<li>如果有用户将自己静音（调用了 muteLocalAudioStream ），会对该回调的行为产生影响。</li>
+<li>本地用户静音后 SDK 即不再报告本地用户的音量提示回调。</li>
+<li>远端说话者静音后 20 秒，远端的音量提示回调中将不再包含该用户；如果远端所有用户都将自己静音，20 秒后 SDK 不再报告远端用户的音量提示回调。</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/rtcEngine:firstLocalAudioFrame:" title="rtcEngine:firstLocalAudioFrame:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rtcEngine:firstLocalAudioFrame:">&ndash;&nbsp;rtcEngine:firstLocalAudioFrame:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>已发送本地音频首帧的回调</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)rtcEngine:(ARtcEngineKit *_Nonnull)<em>engine</em> firstLocalAudioFrame:(NSInteger)<em>elapsed</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>engine</code></th>
+						<td><p><a href="../Classes/ARtcEngineKit.html">ARtcEngineKit</a> 对象</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>elapsed</code></th>
+						<td><p>从本地用户调用joinChannelByToken开始到发生此事件过去的时间（ms)。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>已发送本地音频首帧的回调</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/rtcEngine:firstLocalVideoFrameWithSize:elapsed:" title="rtcEngine:firstLocalVideoFrameWithSize:elapsed:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rtcEngine:firstLocalVideoFrameWithSize:elapsed:">&ndash;&nbsp;rtcEngine:firstLocalVideoFrameWithSize:elapsed:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>已显示本地视频首帧的回调</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)rtcEngine:(ARtcEngineKit *_Nonnull)<em>engine</em> firstLocalVideoFrameWithSize:(CGSize)<em>size</em> elapsed:(NSInteger)<em>elapsed</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>engine</code></th>
+						<td><p><a href="../Classes/ARtcEngineKit.html">ARtcEngineKit</a> 对象</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>size</code></th>
+						<td><p>本地渲染的视频尺寸（宽度和高度）</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>elapsed</code></th>
+						<td><p>从本地用户调用joinChannelByToken到发生此事件过去的时间（ms）。 如果在joinChannelByToken前调用了startPreview，是从startPreview到发生此事件过去的时间。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>已显示本地视频首帧的回调</p>
+
+<p>第一帧本地视频显示时，触发此回调。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/rtcEngine:remoteAudioStateChangedOfUid:state:reason:elapsed:" title="rtcEngine:remoteAudioStateChangedOfUid:state:reason:elapsed:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rtcEngine:remoteAudioStateChangedOfUid:state:reason:elapsed:">&ndash;&nbsp;rtcEngine:remoteAudioStateChangedOfUid:state:reason:elapsed:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>远端音频流状态发生改变回调。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)rtcEngine:(ARtcEngineKit *_Nonnull)<em>engine</em> remoteAudioStateChangedOfUid:(NSString *_Nonnull)<em>uid</em> state:(ARAudioRemoteState)<em>state</em> reason:(ARAudioRemoteStateReason)<em>reason</em> elapsed:(NSInteger)<em>elapsed</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>engine</code></th>
+						<td><p><a href="../Classes/ARtcEngineKit.html">ARtcEngineKit</a> 对象</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>uid</code></th>
+						<td><p>发生音频状态改变的远端用户 ID。</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>state</code></th>
+						<td><p>远端音频流状态。详见 ARAudioRemoteState。</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>reason</code></th>
+						<td><p>远端音频流状态改变的具体原因。详见 ARAudioRemoteStateReason。</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>elapsed</code></th>
+						<td><p>从本地用户调用 joinChannel 方法到发生本事件经历的时间，单位为 ms。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>远端音频流状态发生改变回调。</p>
+
+<p>远端用户/主播音频状态发生改变时，SDK 会触发该回调向本地用户报告当前的远端音频流状态。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/rtcEngine:localAudioStateChange:error:" title="rtcEngine:localAudioStateChange:error:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rtcEngine:localAudioStateChange:error:">&ndash;&nbsp;rtcEngine:localAudioStateChange:error:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>本地音频状态发生改变回调。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)rtcEngine:(ARtcEngineKit *_Nonnull)<em>engine</em> localAudioStateChange:(ARAudioLocalState)<em>state</em> error:(ARAudioLocalError)<em>error</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>engine</code></th>
+						<td><p><a href="../Classes/ARtcEngineKit.html">ARtcEngineKit</a> 对象</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>state</code></th>
+						<td><p>当前的本地音频状态。详见 ARAudioLocalState。</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>error</code></th>
+						<td><p>本地音频出错原因。详见 ARAudioLocalError。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>本地音频状态发生改变回调。</p>
+
+<p>本地音频的状态发生改变时（包括本地麦克风录制状态和音频编码状态），SDK会触发该回调报告当前的本地音频状态。在本地音频出现故障时，该回调可以帮助你了解当前音频的状态以及出现故障的原因，方便你排查问题。</p>
+
+<p><strong>Note:</strong></p>
+
+<p>当状态为 ARAudioLocalStateFailed(3) 时，你可以在 error 参数中查看返回的错误信息。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/rtcEngine:videoSizeChangedOfUid:size:rotation:" title="rtcEngine:videoSizeChangedOfUid:size:rotation:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rtcEngine:videoSizeChangedOfUid:size:rotation:">&ndash;&nbsp;rtcEngine:videoSizeChangedOfUid:size:rotation:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>本地或远端视频大小和旋转信息发生改变回调</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)rtcEngine:(ARtcEngineKit *_Nonnull)<em>engine</em> videoSizeChangedOfUid:(NSString *_Nonnull)<em>uid</em> size:(CGSize)<em>size</em> rotation:(NSInteger)<em>rotation</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>engine</code></th>
+						<td><p><a href="../Classes/ARtcEngineKit.html">ARtcEngineKit</a> 对象</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>uid</code></th>
+						<td><p>图像尺寸和旋转信息发生变化的用户的用户 ID（本地用户的 uid 为 0）</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>size</code></th>
+						<td><p>新的视频尺寸</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>rotation</code></th>
+						<td><p>旋转信息 (0 到 360)</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>本地或远端视频大小和旋转信息发生改变回调</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/rtcEngine:remoteVideoStateChangedOfUid:state:reason:elapsed:" title="rtcEngine:remoteVideoStateChangedOfUid:state:reason:elapsed:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rtcEngine:remoteVideoStateChangedOfUid:state:reason:elapsed:">&ndash;&nbsp;rtcEngine:remoteVideoStateChangedOfUid:state:reason:elapsed:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>远端视频状态发生改变回调</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)rtcEngine:(ARtcEngineKit *_Nonnull)<em>engine</em> remoteVideoStateChangedOfUid:(NSString *_Nonnull)<em>uid</em> state:(ARVideoRemoteState)<em>state</em> reason:(ARVideoRemoteStateReason)<em>reason</em> elapsed:(NSInteger)<em>elapsed</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>engine</code></th>
+						<td><p><a href="../Classes/ARtcEngineKit.html">ARtcEngineKit</a> 对象。</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>uid</code></th>
+						<td><p>发生视频状态改变的远端用户 ID。</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>state</code></th>
+						<td><p>远端视频流状态。详见 ARVideoRemoteState。</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>reason</code></th>
+						<td><p>远端视频流状态改变的具体原因。详见 ARVideoRemoteStateReason。</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>elapsed</code></th>
+						<td><p>从本地用户调用 joinChannel 方法到发生本事件经历的时间，单位为 ms。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>远端视频状态发生改变回调</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/rtcEngine:localVideoStateChange:error:" title="rtcEngine:localVideoStateChange:error:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rtcEngine:localVideoStateChange:error:">&ndash;&nbsp;rtcEngine:localVideoStateChange:error:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>本地视频状态发生改变回调</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)rtcEngine:(ARtcEngineKit *_Nonnull)<em>engine</em> localVideoStateChange:(ARLocalVideoStreamState)<em>state</em> error:(ARLocalVideoStreamError)<em>error</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>engine</code></th>
+						<td><p><a href="../Classes/ARtcEngineKit.html">ARtcEngineKit</a> 对象。</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>state</code></th>
+						<td><p>本地视频状态，详见 ARLocalVideoStreamState。当本地视频状态为 ARLocalVideoStreamStateFailed(3) 时，你可以在 error 参数中查看返回的错误原因。</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>error</code></th>
+						<td><p>本地视频出错原因，详见 ARLocalVideoStreamError。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>本地视频状态发生改变回调</p>
+
+<p>本地视频的状态发生改变时，SDK 会触发该回调返回当前的本地视频状态。</p>
+
+<p>在本地视频出现故障时，你可以通过该回调了解当前视频的状态以及出现故障的原因，方便排查问题。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="统计数据事件回调" name="task_统计数据事件回调"></a>
+						<h2 class="task-title">统计数据事件回调</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/rtcEngine:remoteAudioStats:" title="rtcEngine:remoteAudioStats:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rtcEngine:remoteAudioStats:">&ndash;&nbsp;rtcEngine:remoteAudioStats:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>通话中远端音频流的统计信息回调，用于取代 audioQualityOfUid</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)rtcEngine:(ARtcEngineKit *_Nonnull)<em>engine</em> remoteAudioStats:(ARtcRemoteAudioStats *_Nonnull)<em>stats</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>engine</code></th>
+						<td><p><a href="../Classes/ARtcEngineKit.html">ARtcEngineKit</a> 对象。</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>stats</code></th>
+						<td><p>远端音频统计数据，详细定义见 ARtcRemoteAudioStats。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>通话中远端音频流的统计信息回调，用于取代 audioQualityOfUid</p>
+
+<p>该回调描述远端用户在通话中端到端的音频流统计信息，针对每个远端用户/主播每 2 秒触发一次。</p>
+
+<p>如果远端同时存在多个用户/主播，该回调每 2 秒会被触发多次。</p>
+
+<p>和 audioTransportStatsOfUid 回调相比，该回调更贴近用户的主观感受。</p>
+
+<p>比如，当网络发生丢包时，因 FEC（Forward Error Correction，向前纠错码）或重传恢复，最终的音频丢帧率不高，则可以认为整个质量较好。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/rtcEngine:reportRtcStats:" title="rtcEngine:reportRtcStats:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rtcEngine:reportRtcStats:">&ndash;&nbsp;rtcEngine:reportRtcStats:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>当前通话统计回调。 该回调在通话或直播中每两秒触发一次。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)rtcEngine:(ARtcEngineKit *_Nonnull)<em>engine</em> reportRtcStats:(ARChannelStats *_Nonnull)<em>stats</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>engine</code></th>
+						<td><p><a href="../Classes/ARtcEngineKit.html">ARtcEngineKit</a> 对象。</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>stats</code></th>
+						<td><p>通话相关的数据统计信息，详见 <a href="../Classes/ARChannelStats.html">ARChannelStats</a></p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>当前通话统计回调。 该回调在通话或直播中每两秒触发一次。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/rtcEngine:localVideoStats:" title="rtcEngine:localVideoStats:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rtcEngine:localVideoStats:">&ndash;&nbsp;rtcEngine:localVideoStats:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>本地视频流统计信息回调</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)rtcEngine:(ARtcEngineKit *_Nonnull)<em>engine</em> localVideoStats:(ARtcLocalVideoStats *_Nonnull)<em>stats</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>engine</code></th>
+						<td><p><a href="../Classes/ARtcEngineKit.html">ARtcEngineKit</a> 对象。</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>stats</code></th>
+						<td><p>报告更新本地视频统计信息，该回调方法每两秒触发一次。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>本地视频流统计信息回调</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/rtcEngine:localAudioStats:" title="rtcEngine:localAudioStats:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rtcEngine:localAudioStats:">&ndash;&nbsp;rtcEngine:localAudioStats:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>通话中本地音频流的统计信息回调。</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)rtcEngine:(ARtcEngineKit *_Nonnull)<em>engine</em> localAudioStats:(ARtcLocalAudioStats *_Nonnull)<em>stats</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>engine</code></th>
+						<td><p><a href="../Classes/ARtcEngineKit.html">ARtcEngineKit</a> 对象。</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>stats</code></th>
+						<td><p>本地音频统计数据。详见 ARtcLocalAudioStats。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>通话中本地音频流的统计信息回调。</p>
+
+<p>该回调描述本地设备发送音频流的统计信息。SDK 每 2 秒触发该回调一次。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/rtcEngine:remoteVideoStats:" title="rtcEngine:remoteVideoStats:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rtcEngine:remoteVideoStats:">&ndash;&nbsp;rtcEngine:remoteVideoStats:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>通话中远端视频流的统计信息回调</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)rtcEngine:(ARtcEngineKit *_Nonnull)<em>engine</em> remoteVideoStats:(ARtcRemoteVideoStats *_Nonnull)<em>stats</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>engine</code></th>
+						<td><p><a href="../Classes/ARtcEngineKit.html">ARtcEngineKit</a> 对象。</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>stats</code></th>
+						<td><p>远端视频统计数据，详细定义见 <a href="../Classes/ARtcRemoteVideoStats.html">ARtcRemoteVideoStats</a></p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>通话中远端视频流的统计信息回调</p>
+
+<p>该回调描述远端用户在通话中端到端的视频流统计信息，针对每个远端用户/主播每 2 秒触发一次。</p>
+
+<p>如果远端同时存在多个用户/主播，该回调每 2 秒会被触发多次。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="频播放事件回调" name="task_频播放事件回调"></a>
+						<h2 class="task-title">频播放事件回调</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/rtcEngineDidAudioEffectFinish:soundId:" title="rtcEngineDidAudioEffectFinish:soundId:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rtcEngineDidAudioEffectFinish:soundId:">&ndash;&nbsp;rtcEngineDidAudioEffectFinish:soundId:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>本地音效文件播放已结束回调</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)rtcEngineDidAudioEffectFinish:(ARtcEngineKit *_Nonnull)<em>engine</em> soundId:(NSInteger)<em>soundId</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>engine</code></th>
+						<td><p><a href="../Classes/ARtcEngineKit.html">ARtcEngineKit</a> 对象。</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>soundId</code></th>
+						<td><p>自行设定的音效 ID，需保证唯一性。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>本地音效文件播放已结束回调</p>
+
+<p>当调用 playEffect 播放音效结束后，会触发该回调。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="媒体设备事件回调" name="task_媒体设备事件回调"></a>
+						<h2 class="task-title">媒体设备事件回调</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/rtcEngine:didAudioRouteChanged:" title="rtcEngine:didAudioRouteChanged:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rtcEngine:didAudioRouteChanged:">&ndash;&nbsp;rtcEngine:didAudioRouteChanged:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>语音路由已发生变化回调</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)rtcEngine:(ARtcEngineKit *_Nonnull)<em>engine</em> didAudioRouteChanged:(ARAudioOutputRouting)<em>routing</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>engine</code></th>
+						<td><p><a href="../Classes/ARtcEngineKit.html">ARtcEngineKit</a> 对象</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>routing</code></th>
+						<td><p>设置语音路由: <a href="../Constants/ARAudioOutputRouting.html">ARAudioOutputRouting</a></p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>语音路由已发生变化回调</p>
+
+<p>当语音路由发生变化时，SDK 会触发此回调。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="其它回调方法" name="task_其它回调方法"></a>
+						<h2 class="task-title">其它回调方法</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/rtcEngine:firstRemoteVideoFrameOfUid:size:elapsed:" title="rtcEngine:firstRemoteVideoFrameOfUid:size:elapsed:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rtcEngine:firstRemoteVideoFrameOfUid:size:elapsed:">&ndash;&nbsp;rtcEngine:firstRemoteVideoFrameOfUid:size:elapsed:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>已显示远端视频首帧回调</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)rtcEngine:(ARtcEngineKit *_Nonnull)<em>engine</em> firstRemoteVideoFrameOfUid:(NSString *_Nonnull)<em>uid</em> size:(CGSize)<em>size</em> elapsed:(NSInteger)<em>elapsed</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>engine</code></th>
+						<td><p><a href="../Classes/ARtcEngineKit.html">ARtcEngineKit</a> 对象</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>uid</code></th>
+						<td><p>远端用户 ID</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>size</code></th>
+						<td><p>视频尺寸（宽和高）</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>elapsed</code></th>
+						<td><p>从本地用户调用joinChannelByToken到发生此事件过去的时间（ms）。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>已显示远端视频首帧回调</p>
+
+<p><strong>Note</strong></p>
+
+<p>推荐使用remoteVideoStateChangedOfUid回调。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/rtcEngine:firstRemoteVideoDecodedOfUid:size:elapsed:" title="rtcEngine:firstRemoteVideoDecodedOfUid:size:elapsed:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rtcEngine:firstRemoteVideoDecodedOfUid:size:elapsed:">&ndash;&nbsp;rtcEngine:firstRemoteVideoDecodedOfUid:size:elapsed:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>已完成远端视频首帧解码回调</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)rtcEngine:(ARtcEngineKit *_Nonnull)<em>engine</em> firstRemoteVideoDecodedOfUid:(NSString *_Nonnull)<em>uid</em> size:(CGSize)<em>size</em> elapsed:(NSInteger)<em>elapsed</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>engine</code></th>
+						<td><p><a href="../Classes/ARtcEngineKit.html">ARtcEngineKit</a> 对象</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>uid</code></th>
+						<td><p>远端用户 ID</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>size</code></th>
+						<td><p>视频流尺寸（宽度和高度）</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>elapsed</code></th>
+						<td><p>从本地用户调用 joinChannelByToken到发生此事件过去的时间（ms）。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>已完成远端视频首帧解码回调</p>
+
+<p><strong>Note</strong></p>
+
+<p>收到该回调，可调用setupRemoteVideo方法显示远端视图。推荐使用 remoteVideoStateChangedOfUid 回调的 ARVideoRemoteStateStarting(1) 和 ARVideoRemoteStateDecoding(2)</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/rtcEngine:firstRemoteAudioFrameOfUid:elapsed:" title="rtcEngine:firstRemoteAudioFrameOfUid:elapsed:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rtcEngine:firstRemoteAudioFrameOfUid:elapsed:">&ndash;&nbsp;rtcEngine:firstRemoteAudioFrameOfUid:elapsed:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>已接收远端音频首帧的回调</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)rtcEngine:(ARtcEngineKit *_Nonnull)<em>engine</em> firstRemoteAudioFrameOfUid:(NSString *_Nonnull)<em>uid</em> elapsed:(NSInteger)<em>elapsed</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>engine</code></th>
+						<td><p><a href="../Classes/ARtcEngineKit.html">ARtcEngineKit</a> 对象</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>uid</code></th>
+						<td><p>远端用户 ID</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>elapsed</code></th>
+						<td><p>从本地用户调用joinChannelByToken到发生此事件的时间（ms）。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>已接收远端音频首帧的回调</p>
+
+<p><strong>Note</strong></p>
+
+<p>推荐使用 remoteAudioStateChangedOfUid 回调。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/rtcEngine:firstRemoteAudioFrameDecodedOfUid:elapsed:" title="rtcEngine:firstRemoteAudioFrameDecodedOfUid:elapsed:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rtcEngine:firstRemoteAudioFrameDecodedOfUid:elapsed:">&ndash;&nbsp;rtcEngine:firstRemoteAudioFrameDecodedOfUid:elapsed:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>已解码远端音频首帧的回调</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)rtcEngine:(ARtcEngineKit *_Nonnull)<em>engine</em> firstRemoteAudioFrameDecodedOfUid:(NSString *_Nonnull)<em>uid</em> elapsed:(NSInteger)<em>elapsed</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>engine</code></th>
+						<td><p><a href="../Classes/ARtcEngineKit.html">ARtcEngineKit</a> 对象</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>uid</code></th>
+						<td><p>远端用户 ID</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>elapsed</code></th>
+						<td><p>从本地用户调用 joinChannelByToken 直至该回调触发的延迟，单位为毫秒。</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>已解码远端音频首帧的回调</p>
+
+<p><strong>Note</strong></p>
+
+<p>推荐使用 remoteAudioStateChangedOfUid 回调。SDK 完成远端音频首帧解码，并发送给音频模块用以播放时，会触发此回调。有两种情况：</p>
+
+<ul>
+<li>远端用户首次上线后发送音频</li>
+<li>远端用户音频离线再上线发送音频。音频离线指本地在 15 秒内没有收到音频包，可能有如下原因：
+
+<ul>
+<li>远端用户离开频道</li>
+<li>远端用户掉线</li>
+<li>远端用户停止发送音频流（调用了 muteLocalAudioStream）</li>
+<li>远端用户关闭音频（调用了 disableAudio）</li>
+</ul>
+</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/rtcEngine:didVideoMuted:byUid:" title="rtcEngine:didVideoMuted:byUid:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rtcEngine:didVideoMuted:byUid:">&ndash;&nbsp;rtcEngine:didVideoMuted:byUid:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>远端用户暂停/重新发送视频回调（由muteLocalVideoStream触发 ）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)rtcEngine:(ARtcEngineKit *_Nonnull)<em>engine</em> didVideoMuted:(BOOL)<em>muted</em> byUid:(NSString *_Nonnull)<em>uid</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>engine</code></th>
+						<td><p><a href="../Classes/ARtcEngineKit.html">ARtcEngineKit</a> 对象</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>muted</code></th>
+						<td><p>暂停或恢复发送视频流：</p>
+
+<ul>
+<li>Yes: 该用户已暂停发送其视频流</li>
+<li>No: 该用户已恢复发送其视频流</li>
+</ul>
+</td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>uid</code></th>
+						<td><p>远端用户 UID</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>远端用户暂停/重新发送视频回调（由muteLocalVideoStream触发 ）</p>
+
+<p><strong>Note</strong></p>
+
+<p>推荐使用 remoteVideoStateChangedOfUid 回调的：</p>
+
+<ul>
+<li>ARVideoRemoteStateStopped(0) and ARVideoRemoteStateReasonRemoteMuted(5).</li>
+<li>ARVideoRemoteStateDecoding(2) 和 ARVideoRemoteStateReasonRemoteUnmuted(6)。</li>
+</ul>
+
+
+<p>当频道内的用户或主播数超过 20 人，该回调会失效。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/rtcEngine:didAudioMuted:byUid:" title="rtcEngine:didAudioMuted:byUid:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rtcEngine:didAudioMuted:byUid:">&ndash;&nbsp;rtcEngine:didAudioMuted:byUid:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>远端用户音频静音回调</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)rtcEngine:(ARtcEngineKit *_Nonnull)<em>engine</em> didAudioMuted:(BOOL)<em>muted</em> byUid:(NSString *_Nonnull)<em>uid</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>engine</code></th>
+						<td><p><a href="../Classes/ARtcEngineKit.html">ARtcEngineKit</a> 对象</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>muted</code></th>
+						<td><p>YES: 静音 NO:取消静音</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>uid</code></th>
+						<td><p>远端用户 ID</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>远端用户音频静音回调</p>
+
+<p>该回调是由远端用户调用 muteLocalAudioStream 方法关闭或开启音频发送触发的。当频道内的用户或主播人数超过 20 时，该回调不生效。</p>
+
+<p><strong>Note</strong></p>
+
+<p>推荐使用 remoteAudioStateChangedOfUid 回调：
+* ARAudioRemoteReasonRemoteMuted(5)
+* ARAudioRemoteReasonRemoteUnmuted(6)</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/rtcEngine:didVideoEnabled:byUid:" title="rtcEngine:didVideoEnabled:byUid:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rtcEngine:didVideoEnabled:byUid:">&ndash;&nbsp;rtcEngine:didVideoEnabled:byUid:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>其他用户启用/关闭视频回调（enableVideo 或 disableVideo触发）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)rtcEngine:(ARtcEngineKit *_Nonnull)<em>engine</em> didVideoEnabled:(BOOL)<em>enabled</em> byUid:(NSString *_Nonnull)<em>uid</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>engine</code></th>
+						<td><p><a href="../Classes/ARtcEngineKit.html">ARtcEngineKit</a> 对象</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>enabled</code></th>
+						<td><p>是否启用了视频功能:
+* YES: 该用户已启用了视频功能。启用后，该用户可以进行视频通话或直播。
+* NO: 该用户已关闭了视频功能。关闭后，该用户只能进行语音通话或直播，不能显示、发送自己的视频，也不能接收、显示别人的视频。</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>uid</code></th>
+						<td><p>远端用户 ID</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>其他用户启用/关闭视频回调（enableVideo 或 disableVideo触发）</p>
+
+<p><strong>Note</strong></p>
+
+<p>推荐使用 remoteVideoStateChangedOfUid 回调的：</p>
+
+<ul>
+<li>ARVideoRemoteStateStopped(0) 和 ARVideoRemoteStateReasonRemoteMuted(5)。</li>
+<li>ARVideoRemoteStateDecoding(2) 和 ARVideoRemoteStateReasonRemoteUnmuted(6)。</li>
+</ul>
+
+
+<p>提示有其他用户启用/关闭了视频功能。关闭视频功能是指该用户只能进行语音直播，不能显示、发送自己的视频，也不能接收、显示别人的视频。
+该回调是由远端用户调用 enableVideo 或 disableVideo 方法开启或关闭视频模块触发的。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/rtcEngine:didLocalVideoEnabled:byUid:" title="rtcEngine:didLocalVideoEnabled:byUid:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rtcEngine:didLocalVideoEnabled:byUid:">&ndash;&nbsp;rtcEngine:didLocalVideoEnabled:byUid:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>其他用户启用/关闭本地视频回调（enableLocalVideo触发）</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)rtcEngine:(ARtcEngineKit *_Nonnull)<em>engine</em> didLocalVideoEnabled:(BOOL)<em>enabled</em> byUid:(NSString *_Nonnull)<em>uid</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>engine</code></th>
+						<td><p><a href="../Classes/ARtcEngineKit.html">ARtcEngineKit</a> 对象</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>enabled</code></th>
+						<td><p>是否启用了视频功能
+* YES: 该用户已启用本地视频功能。启用后，其他用户可以接收到该用户的视频流。
+* NO: 该用户已关闭视频功能。关闭后，该用户仍然可以接收其他用户的视频流，但其他用户接收不到该用户的视频流。</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>uid</code></th>
+						<td><p>远端用户 ID</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>其他用户启用/关闭本地视频回调（enableLocalVideo触发）</p>
+
+<p><strong>Note</strong></p>
+
+<p>推荐使用 remoteVideoStateChangedOfUid 回调的：</p>
+
+<ul>
+<li>ARVideoRemoteStateStopped(0) 和 ARVideoRemoteStateReasonRemoteMuted(5)。</li>
+<li>ARVideoRemoteStateDecoding(2) 和 ARVideoRemoteStateReasonRemoteUnmuted(6)。</li>
+</ul>
+
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/rtcEngine:didMicrophoneEnabled:" title="rtcEngine:didMicrophoneEnabled:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rtcEngine:didMicrophoneEnabled:">&ndash;&nbsp;rtcEngine:didMicrophoneEnabled:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>麦克风状态已改变回调</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)rtcEngine:(ARtcEngineKit *_Nonnull)<em>engine</em> didMicrophoneEnabled:(BOOL)<em>enabled</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>engine</code></th>
+						<td><p><a href="../Classes/ARtcEngineKit.html">ARtcEngineKit</a> 对象</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>enabled</code></th>
+						<td><p>YES: 麦克风已启用 NO: 麦克风已禁用</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>麦克风状态已改变回调</p>
+
+<p>该回调是由本地用户调用 enableLocalAudio 方法开启或关闭本地音频采集触发的。</p>
+
+<p><strong>Note</strong></p>
+
+<p>推荐使用 localAudioStateChange 回调的： ARAudioLocalStateStopped(0) 或 ARAudioLocalStateRecording(1)。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/rtcEngineConnectionDidInterrupted:" title="rtcEngineConnectionDidInterrupted:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rtcEngineConnectionDidInterrupted:">&ndash;&nbsp;rtcEngineConnectionDidInterrupted:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>网络连接中断回调</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)rtcEngineConnectionDidInterrupted:(ARtcEngineKit *_Nonnull)<em>engine</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>engine</code></th>
+						<td><p><a href="../Classes/ARtcEngineKit.html">ARtcEngineKit</a> 对象</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>网络连接中断回调</p>
+
+<p>SDK 在和服务器建立连接后，失去了网络连接超过 4 秒，会触发该回调。在触发事件后，SDK 会主动重连服务器，所以该事件可以用于 UI 提示。</p>
+
+<p>与 rtcEngineConnectionDidLost 回调的区别是:</p>
+
+<p>rtcEngineConnectionDidInterrupted 回调一定是发生在加入频道成功后，且 SDK 刚失去和服务器连接超过 4 秒时触发。
+rtcEngineConnectionDidLost 回调是无论之前加入频道是否连接成功，只要 10 秒内和服务器无法建立连接都会触发。
+如果 SDK 在断开连接后，20 分钟内还是没能重新加入频道，SDK 会停止尝试重连。</p>
+
+<p><strong>Note</strong></p>
+
+<p>推荐使用connectionChangedToState回调。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/rtcEngineConnectionDidBanned:" title="rtcEngineConnectionDidBanned:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rtcEngineConnectionDidBanned:">&ndash;&nbsp;rtcEngineConnectionDidBanned:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>连接已被禁止回调</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)rtcEngineConnectionDidBanned:(ARtcEngineKit *_Nonnull)<em>engine</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>engine</code></th>
+						<td><p><a href="../Classes/ARtcEngineKit.html">ARtcEngineKit</a> 对象</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>连接已被禁止回调</p>
+
+<p>当你被服务端禁掉连接的权限时，会触发该回调。</p>
+
+<p><strong>Note</strong></p>
+
+<p>推荐使用connectionChangedToState回调。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/rtcEngine:audioTransportStatsOfUid:delay:lost:rxKBitRate:" title="rtcEngine:audioTransportStatsOfUid:delay:lost:rxKBitRate:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rtcEngine:audioTransportStatsOfUid:delay:lost:rxKBitRate:">&ndash;&nbsp;rtcEngine:audioTransportStatsOfUid:delay:lost:rxKBitRate:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>通话中远端音频流传输的统计信息回调</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)rtcEngine:(ARtcEngineKit *_Nonnull)<em>engine</em> audioTransportStatsOfUid:(NSString *_Nonnull)<em>uid</em> delay:(NSUInteger)<em>delay</em> lost:(NSUInteger)<em>lost</em> rxKBitRate:(NSUInteger)<em>rxKBitRate</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>engine</code></th>
+						<td><p><a href="../Classes/ARtcEngineKit.html">ARtcEngineKit</a> 对象</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>uid</code></th>
+						<td><p>用户 ID，指定是哪个用户/主播的音频包</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>delay</code></th>
+						<td><p>音频包从发送端到接收端的延时（毫秒）</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>lost</code></th>
+						<td><p>音频包从发送端到接收端的丢包率（%）</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>rxKBitRate</code></th>
+						<td><p>远端音频包的接收码率（Kbps）</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>通话中远端音频流传输的统计信息回调</p>
+
+<p>该回调描述远端用户通话中端到端的网络统计信息，通过音频包计算，用客观的数据，如丢包、网络延迟等，展示当前网络状态。</p>
+
+<p>通话中，当用户收到远端用户/主播发送的音频数据包后，会每 2 秒触发一次该回调。</p>
+
+<p>和 remoteAudioStats 回调相比，该回调以数据展示当前网络状态，因此更客观。</p>
+
+<p><strong>Note</strong></p>
+
+<p>推荐使用remoteAudioStats回调。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/rtcEngine:videoTransportStatsOfUid:delay:lost:rxKBitRate:" title="rtcEngine:videoTransportStatsOfUid:delay:lost:rxKBitRate:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rtcEngine:videoTransportStatsOfUid:delay:lost:rxKBitRate:">&ndash;&nbsp;rtcEngine:videoTransportStatsOfUid:delay:lost:rxKBitRate:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>通话中远端视频流传输的统计信息回调</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)rtcEngine:(ARtcEngineKit *_Nonnull)<em>engine</em> videoTransportStatsOfUid:(NSString *_Nonnull)<em>uid</em> delay:(NSUInteger)<em>delay</em> lost:(NSUInteger)<em>lost</em> rxKBitRate:(NSUInteger)<em>rxKBitRate</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>engine</code></th>
+						<td><p><a href="../Classes/ARtcEngineKit.html">ARtcEngineKit</a> 对象</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>uid</code></th>
+						<td><p>用户 ID，指定是哪个用户/主播的视频包</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>delay</code></th>
+						<td><p>视频包从发送端到接收端的延时（毫秒）</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>lost</code></th>
+						<td><p>视频包从发送端到接收端 800 ms 内的丢包率（%）</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>rxKBitRate</code></th>
+						<td><p>远端视频包的接收码率（Kbps）</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>通话中远端视频流传输的统计信息回调</p>
+
+<p>该回调描述远端用户通话中端到端的网络统计信息，通过视频包计算，用客观的数据，如丢包、网络延迟等，展示当前网络状态。</p>
+
+<p>通话中，当用户收到远端用户/主播发送的视频数据包后，会每 2 秒触发一次该回调。</p>
+
+<p>和 remoteVideoStats 回调相比，该回调以数据展示当前网络状态，因此更客观。</p>
+
+<p><strong>Note</strong></p>
+
+<p>推荐使用remoteVideoStats回调。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/rtcEngine:audioQualityOfUid:quality:delay:lost:" title="rtcEngine:audioQualityOfUid:quality:delay:lost:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rtcEngine:audioQualityOfUid:quality:delay:lost:">&ndash;&nbsp;rtcEngine:audioQualityOfUid:quality:delay:lost:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>远端音频质量回调</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)rtcEngine:(ARtcEngineKit *_Nonnull)<em>engine</em> audioQualityOfUid:(NSString *_Nonnull)<em>uid</em> quality:(ARNetworkQuality)<em>quality</em> delay:(NSUInteger)<em>delay</em> lost:(NSUInteger)<em>lost</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>engine</code></th>
+						<td><p><a href="../Classes/ARtcEngineKit.html">ARtcEngineKit</a> 对象</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>uid</code></th>
+						<td><p>用户 ID，指定是谁发的音频流。</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>quality</code></th>
+						<td><p>语音质量，详见 <a href="../Constants/ARNetworkQuality.html">ARNetworkQuality</a></p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>delay</code></th>
+						<td><p>音频包从发送端到接收端的延迟（毫秒）。包括声音采样前处理、网络传输、网络抖动缓冲引起的延迟。</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>lost</code></th>
+						<td><p>音频包从发送端到接收端的丢包率（%）</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>远端音频质量回调</p>
+
+<p>该回调描述远端用户在通话中的音频质量，针对每个远端用户/主播每 2 秒触发一次。如果远端同时存在多个用户/主播，该回调每 2 秒会被触发多次。</p>
+
+<p><strong>Note</strong></p>
+
+<p>推荐使用remoteVideoStats回调。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/rtcEngineCameraDidReady:" title="rtcEngineCameraDidReady:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rtcEngineCameraDidReady:">&ndash;&nbsp;rtcEngineCameraDidReady:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>摄像头就绪回调</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)rtcEngineCameraDidReady:(ARtcEngineKit *_Nonnull)<em>engine</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>engine</code></th>
+						<td><p><a href="../Classes/ARtcEngineKit.html">ARtcEngineKit</a> 对象</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>摄像头就绪回调</p>
+
+<p>提示已成功打开摄像头，可以开始捕获视频。</p>
+
+<p><strong>Note</strong></p>
+
+<p>推荐使用localVideoStateChange回调 state 参数中的 ARLocalVideoStreamStateCapturing(1)。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/rtcEngineVideoDidStop:" title="rtcEngineVideoDidStop:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rtcEngineVideoDidStop:">&ndash;&nbsp;rtcEngineVideoDidStop:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>视频功能停止回调</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)rtcEngineVideoDidStop:(ARtcEngineKit *_Nonnull)<em>engine</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>engine</code></th>
+						<td><p><a href="../Classes/ARtcEngineKit.html">ARtcEngineKit</a> 对象</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>视频功能停止回调</p>
+
+<p>提示视频功能已停止。 App 如需在停止视频后对 view 做其他处理（比如显示其他画面），可以在这个回调中进行。</p>
+
+<p><strong>Note</strong></p>
+
+<p>推荐使用localVideoStateChange回调 state 参数中的 ARLocalVideoStreamStateCapturing(0)。</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ARtcEngineDelegate.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2020 anyRTC. All rights reserved. Updated: 2020-05-29</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

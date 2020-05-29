@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>ARWarningCode Constants Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">AriOSSDK 4.0.0 </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">anyRTC</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+
+	
+
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">ARWarningCode Constants Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Declared in</th>
+	<td>AREnumerates.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+
+					
+
+                    
+                    <h3 class="subsubtitle method-title">ARWarningCode</h3>
+                    
+					
+					<div class="section section-overview">
+                        <p>Warning code.</p>
+
+<p>警告代码表示 SDK 运行时出现了（网络或媒体相关的）警告。通常情况下，SDK 上报的警告信息 App 可以忽略，SDK 会自动恢复。比如和服务器失去连接时，SDK 可能会上报 ARWarningCodeOpenChannelTimeout(106) 警告，同时自动尝试重连。</p>
+					</div>
+					
+					
+                    <div class="section">
+                        <!-- display enum values -->
+                        
+                        <h4 class="method-subtitle">Definition</h4>
+                        <code>typedef NS_ENUM(NSInteger, ARWarningCode ) {<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARWarningCodeInvalidView</a> = 8,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARWarningCodeInitVideo</a> = 16,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARWarningCodePending</a> = 20,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARWarningCodeNoAvailableChannel</a> = 103,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARWarningCodeLookupChannelTimeout</a> = 104,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARWarningCodeLookupChannelRejected</a> = 105,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARWarningCodeOpenChannelTimeout</a> = 106,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARWarningCodeOpenChannelRejected</a> = 107,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARWarningCodeSwitchLiveVideoTimeout</a> = 111,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARWarningCodeSetClientRoleTimeout</a> = 118,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARWarningCodeSetClientRoleNotAuthorized</a> = 119,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARWarningCodeOpenChannelInvalidTicket</a> = 121,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARWarningCodeOpenChannelTryNextVos</a> = 122,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARWarningCodeAudioMixingOpenError</a> = 701,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARWarningCodeAdmRuntimePlayoutWarning</a> = 1014,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARWarningCodeAdmRuntimeRecordingWarning</a> = 1016,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARWarningCodeAdmRecordAudioSilence</a> = 1019,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARWarningCodeAdmPlaybackMalfunction</a> = 1020,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARWarningCodeAdmRecordMalfunction</a> = 1021,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARWarningCodeAdmInterruption</a> = 1025,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARWarningCodeAdmRecordAudioLowlevel</a> = 1031,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARWarningCodeAdmPlayoutAudioLowlevel</a> = 1032,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARWarningCodeApmHowling</a> = 1051,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARWarningCodeAdmGlitchState</a> = 1052,<br>
+                            
+                            &nbsp;&nbsp; <a href="">ARWarningCodeAdmImproperSettings</a> = 1053,<br>
+                            
+                            };</code>
+                    
+                    </div>
+                    
+                    <div class="section section-methods">
+                        <h4 class="method-subtitle">Constants</h4>
+                        <dl class="termdef">
+                            
+                            <dt><a name="" title="ARWarningCodeInvalidView"></a><code>ARWarningCodeInvalidView</code></dt>
+<dd>
+
+
+<pre><code> 8: 指定的 view 无效，使用视频功能时需要指定 view，如果 view 尚未指定，则返回该警告。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARWarningCodeInitVideo"></a><code>ARWarningCodeInitVideo</code></dt>
+<dd>
+
+
+<pre><code> 16: 初始化视频功能失败。有可能是因视频资源被占用导致的。用户无法看到视频画面，但不影响语音通信。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARWarningCodePending"></a><code>ARWarningCodePending</code></dt>
+<dd>
+
+
+<pre><code>  20: 请求处于待定状态。一般是由于某个模块还没准备好，请求被延迟处理。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARWarningCodeNoAvailableChannel"></a><code>ARWarningCodeNoAvailableChannel</code></dt>
+<dd>
+
+
+<pre><code> 103: 没有可用的频道资源。可能是因为服务端没法分配频道资源。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARWarningCodeLookupChannelTimeout"></a><code>ARWarningCodeLookupChannelTimeout</code></dt>
+<dd>
+
+
+<pre><code> 104: 查找频道超时。在加入频道时 SDK 先要查找指定的频道，出现该警告一般是因为网络太差，连接不到服务器。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARWarningCodeLookupChannelRejected"></a><code>ARWarningCodeLookupChannelRejected</code></dt>
+<dd>
+
+
+<pre><code> 105: 查找频道请求被服务器拒绝。服务器可能没有办法处理这个请求或请求是非法的。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARWarningCodeOpenChannelTimeout"></a><code>ARWarningCodeOpenChannelTimeout</code></dt>
+<dd>
+
+
+<pre><code> 106: 打开频道超时。查找到指定频道后，SDK 接着打开该频道，超时一般是因为网络太差，连接不到服务器。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARWarningCodeOpenChannelRejected"></a><code>ARWarningCodeOpenChannelRejected</code></dt>
+<dd>
+
+
+<pre><code> 107: 打开频道请求被服务器拒绝。服务器可能没有办法处理该请求或该请求是非法的。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARWarningCodeSwitchLiveVideoTimeout"></a><code>ARWarningCodeSwitchLiveVideoTimeout</code></dt>
+<dd>
+
+
+<pre><code> 111: 切换直播视频超时。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARWarningCodeSetClientRoleTimeout"></a><code>ARWarningCodeSetClientRoleTimeout</code></dt>
+<dd>
+
+
+<pre><code> 118: 直播场景下设置用户角色超时。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARWarningCodeSetClientRoleNotAuthorized"></a><code>ARWarningCodeSetClientRoleNotAuthorized</code></dt>
+<dd>
+
+
+<pre><code> 119: 直播场景下用户角色未授权。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARWarningCodeOpenChannelInvalidTicket"></a><code>ARWarningCodeOpenChannelInvalidTicket</code></dt>
+<dd>
+
+
+<pre><code> 121: TICKET 非法，打开频道失败。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARWarningCodeOpenChannelTryNextVos"></a><code>ARWarningCodeOpenChannelTryNextVos</code></dt>
+<dd>
+
+
+<pre><code> 122: 尝试打开另一个服务器。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARWarningCodeAudioMixingOpenError"></a><code>ARWarningCodeAudioMixingOpenError</code></dt>
+<dd>
+
+
+<pre><code> 701: 打开伴奏出错。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARWarningCodeAdmRuntimePlayoutWarning"></a><code>ARWarningCodeAdmRuntimePlayoutWarning</code></dt>
+<dd>
+
+
+<pre><code> 1014: 音频设备模块：运行时播放设备出现警告。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARWarningCodeAdmRuntimeRecordingWarning"></a><code>ARWarningCodeAdmRuntimeRecordingWarning</code></dt>
+<dd>
+
+
+<pre><code> 1016: 音频设备模块：运行时录音设备出现警告。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARWarningCodeAdmRecordAudioSilence"></a><code>ARWarningCodeAdmRecordAudioSilence</code></dt>
+<dd>
+
+
+<pre><code> 1019: 音频设备模块：没有采集到有效的声音数据。该警告不影响正常通话。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARWarningCodeAdmPlaybackMalfunction"></a><code>ARWarningCodeAdmPlaybackMalfunction</code></dt>
+<dd>
+
+
+<pre><code> 1020: 音频设备模块：播放设备故障。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARWarningCodeAdmRecordMalfunction"></a><code>ARWarningCodeAdmRecordMalfunction</code></dt>
+<dd>
+
+
+<pre><code> 1021: 音频设备模块：录音设备故障。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARWarningCodeAdmInterruption"></a><code>ARWarningCodeAdmInterruption</code></dt>
+<dd>
+
+
+<pre><code> 1025: 通话或直播被系统声音打断，比如电话、闹钟等。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARWarningCodeAdmRecordAudioLowlevel"></a><code>ARWarningCodeAdmRecordAudioLowlevel</code></dt>
+<dd>
+
+
+<pre><code> 1031: 音频设备模块：录到的声音太低。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARWarningCodeAdmPlayoutAudioLowlevel"></a><code>ARWarningCodeAdmPlayoutAudioLowlevel</code></dt>
+<dd>
+
+
+<pre><code> 1032: 音频设备模块：播放的声音太低。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARWarningCodeApmHowling"></a><code>ARWarningCodeApmHowling</code></dt>
+<dd>
+
+
+<pre><code> 1051: 音频设备模块：录音声音监测到啸叫。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARWarningCodeAdmGlitchState"></a><code>ARWarningCodeAdmGlitchState</code></dt>
+<dd>
+
+
+<pre><code> 1052: 音频设备模块：音频播放会卡顿。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                            <dt><a name="" title="ARWarningCodeAdmImproperSettings"></a><code>ARWarningCodeAdmImproperSettings</code></dt>
+<dd>
+
+
+<pre><code> 1053: 音频设备模块：音频底层设置被修改。
+</code></pre>
+
+
+
+
+
+    
+	<p>
+		Declared In <code class="declared-in-ref">AREnumerates.h</code>.
+	</p>
+	
+</dd>
+                            
+                        </dl>
+                    </div>
+                    
+
+                    
+                    
+
+                    
+
+                    
+                    <div class="method-subsection declared-in-section">
+                        <h4 class="method-subtitle">Declared In</h4>
+                        <p><code class="declared-in-ref">AREnumerates.h</code></p>
+                    </div>
+                    
+                    
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2020 anyRTC. All rights reserved. Updated: 2020-05-29</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>
