@@ -137,13 +137,6 @@ __attribute__((visibility("default"))) @interface ARChannelStats : NSObject
 
 @end
 
-@interface ARUserInfo : NSObject
-
-@property (nonatomic, assign) NSUInteger uid;
-@property (copy, nonatomic) NSString * _Nullable userAccount;
-
-@end
-
 /** 视频编码器配置的属性 */
 __attribute__((visibility("default"))) @interface ARVideoEncoderConfiguration : NSObject
 
