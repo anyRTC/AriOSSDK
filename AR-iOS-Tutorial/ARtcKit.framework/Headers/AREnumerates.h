@@ -1227,4 +1227,14 @@ typedef NS_ENUM(NSUInteger, ARNetworkQuality) {
     ARNetworkQualityDetecting = 8,
 };
 
+/** 视频buffer */
+typedef NS_ENUM(NSInteger, ARVideoBufferType ) {
+
+   ARVideoBufferTypePixelBuffer = 1,
+
+   ARVideoBufferTypeRawData = 2,
+    
+};
+
+
 #endif /* AREnumerates_h */

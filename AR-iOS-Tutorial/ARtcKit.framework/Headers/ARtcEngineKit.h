@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "ARtcEngineDelegate.h"
 #import "ARObjects.h"
+#import "ARMediaIO.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -806,16 +807,50 @@ __attribute__((visibility("default"))) @interface ARtcEngineKit : NSObject
  */
 - (int)resumeAudioMixing;
 
-/** 调节音乐文件在本地播放的音量
+/** 调节音乐文件的播放音量
  
 **Note**
  
- 该方法调节混音的音乐文件在本地播放的音量大小。请在频道内调用该方法。
+ 该方法调节混音的音乐文件在本地和远端播放的音量大小。请在频道内调用该方法。
 
  @param volume 音乐文件播放音量范围为 0~100。默认 100 为原始文件音量
  @return 0方法调用成功，<0方法调用失败
  */
 - (int)adjustAudioMixingVolume:(NSInteger)volume;
+
+/** 调节音乐文件在本地播放的音量
+
+该方法调节混音的音乐文件在本地播放的音量大小。请在频道内调用该方法。
+
+@param volume 音乐文件播放音量范围为 0~100。默认 100 为原始文件音量
+@return 0方法调用成功，<0方法调用失败
+*/
+- (int)adjustAudioMixingPlayoutVolume:(NSInteger)volume;
+
+/** 调节音乐文件在远端播放的音量
+
+音乐文件播放音量范围为 0~100。默认 100 为原始文件音量
+
+@param volume 该方法调节混音的音乐文件在远端播放的音量大小。请在频道内调用该方法。
+@return 0方法调用成功，<0方法调用失败
+*/
+- (int)adjustAudioMixingPublishVolume:(NSInteger)volume;
+
+/** 获取音乐文件的本地播放音量
+
+该方法获取混音的音乐文件本地播放音量，方便排查音量相关问题。
+ 
+ @return 方法调用成功则返回音量值，范围为 [0,100]。<0：方法调用失败
+*/
+- (int)getAudioMixingPlayoutVolume;
+
+/** 获取音乐文件的远端播放音量
+
+该方法获取混音的音乐文件远端播放音量，方便排查音量相关问题。
+ 
+ @return 方法调用成功则返回音量值，范围为 [0,100]。<0：方法调用失败
+*/
+- (int)getAudioMixingPublishVolume;
 
 //MARK: - 音效文件播放管理
 
@@ -965,9 +1000,63 @@ __attribute__((visibility("default"))) @interface ARtcEngineKit : NSObject
 
 //MARK: - 自定义视频模块
 
+/**-----------------------------------------------------------------------------
+ * @name 自定义视频模块
+ * -----------------------------------------------------------------------------
+*/
+
+/** 设置自定义视频源
+
+该方法设置视频源。实时通讯过程中，ar云平台 SDK 通常会启动默认的视频输入设备，即内置的摄像头，进行视频推流。当需要自定义视频设备时，App 可以先通过 ARVideoSourceProtocol 自定义视频源，然后调用该方法将自定义的视频源加入到 SDK 中。
+
+ @param videoSource 自定义的视频源,详见 ARVideoSourceProtocol
+ */
+- (void)setVideoSource:(id<ARVideoSourceProtocol> _Nullable)videoSource;
+
+/** 获取当前视频源
+
+  @return ARVideoSourceProtocol
+ */
+- (id<ARVideoSourceProtocol> _Nullable)videoSource;
+
 //MARK: - 音频自采集 (仅适用于 push 模式)
 
 //MARK: - 视频自采集 (仅适用于 push 模式)
+
+/**-----------------------------------------------------------------------------
+ * @name 视频自采集 (仅适用于 push 模式)
+ * -----------------------------------------------------------------------------
+ */
+
+/** 配置外部视频源
+
+ 如果使用了外部视频源，请在调用 enableVideo 或 startPreview 之前调用此 API。
+
+ @param enable 是否使用外部视频源：
+
+ * YES: 使用外部视频源
+ * NO: 不使用外部视频源（默认）
+
+ @param useTexture 是否使用 Texture 作为输入：
+
+ * YES: 使用 Texture 作为输入
+ * NO: 不使用 Texture 作为输入
+
+ @param pushMode 是否外部视频源需要调用 pushExternalVideoFrame 将视频帧主动推送给 ar云平台SDK：
+
+ * YES: 使用推送 (push) 模式
+ * NO: 使用拉 (pull) 模式（暂不支持）
+ */
+- (void)setExternalVideoSource:(BOOL)enable useTexture:(BOOL)useTexture pushMode:(BOOL)pushMode;
+
+/** 推送外部视频帧
+
+该方法主动将视频帧数据用 ARVideoFrame 类封装后传递给 SDK。请确保在你调用本方法前已调用 setExternalVideoSource，并将参数 pushMode 设为 YES，不然调用本方法后会一直报错。
+
+ @param frame 该视频帧包含待 ar云平台SDK 编码的视频数据，详见 ARVideoFrame
+ @return YES: 该帧推送成功 NO: 该帧推送不成功
+ */
+- (BOOL)pushExternalVideoFrame:(ARVideoFrame * _Nonnull)frame;
 
 //MARK: - 原始音频数据处理
 

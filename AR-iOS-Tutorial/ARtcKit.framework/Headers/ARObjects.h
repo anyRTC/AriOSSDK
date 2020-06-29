@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreMedia/CoreMedia.h>
 #import "AREnumerates.h"
 
 #if TARGET_OS_IPHONE
@@ -481,4 +482,108 @@ __attribute__((visibility("default"))) @interface ARtcRemoteVideoStats : NSObjec
 /** 远端用户在加入频道后发生视频卡顿的累计时长占视频总有效时长的百分比（%）。视频有效时长是指远端用户加入频道后视频未被停止发送或禁用的时长。
  */
 @property (assign, nonatomic) NSUInteger frozenRate;
+@end
+
+/** 用于封装视频帧数据传递给 SDK 的类
+ */
+__attribute__((visibility("default"))) @interface ARVideoFrame : NSObject
+/** 传入的视频帧的格式
+必须指定为下面的某一个值：
+ * 1: I420
+ * 2: BGRA
+ * 3: NV21
+ * 4: RGBA
+ * 5: IMC2
+ * 7: ARGB
+ * 8: NV12
+ * 12: iOS texture (CVPixelBufferRef)
+ * 13: H264 extra data(sps,pps data)
+ * 14: H264 nomal data
+ * 15: H264 key frame data
+ */
+@property (assign, nonatomic) NSInteger format;
+
+/** 传入的视频帧的时间戳 (ms).
+
+以毫秒为单位。不正确的时间戳会导致丢帧或者音视频不同步。
+
+ */
+@property (assign, nonatomic) CMTime time; // Time for this frame.
+
+/** 传入视频帧的行间距。单位为像素而不是字节。如果视频帧格式设为 12，则不使用该字段。
+ */
+@property (assign, nonatomic) int strideInPixels;
+
+/** 传入视频帧的高度。单位为像素而不是字节。如果视频帧格式设为 12，则不使用该字段。
+ */
+@property (assign, nonatomic) int height;
+
+/** iOS 纹理的 Buffer
+ */
+@property (assign, nonatomic) CVPixelBufferRef _Nullable textureBuf;
+
+/** 裸数据格式的 Buffer。如果视频帧格式设为 12，则不使用该字段。
+ */
+@property (strong, nonatomic) NSData * _Nullable dataBuf;
+
+/** 视频左边裁减掉的像素数量，默认为 0
+ */
+@property (assign, nonatomic) int cropLeft;
+/** 视频顶部裁减掉的像素数量，默认为 0
+ */
+@property (assign, nonatomic) int cropTop;
+/** 视频右边裁减掉的像素数量，默认为 0
+ */
+@property (assign, nonatomic) int cropRight;
+/** 视频底部裁减掉的像素数量，默认为 0
+ */
+@property (assign, nonatomic) int cropBottom;
+/** 是否对传入的视频做顺时针旋转操作
+
+可选值为 0，90，180，270。默认为 0。
+ */
+@property (assign, nonatomic) int rotation;   // 0, 90, 180, 270. See document for rotation calculation.
+
+/** 视频缓冲区的长度
+ */
+@property (assign, nonatomic) int length;
+/* Note
+ * 1. strideInPixels
+ *    Stride is in pixels, not bytes.
+ * 2. About the frame width and height.
+ *    No field is defined for the width. However, it can be deduced by:
+ *       croppedWidth = (strideInPixels - cropLeft - cropRight)
+ *    And
+ *       croppedHeight = (height - cropTop - cropBottom)
+ * 3. About crop.
+ *    _________________________________________________________________.....
+ *    |                        ^                                      |  ^
+ *    |                        |                                      |  |
+ *    |                     cropTop                                   |  |
+ *    |                        |                                      |  |
+ *    |                        v                                      |  |
+ *    |                ________________________________               |  |
+ *    |                |                              |               |  |
+ *    |                |                              |               |  |
+ *    |<-- cropLeft -->|          valid region        |<- cropRight ->|
+ *    |                |                              |               | height
+ *    |                |                              |               |
+ *    |                |_____________________________ |               |  |
+ *    |                        ^                                      |  |
+ *    |                        |                                      |  |
+ *    |                     cropBottom                                |  |
+ *    |                        |                                      |  |
+ *    |                        v                                      |  v
+ *    _________________________________________________________________......
+ *    |                                                               |
+ *    |<---------------- strideInPixels ----------------------------->|
+ *
+ *    If your buffer contains garbage data, you can crop them. For example, if the frame size is
+ *    360 &times; 640, often the buffer stride is 368, that is, the extra 8 pixels on the
+ *    right are for padding, and should be removed. In this case, you can set:
+ *    strideInPixels = 368;
+ *    height = 640;
+ *    cropRight = 8;
+ *    // cropLeft, cropTop, cropBottom are set to a default of 0
+ */
 @end

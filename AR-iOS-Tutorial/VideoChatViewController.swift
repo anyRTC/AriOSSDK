@@ -190,7 +190,7 @@ class VideoChatViewController: UIViewController {
                 } else if allVideo.count > 9 && allVideo.count <= 16 {
                     column = 4   // 4*4
                 } else if (allVideo.count > 16) {
-                    column = 5
+                    column = 6
                 }
             }
 
