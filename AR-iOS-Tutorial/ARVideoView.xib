@@ -28,23 +28,34 @@
                         <constraint firstItem="zZQ-xQ-68x" firstAttribute="width" secondItem="OJa-VE-CpI" secondAttribute="width" multiplier="0.44167" id="fk2-qC-fiH"/>
                     </constraints>
                 </view>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="audio_open.png" translatesAutoresizingMaskIntoConstraints="NO" id="YRm-GJ-OL7">
+                    <rect key="frame" x="100" y="140" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="20" id="HJz-i4-OZD"/>
+                        <constraint firstAttribute="width" secondItem="YRm-GJ-OL7" secondAttribute="height" multiplier="1:1" id="rtK-V6-MoP"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="OJa-VE-CpI" secondAttribute="trailing" id="8hV-a0-m4K"/>
                 <constraint firstItem="OJa-VE-CpI" firstAttribute="leading" secondItem="RYu-Kw-Muv" secondAttribute="leading" id="C4m-Zk-kWH"/>
+                <constraint firstItem="nlw-i7-U0m" firstAttribute="bottom" secondItem="YRm-GJ-OL7" secondAttribute="bottom" id="OAf-Ta-sun"/>
                 <constraint firstItem="OJa-VE-CpI" firstAttribute="top" secondItem="RYu-Kw-Muv" secondAttribute="top" id="eQg-qX-Jec"/>
-                <constraint firstItem="nlw-i7-U0m" firstAttribute="bottom" secondItem="OJa-VE-CpI" secondAttribute="bottom" id="re2-9h-9bg"/>
+                <constraint firstItem="nlw-i7-U0m" firstAttribute="trailing" secondItem="YRm-GJ-OL7" secondAttribute="trailing" id="rRN-xD-ZxW"/>
+                <constraint firstAttribute="bottom" secondItem="OJa-VE-CpI" secondAttribute="bottom" id="re2-9h-9bg"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="nlw-i7-U0m"/>
             <connections>
+                <outlet property="audioMutedIndicator" destination="YRm-GJ-OL7" id="rHo-Eq-C2F"/>
                 <outlet property="videoMutedIndicator" destination="OJa-VE-CpI" id="tEI-NK-Gk4"/>
             </connections>
             <point key="canvasLocation" x="13.043478260869566" y="77.678571428571431"/>
         </view>
     </objects>
     <resources>
+        <image name="audio_open.png" width="65" height="65"/>
         <image name="big_logo.png" width="213" height="55"/>
     </resources>
 </document>

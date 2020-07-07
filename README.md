@@ -42,9 +42,8 @@ anyRTC 新版本SDK，在5月~7月之间免费使用，免费之后，按照官�
 ### 2.2 近期工作   
 
 1. 2020.05:release版本发布;
-1. 2020.06:录制网关(本地录制、云录制)、小程序网关、SIP网关;
+2. 2020.06:录制网关(本地录制、云录制)、小程序网关、SIP网关;
 3. 2020.07:官网改版升级;
-4. 2020.07:官网改版升级;
 
 ## 三. SDK集成方法介绍   
 ### 3.1 系统要求    
@@ -69,7 +68,7 @@ $ git clone https://github.com/anyRTC/ArIOSSDK.git
 #### 3.2.2 使用Cocoapods 进行安装    
 通过Cocoapods 能将本SDK的静态库和代码下载到本地，只需要将类似如下语句中的一句加入你的Podfile：   
 ```ruby
-pod 'ARtcKit'
+pod 'ARtcKit_iOS'
 ```
 执行 pod install即可.  
 

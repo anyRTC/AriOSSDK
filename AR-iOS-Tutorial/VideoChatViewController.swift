@@ -17,6 +17,7 @@ class VideoChatViewController: UIViewController {
     @IBOutlet weak var audioButton: UIButton!
     @IBOutlet weak var videoButton: UIButton!
     @IBOutlet weak var switchButton: UIButton!
+    @IBOutlet weak var statsLabel: UILabel!
     
     weak var logVC: LogViewController?
     var rtcKit: ARtcEngineKit!
@@ -190,7 +191,7 @@ class VideoChatViewController: UIViewController {
                 } else if allVideo.count > 9 && allVideo.count <= 16 {
                     column = 4   // 4*4
                 } else if (allVideo.count > 16) {
-                    column = 6
+                    column = 5
                 }
             }
 
@@ -262,7 +263,19 @@ class VideoChatViewController: UIViewController {
 extension VideoChatViewController: ARtcEngineDelegate {
     // first remote video frame
     func rtcEngine(_ engine: ARtcEngineKit, firstRemoteVideoFrameOfUid uid: String, size: CGSize, elapsed: Int) {
+        for video in videoArr {
+            let videoVideo = video as! ARVideoView
+            if videoVideo.uid == uid {
+                videoVideo.videoMutedIndicator.isHidden = true
+                break
+            }
+        }
+    }
+    
+    func rtcEngine(_ engine: ARtcEngineKit, didJoinedOfUid uid: String, elapsed: Int) {
         let remoteView = ARVideoView.loadVideoView(uid: uid)
+        remoteView.videoMutedIndicator.isHidden = false
+        remoteView.audioMutedIndicator.isHidden = false;
         view.insertSubview(remoteView, belowSubview:joinButton)
         videoArr.add(remoteView)
         
@@ -305,11 +318,29 @@ extension VideoChatViewController: ARtcEngineDelegate {
         }
     }
     
+    func rtcEngine(_ engine: ARtcEngineKit, remoteAudioStateChangedOfUid uid: String, state: ARAudioRemoteState, reason: ARAudioRemoteStateReason, elapsed: Int) {
+        if reason == .reasonRemoteMuted || reason == .reasonRemoteUnmuted {
+            var audioImage: String;
+            (reason == .reasonRemoteMuted) ? (audioImage = "audio_close") : (audioImage = "audio_open")
+            for video in videoArr {
+                let videoVideo = video as! ARVideoView
+                if videoVideo.uid == uid {
+                    videoVideo.audioMutedIndicator.image = UIImage.init(named: audioImage)
+                    break
+                }
+            }
+        }
+    };
+    
     func rtcEngine(_ engine: ARtcEngineKit, didOccurWarning warningCode: ARWarningCode) {
         logVC?.log(type: .warning, content: "did occur warning, code: \(warningCode.rawValue)")
     }
     
     func rtcEngine(_ engine: ARtcEngineKit, didOccurError errorCode: ARErrorCode) {
         logVC?.log(type: .error, content: "did occur error, code: \(errorCode.rawValue)")
+    }
+    
+    func rtcEngine(_ engine: ARtcEngineKit, reportRtcStats stats: ARChannelStats) {
+        statsLabel.text = String(format: "CPU：%.2f%% ", stats.cpuAppUsage * 100) + String(format: "Memory：%.2fM", Float(stats.memoryAppUsageInKbytes)/1024.00)
     }
 }

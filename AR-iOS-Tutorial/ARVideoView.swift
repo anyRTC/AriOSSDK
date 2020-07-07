@@ -11,6 +11,7 @@ import UIKit
 class ARVideoView: UIView {
     //占位图
     @IBOutlet weak var videoMutedIndicator: UIView!
+    @IBOutlet weak var audioMutedIndicator: UIImageView!
     
     var uid: String?
     
@@ -18,6 +19,7 @@ class ARVideoView: UIView {
         let video = Bundle.main.loadNibNamed("ARVideoView", owner: self, options: nil)?.first as! ARVideoView
         video.uid = uid
         video.videoMutedIndicator.isHidden = true
+        video.audioMutedIndicator.isHidden = true
         video.frame = CGRect.zero
         return video
     }

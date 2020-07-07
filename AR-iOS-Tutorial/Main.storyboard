@@ -108,16 +108,24 @@
                                     <segue destination="2sX-hm-eZ5" kind="embed" identifier="EmbedLogViewController" id="8qw-dt-bWG"/>
                                 </connections>
                             </containerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CYu-Bg-6Au">
+                                <rect key="frame" x="5" y="662" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" name="PingFangSC-Semibold" family="PingFang SC" pointSize="12"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.28264099359512329" green="0.25691255927085876" blue="0.34382003545761108" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="XrT-iS-Ymr" firstAttribute="top" secondItem="bhC-Zh-0jg" secondAttribute="top" constant="32" id="5Ka-wT-jcB"/>
+                            <constraint firstItem="CYu-Bg-6Au" firstAttribute="leading" secondItem="bhC-Zh-0jg" secondAttribute="leading" constant="5" id="8KF-bj-EWG"/>
                             <constraint firstItem="bhC-Zh-0jg" firstAttribute="bottom" secondItem="Zzy-6s-cCK" secondAttribute="bottom" constant="52.5" id="Aan-PW-W4g"/>
                             <constraint firstItem="Zzy-6s-cCK" firstAttribute="top" secondItem="QRw-lx-Hkf" secondAttribute="bottom" constant="23.5" id="KQq-g9-oPY"/>
                             <constraint firstItem="bhC-Zh-0jg" firstAttribute="trailing" secondItem="Zzy-6s-cCK" secondAttribute="trailing" constant="20" id="k5f-gp-SUU"/>
                             <constraint firstItem="Zzy-6s-cCK" firstAttribute="leading" secondItem="bhC-Zh-0jg" secondAttribute="leading" constant="20" id="nju-4l-zQb"/>
                             <constraint firstItem="bhC-Zh-0jg" firstAttribute="trailing" secondItem="XrT-iS-Ymr" secondAttribute="trailing" constant="16" id="oiM-l5-WOF"/>
                             <constraint firstItem="QRw-lx-Hkf" firstAttribute="leading" secondItem="Zzy-6s-cCK" secondAttribute="leading" id="qo2-lW-o8V"/>
+                            <constraint firstItem="bhC-Zh-0jg" firstAttribute="bottom" secondItem="CYu-Bg-6Au" secondAttribute="bottom" constant="5" id="z0W-aH-1Sz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bhC-Zh-0jg"/>
                     </view>
@@ -126,6 +134,7 @@
                         <outlet property="joinButton" destination="XrT-iS-Ymr" id="XwB-jx-KIL"/>
                         <outlet property="micButton" destination="yp9-ap-8KX" id="fBt-MF-Pby"/>
                         <outlet property="stackView" destination="Ral-a4-1f2" id="O1o-eL-iIw"/>
+                        <outlet property="statsLabel" destination="CYu-Bg-6Au" id="M7Y-DB-pyi"/>
                         <outlet property="switchButton" destination="wOE-Wj-Ukc" id="zvH-LI-0DF"/>
                         <outlet property="videoButton" destination="EGz-WG-po7" id="Vtn-rb-M14"/>
                     </connections>

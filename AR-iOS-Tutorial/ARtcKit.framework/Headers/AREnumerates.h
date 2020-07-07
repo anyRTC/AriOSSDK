@@ -551,11 +551,7 @@ typedef NS_ENUM(NSInteger, ARNetworkType) {
     /**
      -1:网络连接类型未知
      */
-    ARNetworkTypeUnknown = -1,
-    /**
-     0:网络连接已断开
-     */
-    ARNetworkTypeDisconnected = 0,
+    ARNetworkTypeUnknown = 0,
     /**
      1:网络类型为 LAN
      */
