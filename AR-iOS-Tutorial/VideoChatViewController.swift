@@ -96,7 +96,7 @@ class VideoChatViewController: UIViewController {
         // same channel successfully using the same app id.
         // 2. One token is only valid for the channel name that
         // you use to generate this token.
-        rtcKit.joinChannel(byToken: "", channelId: "909090", uid: nil) { [unowned self] (channel, uid, elapsed) -> Void in
+        rtcKit.joinChannel(byToken: "", channelId: "808080", uid: nil) { [unowned self] (channel, uid, elapsed) -> Void in
             // Did join channel "demoChannel1"
             self.logVC?.log(type: .info, content: "did join channel")
             self.localVideo.uid = uid
@@ -341,6 +341,6 @@ extension VideoChatViewController: ARtcEngineDelegate {
     }
     
     func rtcEngine(_ engine: ARtcEngineKit, reportRtcStats stats: ARChannelStats) {
-        statsLabel.text = String(format: "CPU：%.2f%% ", stats.cpuAppUsage * 100) + String(format: "Memory：%.2fM", Float(stats.memoryAppUsageInKbytes)/1024.00)
+        statsLabel.text = String(format: "CPU：%.2f%% ", stats.cpuAppUsage) + String(format: "Memory：%.2fM", Float(stats.memoryAppUsageInKbytes)/1024.00)
     }
 }
