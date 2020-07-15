@@ -26,14 +26,14 @@
 /** 发生警告回调
 
 @param engine   ARtcEngineKit对象
-@param warningCode   ARWarningCode
+@param warningCode   警告码，详见 ARWarningCode
 */
 - (void)rtcEngine:(ARtcEngineKit * _Nonnull)engine didOccurWarning:(ARWarningCode)warningCode;
 
 /** 发生错误回调
 
 @param engine   ARtcEngineKit对象
-@param errorCode   ARErrorCode
+@param errorCode   错误码，详见 ARErrorCode
 */
 - (void)rtcEngine:(ARtcEngineKit *_Nonnull)engine didOccurError:(ARErrorCode)errorCode;
 
@@ -62,7 +62,7 @@
  当用户调用 leaveChannel 离开频道后，SDK 会触发该回调。在该回调方法中，App 可以得到此次通话的总通话时长、SDK 收发数据的流量等信息。
 
  @param engine ARtcEngineKit对象
- @param stats  通话相关的统计信息：ARChannelStats
+ @param stats  通话相关的统计信息，详见 ARChannelStats
  */
 - (void)rtcEngine:(ARtcEngineKit * _Nonnull)engine didLeaveChannelWithStats:(ARChannelStats * _Nonnull)stats;
 
@@ -80,7 +80,7 @@
 
 @param engine   ARtcEngineKit对象
 @param uid   新加入频道的远端用户/主播 ID。如果 joinChannelByToken 中指定了 uid，则此处返回该 ID；否则使用ar云平台服务器自动分配的 ID。
-@param elapsed   从本地用户加入频道 joinChannelByToken 或 joinChannelByUserAccount 开始到发生此事件过去的时间（ms）。
+@param elapsed   从本地用户加入频道 joinChannelByToken开始到发生此事件过去的时间（ms）。
 */
 - (void)rtcEngine:(ARtcEngineKit *_Nonnull)engine didJoinedOfUid:(NSString *_Nonnull)uid elapsed:(NSInteger)elapsed;
 
@@ -174,6 +174,19 @@
  */
 - (void)rtcEngine:(ARtcEngineKit * _Nonnull)engine reportAudioVolumeIndicationOfSpeakers:(NSArray<ARtcAudioVolumeInfo *> * _Nonnull)speakers totalVolume:(NSInteger)totalVolume;
 
+/** 监测到活跃用户的回调
+
+该回调获取当前时间段内累积音量最大者。如果用户开启了 enableAudioVolumeIndication 功能，则当音量检测模块监测到频道内有新的活跃用户说话时，会通过本回调返回该用户的 uid。
+
+**Note**
+- 你需要开启 enableAudioVolumeIndication 方法才能收到该回调
+- uid 返回的是当前时间段内声音最大的用户 uid，而不是瞬时声音最大的用户 uid。
+ 
+ @param engine     ARtcEngineKit 对象
+ @param speakerUid 当前时间段声音最大的用户的 uid。
+ */
+- (void)rtcEngine:(ARtcEngineKit * _Nonnull)engine activeSpeaker:(NSString * _Nonnull)speakerUid;
+
 /** 已发送本地音频首帧的回调
 
  @param engine  ARtcEngineKit 对象
@@ -199,7 +212,7 @@
  @param uid 发生音频状态改变的远端用户 ID。
  @param state  远端音频流状态。详见 ARAudioRemoteState。
  @param reason 远端音频流状态改变的具体原因。详见 ARAudioRemoteStateReason。
- @param elapsed 从本地用户调用 joinChannel 方法到发生本事件经历的时间，单位为 ms。
+ @param elapsed 从本地用户调用 joinChannelByToken 方法到发生本事件经历的时间，单位为 ms。
  */
 - (void)rtcEngine:(ARtcEngineKit * _Nonnull)engine remoteAudioStateChangedOfUid:(NSString *_Nonnull)uid state:(ARAudioRemoteState)state reason:(ARAudioRemoteStateReason)reason elapsed:(NSInteger)elapsed;
 
@@ -220,7 +233,7 @@
 /** 本地或远端视频大小和旋转信息发生改变回调
 
  @param engine   ARtcEngineKit 对象
- @param uid      图像尺寸和旋转信息发生变化的用户的用户 ID（本地用户的 uid 为 0）
+ @param uid     图像尺寸和旋转信息发生变化的用户的用户 ID
  @param size    新的视频尺寸
  @param rotation 旋转信息 (0 到 360)
  */
@@ -232,7 +245,7 @@
 @param uid 发生视频状态改变的远端用户 ID。
 @param state 远端视频流状态。详见 ARVideoRemoteState。
 @param reason 远端视频流状态改变的具体原因。详见 ARVideoRemoteStateReason。
-@param elapsed 从本地用户调用 joinChannel 方法到发生本事件经历的时间，单位为 ms。
+@param elapsed 从本地用户调用 joinChannelByToken 方法到发生本事件经历的时间，单位为 ms。
 */
 - (void)rtcEngine:(ARtcEngineKit *_Nonnull)engine remoteVideoStateChangedOfUid:(NSString *_Nonnull)uid state:(ARVideoRemoteState)state reason:(ARVideoRemoteStateReason)reason elapsed:(NSInteger)elapsed;
 
@@ -277,6 +290,24 @@
  */
 - (void)rtcEngine:(ARtcEngineKit * _Nonnull)engine reportRtcStats:(ARChannelStats * _Nonnull)stats;
 
+/** 通话中每个用户的网络上下行 last mile 质量报告回调
+
+ 该回调描述每个用户在通话中的 last mile 网络状态，其中 last mile 是指设备到 ar云平台 边缘服务器的网络状态。
+
+ 该回调每 2 秒触发一次。如果远端有多个用户，该回调每 2 秒会被触发多次。
+
+ @param engine  ARtcEngineKit 对象
+ @param uid       用户 ID。表示该回调报告的是持有该 ID 的用户的网络质量。
+ @param txQuality
+ 
+ 该用户的上行网络质量。基于上行视频的发送码率、上行丢包率、平均往返时延和网络抖动计算。该值代表当前的上行网络质量，帮助判断是否可以支持当前设置的视频编码属性。
+
+ 假设上行码率是 500 Kbps，那么支持 480 x 480 的分辨率、30 fps 的帧率没有问题，但是支持 1280 x 720 的分辨率就会有困难。详见 ARNetworkQuality。
+ 
+ @param rxQuality 该用户的下行网络质量。基于下行网络的丢包率、平均往返延时和网络抖动计算。详见 ARNetworkQuality。
+ */
+- (void)rtcEngine:(ARtcEngineKit * _Nonnull)engine networkQuality:(NSString * _Nonnull)uid txQuality:(ARNetworkQuality)txQuality rxQuality:(ARNetworkQuality)rxQuality;
+
 /** 本地视频流统计信息回调
 
  @param engine ARtcEngineKit 对象。
@@ -301,13 +332,13 @@
 
 
  @param engine ARtcEngineKit 对象。
- @param stats  远端视频统计数据，详细定义见 ARtcRemoteVideoStats
+ @param stats  远端视频统计数据，详见 ARtcRemoteVideoStats
  */
 - (void)rtcEngine:(ARtcEngineKit * _Nonnull)engine remoteVideoStats:(ARtcRemoteVideoStats * _Nonnull)stats;
 
 //MARK: - 音频播放事件回调
 /**-----------------------------------------------------------------------------
-* @name 频播放事件回调
+* @name 音频播放事件回调
 * -----------------------------------------------------------------------------
 */
 
@@ -340,7 +371,7 @@
 当语音路由发生变化时，SDK 会触发此回调。
 
  @param engine  ARtcEngineKit 对象
- @param routing 设置语音路由: ARAudioOutputRouting
+ @param routing 设置语音路由，详见 ARAudioOutputRouting
  */
 - (void)rtcEngine:(ARtcEngineKit * _Nonnull)engine didAudioRouteChanged:(ARAudioOutputRouting)routing;
 
@@ -367,7 +398,7 @@
  
 **Note**
  
-收到该回调，可调用setupRemoteVideo方法显示远端视图。推荐使用 remoteVideoStateChangedOfUid 回调的 ARVideoRemoteStateStarting(1) 和 ARVideoRemoteStateDecoding(2)
+收到该回调，可调用setupRemoteVideo方法显示远端视图。推荐使用 remoteVideoStateChangedOfUid 回调的 ARVideoRemoteStateStarting(1) 和 ARVideoRemoteStateDecoding(2)。
  
 @param engine ARtcEngineKit 对象
 @param uid 远端用户 ID

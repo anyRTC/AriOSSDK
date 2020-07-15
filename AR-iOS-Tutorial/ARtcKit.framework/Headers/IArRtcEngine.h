@@ -3658,6 +3658,16 @@ public:
      */
     virtual int getDevice(char deviceId[MAX_DEVICE_ID_LENGTH]) = 0;
 
+	/** Select video device for Screen cast.
+
+	 @param deviceId Pointer to the video-capture device ID.
+	 @note: deviceId - scree0 for default desktop
+	 @return
+	 - 0: Success.
+	 - < 0: Failure.
+	 */
+	virtual int selectScreenCastDevice(char deviceId[MAX_DEVICE_ID_LENGTH]) = 0;
+
     /** Releases all IVideoDeviceManager resources.
     */
     virtual void release() = 0;

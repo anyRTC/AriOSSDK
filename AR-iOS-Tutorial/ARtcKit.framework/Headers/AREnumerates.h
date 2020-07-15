@@ -473,7 +473,7 @@ typedef NS_ENUM(NSInteger, ARAudioMixingErrorCode){
     ARAudioMixingErrorOK = 0,
 };
 
-/** 视频显示模式 */
+/** 频道使用场景 */
 typedef NS_ENUM(NSUInteger, ARChannelProfile ) {
     /**
      0: 通信场景
@@ -723,15 +723,14 @@ typedef NS_ENUM(NSUInteger, ARVideoRemoteStateReason ) {
 
 /** 选择高码率高分辨率视频或低码率低分辨率视频 */
 typedef NS_ENUM(NSInteger, ARVideoStreamType ) {
-   /**
+    /**
     0:高码率、高分辨率视频
     */
-   ARVideoStreamTypeHigh = 0,
-   /**
+    ARVideoStreamTypeHigh = 0,
+    /**
     1:低码率、低分辨率视频
     */
-   ARVideoStreamTypeLow = 1,
-
+    ARVideoStreamTypeLow = 1,
 };
 
 /** 视频输出方向模式 */
@@ -913,50 +912,50 @@ typedef NS_ENUM(NSUInteger, ARAudioRemoteStateReason) {
 
 /** 本地视频状态 */
 typedef NS_ENUM(NSInteger, ARLocalVideoStreamState) {
-  /**
-   0: 本地视频默认初始状态。
-   */
-  ARLocalVideoStreamStateStopped = 0,
-  /**
-   1: 本地视频采集设备启动成功。
-   */
-  ARLocalVideoStreamStateCapturing = 1,
-  /**
-   2: 本地视频首帧编码成功。
-   */
-  ARLocalVideoStreamStateEncoding = 2,
-  /**
-   3: 本地视频启动失败。
-   */
-  ARLocalVideoStreamStateFailed = 3,
+    /**
+    0: 本地视频默认初始状态。
+    */
+    ARLocalVideoStreamStateStopped = 0,
+    /**
+    1: 本地视频采集设备启动成功。
+    */
+    ARLocalVideoStreamStateCapturing = 1,
+    /**
+    2: 本地视频首帧编码成功。
+    */
+    ARLocalVideoStreamStateEncoding = 2,
+    /**
+    3: 本地视频启动失败。
+     */
+    ARLocalVideoStreamStateFailed = 3,
 };
 
 /** 本地视频出错原因 */
 typedef NS_ENUM(NSInteger, ARLocalVideoStreamError) {
-  /**
-   0: 本地视频状态正常。
-   */
-  ARLocalVideoStreamErrorOK = 0,
-  /**
-   1: 出错原因不明确。
-   */
-  ARLocalVideoStreamErrorFailure = 1,
-  /**
-   2: 没有权限启动本地视频采集设备。
-   */
-  ARLocalVideoStreamErrorDeviceNoPermission = 2,
-  /**
-   3: 本地视频采集设备正在使用中。
-   */
-  ARLocalVideoStreamErrorDeviceBusy = 3,
-  /**
-   4: 本地视频采集失败，建议检查采集设备是否正常工作。
-   */
-  ARLocalVideoStreamErrorCaptureFailure = 4,
-  /**
-   5: 本地视频编码失败。
-   */
-  ARLocalVideoStreamErrorEncodeFailure = 5,
+    /**
+    0: 本地视频状态正常。
+    */
+    ARLocalVideoStreamErrorOK = 0,
+    /**
+    1: 出错原因不明确。
+    */
+    ARLocalVideoStreamErrorFailure = 1,
+    /**
+    2: 没有权限启动本地视频采集设备。
+    */
+    ARLocalVideoStreamErrorDeviceNoPermission = 2,
+    /**
+    3: 本地视频采集设备正在使用中。
+    */
+    ARLocalVideoStreamErrorDeviceBusy = 3,
+    /**
+    4: 本地视频采集失败，建议检查采集设备是否正常工作。
+    */
+    ARLocalVideoStreamErrorCaptureFailure = 4,
+    /**
+    5: 本地视频编码失败。
+    */
+    ARLocalVideoStreamErrorEncodeFailure = 5,
 };
 
 /** 摄像头采集偏好 */
@@ -981,15 +980,15 @@ typedef NS_ENUM(NSInteger, ARCameraCaptureOutputPreference) {
 #if TARGET_OS_IOS
 /** 摄像头方向 */
 typedef NS_ENUM(NSInteger, ARCameraDirection) {
-        /**
-         0:使用后置摄像头
-         */
-        ARCameraDirectionRear = 0,
-        /**
-         1:使用前置摄像头
-         */
-        ARCameraDirectionFront = 1,
-    };
+    /**
+    0:使用后置摄像头
+    */
+    ARCameraDirectionRear = 0,
+    /**
+    1:使用前置摄像头
+    */
+    ARCameraDirectionFront = 1,
+};
 #endif
 
 /** 语音路由 */
@@ -1128,7 +1127,6 @@ typedef NS_ENUM(NSInteger, ARUserPriority ) {
      100:（默认）用户需求优先级为正常
      */
     ARUserPriorityNormal = 100,
-
 };
 
 /** 音视频流回退处理选项 */
@@ -1158,29 +1156,29 @@ typedef NS_ENUM(NSInteger, ARVideoCodecType) {
      */
     ARVideoCodecTypeH264 = 2,
     /**
-     3:  VP8.
+     3:  EVP
      */
     ARVideoCodecTypeEVP = 3,
     /**
-     4:  H264.
+     4:  E264
      */
     ARVideoCodecTypeE264 = 4,
 };
 
 /** 自上次统计后本地视频质量的自适应情况（基于目标帧率和目标码率） */
 typedef NS_ENUM(NSInteger, ARVideoQualityAdaptIndication) {
-  /**
-   0:本地视频质量不变
-   */
-  ARVideoQualityAdaptNone = 0,
-  /**
-   1:因网络带宽增加，本地视频质量改善
-   */
-  ARVideoQualityAdaptUpBandwidth = 1,
-  /**
-   2:因网络带宽减少，本地视频质量变差
-   */
-  ARVideoQualityAdaptDownBandwidth = 2,
+    /**
+    0:本地视频质量不变
+    */
+    ARVideoQualityAdaptNone = 0,
+    /**
+    1:因网络带宽增加，本地视频质量改善
+    */
+    ARVideoQualityAdaptUpBandwidth = 1,
+    /**
+    2:因网络带宽减少，本地视频质量变差
+    */
+    ARVideoQualityAdaptDownBandwidth = 2,
 };
 
 /** 网络质量 */
@@ -1225,11 +1223,14 @@ typedef NS_ENUM(NSUInteger, ARNetworkQuality) {
 
 /** 视频buffer */
 typedef NS_ENUM(NSInteger, ARVideoBufferType ) {
-
-   ARVideoBufferTypePixelBuffer = 1,
-
-   ARVideoBufferTypeRawData = 2,
-    
+    /**
+     1:pixelbuffer
+     */
+    ARVideoBufferTypePixelBuffer = 1,
+    /**
+     2:rawdata
+     */
+    ARVideoBufferTypeRawData = 2,
 };
 
 

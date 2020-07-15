@@ -72,9 +72,17 @@ typedef NS_ENUM(NSInteger, ARVideoRotation) {
 
 @end
 
+
+/** ARVideoSourceProtocol 协议
+ 
+ ARVideoSourceProtocol 定义了一套协议，开发者通过实现该接口，来创建自定义的视频源，并设置给 sdk 底层的 Media Engine
+
+ 实时通讯过程中，SDK 通常会启动默认的视频输入设备，即内置的摄像头，进行视频推流。 使用 ARVideoSourceProtocol 接口可以自定义视频源。通过调用 设置视频源 setVideoSource 接口，可以改变并控制默认的视频输入设备，再将自定义的视频源发送给 Media Engine，让 Media Engine 进行其它视频处理，如过滤视频、将视频发布到 RTC 链接等。
+ 
+ */
 @protocol ARVideoSourceProtocol <NSObject>
 @required
-/** 详情 ARVideoFrameConsumer */
+/** ARVideoFrameConsumer 协议，详见 ARVideoFrameConsumer */
 @property (strong) id<ARVideoFrameConsumer> _Nullable consumer;
 /** 初始化视频源
 
@@ -88,7 +96,7 @@ typedef NS_ENUM(NSInteger, ARVideoRotation) {
 
  开发者需要手动输入 YES 或 NO，以告诉 Media Engine 自定义视频源是否已准备好。
 
- @return 初始化状态
+ @return 初始化状态：
  * YES: 自定义的视频源已经完成了初始化工作
  * NO: 自定义的视频源设备没准备好或者初始化失败，Media Engine 会停下来并上报错误
  */
@@ -121,7 +129,7 @@ Media Engine 通知开发者视频源即将失效，开发者可以在这个方�
 
  Media Engine 在初始化的时候，会调用这个方法来查询该视频源所使用的 Buffer 类型。开发者必须指定且只能指定一种 Buffer 类型并通过返回值告诉 Media Engine
 
- @return return ARVideoBufferType
+ @return ARVideoBufferType
  */
 - (ARVideoBufferType)bufferType;
 

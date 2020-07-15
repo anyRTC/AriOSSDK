@@ -28,7 +28,13 @@ typedef NSPoint POINT_CLASS;
 */
 __attribute__((visibility("default"))) @interface ARtcVideoCanvas : NSObject
 
-
+/**
+ 视频显示视窗
+ 
+ VIEW_CLASS 为统称，具体为：
+ - iOS: UIView
+ - MacOS: NSView
+ */
 @property (strong, nonatomic) VIEW_CLASS* _Nullable view;
 /** 视频显示模式 */
 @property (assign, nonatomic) ARVideoRenderMode renderMode;
@@ -42,6 +48,7 @@ __attribute__((visibility("default"))) @interface ARtcVideoCanvas : NSObject
 @property (copy, nonatomic) NSString * _Nullable channelId;
 /** 用户id */
 @property (copy, nonatomic) NSString * _Nonnull uid;
+/** 视图镜像模式，详见 ARVideoMirrorMode */
 @property (assign, nonatomic) ARVideoMirrorMode mirrorMode;
 
 @end
@@ -278,8 +285,9 @@ ARDegradationPreference，有如下选项：
 */
 @property (assign, nonatomic) ARDegradationPreference degradationPreference;
 
-/** 设置本地发送视频的镜像模式，只影响远端用户看到的视频画面。详见 ARVideoMirrorMode
+/** 设置本地发送视频的镜像模式
  
+ * 只影响远端用户看到的视频画面。详见 ARVideoMirrorMode
  * 默认关闭镜像模式
  */
 @property (assign, nonatomic) ARVideoMirrorMode mirrorMode;
@@ -317,7 +325,7 @@ ARDegradationPreference，有如下选项：
 /** 音量信息的属性 */
 __attribute__((visibility("default"))) @interface ARtcAudioVolumeInfo : NSObject
 
-/** 说话者的用户 ID。如果报告的 uid 为 0，则默认为本地用户 */
+/** 说话者的用户 ID。 */
 @property (assign, nonatomic) NSString * _Nonnull uid;
 /** 说话者各自混音后的音量，取值范围为 [0,255] */
 @property (assign, nonatomic) NSUInteger volume;
@@ -367,6 +375,8 @@ __attribute__((visibility("default"))) @interface ARtcRemoteAudioStats : NSObjec
  4：勉强能沟通但不顺畅
  5：网络质量非常差，基本不能沟通
  6：网络连接已断开，完全无法沟通
+ 7：网络质量探测功能不可使用 (目前没有使用)
+ 8：网络质量探测中
  */
 @property (assign, nonatomic) ARNetworkQuality quality;
 /** 音频发送端到接收端的网络延迟（毫秒）
@@ -542,7 +552,7 @@ __attribute__((visibility("default"))) @interface ARVideoFrame : NSObject
 
 可选值为 0，90，180，270。默认为 0。
  */
-@property (assign, nonatomic) int rotation;   // 0, 90, 180, 270. See document for rotation calculation.
+@property (assign, nonatomic) int rotation;
 
 /** 视频缓冲区的长度
  */

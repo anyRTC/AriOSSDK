@@ -33,7 +33,7 @@ __attribute__((visibility("default"))) @interface ARtcEngineKit : NSObject
  
 请确保在调用其他 API 前先调用该方法创建并初始化 ARtcEngineKit。 一个 ARtcEngineKit 实例对象只能使用一个 App ID。如需更换 App ID，必须先调用 destroy 销毁当前实例，再调用本方法重新创建实例。
  
-@param appId    ar云平台 为 App 开发者签发的 App ID。每个项目都应该有一个独一无二的 App ID。如果你的开发包里没有 App ID，请从ar云平台官网申请一个新的 App ID。在你调用 joinChannelByToken:channelId:info:uid:joinSuccess: 加入ar云平台的全球网络实现一对一或一对多直播通信时需要：
+@param appId    ar云平台 为 App 开发者签发的 App ID。每个项目都应该有一个独一无二的 App ID。如果你的开发包里没有 App ID，请从ar云平台官网申请一个新的 App ID。在你调用 joinChannelByToken加入ar云平台的全球网络实现一对一或一对多直播通信时需要：
  
  * 用 App ID 标示你的项目和所属组织
  * 用一个独一无二的频道名称
@@ -45,7 +45,7 @@ __attribute__((visibility("default"))) @interface ARtcEngineKit : NSObject
 
 /** 销毁 RtcEngine 实例
 
- 该方法用于释放SDK 使用的所有对象资源。帮助偶尔使用音视频通话的 App 在无需通话时释放资源。一旦 App 调用了 destroy 接口销毁创建的 ARtcEngineKit 实例，将无法调用 SDK 内的任何方法也不再会有任何回调产生。如需重启通话，请调用初始化方法 sharedEngineWithAppId:delegate: 创建一个新的 ARtcEngineKit 实例。
+ 该方法用于释放SDK 使用的所有对象资源。帮助偶尔使用音视频通话的 App 在无需通话时释放资源。一旦 App 调用了 destroy 接口销毁创建的 ARtcEngineKit 实例，将无法调用 SDK 内的任何方法也不再会有任何回调产生。如需重启通话，请调用初始化方法 sharedEngineWithAppId创建一个新的 ARtcEngineKit 实例。
 
 **Note**
 
@@ -67,11 +67,15 @@ __attribute__((visibility("default"))) @interface ARtcEngineKit : NSObject
 
 /** 设置用户角色
  
-该方法仅适用于直播场景。在加入频道前，用户需要通过本方法设置观众(默认)或主播角色。在加入频道后，用户可以通过本方法切换用户角色。
+在加入频道前，用户需要通过本方法设置观众(默认)或主播角色。在加入频道后，用户可以通过本方法切换用户角色。
 
 如果你在加入频道后调用该方法切换用户角色，调用成功后，本地会触发 didClientRoleChanged 回调；远端会触发 didJoinedOfUid 或 didOfflineOfUid(ARUserOfflineReasonBecomeAudience) 回调。
+ 
+**Note**
+  
+该方法仅适用于直播场景。
 
-@param role   直播场景里的用户角色
+@param role   直播场景里的用户角色，详见ARClientRole：
  
  * ARClientRoleBroadcaster = 1; 主播
  * ARClientRoleAudience = 2; 观众(默认)
@@ -238,10 +242,10 @@ __attribute__((visibility("default"))) @interface ARtcEngineKit : NSObject
  * 该方法设置的是内部引擎为禁用状态，在频道内和频道外均可调用，且在 leaveChannel 后仍然有效。
  * 该方法重置整个引擎，响应速度较慢，因此建议使用如下方法来控制音频模块：
 
-    * enableLocalAudio：是否启动麦克风采集并创建本地音频流
-    * muteLocalAudioStream：是否发布本地音频流
-    * muteRemoteAudioStream：是否接收并播放远端音频流
-    * muteAllRemoteAudioStreams：是否接收并播放所有远端音频流
+    - enableLocalAudio：是否启动麦克风采集并创建本地音频流
+    - muteLocalAudioStream：是否发布本地音频流
+    - muteRemoteAudioStream：是否接收并播放远端音频流
+    - muteAllRemoteAudioStreams：是否接收并播放所有远端音频流
 
  @return 0方法调用成功，<0方法调用失败
  */
@@ -256,8 +260,8 @@ __attribute__((visibility("default"))) @interface ARtcEngineKit : NSObject
  * 通信和直播场景下，音质（码率）会有网络自适应的调整，通过该方法设置的是一个最高码率。
  * 在有高音质需求的场景（例如音乐教学场景）中，建议将 profile 设置为 ARAudioProfileMusicHighQuality(4)，scenario 设置为 ARAudioScenarioGameStreaming(3)
  
- @param profile  ARAudioProfile
- @param scenario 设置音频应用场景，详细定义见 ARAudioScenario。不同的音频场景下，设备的系统音量是不同的。详见 如何区分媒体音量和通话音量。
+ @param profile  音频属性，详见ARAudioProfile
+ @param scenario 设置音频应用场景，详细定义见 ARAudioScenario。不同的音频场景下，设备的系统音量是不同的。
 
  @return 0方法调用成功，<0方法调用失败
  */
@@ -298,7 +302,7 @@ __attribute__((visibility("default"))) @interface ARtcEngineKit : NSObject
 @param interval 指定音量提示的时间间隔
  
  * <= 0: 禁用音量提示功能
- * > 0: 提示间隔，单位为毫秒。建议设置到大于 200 毫秒。最小不得少于 10 毫秒。启用该方法后，无论频道内是否有人说话，都会在 reportAudioVolumeIndicationOfSpeakers 及 audioVolumeIndicationBlock 回调中按设置的时间间隔返回音量提示
+ * > 0: 提示间隔，单位为毫秒。建议设置到大于 200 毫秒。最小不得少于 10 毫秒。启用该方法后，无论频道内是否有人说话，都会在 reportAudioVolumeIndicationOfSpeakers回调中按设置的时间间隔返回音量提示
  
 @param smooth 指定音量提示的灵敏度。取值范围为 [0,10]，建议值为 3，数字越大，波动越灵敏；数字越小，波动越平滑。
 @param report_vad 本地人声检测功能
@@ -338,7 +342,7 @@ __attribute__((visibility("default"))) @interface ARtcEngineKit : NSObject
 
  该方法用于允许/禁止往网络发送本地音频流。成功调用该方法后，远端会触发 remoteAudioStateChangedOfUid 回调。
 
- **Note**
+**Note**
 
  * 该方法不影响录音状态，并没有禁用麦克风。
  * 如果你在该方法后调用 setChannelProfile 方法，SDK 会根据你设置的频道场景以及用户角色，重新设置是否停止发送本地音频。因此我们建议在 setChannelProfile 后调用该方法。
@@ -384,7 +388,7 @@ __attribute__((visibility("default"))) @interface ARtcEngineKit : NSObject
  
  停止接收音频流后，如果想要恢复接收，请调用 muteRemoteAudioStream (NO)，并指定你想要接收的远端用户 uid；如果想恢复接收多个用户的音频流，则需要多次调用 muteRemoteAudioStream。setDefaultMuteAllRemoteAudioStreams (NO) 只能恢复接收后面加入频道的用户的音频流。
 
- @param mute Sets whether to receive/stop receiving all remote audio streams by default:
+ @param mute 设置是否默认接收音频流：
 
  * YES: 默认停止接收所有远端音频流
  * NO: 默认继续接收所有远端音频流（默认）
@@ -428,13 +432,12 @@ __attribute__((visibility("default"))) @interface ARtcEngineKit : NSObject
 
 **Note**
 
-- 该方法设置的是内部引擎为启用状态，在 leaveChannel 后仍然有效。
-- 该方法重置整个引擎，响应速度较慢，因此建议使用如下方法来控制视频模块：
-
- * enableLocalVideo：是否启动摄像头采集并创建本地视频流
- * muteLocalVideoStream：是否发布本地视频流
- * muteRemoteVideoStream：是否接收并播放远端视频流
- * muteAllRemoteVideoStreams：是否接收并播放所有远端视频流
+ * 该方法设置的是内部引擎为启用状态，在 leaveChannel 后仍然有效。
+ * 该方法重置整个引擎，响应速度较慢，因此建议使用如下方法来控制视频模块：
+    - enableLocalVideo：是否启动摄像头采集并创建本地视频流
+    - muteLocalVideoStream：是否发布本地视频流
+    - muteRemoteVideoStream：是否接收并播放远端视频流
+    - muteAllRemoteVideoStreams：是否接收并播放所有远端视频流
 
  @return 0方法调用成功，<0方法调用失败
  */
@@ -456,13 +459,12 @@ __attribute__((visibility("default"))) @interface ARtcEngineKit : NSObject
 
 **Note**
 
-- 该方法设置的是内部引擎为启用状态，在 leaveChannel 后仍然有效。
-- 该方法重置整个引擎，响应速度较慢，因此建议使用如下方法来控制视频模块：
-
-    * enableLocalVideo：是否启动摄像头采集并创建本地视频流
-    * muteLocalVideoStream：是否发布本地视频流
-    * muteRemoteVideoStream：是否接收并播放远端视频流
-    * muteAllRemoteVideoStreams：是否接收并播放所有远端视频流
+ * 该方法设置的是内部引擎为启用状态，在 leaveChannel 后仍然有效。
+ * 该方法重置整个引擎，响应速度较慢，因此建议使用如下方法来控制视频模块：
+    - enableLocalVideo：是否启动摄像头采集并创建本地视频流
+    - muteLocalVideoStream：是否发布本地视频流
+    - muteRemoteVideoStream：是否接收并播放远端视频流
+    - muteAllRemoteVideoStreams：是否接收并播放所有远端视频流
 
  @return 0方法调用成功，<0方法调用失败
  */
@@ -486,8 +488,8 @@ __attribute__((visibility("default"))) @interface ARtcEngineKit : NSObject
 
 **Note**
  
- - 请在加入频道前调用该方法。
- - 如果你希望在通话中更新本地用户视图的渲染或镜像模式，请使用 setLocalRenderMode 方法。
+ * 请在加入频道前调用该方法。
+ * 如果你希望在通话中更新本地用户视图的渲染或镜像模式，请使用 setLocalRenderMode 方法。
  
  @param local 通过 ARtcVideoCanvas 设置本地视频显示属性。
 
@@ -508,9 +510,9 @@ __attribute__((visibility("default"))) @interface ARtcEngineKit : NSObject
  @param remote 通过 ARtcVideoCanvas 设置远端视频显示属性：
  
  * view 视频显示视窗
- * renderMode: 视频显示模式
-    * ARVideoRenderModeHidden (1)：优先保证视窗被填满。因视频尺寸与显示视窗尺寸不一致而多出的视频将被截掉。
-    * ARVideoRenderModeFit (2)：优先保证视频内容全部显示。因视频尺寸与显示视窗尺寸不一致造成的视窗未被填满的区域填充黑色。
+ * renderMode: 视频显示模式：
+    - ARVideoRenderModeHidden (1)：优先保证视窗被填满。因视频尺寸与显示视窗尺寸不一致而多出的视频将被截掉。
+    - ARVideoRenderModeFit (2)：优先保证视频内容全部显示。因视频尺寸与显示视窗尺寸不一致造成的视窗未被填满的区域填充黑色。
  * uid: 用户 ID，指定要显示视窗的远端用户。
 
  @return 0方法调用成功，<0方法调用失败
@@ -522,12 +524,11 @@ __attribute__((visibility("default"))) @interface ARtcEngineKit : NSObject
 初始化本地用户视图后，你可以调用该方法更新本地用户视图的渲染和镜像模式。该方法只影响本地用户看到的视频画面，不影响本地发布视频。
 
 **Note**
+ * 如果你使用前置摄像头，默认启动本地用户视图镜像模式；如果你使用后置摄像头，默认关闭本地视图镜像模式。
+ * 请在调用 setupLocalVideo 方法初始化本地视图后，调用该方法。
+ * 你可以在通话中多次调用该方法，多次更新本地用户视图的显示模式。
 
-* 如果你使用前置摄像头，默认启动本地用户视图镜像模式；如果你使用后置摄像头，默认关闭本地视图镜像模式。
-* 请在调用 setupLocalVideo 方法初始化本地视图后，调用该方法。
-* 你可以在通话中多次调用该方法，多次更新本地用户视图的显示模式。
-
-@param renderMode   本地视图的渲染模式，详见 ARVideoRenderMode
+@param renderMode   本地视图的渲染模式，详见 ARVideoRenderMode；
 @param mirrorMode   本地视图的镜像模式，详见 ARVideoMirrorMode。
 
 @return 0方法调用成功，<0方法调用失败
@@ -540,11 +541,11 @@ __attribute__((visibility("default"))) @interface ARtcEngineKit : NSObject
 
 **Note**
 
-- 请在调用 setupRemoteVideo 方法初始化远端视图后，调用该方法。
-- 你可以在通话中多次调用该方法，多次更新远端用户视图的显示模式。
+ * 请在调用 setupRemoteVideo 方法初始化远端视图后，调用该方法。
+ * 你可以在通话中多次调用该方法，多次更新远端用户视图的显示模式。
 
 @param uid   用户 ID
-@param renderMode   远端用户视图的渲染模式，详见 ARVideoRenderMode 。
+@param renderMode   远端用户视图的渲染模式，详见 ARVideoRenderMode ；
 @param mirrorMode   远端用户视图的镜像模式，详见 ARVideoMirrorMode 。
 
 @return 0方法调用成功，<0方法调用失败
@@ -557,8 +558,8 @@ __attribute__((visibility("default"))) @interface ARtcEngineKit : NSObject
 
 调用该 API 前，必须：
 
- - 调用 setupLocalVideo 设置预览窗口及属性
- - 调用 enableVideo 开启视频功能
+ * 调用 setupLocalVideo 设置预览窗口及属性
+ * 调用 enableVideo 开启视频功能
 
 **Note**
 
@@ -631,8 +632,7 @@ __attribute__((visibility("default"))) @interface ARtcEngineKit : NSObject
  如果之前有调用过 muteAllRemoteVideoStreams(YES) 暂停接收所有远端视频，在调用本 API 之前请确保你已调用 muteAllRemoteVideoStreams(NO)。 muteAllRemoteVideoStreams 是全局控制，muteRemoteVideoStream 是精细控制。
 
  @param uid  远端用户ID
- @param mute Sets whether to receive/stop receiving a specified remote user’s video stream.
-
+ @param mute 停止/恢复接收指定视频流：
  * YES: 停止接收指定用户的视频流
  * NO: 允许接收指定用户的视频流（默认）
 
@@ -709,7 +709,8 @@ __attribute__((visibility("default"))) @interface ARtcEngineKit : NSObject
 
 /** 查询扬声器启用状态
 
- @return * YES: 扬声器已开启，语音会输出到扬声器
+ @return 扬声器状态：
+ * YES: 扬声器已开启，语音会输出到扬声器
  * NO: 扬声器未开启，语音会输出到非扬声器（听筒、耳机等）
  */
 - (BOOL)isSpeakerphoneEnabled;
@@ -725,8 +726,7 @@ __attribute__((visibility("default"))) @interface ARtcEngineKit : NSObject
 
 /** 开启耳返功能
 
- @param enabled Sets whether to enable/disable in-ear monitoring.
-
+ @param enabled 开启或关闭耳返功能：
  * YES: 开启耳返功能
  * NO: 关闭耳返功能（默认）
 
@@ -759,7 +759,7 @@ __attribute__((visibility("default"))) @interface ARtcEngineKit : NSObject
 
 **Note**
 
- * 使用本方法前请确保你的 iOS 设备版本不低于 8.0。
+ * 使用本方法前请确保你的 iOS 设备版本不低于 9.0。
  * 请在频道内调用该方法，如果在频道外调用该方法可能会出现问题。
  * 如果播放的是在线音乐文件，请确保重复调用该 API 的间隔超过 100 ms，否则 SDK 会返回 AudioFileOpenTooFrequent（702）警告码，表示音乐文件打开过于频繁。
  * 如果本地音乐文件不存在、文件格式不支持、无法访问在线音乐文件 URL 都会返回警告码 ARWarningCodeAudioMixingOpenError = 701。
@@ -768,7 +768,7 @@ __attribute__((visibility("default"))) @interface ARtcEngineKit : NSObject
  @param loopback 设置哪些用户可以听到音频混合:
  * YES: 只有本地可以听到混音或替换后的音频流
  * NO: 本地和对方都可以听到混音或替换后的音频流
- @param replace Sets the audio mixing content:
+ @param replace 设置混音麦克风内容:
  * YES: 只推送设置的本地音频文件或者线上音频文件，不传输麦克风收录的音频。
  * NO: 音频文件内容将会和麦克风采集的音频流进行混音
  @param cycle 指定音频文件循环播放的次数:
@@ -820,6 +820,8 @@ __attribute__((visibility("default"))) @interface ARtcEngineKit : NSObject
 
 /** 调节音乐文件在本地播放的音量
 
+**Note**
+ 
 该方法调节混音的音乐文件在本地播放的音量大小。请在频道内调用该方法。
 
 @param volume 音乐文件播放音量范围为 0~100。默认 100 为原始文件音量
@@ -861,9 +863,7 @@ __attribute__((visibility("default"))) @interface ARtcEngineKit : NSObject
 
 /** 获取音效文件播放音量
 
-范围为 [0.0,100.0]。
-
-@return 方法调用成功返回音效的音量值，< 0: 方法调用失败
+@return 方法调用成功返回音效的音量值，范围为 [0.0,100.0]，< 0: 方法调用失败
  */
 - (double)getEffectsVolume;
 
@@ -893,7 +893,10 @@ __attribute__((visibility("default"))) @interface ARtcEngineKit : NSObject
 
 调用该方法播放音效结束后，会触发 rtcEngineDidAudioEffectFinish 回调。
 
-**Note** macOS 上不支持同时播放多个在线音效文件。
+**Note**
+
+ macOS 上不支持同时播放多个在线音效文件。
+ 
  @param soundId 自行设定的音效 ID，需保证唯一性。 如果你已通过 preloadEffect 将音效加载至内存，确保这里设置的 soundId 与 preloadEffect 设置的 soundId 相同。
  @param filePath 指定音效文件的绝对路径或 URL 地址（包含文件后缀名），例如：/var/mobile/Containers/Data/audio.mp4。支持以下音频格式: mp3、mp4、aac、m4a、3gp、wav。
  @param loopCount 设置音效文件循环播放的次数：
@@ -945,7 +948,10 @@ __attribute__((visibility("default"))) @interface ARtcEngineKit : NSObject
 
  音效文件支持以下音频格式: mp3，aac，m4a，3gp，wav
 
-**Note** 该方法不支持在线音效文件。
+**Note**
+ 
+ 该方法不支持在线音效文件。
+ 
  @param soundId 自行设定的音效 ID，需保证唯一性。
  @param filePath 音效文件的绝对路径
 
@@ -1083,7 +1089,7 @@ __attribute__((visibility("default"))) @interface ARtcEngineKit : NSObject
  如果发送端选择发送视频双流（大流或小流），接收端可以选择接收大流还是小流。其中大流可以理解为高分辨率高码率的视频流，小流则是低分辨率低码率的视频流。该方法可以根据视频窗口的大小动态调整对应视频流的大小，以节约带宽和计算资源。
  
 @param uid   用户 ID
-@param streamType   设置视频流大小，ARVideoStreamType
+@param streamType   设置视频流大小，详见ARVideoStreamType
  
 @return 0方法调用成功，<0方法调用失败
 */
@@ -1137,6 +1143,8 @@ __attribute__((visibility("default"))) @interface ARtcEngineKit : NSObject
 
 /** 切换前置/后置摄像头
 
+**Note**
+
 本方法仅适用于 iOS 平台，不适用于 macOS。
  
 @return 0方法调用成功，<0方法调用失败
@@ -1151,8 +1159,10 @@ __attribute__((visibility("default"))) @interface ARtcEngineKit : NSObject
 
 /** 检测设备是否支持闪光灯常开
 
-- 本方法仅适用于 iOS 平台，不适用于 macOS。
--  一般情况下，App 默认开启前置摄像头，因此如果你的前置摄像头不支持闪光灯常开，直接使用该方法会返回 NO。如果需要检查后置摄像头是否支持闪光灯常开，需要先使用 switchCamera 切换摄像头，再使用该方法。
+**Note**
+ 
+ * 本方法仅适用于 iOS 平台，不适用于 macOS。
+ * 一般情况下，App 默认开启前置摄像头，因此如果你的前置摄像头不支持闪光灯常开，直接使用该方法会返回 NO。如果需要检查后置摄像头是否支持闪光灯常开，需要先使用 switchCamera 切换摄像头，再使用该方法。
  
 @return YES: 设备支持闪光灯常开; NO：设备不支持闪光灯常开。
 */
@@ -1160,6 +1170,8 @@ __attribute__((visibility("default"))) @interface ARtcEngineKit : NSObject
 
 /** 检测设备是否支持手动对焦功能
 
+**Note**
+ 
 本方法仅适用于 iOS 平台，不适用于 macOS。
  
 @return YES: 设备支持手动对焦功能；NO: 设备不支持手动对焦功能。
@@ -1168,6 +1180,8 @@ __attribute__((visibility("default"))) @interface ARtcEngineKit : NSObject
 
 /** 检测设备是否支持手动曝光功能
 
+**Note**
+ 
 本方法仅适用于 iOS 平台，不适用于 macOS。
  
 @return YES: 设备支持手动曝光功能；NO: 设备不支持手动曝光功能。
@@ -1176,6 +1190,8 @@ __attribute__((visibility("default"))) @interface ARtcEngineKit : NSObject
 
 /** 检测设备是否支持人脸对焦功能
 
+**Note**
+ 
 本方法仅适用于 iOS 平台，不适用于 macOS。
  
 @return YES: 设备支持人脸对焦功能；NO: 设备不支持人脸对焦功能。
@@ -1184,6 +1200,8 @@ __attribute__((visibility("default"))) @interface ARtcEngineKit : NSObject
 
 /** 设置摄像头缩放比例
 
+**Note**
+ 
 本方法仅适用于 iOS 平台，不适用于 macOS。
  
 @param zoomFactor   摄像头缩放比例，有效范围是 1.0 到设备支持的最大缩放比例。
@@ -1193,6 +1211,8 @@ __attribute__((visibility("default"))) @interface ARtcEngineKit : NSObject
 - (CGFloat)setCameraZoomFactor:(CGFloat)zoomFactor;
 
 /** 设置手动对焦位置，并触发对焦
+ 
+**Note**
  
 本方法仅适用于 iOS 平台，不适用于 macOS。成功调用该方法后，本地会触发 cameraFocusDidChangedToRect 回调。
 
@@ -1204,6 +1224,8 @@ __attribute__((visibility("default"))) @interface ARtcEngineKit : NSObject
 
 /** 设置摄像头曝光位置
 
+**Note**
+ 
 本方法仅适用于 iOS 平台，不适用于 macOS。成功调用该方法后，本地会触发 cameraExposureDidChangedToRect 回调。
 
 @param positionInView 触摸点相对于视图的横坐标和纵坐标
@@ -1257,7 +1279,7 @@ __attribute__((visibility("default"))) @interface ARtcEngineKit : NSObject
  * YES: 分发回调方法到主队列
  * NO: 不分发回调方法到主队列
 
- @return YES方法调用成功，NO方法调用失败
+ @return 0方法调用成功，<0方法调用失败
  */
 - (int)enableMainQueueDispatch:(BOOL)enabled;
 
@@ -1271,7 +1293,7 @@ __attribute__((visibility("default"))) @interface ARtcEngineKit : NSObject
 
  @param code didOccurWarning 或 didOccurError 提供的警告码或错误码。
 
- @return ARWarningCode or ARErrorCode.
+ @return 警告或错误描述
  */
 + (NSString * _Nullable)getErrorDescription:(NSInteger)code;
 
@@ -1282,15 +1304,15 @@ __attribute__((visibility("default"))) @interface ARtcEngineKit : NSObject
 **Note**
 
  - 日志文件的默认地址如下:
-   - iOS: `App Sandbox/Library/caches/sdk.log`
+   - iOS: `App Sandbox/Library/caches/ar_sdk.log`
    - macOS
-     - 开启沙盒: `App Sandbox/Library/Logs/sdk.log`, 例如 `/Users/<username>/Library/Containers/<App Bundle Identifier>/Data/Library/Logs/sdk.log`.
-     - 关闭沙盒: `～/Library/Logs/sdk.log`.
+     - 开启沙盒: `App Sandbox/Library/Logs/ar_sdk.log`, 例如 `/Users/<username>/Library/Containers/<App Bundle Identifier>/Data/Library/Logs/ar_sdk.log`.
+     - 关闭沙盒: `～/Library/Logs/ar_sdk.log`.
  - 如需调用本方法，请在调用 sharedEngineWithAppId 方法初始化 ARtcEngineKit 对象后立即调用，否则可能造成输出日志不完整。
 
  @param filePath 日志文件的完整路径。该日志文件为 UTF-8 编码。
 
- @return YES方法调用成功，NO方法调用失败
+ @return 0方法调用成功，<0方法调用失败
  */
 - (int)setLogFile:(NSString * _Nonnull)filePath;
 
@@ -1302,7 +1324,7 @@ SDK 设有 2 个日志文件，每个文件大小为 512 KB。如果你将 fileS
 
  @param fileSizeInKBytes 指定 SDK 输出日志文件的内存大小，单位为 KB。
 
- @return YES方法调用成功，NO方法调用失败，有可能是因为传入的参数无效
+ @return 0方法调用成功，<0方法调用失败，有可能是因为传入的参数无效
  */
 - (int)setLogFileSize:(NSUInteger)fileSizeInKBytes;
 
@@ -1310,11 +1332,11 @@ SDK 设有 2 个日志文件，每个文件大小为 512 KB。如果你将 fileS
 
 @param filter 日志输出等级
 
-@return YES方法调用成功，NO方法调用失败
+@return 0方法调用成功，<0方法调用失败
 */
 - (int)setLogFilter:(ARLogFilter)filter;
 
-/** 获取 Native SDK Engine Handle
+/** 获取 Native SDK Engine 句柄
 
 该方法获取 native SDK engine 的 C++ handle，用于包括注册音视频帧观测器在内的特殊场景。
 */
@@ -1339,6 +1361,8 @@ SDK 设有 2 个日志文件，每个文件大小为 512 KB。如果你将 fileS
  JSON 选项默认不公开。
 
  @param options JSON 格式的 SDK 选项
+ 
+ @return 0方法调用成功，<0方法调用失败
  */
 - (int)setParameters:(NSString * _Nonnull)options;
 
@@ -1350,6 +1374,8 @@ SDK 设有 2 个日志文件，每个文件大小为 512 KB。如果你将 fileS
  
  @param parameter 定制参数
  @param args 参数
+ 
+ @return json字符串
  */
 - (NSString * _Nullable)getParameter:(NSString * _Nonnull)parameter args:(NSString * _Nullable)args;
 
