@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		631CBA7924754105003A0D1B /* big_logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 631CBA6B24754105003A0D1B /* big_logo@3x.png */; };
 		631CBA7B24754105003A0D1B /* big_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 631CBA6D24754105003A0D1B /* big_logo@2x.png */; };
-		63245C8724BF568200458513 /* ARtcKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63245C8524BF567600458513 /* ARtcKit.framework */; };
-		63245C8824BF568200458513 /* ARtcKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63245C8524BF567600458513 /* ARtcKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		632F79B5245860FE00CC2F79 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 632F79B4245860FE00CC2F79 /* Main.storyboard */; };
 		6366B8E02476AF8300E424A1 /* video_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6366B8CE2476AF8200E424A1 /* video_close@2x.png */; };
 		6366B8E12476AF8300E424A1 /* video_close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6366B8CF2476AF8200E424A1 /* video_close@3x.png */; };
@@ -39,6 +37,8 @@
 		637A3BC92456A7B400561446 /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637A3BC82456A7B400561446 /* LogViewController.swift */; };
 		637BA1822463AAEB00BE0FC8 /* ARVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637BA1812463AAEB00BE0FC8 /* ARVideoView.swift */; };
 		638A84B4247CE3E0000C75B7 /* Bugly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63686B262477ED6D00EEC199 /* Bugly.framework */; };
+		63CCEBE224D43F5300126247 /* ARtcKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63CCEBE024D43F4700126247 /* ARtcKit.framework */; };
+		63CCEBE324D43F5300126247 /* ARtcKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63CCEBE024D43F4700126247 /* ARtcKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		63F72D94247D4ACA00407722 /* ARVideoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63F72D93247D4ACA00407722 /* ARVideoView.xib */; };
 /* End PBXBuildFile section */
 
@@ -49,7 +49,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				63245C8824BF568200458513 /* ARtcKit.framework in Embed Frameworks */,
+				63CCEBE324D43F5300126247 /* ARtcKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -59,7 +59,6 @@
 /* Begin PBXFileReference section */
 		631CBA6B24754105003A0D1B /* big_logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "big_logo@3x.png"; sourceTree = "<group>"; };
 		631CBA6D24754105003A0D1B /* big_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "big_logo@2x.png"; sourceTree = "<group>"; };
-		63245C8524BF567600458513 /* ARtcKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ARtcKit.framework; sourceTree = "<group>"; };
 		632F79B4245860FE00CC2F79 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		6366B8CE2476AF8200E424A1 /* video_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "video_close@2x.png"; sourceTree = "<group>"; };
 		6366B8CF2476AF8200E424A1 /* video_close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "video_close@3x.png"; sourceTree = "<group>"; };
@@ -91,6 +90,7 @@
 		637A3BC42456A5B500561446 /* Log.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Log.storyboard; sourceTree = "<group>"; };
 		637A3BC82456A7B400561446 /* LogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
 		637BA1812463AAEB00BE0FC8 /* ARVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARVideoView.swift; sourceTree = "<group>"; };
+		63CCEBE024D43F4700126247 /* ARtcKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ARtcKit.framework; sourceTree = "<group>"; };
 		63F72D93247D4ACA00407722 /* ARVideoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ARVideoView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -100,7 +100,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				638A84B4247CE3E0000C75B7 /* Bugly.framework in Frameworks */,
-				63245C8724BF568200458513 /* ARtcKit.framework in Frameworks */,
+				63CCEBE224D43F5300126247 /* ARtcKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,7 +153,7 @@
 		637A3BA9245692C600561446 /* AR-iOS-Tutorial */ = {
 			isa = PBXGroup;
 			children = (
-				63245C8524BF567600458513 /* ARtcKit.framework */,
+				63CCEBE024D43F4700126247 /* ARtcKit.framework */,
 				63686B262477ED6D00EEC199 /* Bugly.framework */,
 				631CBA6324754105003A0D1B /* resource */,
 				637A3BBE2456930600561446 /* VideoChatViewController.swift */,

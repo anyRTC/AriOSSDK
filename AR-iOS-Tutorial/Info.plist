@@ -23,9 +23,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>Video Chat</string>
+	<string>Camera</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Video Chat</string>
+	<string>Microphone</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>audio</string>
