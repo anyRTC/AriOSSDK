@@ -34,9 +34,9 @@ class VideoChatViewController: UIViewController {
         // This is our usual steps for joining
         // a channel and starting a call.
         initializeEngine()
-        joinChannel()
         setupVideo()
         setupLocalVideo()
+        joinChannel()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -100,10 +100,8 @@ class VideoChatViewController: UIViewController {
             // Did join channel "demoChannel1"
             self.logVC?.log(type: .info, content: "did join channel")
             self.localVideo.uid = uid
-            self.rtcKit.setEnableSpeakerphone(true)
             self.micButton.isHidden = false
             self.isJoin = true
-            UIApplication.shared.isIdleTimerDisabled = true
         }
         rtcKit.enableDualStreamMode(true)
         
@@ -299,10 +297,6 @@ extension VideoChatViewController: ARtcEngineDelegate {
             }
         })
         videoLayout()
-    }
-
-    func rtcEngine(_ engine: ARtcEngineKit, didVideoMuted muted: Bool, byUid uid: String) {
-        
     }
     
     func rtcEngine(_ engine: ARtcEngineKit, remoteVideoStateChangedOfUid uid: String, state: ARVideoRemoteState, reason: ARVideoRemoteStateReason, elapsed: Int) {
