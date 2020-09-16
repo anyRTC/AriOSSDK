@@ -326,7 +326,7 @@ ARDegradationPreference，有如下选项：
 __attribute__((visibility("default"))) @interface ARtcAudioVolumeInfo : NSObject
 
 /** 说话者的用户 ID。 */
-@property (assign, nonatomic) NSString * _Nonnull uid;
+@property (copy, nonatomic) NSString * _Nonnull uid;
 /** 说话者各自混音后的音量，取值范围为 [0,255] */
 @property (assign, nonatomic) NSUInteger volume;
 /** 本地用户的人声状态。

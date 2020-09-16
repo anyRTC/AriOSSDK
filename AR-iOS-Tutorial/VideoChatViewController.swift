@@ -134,7 +134,6 @@ class VideoChatViewController: UIViewController {
         rtcKit.leaveChannel(nil)
         UIApplication.shared.isIdleTimerDisabled = false
         self.logVC?.log(type: .info, content: "did leave channel")
-        UIApplication.shared.isIdleTimerDisabled = false
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
