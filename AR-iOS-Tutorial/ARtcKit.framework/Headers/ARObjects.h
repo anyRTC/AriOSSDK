@@ -645,3 +645,291 @@ __attribute__((visibility("default"))) @interface ARtcChannelMediaOptions : NSOb
  */
 @property (nonatomic, assign) BOOL autoSubscribeVideo;
 @end
+
+/** 实况直播注入流配置
+ */
+__attribute__((visibility("default"))) @interface ARLiveInjectStreamConfig: NSObject
+/** 添加进入直播的外部视频源尺寸。
+
+默认值为 0，即保留视频导入前的尺寸
+ */
+@property (assign, nonatomic) CGSize size;
+/** 添加进入直播的外部视频源的 GOP。
+
+默认值为 30 帧
+ */
+@property (assign, nonatomic) NSInteger videoGop;
+/** 添加进入直播的外部视频源的帧率。
+
+默认值为 15 fps
+ */
+@property (assign, nonatomic) NSInteger videoFramerate;
+/** 添加进入直播的外部视频源的码率
+
+默认值为 400 Kbps
+
+视频码率的设置与分辨率相关。如果设置的视频码率超出合理范围，SDK 会按照合理区间自动设置码率。
+ */
+@property (assign, nonatomic) NSInteger videoBitrate;
+
+/** 添加进入直播的外部音频采样率
+
+默认值为 48000。详见 ARAudioSampleRateType。
+
+**Note:**
+
+建议目前采用默认值，不要自行设置。
+ */
+@property (assign, nonatomic) ARAudioSampleRateType audioSampleRate;
+/** 添加进入直播的外部音频码率
+
+默认值为 48 kbps。
+
+**Note:**
+
+建议目前采用默认值，不要自行设置。
+ */
+@property (assign, nonatomic) NSInteger audioBitrate;
+/** 添加进入直播的外部音频频道数
+
+取值范围 [1,2]，默认值为 1。
+
+**Note:**
+
+建议目前采用默认值，不要自行设置。
+ */
+@property (assign, nonatomic) NSInteger audioChannels;
+
+/** 创建默认实况直播注入流配置
+
+ @return 默认配置
+ */
++(ARLiveInjectStreamConfig *_Nonnull) defaultConfig;
+@end
+
+/** 目标频道信息
+ */
+__attribute__((visibility("default"))) @interface ARChannelMediaRelayInfo: NSObject
+/** 能加入频道的 Token。
+ */
+@property (copy, nonatomic) NSString * _Nullable token;
+/** 频道名。
+ */
+@property (copy, nonatomic) NSString * _Nullable channelName;
+/** 用户 ID。
+ */
+@property (copy, nonatomic) NSString * _Nonnull uid;
+/** 初始化 ARChannelMediaRelayInfo 类
+ 
+ @param token 能加入频道的 Token。
+ */
+- (instancetype _Nonnull)initWithToken:(NSString *_Nullable)token;
+@end
+
+/** 跨频道媒体流转发参数配置类
+
+ */
+__attribute__((visibility("default"))) @interface ARChannelMediaRelayConfiguration: NSObject
+/** 目标频道信息 ARChannelMediaRelayInfo ，包含如下成员：
+
+ - `channelName`: 目标频道的频道名。
+ - `uid`: 标识转发流到目标频道的主播 ID。取值范围为 0 到（232-1），请确保与目标频道中的所有 UID 不同。默认值为 0，表示 SDK 随机分配一个 UID。
+ - `token`: 能加入目标频道的 token。由你在 destinationInfos 中设置的 channelName 和 uid 生成。
+
+   - 如未启用 App Certificate，可直接将该参数设为默认值 nil，表示 SDK 填充 App ID。
+   - 如已启用 App Certificate，则务必填入使用 channelName 和 uid 生成的 token。
+ */
+@property (strong, nonatomic, readonly) NSDictionary<NSString *, ARChannelMediaRelayInfo *> *_Nullable destinationInfos;
+/** 源频道信息 ARChannelMediaRelayInfo ，包含如下成员：
+
+ - `channelName`: 源频道名。默认值为 nil，表示 SDK 填充当前的频道名。
+ - `uid`: 标识源频道中想要转发流的主播 ID。默认值为 0，表示 SDK 随机分配一个 uid。请确保设为 0。
+ - `token`: 能加入源频道的 token。由你在 sourceInfo 中设置的 channelName 和 uid 生成。
+
+   - 如未启用 App Certificate，可直接将该参数设为默认值 nil，表示 SDK 填充 App ID。
+   - 如已启用 App Certificate，则务必填入使用 channelName 和 uid 生成的 token，且其中的 uid 必须为 0。
+ */
+@property (strong, nonatomic) ARChannelMediaRelayInfo *_Nonnull sourceInfo;
+/** 设置目标频道信息。
+
+ @param destinationInfo  目标频道信息 ARChannelMediaRelayInfo ，包含如下成员：
+
+ - `channelName`: 目标频道的频道名。
+ - `uid`:标识转发流到目标频道的主播 ID。取值范围为 0 到（232-1），请确保与目标频道中的所有 UID 不同。默认值为 0，表示 SDK 随机分配一个 UID。
+ - `token`: 能加入目标频道的 token。由你在 destinationInfo 中设置的 channelName 和 uid 生成。
+
+   - 如未启用 App Certificate，可直接将该参数设为默认值 nil，表示 SDK 填充 App ID。
+   - 如已启用 App Certificate，则务必填入使用 channelName 和 uid 生成的 token。
+
+ @param channelName 目标频道名，该参数必填，且需与该方法 destinationInfo 参数中的 channelName 一致。
+
+ @return 0方法调用成功，<0方法调用失败
+ */
+- (BOOL)setDestinationInfo:(ARChannelMediaRelayInfo *_Nonnull)destinationInfo forChannelName:(NSString *_Nonnull)channelName;
+/** 删除目标频道。
+
+ @param channelName 想要删除的目标频道名。
+
+ @return 0方法调用成功，<0方法调用失败
+ */
+- (BOOL)removeDestinationInfoForChannelName:(NSString *_Nonnull)channelName;
+@end
+
+/** 提供旁路推流时特定用户音频/视频转码设置的类
+ */
+__attribute__((visibility("default"))) @interface ARLiveTranscodingUser: NSObject
+/** 旁路推流的用户 ID
+ */
+@property (copy, nonatomic) NSString *_Nonnull uid;
+/** 直播视频上用户视频在布局中相对左上角的位置和大小信息
+ */
+@property (assign, nonatomic) CGRect rect;
+/**  直播视频上用户视频帧的图层编号
+
+ 整数，取值范围为 0 到 100:
+
+ - 最小值为 0（默认值），表示该区域图像位于最下层
+ - 最大值为 100，表示该区域图像位于最上层
+
+ Note: 如果取值小于 0 或大于 100，会返回错误 ARErrorCodeInvalidArgument。
+ */
+@property (assign, nonatomic) NSInteger zOrder;
+/** 直播视频上用户视频的透明度。取值范围为 [0.0,1.0]。
+
+ * 0.0: 表示该区域图像完全透明
+ * 1.0: 表示该区域图像完全不透明。默认值为 1.0.
+ */
+@property (assign, nonatomic) double alpha;
+/** 直播音频所在声道
+
+ 取值范围为 [0,5]，默认值为 0 ：
+
+  - 0:(推荐) 默认混音设置，最多支持双声道，与主播端上行音频相关
+  - 1: 对应主播的音频，推流中位于 FL 声道。如果主播端上行音频是多声道，会先把多声道混音成单声道。
+  - 2: 对应主播的音频，推流中位于 FC 声道。如果主播端上行音频是多声道，会先把多声道混音成单声道。
+  - 3: 对应主播的音频，推流中位于 FR 声道。如果主播端上行音频是多声道，会先把多声道混音成单声道。
+  - 4: 对应主播的音频，推流中位于 BL 声道。如果主播端上行音频是多声道，会先把多声道混音成单声道。
+  - 5: 对应主播的音频，推流中位于 BR 声道。如果主播端上行音频是多声道，会先把多声道混音成单声道。
+Note: 选项不为 0 时，需要特殊的播放器支持。
+ */
+@property (assign, nonatomic) NSInteger audioChannel;
+@end
+
+/** 图像属性
+ 
+ 用于设置直播视频的水印和背景图片的属性
+ */
+__attribute__((visibility("default"))) @interface ARImage: NSObject
+/** 直播视频上图片的 HTTP/HTTPS 地址，字符长度不得超过 1024 字节。
+ */
+@property (strong, nonatomic) NSURL *_Nonnull url;
+/** 图片在视频帧上的位置和大小，类型为 CGRect
+ */
+@property (assign, nonatomic) CGRect rect;
+@end
+
+/** 管理旁路推流转码的类
+ */
+__attribute__((visibility("default"))) @interface ARLiveTranscoding: NSObject
+/** 推流视频的总尺寸（宽和高），单位为像素。
+ 
+- 如果推视频流，宽和高的值均不得低于 64，否则 SDK 会调整为 64。
+- 如果推音频流，请将宽和高都设为 0。
+ */
+@property (assign, nonatomic) CGSize size;
+/** 用于旁路直播的输出视频的码率。单位为 Kbps。400 Kbps 为默认值。
+
+用于旁路直播的输出视频的码率。单位为 Kbps。400 Kbps 为默认值。
+
+你可以根据 Video Profile 参考表中的码率值进行设置；如果设置的码率超出合理范围，服务器会在合理区间内自动调整码率值。
+ */
+@property (assign, nonatomic) NSInteger videoBitrate;
+/** 用于旁路直播的输出视频的帧率。取值范围是 (0,30]，单位为 fps。
+
+@note 15 fps 为默认值。服务器会将高于 30 fps 的帧率设置改为 30 fps。
+ */
+@property (assign, nonatomic) NSInteger videoFramerate;
+
+/** 用于旁路直播的输出视频的 GOP。单位为帧。默认值为 30 帧。*/
+@property (assign, nonatomic) NSInteger videoGop;
+/** 用于旁路直播的输出视频的编码规格。
+
+ 可以设置为 66、77 或 100，详见 ARVideoCodecProfileType。
+
+ 如果设置其它值，服务器会统一设为默认值 100。
+ */
+@property (assign, nonatomic) ARVideoCodecProfileType videoCodecProfile;
+
+/** 用于管理参与旁路直播的视频转码合图的用户。最多支持 17 人同时参与转码合图，详见 ARLiveTranscodingUser
+ */
+@property (copy, nonatomic) NSArray<ARLiveTranscodingUser *> *_Nullable transcodingUsers;
+
+/** 预留参数：用户自定义的发送到旁路推流客户端的信息，用于填充 H264/H265 视频中 SEI 帧内容。长度限制：4096 字节。关于 SEI 的详细信息，详见SEI 帧相关问题。
+ */
+@property (copy, nonatomic) NSString *_Nullable transcodingExtraInfo;
+/** 用于旁路直播的输出视频上的水印图片
+
+ 仅支持 PNG 格式的图片。添加后所有旁路直播的观众都可以看到水印。水印图片的定义详见 ARImage
+ */
+@property (strong, nonatomic) ARImage *_Nullable watermark;
+/** 用于旁路直播的输出视频上的背景图片
+
+添加后所有旁路直播的观众都可以看到背景图片。背景图片的定义详见 ARImage
+ */
+@property (strong, nonatomic) ARImage *_Nullable backgroundImage;
+/** 用于旁路直播的输出视频的背景色
+
+ 格式为 RGB 定义下的十六进制整数，不要带 # 号，如 0xFFB6C1 表示浅粉色。默认 0x000000，黑色。
+
+ COLOR_CLASS 为类型统称，具体为：
+
+* iOS: UIColor
+* macOS: NSColor
+ */
+@property (strong, nonatomic) COLOR_CLASS *_Nullable backgroundColor;
+
+/** 用于旁路直播的输出音频的采样率，详见 ARAudioSampleRateType
+ */
+@property (assign, nonatomic) ARAudioSampleRateType audioSampleRate;
+/** 用于旁路直播的输出音频的码率。单位为 Kbps，默认值为 48，最大值为 128
+ */
+@property (assign, nonatomic) NSInteger audioBitrate;
+/** 用于旁路直播的输出音频的声道数，默认值为 1。
+ 
+ 取值范围为 [1,5] 中的整型，建议取 1 或 2。3、4、5需要特殊播放器支持：
+
+ * 1: 单声道
+ * 2: 双声道
+ * 3: 三声道
+ * 4: 四声道
+ * 5: 五声道
+ */
+@property (assign, nonatomic) NSInteger audioChannels;
+/**
+ 用于旁路直播输出音频的编码规格，默认值为 ARAudioCodecProfileLCAAC(0)。详见 ARAudioCodecProfileType。
+ */
+@property (assign, nonatomic) ARAudioCodecProfileType audioCodecProfile;
+
+/** 应用默认的转码设置
+
+ @return 应用默认设置的 ARLiveTranscoding 对象
+ */
++(ARLiveTranscoding *_Nonnull) defaultTranscoding;
+
+/** 添加一个用户到已有的用户中。
+ 
+ @param user 参数合图的用户，定义详见 ARLiveTranscodingUser 。
+
+ @return 0: 方法调用成功，< 0: 方法调用失败。
+ */
+-(int)addUser:(ARLiveTranscodingUser * _Nonnull)user;
+
+/** 删除转码合图用户
+ 
+ @param uid 待删除的用户 ID
+
+ @return 0: 方法调用成功，< 0: 方法调用失败。
+ */
+-(int)removeUser:(NSString *_Nonnull)uid;
+
+@end

@@ -1136,7 +1136,7 @@ typedef NS_ENUM(NSInteger, ARStreamFallbackOptions ) {
      */
     ARStreamFallbackOptionDisabled = 0,
     /**
-     1:在下行网络条件较差的情况下，SDK 将接收视频小流（低分辨率、低码率视频s流）。此选项仅适用于 setRemoteSubscribeFallbackOption。
+     1:在下行网络条件较差的情况下，SDK 将接收视频小流（低分辨率、低码率视频流）。此选项仅适用于 setRemoteSubscribeFallbackOption。
      */
     ARStreamFallbackOptionVideoStreamLow = 1,
     /**
@@ -1243,7 +1243,270 @@ typedef NS_ENUM(NSInteger, ARAudioType) {
      2:音频由麦克风产生
      */
     ARAudioTypeMic = 2,
-};;
+};
 
+/** 录音音质 */
+typedef NS_ENUM(NSInteger, ARAudioRecordingQuality) {
+    /**
+     低音质。采样率为 32 KHz，录制 10 分钟的文件大小为 1.2 M 左右
+     */
+    ARAudioRecordingQualityLow = 0,
+    /**
+     中音质。采样率为 32 KHz，录制 10 分钟的文件大小为 2 M 左右
+     */
+    ARAudioRecordingQualityMedium = 1,
+    /**
+     高音质。采样率为 32 KHz，录制 10 分钟的文件大小为 3.75 M 左右
+     */
+    ARAudioRecordingQualityHigh = 2
+};
+
+/** 音频的采样率 */
+typedef NS_ENUM(NSInteger, ARAudioSampleRateType) {
+    /** 32 kHz. */
+    ARAudioSampleRateType32000 = 32000,
+    /** 44.1 kHz. */
+    ARAudioSampleRateType44100 = 44100,
+    /** 48 kHz. */
+    ARAudioSampleRateType48000 = 48000,
+};
+
+/** 导入的外部视频源状态 */
+typedef NS_ENUM(NSUInteger, ARInjectStreamStatus) {
+    /** 外部视频流导入成功 */
+    ARInjectStreamStatusStartSuccess = 0,
+    /** 外部视频流已存在 */
+    ARInjectStreamStatusStartAlreadyExists = 1,
+    /** 外部视频流导入未经授权 */
+    ARInjectStreamStatusStartUnauthorized = 2,
+    /** 导入外部视频流超时 */
+    ARInjectStreamStatusStartTimedout = 3,
+    /** 外部视频流导入失败*/
+    ARInjectStreamStatusStartFailed = 4,
+    /** 外部视频流停止导入成功 */
+    ARInjectStreamStatusStopSuccess = 5,
+    /** 未找到要停止导入的外部视频流 */
+    ARInjectStreamStatusStopNotFound = 6,
+    /** 要停止导入的外部视频流未经授权*/
+    ARInjectStreamStatusStopUnauthorized = 7,
+    /** 停止导入外部视频流超时 */
+    ARInjectStreamStatusStopTimedout = 8,
+    /** 停止导入外部视频流失败 */
+    ARInjectStreamStatusStopFailed = 9,
+    /** 导入的外部视频流被中断*/
+    ARInjectStreamStatusBroken = 10,
+};
+
+/** 跨频道媒体流转发状态码
+ */
+typedef NS_ENUM(NSInteger, ARChannelMediaRelayState) {
+    /** 0: SDK 正在初始化。
+     */
+    ARChannelMediaRelayStateIdle = 0,
+    /** 1: SDK 尝试跨频道。
+     */
+    ARChannelMediaRelayStateConnecting = 1,
+    /** 2: 源频道主播成功加入目标频道。
+     */
+    ARChannelMediaRelayStateRunning = 2,
+    /** 3: 发生异常，详见 error 中提示的错误信息。
+     */
+    ARChannelMediaRelayStateFailure = 3,
+};
+
+/** 跨频道媒体流转发事件码
+ */
+typedef NS_ENUM(NSInteger, ARChannelMediaRelayEvent) {
+    /** 0: 网络中断导致用户与服务器连接断开。
+     */
+    ARChannelMediaRelayEventDisconnect = 0,
+    /** 1: 用户与服务器建立连接。
+     */
+    ARChannelMediaRelayEventConnected = 1,
+    /** 2: 用户已加入源频道。
+     */
+    ARChannelMediaRelayEventJoinedSourceChannel = 2,
+    /** 3: 用户已加入目标频道。
+     */
+    ARChannelMediaRelayEventJoinedDestinationChannel = 3,
+    /** 4: SDK 开始向目标频道发送数据包。
+     */
+    ARChannelMediaRelayEventSentToDestinationChannel = 4,
+    /** 5: 服务器收到了目标频道发送的视频流。
+     */
+    ARChannelMediaRelayEventReceivedVideoPacketFromSource = 5,
+    /** 6: 服务器收到了目标频道发送的音频流。
+     */
+    ARChannelMediaRelayEventReceivedAudioPacketFromSource = 6,
+    /** 7: 目标频道已更新。
+     */
+    ARChannelMediaRelayEventUpdateDestinationChannel = 7,
+    /** 8: 内部原因导致目标频道更新失败。
+     */
+    ARChannelMediaRelayEventUpdateDestinationChannelRefused = 8,
+    /** 9: 目标频道未发生改变，即目标频道更新失败。
+     */
+    ARChannelMediaRelayEventUpdateDestinationChannelNotChange = 9,
+    /** 10: 目标频道名为 NULL。
+     */
+    ARChannelMediaRelayEventUpdateDestinationChannelIsNil = 10,
+    /** 11: 视频属性已发送至服务器。
+     */
+    ARChannelMediaRelayEventVideoProfileUpdate = 11,
+};
+
+/** 跨频道媒体流转发出错的错误码
+ */
+typedef NS_ENUM(NSInteger, ARChannelMediaRelayError) {
+    /** 0: 一切正常。
+     */
+    ARChannelMediaRelayErrorNone = 0,
+    /** 1: 服务器回应出错。
+     */
+    ARChannelMediaRelayErrorServerErrorResponse = 1,
+    /** 2: 服务器无回应。你可以调用 leaveChannel 方法离开频道。
+     */
+    ARChannelMediaRelayErrorServerNoResponse = 2,
+    /** 3: SDK 无法获取服务，可能是因为服务器资源有限导致。
+     */
+    ARChannelMediaRelayErrorNoResourceAvailable = 3,
+    /** 4: 发起跨频道转发媒体流请求失败。
+     */
+    ARChannelMediaRelayErrorFailedJoinSourceChannel = 4,
+    /** 5: 接受跨频道转发媒体流请求失败。
+     */
+    ARChannelMediaRelayErrorFailedJoinDestinationChannel = 5,
+    /** 6: 服务器接收跨频道转发媒体流失败。
+     */
+    ARChannelMediaRelayErrorFailedPacketReceivedFromSource = 6,
+    /** 7: 服务器发送跨频道转发媒体流失败。
+     */
+    ARChannelMediaRelayErrorFailedPacketSentToDestination = 7,
+    /** 8: SDK 因网络质量不佳与服务器断开。你可以调用 leaveChannel 方法离开当前频道。
+     */
+    ARChannelMediaRelayErrorServerConnectionLost = 8,
+    /** 9: 服务器内部出错。
+     */
+    ARChannelMediaRelayErrorInternalError = 9,
+    /** 10: 源频道的 Token 已过期。
+     */
+    ARChannelMediaRelayErrorSourceTokenExpired = 10,
+    /** 11: 目标频道的 Token 已过期。
+     */
+    ARChannelMediaRelayErrorDestinationTokenExpired = 11,
+};
+
+/** 发布状态 */
+typedef NS_ENUM(NSUInteger, ARStreamPublishState) {
+    /** 0: 加入频道后的初始发布状态。
+     */
+    ARStreamPublishIdle = 0,
+    /** 1: 发布失败。可能是因为：
+     - 本地用户调用 muteLocalAudioStream(YES) 或 muteLocalVideoStream(YES) 停止发送本地媒体流。
+     - 本地用户调用 disableAudio 或 disableVideo 关闭本地音频或视频模块。
+     - 本地用户调用 enableLocalAudio(NO) 或 enableLocalVideo(NO) 关闭本地音频或视频采集。
+     - 本地用户角色为观众。
+     */
+    ARStreamPublishNoPublished = 1,
+    /** 2: 正在发布。
+     */
+    ARStreamPublishPublishing = 2,
+    /** 3: 发布成功。
+     */
+    ARStreamPublishPublished = 3,
+};
+
+/** 订阅状态。 */
+typedef NS_ENUM(NSUInteger, ARStreamSubscribeState) {
+    /** 0: 加入频道后的初始订阅状态。
+     */
+    ARStreamSubscribeIdle = 0,
+    /** 1: 订阅失败。可能是因为：
+     
+     - 远端用户：
+        - 调用 muteLocalAudioStream(YES) 或 muteLocalVideoStream(YES) 停止发送本地媒体流。
+        - 调用 disableAudio 或 disableVideo 关闭本地音频或视频模块。
+        - 调用 enableLocalAudio(NO) 或 enableLocalVideo(NO) 关闭本地音频或视频采集。
+     - 用户角色为观众。
+     - 本地用户调用以下方法停止接收远端媒体流：
+        - 调用 muteRemoteAudioStream(YES)、muteAllRemoteAudioStreams(YES) 或 setDefaultMuteAllRemoteAudioStreams(YES) 停止接收远端音频流。
+        - 调用 muteRemoteVideoStream(YES)、muteAllRemoteVideoStreams(YES) 或 setDefaultMuteAllRemoteVideoStreams(YES) 停止接收远端视频流。
+     */
+    ARStreamSubscribeNoSubscribed = 1,
+    /** 2: 正在订阅。
+     */
+    ARStreamSubscribeSubscribing = 2,
+    /** 3: 收到了远端流，订阅成功。
+     */
+    ARStreamSubscribeSubscribed = 3,
+};
+
+/** 用于旁路直播的输出视频的编解码规格 */
+typedef NS_ENUM(NSInteger, ARVideoCodecProfileType) {
+    /** 66：Baseline 级别的视频编码规格，一般用于低阶或需要额外容错的应用，比如视频通话、手机视频等。 */
+    ARVideoCodecProfileTypeBaseLine = 66,
+    /** 77：Main 级别的视频编码规格，一般用于主流消费类电子产品，如 mp4、便携的视频播放器、PSP 和 iPad 等。 */
+    ARVideoCodecProfileTypeMain = 77,
+    /** 100：（默认）High 级别的视频编码规格，一般用于广播及视频碟片存储，高清电视。 */
+    ARVideoCodecProfileTypeHigh = 100
+};
+
+/** 音频编码规格 */
+typedef NS_ENUM(NSInteger, ARAudioCodecProfileType) {
+    /** 0: (默认) LC-AAC 规格，表示基本音频编码规格。 */
+  ARAudioCodecProfileLCAAC = 0,
+  /** 1: HE-AAC 规格，表示高效音频编码规格。 */
+  ARAudioCodecProfileHEAAC = 1
+};
+
+/** 推流错误信息 */
+typedef NS_ENUM(NSUInteger, ARtmpStreamingErrorCode) {
+  /** 推流成功 */
+  ARtmpStreamingErrorCodeOK = 0,
+  /** 参数无效。请检查输入参数是否正确。例如如果你在调用 addPublishStreamUrl 前没有调用 setLiveTranscoding 设置转码参数，SDK 会返回该错误。 */
+  ARtmpStreamingErrorCodeInvalidParameters = 1,
+  /** 推流已加密，不能推流。*/
+  ARtmpStreamingErrorCodeEncryptedStreamNotAllowed = 2,
+  /** 推流超时未成功。可调用 addPublishStreamUrl 重新推流。 */
+  ARtmpStreamingErrorCodeConnectionTimeout = 3,
+  /** 推流服务器出现错误。请调用 addPublishStreamUrl 重新推流。 */
+  ARtmpStreamingErrorCodeInternalServerError = 4,
+  /** RTMP 服务器出现错误。 */
+  ARtmpStreamingErrorCodeRtmpServerError = 5,
+  /** 推流请求过于频繁。*/
+  ARtmpStreamingErrorCodeTooOften = 6,
+  /** 单个主播的推流地址数目达到上线 10。请删掉一些不用的推流地址再增加推流地址。*/
+  ARtmpStreamingErrorCodeReachLimit = 7,
+  /** 主播操作不属于自己的流。例如更新其他主播的流参数、停止其他主播的流。请检查 App 逻辑。*/
+  ARtmpStreamingErrorCodeNotAuthorized = 8,
+  /** 服务器未找到这个流。 */
+  ARtmpStreamingErrorCodeStreamNotFound = 9,
+  /** 推流地址格式有错误。请检查推流地址格式是否正确。*/
+  ARtmpStreamingErrorCodeFormatNotSupported = 10,
+};
+
+/** RTMP 推流时发生的事件。*/
+typedef NS_ENUM(NSUInteger, ARtmpStreamingEvent) {
+  /** RTMP 推流时，添加背景图或水印出错。*/
+  ARtmpStreamingEventFailedLoadImage = 1,
+};
+
+/** 推流状态 */
+typedef NS_ENUM(NSUInteger, ARtmpStreamingState) {
+  /** 推流未开始或已结束。成功调用 removePublishStreamUrl 方法删除推流地址后，也会返回该状态。*/
+  ARtmpStreamingStateIdle = 0,
+  /** 正在连接推流服务器和 RTMP 服务器。调用 addPublishStreamUrl 方法后，会返回该状态。 */
+  ARtmpStreamingStateConnecting = 1,
+  /** 推流正在进行。成功推流后，会返回该状态*/
+  ARtmpStreamingStateRunning = 2,
+  /** 正在恢复推流。当 CDN 出现异常，或推流短暂中断时，SDK 会自动尝试恢复推流，并返回该状态。
+   
+   - 如成功恢复推流，则进入状态 ARtmpStreamingStateRunning(2)。
+   如服务器出错或 60 秒内未成功恢复，则进入状态 ARtmpStreamingStateFailure(4)。如果觉得 60 秒太长，也可以主动调用 removePublishStreamUrl 和 addPublishStreamUrl 方法尝试重连。
+   */
+  ARtmpStreamingStateRecovering = 3,
+  /** 推流失败。失败后，你可以通过返回的错误码排查错误原因，也可以再次调用 addPublishStreamUrl 重新尝试推流。 */
+  ARtmpStreamingStateFailure = 4,
+};
 
 #endif /* AREnumerates_h */
