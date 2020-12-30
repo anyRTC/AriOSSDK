@@ -134,3 +134,91 @@ Media Engine 通知开发者视频源即将失效，开发者可以在这个方�
 - (ARVideoBufferType)bufferType;
 
 @end
+
+/** ARVideoSinkProtocol 协议
+
+ ARVideoSinkProtocol 定义了一套协议，开发者通过实现该接口，来创建自定义的视频渲染器，并设置给底层的 Media Engine。
+
+ 实时通讯过程中，SDK 通常会启动默认的视频渲染器进行视频渲染。 ARVideoSinkProtocol 可以自定义视频渲染器，再通过调用 设置本地视频渲染器 setLocalVideoRenderer 和 设置远端视频渲染器 setRemoteVideoRenderer 接口，改变并控制默认的视频渲染器。
+
+ ARVideoSinkProtocol 由以下方法组成:
+
+ - 初始化渲染器(shouldInitialize)
+ - 启动渲染器 (shouldStart)
+ - 停止渲染器 (shouldStop)
+ - 释放渲染器 (shouldDispose)
+ - 获取 Buffer 类型 (AgoraVideoBufferType)
+ - 获取像素格式 (AgoraVideoPixelFormat)
+ - (可选) 输出视频像素 Buffer (renderPixelBuffer)
+ - (可选) 输出视频裸数据 (renderRawData)
+ Note: ARVideoSinkProtocol 接口中定义的所有方法都是回调方法，Media Engine 内部维护着状态机，并使用这些方法将自定义视频源及渲染器的状态传给 Media Engine。因此请避免直接在 App 中直接调用这些接口。 下面这个例子给出了自定义 video sink 的步骤：
+
+ - 调用 bufferType 和 AgoraVideoPixelFormat 方法设置视频帧的 Buffer 类型和像素格式。
+ - 实现 shouldInitialize、shouldStart、shouldStop 和 shouldDispose 管理自定义的 Video Sink。
+ - 根据 ARVideoFrameConsumer 实现 buffer 类型和像素格式。
+ - 创建 ARVideoFrameConsumer 自定义的 Video Sink 对象。
+ - 调用 setLocalVideoRenderer 和 setRemoteVideoRenderer 方法设置本地和远端视频渲染器。
+ - Media Engine 会根据内部状态调用 ARVideoSinkProtocol 接口中的方法。
+ */
+@protocol ARVideoSinkProtocol <NSObject>
+@required
+/** 初始化渲染器
+
+ Media Engine 初始化渲染器的时候调用这个方法。开发者可以在这个方法中做渲染器的初始化工作。如果是耗时操作，也可以提前初始化好，然后在这个方法中通过返回值告知 Media Engine 自定义渲染器已初始化好。 该方法需要开发者手动输入 YES 或 NO，告知 Media Engine 自定义渲染器的状态。
+
+ @return - YES: Media Engine 会认为自定义的渲染器已经初始化好
+ - NO: Media Engine 会认为自定义的渲染器初始化失败，不继续往下运行
+ */
+- (BOOL)shouldInitialize;
+
+/** 启动渲染器
+
+ Media Engine 在开启渲染功能的时候会回调这个方法。开发者可以在这个方法中启动渲染器。 该方法需要开发者手动输入 YES 或 NO，Media Engine 会根据输入值做对应的动作：
+
+ - YES: Media Engine 继续进行渲染
+ - NO：Media Engine 认为出错而停止渲染器的功能
+ */
+- (void)shouldStart;
+
+/** 停止渲染器
+
+ Media Engine 在停止渲染功能的时候会回调这个方法。开发者可以在这个方法中停止渲染。
+ */
+- (void)shouldStop;
+
+/** 释放渲染器
+
+ Media Engine 通知开发者渲染器即将被废弃。在 shouldDispose 返回之后，开发者就可以释放掉资源了。
+ */
+- (void)shouldDispose;
+
+/** 获取 Buffer 类型
+ 
+ 用于在自定义渲染器的时候，需要指定 Buffer 类型，通过返回值告知引擎。Media Engine 会调用这个方法并检查返回值类型。
+
+ @return  Buffer 类型
+ */
+- (ARVideoBufferType)bufferType;
+
+/** 获取像素格式
+
+ @return 用于自定义渲染器的时候，还需要指定视频数据的像素格式。
+ */
+- (ARVideoPixelFormat)pixelFormat;
+
+@optional
+/** （可选）输出视频的 PixelBuffer
+
+ @param pixelBuffer 视频的 PixelBuffer
+ @param rotation   视频像素的顺时针旋转角度, ARVideoRotation
+ */
+- (void)renderPixelBuffer:(CVPixelBufferRef _Nonnull)pixelBuffer rotation:(ARVideoRotation)rotation;
+
+/** 输出视频裸数据
+
+ @param rawData RawData 格式的视频
+ @param size     视频的尺寸
+ @param rotation 视频的顺时针旋转角度, ARVideoRotation
+ */
+- (void)renderRawData:(void * _Nonnull)rawData size:(CGSize)size rotation:(ARVideoRotation)rotation;
+@end

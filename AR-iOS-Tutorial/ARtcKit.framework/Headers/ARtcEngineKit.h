@@ -764,13 +764,12 @@ __attribute__((visibility("default"))) @interface ARtcEngineKit : NSObject
 - (BOOL)isSpeakerphoneEnabled;
 #endif
 
+#if TARGET_OS_IPHONE
 //MARK: - 耳返设置
 /**-----------------------------------------------------------------------------
 * @name 耳返设置
 * -----------------------------------------------------------------------------
 */
-
-#if TARGET_OS_IPHONE
 
 /** 开启耳返功能
  
@@ -1100,6 +1099,95 @@ SDK 支持通话过程中在客户端进行录音。调用该方法后，你可�
 
 //MARK: - 网络相关测试
 
+/**-----------------------------------------------------------------------------
+ * @name 网络相关测试
+ * -----------------------------------------------------------------------------
+ */
+
+/** 开始语音通话回路测试
+
+ 该方法启动语音通话测试，目的是测试系统的音频设备（耳麦、扬声器等）和网络连接是否正常。在测试过程中，用户先说一段话，声音会在设置的时间间隔后回放出来。如果用户能正常听到自己刚才说的话，就表示系统音频设备和网络连接都是正常的。
+
+**Note:**
+
+- 请在加入频道前调用该方法。
+
+- 调用该方法后必须调用 stopEchoTest 以结束测试，否则不能进行下一次回声测试，也无法加入频道。
+
+- 直播场景下，该方法仅能由用户角色为主播的用户调用。
+
+@param interval 返回语音通话回路测试结果的时间间隔，取值范围为 [2,10]，单位为秒，默认值为 10 秒。
+@param successBlock 成功开始语音通话测试回调。
+
+@return 0方法调用成功，<0方法调用失败
+*/
+- (int)startEchoTestWithInterval:(NSInteger)interval successBlock:(void(^ _Nullable)(NSString * _Nonnull channel, NSString * _Nonnull uid, NSInteger elapsed))successBlock;
+
+/** 停止语音通话回路测试
+
+ @return 0方法调用成功，<0方法调用失败,如 ERR_REFUSED (-5)：不能停止测试，可能语音通话测试没有成功启动。
+ */
+- (int)stopEchoTest;
+
+/** 启动网络测试
+
+ 该方法启用网络连接质量测试，用于检测用户网络接入质量。默认该功能为关闭状态。
+
+ 该方法主要用于以下场景:
+
+ - 用户加入频道前，可以调用该方法判断和预测目前的上行网络质量是否足够好。
+ - 直播场景下，当用户角色想由观众切换为主播时，可以调用该方法判断和预测目前的上行网络质量是否足够好。
+ 启用该方法会消耗一定的网络流量，影响通话质量，因此我们建议不要和 startLastmileProbeTest 同时使用。
+
+ 在收到 lastmileQuality 回调后须调用 disableLastmileTest 停止测试，再加入频道或切换用户角色。
+
+**Note:**
+
+ - 调用该方法后，在收到 lastmileQuality 回调之前请不要调用其他方法，否则可能会由于 API 操作过于频繁导致此回调无法执行。
+ - 直播场景下，主播在加入频道后请勿调用该方法。
+ - 加入频道前调用该方法检测网络质量后，SDK 会占用一路视频的带宽，码率与 setVideoEncoderConfiguration 中设置的码率相同。加入频道后，无论是否调用了 disableLastmileTest，SDK 均会自动停止带宽占用。
+ @return 0方法调用成功，<0方法调用失败
+ */
+- (int)enableLastmileTest;
+
+/** 关闭网络测试
+
+ @return 0方法调用成功，<0方法调用失败
+ */
+- (int)disableLastmileTest;
+
+/** 开始通话前网络质量探测
+
+
+ 开始通话前网络质量探测，向用户反馈上下行网络的带宽、丢包、网络抖动和往返时延数据。
+
+ 启用该方法后，SDK 会依次返回如下 2 个回调：
+
+ lastmileQuality，视网络情况约 2 秒内返回。该回调通过打分反馈上下行网络质量，更贴近用户的主观感受。
+ lastmileProbeResult，视网络情况约 30 秒内返回。该回调通过具体数据反馈上下行网络质量，更加客观。
+ 该方法主要用于以下两种场景：
+
+ - 用户加入频道前，可以调用该方法判断和预测目前的上行网络质量是否足够好。
+ - 直播场景下，当用户角色想由观众切换为主播时，可以调用该方法判断和预测目前的上行网络质量是否足够好。
+
+**Note:**
+
+ - 该方法会消耗一定的网络流量，影响通话质量，因此我们建议不要和 enableLastmileTest 同时使用。
+ - 调用该方法后，在收到 lastmileQuality 和 lastmileProbeResult 回调之前请不要调用其他方法，否则可能会由于 API 操作过于频繁导致此方法无法执行。
+ - 直播场景下，如果本地用户为主播，请勿在加入频道后调用该方法。
+
+@param config Last mile 网络探测配置，详见 ARLastmileProbeConfig
+
+@return 0方法调用成功，<0方法调用失败
+*/
+- (int)startLastmileProbeTest:(ARLastmileProbeConfig *_Nullable)config;
+
+/** 停止通话前网络质量探测
+
+@return 0方法调用成功，<0方法调用失败
+*/
+- (int)stopLastmileProbeTest;
+
 //MARK: - 自定义视频模块
 
 /**-----------------------------------------------------------------------------
@@ -1115,11 +1203,47 @@ SDK 支持通话过程中在客户端进行录音。调用该方法后，你可�
  */
 - (void)setVideoSource:(id<ARVideoSourceProtocol> _Nullable)videoSource;
 
+/** 本地自定义视频渲染器
+
+ 该方法设置本地视频渲染器。实时通讯过程中， SDK 通常会启动默认的视频渲染器进行视频渲染。当需要自定义视频渲染设备时，App 可以先通过 ARVideoSinkProtocol 自定义渲染器，然后调用该方法将视频渲染器加入到 SDK 中。
+
+ 该方法在加入频道前后都能调用。
+
+ @param videoRenderer 自定义的视频渲染器,详见 ARVideoSinkProtocol
+ */
+- (void)setLocalVideoRenderer:(id<ARVideoSinkProtocol> _Nullable)videoRenderer;
+
+/** 远端自定义视频渲染器
+
+ 实时音视频互动过程中，SDK 通常会启动默认的视频渲染器进行视频渲染。当需要自定义视频渲染设备时，App 可以先通过 ARVideoSinkProtocol 自定义渲染器，然后调用该方法将视频渲染器加入到 SDK 中。
+
+ 该方法在加入频道前后都能调用。如果在加入频道前调用，需要自行维护远端用户的 uid。
+
+ @param videoRenderer 自定义的视频渲染器,详见 ARVideoSinkProtocol
+ @param uid 远端用户的 uid
+ */
+- (void)setRemoteVideoRenderer:(id<ARVideoSinkProtocol> _Nullable)videoRenderer forUserId:(NSString * _Nonnull)uid;
+
 /** 获取当前视频源
 
-  @return ARVideoSourceProtocol
+  @return 当前视频源，详见ARVideoSourceProtocol.
  */
 - (id<ARVideoSourceProtocol> _Nullable)videoSource;
+
+/** 获取本地视频渲染器
+
+ @return 本地视频渲染器。 详见ARVideoSinkProtocol.
+ */
+- (id<ARVideoSinkProtocol> _Nullable)localVideoRenderer;
+
+/** 获取远端视频渲染器
+
+ @param uid 远端用户的 uid
+ @return 远端视频渲染器。 详见 ARVideoSinkProtocol.
+ */
+- (id<ARVideoSinkProtocol> _Nullable)remoteVideoRendererOfUserId:(NSString * _Nonnull)uid;
+
+//MARK: - 音频自渲染
 
 //MARK: - 音频自采集 (仅适用于 push 模式)
 
@@ -1250,6 +1374,36 @@ SDK 支持通话过程中在客户端进行录音。调用该方法后，你可�
 
 //MARK: - 加密
 
+/**-----------------------------------------------------------------------------
+ * @name 加密
+ * -----------------------------------------------------------------------------
+ */
+
+/** Enables/Disables the built-in encryption.
+
+ 在安全要求较高的场景下，建议你在加入频道前，调用 enableEncryption 方法开启内置加密。
+
+ 同一频道内所有用户必须使用相同的加密模式和密钥。一旦所有用户都离开频道，该频道的加密密钥会自动清除。
+ 
+ **Note**
+
+ - 如果开启了内置加密，则不能使用 RTMP/RTMPS 推流功能。
+ - anyRTC 支持 4 种加密模式。除 SM4_128_ECB 模式外，其他加密模式都需要在集成 iOS SDK 时，额外添加加密库文件。详见《媒体流加密》。
+
+ @param enabled 是否开启内置加密：
+ - YES: 开启
+ - NO: 关闭
+
+ @param config 配置内置加密模式和密钥。详见 AREncryptionConfig 。
+
+ @return 0方法调用成功，<0方法调用失败
+
+ -2 (ARErrorCodeInvalidArgument): 调用了无效的参数。需重新指定参数。
+ -7 (ARErrorCodeNotInitialized): SDK 尚未初始化。需在调用 API 之前已创建 AgoraRtcEngineKit 对象并完成初始化。
+ -4 (ARErrorCodeNotSupported): 设置的加密模式不正确或加载外部加密库失败。需检查枚举值是否正确或重新加载外部加密库。
+ */
+- (int)enableEncryption:(bool)enabled encryptionConfig:(AREncryptionConfig *)config;
+
 //MARK: - 直播输入在线媒体流
 
 /**-----------------------------------------------------------------------------
@@ -1358,6 +1512,52 @@ SDK 支持通话过程中在客户端进行录音。调用该方法后，你可�
 
 //MARK: - 数据流
 
+/**-----------------------------------------------------------------------------
+ * @name 数据流
+ * -----------------------------------------------------------------------------
+ */
+
+/** 创建数据流
+
+ 该方法用于创建数据流。ARtcEngineKit 生命周期内，每个用户最多只能创建 5 个数据流。频道内数据通道最多允许数据延迟 5 秒，若超过 5 秒接收方尚未收到数据流，则数据通道会向 App 报错。 目前Native SDK 支持 99% 可靠和 100% 有序的数据传输。
+
+**Note:**
+
+ 请将 reliable 和 ordered 同时设置为 YES 或 NO，暂不支持交叉设置。
+
+ @param streamId 数据流 ID
+ @param reliable 设置是否保证接收方在5秒内接收到发送方的数据流:
+
+ - YES: 接收方 5 秒内会收到发送方所发送的数据，否则会收到 didOccurStreamMessageError 回调获得相应报错信息。
+ - NO: 接收方不保证收到，就算数据丢失也不会报错。
+
+ @param ordered  设置接收方是否收到发送顺序中的数据流:
+
+ - YES: 接收方 5 秒内会按照发送方发送的顺序收到数据包。
+ - NO: 接收方不保证按照发送方发送的顺序收到数据包
+
+ @return 0方法调用成功，<0方法调用失败
+*/
+- (int)createDataStream:(NSInteger * _Nonnull)streamId reliable:(BOOL)reliable ordered:(BOOL)ordered;
+
+/** 发送数据流
+
+ 该方法发送数据流消息到频道内所有用户。SDK 对该方法的实现进行了如下限制：频道内每秒最多能发送 30 个包，且每个包最大为 1 KB。 每个客户端每秒最多能发送 6 KB 数据。频道内每人最多能同时有 5 个数据通道。
+
+ 成功调用该方法后，远端会触发 receiveStreamMessageFromUid 回调，远端用户可以在该回调中获取接收到的流消息；若调用失败，远端会触发 didOccurStreamMessageErrorFromUid 回调。
+
+ **Note:**
+
+ - 该方法仅适用于通信场景以及直播场景下的主播用户，如果直播场景下的观众调用此方法可能会造成观众变主播。
+ - 请确保在调用该方法前，已调用 createDataStream 创建了数据通道。
+
+ @param streamId 数据流 ID，createDataStream 的返回值。
+ @param data   需要发送的消息
+
+ @return 0方法调用成功，<0方法调用失败
+*/
+- (int)sendStreamMessage:(NSInteger)streamId data:(NSData * _Nonnull)data;
+
 //MARK: - 其他视频控制
 /**-----------------------------------------------------------------------------
 * @name 其他视频控制
@@ -1398,6 +1598,8 @@ SDK 支持通话过程中在客户端进行录音。调用该方法后，你可�
  @return 0方法调用成功，<0方法调用失败
  */
 - (int)enableFaceDetection:(BOOL)enable;
+
+#if TARGET_OS_IPHONE
 
 //MARK: - 摄像头控制
 /**-----------------------------------------------------------------------------
@@ -1514,9 +1716,241 @@ SDK 支持通话过程中在客户端进行录音。调用该方法后，你可�
 */
 - (BOOL)setCameraAutoFocusFaceModeEnabled:(BOOL)enable;
 
+#endif
+
+#if (!(TARGET_OS_IPHONE) && (TARGET_OS_MAC))
 //MARK: - 屏幕共享
 
+/**-----------------------------------------------------------------------------
+ * @name 屏幕共享
+ * -----------------------------------------------------------------------------
+ */
+
+/** 通过屏幕 ID 共享屏幕（仅支持 macOS ）
+ 
+共享一个屏幕或该屏幕的部分区域。你需要在该方法中指定想要共享的屏幕 ID。
+ 
+**Note**: 该方法需要在加入频道后调用。
+
+@param displayId 待共享的屏幕 ID。通过该参数指定你要共享的那个屏幕。
+@param rectangle （可选）待共享区域相对于整个屏幕的位置。如不填，则表示共享整个屏幕。由如下参数组成：
+
+- x：左上角的横向偏移
+- y：左上角的纵向偏移
+- width：待共享区域的宽
+- height：待共享区域的高
+
+ 如果设置的共享区域超出了屏幕的边界，则只共享屏幕内的内容；如果宽或高设为 0，则共享整个屏幕。
+@param captureParams 屏幕共享的编码参数配置。默认的分辨率为 1920 x 1080，即 2073600 像素。该像素值为计费标准。 详见 ARScreenCaptureParameters 中的说明。
+
+@return 0方法调用成功，<0方法调用失败
+ */
+- (int)startScreenCaptureByDisplayId:(NSUInteger)displayId
+                           rectangle:(CGRect)rectangle
+                          parameters:(ARScreenCaptureParameters * _Nonnull)captureParams;
+
+/** 通过窗口 ID 共享窗口（仅支持 macOS ）
+ 
+共享一个窗口或该窗口的部分区域。你需要在该方法中指定想要共享的窗口 ID。
+ 
+**Note**: 该方法需要在加入频道后调用。
+
+@param windowId 待共享的窗口 ID。通过该参数指定你要共享的那个窗口
+@param rectangle （可选）待共享区域相对于整个窗口的位置。如不填，则表示共享整个窗口。由如下参数组成：
+
+ - x：左上角的横向偏移
+ - y：左上角的纵向偏移
+ - width：待共享区域的宽
+ - height：待共享区域的高
+
+ 如果设置的共享区域超出了窗口的边界，则只共享窗口内的内容；如果宽或高设为 0，则共享整个窗口。
+@param captureParams 屏幕共享的编码参数配置。默认的分辨率为 1920 x 1080，即 2073600 像素。该像素值为计费标准。 详见 ARScreenCaptureParameters 中的说明。
+
+@return 0方法调用成功，<0方法调用失败
+ */
+- (int)startScreenCaptureByWindowId:(NSUInteger)windowId
+                          rectangle:(CGRect)rectangle
+                         parameters:(ARScreenCaptureParameters * _Nonnull)captureParams;
+
+/** 更新屏幕共享的参数配置（仅支持 macOS ）
+
+@param captureParams 屏幕共享的编码参数配置。默认的分辨率为 1920 x 1080，即 2073600 像素。该像素值为计费标准。
+
+@return 0方法调用成功，<0方法调用失败
+ */
+- (int)updateScreenCaptureParameters:(ARScreenCaptureParameters * _Nonnull)captureParams;
+
+/** 更新屏幕共享区域 （仅支持 macOS ）
+
+ @param rect 待共享区域相对于整个屏幕或窗口的位置。如不填，则表示共享整个屏幕或窗口。由如下参数组成：
+ 
+ - x：左上角的横向偏移
+ - y：左上角的纵向偏移
+ - width：待共享区域的宽
+ - height：待共享区域的高
+ 
+ 如果设置的共享区域超出了屏幕或窗口的边界，则只共享屏幕或窗口内的内容；如果宽或高设为 0，则共享整个屏幕或窗口。
+
+@return 0方法调用成功，<0方法调用失败
+*/
+- (int)updateScreenCaptureRegion:(CGRect)rect;
+
+/** 停止屏幕共享（仅支持 macOS ）
+
+ @return 0方法调用成功，<0方法调用失败
+ */
+- (int)stopScreenCapture;
+
+#endif
+
+#if (!(TARGET_OS_IPHONE) && (TARGET_OS_MAC))
 //MARK: - 音视频设备管理 (macOS)
+
+/**-----------------------------------------------------------------------------
+ * @name 音视频设备管理 (仅支持 macOS)
+ * -----------------------------------------------------------------------------
+ */
+
+/** 监控设备改变 (仅支持 macOS)
+
+ 该方法用来启动设备插拔检测，这里设备指的是音视频外接设备，比如外接摄像头等。开启后，会触发设备状态改变回调。
+
+ @param enabled - YES: 开启监控
+ - NO: 关闭监控
+ */
+- (void)monitorDeviceChange:(BOOL)enabled;
+
+/** 获取系统中所有的音视频设备 (仅支持 macOS)
+
+**Note:**
+
+ 不要在主线程调用该方法。
+
+ 该方法返回一个 NSArray 对象，包含系统中所有的音视频设备。应用程序可以通过 ARtcDeviceInfo array 对象枚举设备。
+
+ @param type 要枚举的设备类型，详见 ARMediaDeviceType
+ @return 调用成功时，返回 ARtcDeviceInfo NSArray 对象，包含所有的音视频设备。
+ */
+- (NSArray<ARtcDeviceInfo *> * _Nullable)enumerateDevices:(ARMediaDeviceType)type;
+
+/** 指定设备 (仅支持 macOS)
+
+ @param type  设备的类型，包括音、视频采集或播放设备，详见 ARMediaDeviceType
+ @param deviceId 设备的 Device ID，可通过 enumerateDevices获取。插拔设备不会影响 deviceId 。
+ @return 0方法调用成功，<0方法调用失败
+ */
+
+- (int)setDevice:(ARMediaDeviceType)type deviceId:(NSString * _Nonnull)deviceId;
+
+/** 获取设备音量 (仅支持 macOS)
+
+ @param type 设备的类型，包括音、视频采集或播放设备，详见 ARMediaDeviceType
+ @return 该方法获取当前设备的音量。
+ */
+- (int)getDeviceVolume:(ARMediaDeviceType)type;
+
+/** 设置设备音量 (仅支持 macOS)
+
+ @param type   设备的类型，包括音、视频采集或播放设备，详见 ARMediaDeviceType
+ @param volume 设置的音量（0 ~ 100）
+ @return 0方法调用成功，<0方法调用失败
+ */
+- (int)setDeviceVolume:(ARMediaDeviceType)type volume:(int)volume;
+
+/** 启动音频采集设备测试 (仅支持 macOS)
+
+ 该方法测试音频采集设备是否能正常工作。
+
+ 调用该方法后，SDK 会按设置的时间间隔触发 reportAudioVolumeIndicationOfSpeakers 回调，报告 uid = "0"及采集设备的音量信息。
+
+ @param indicationInterval SDK 返回 reportAudioVolumeIndicationOfSpeakers 回调的时间间隔，单位为毫秒。建议设置到大于 200 毫秒。 不得少于 10 毫秒，否则会收不到 reportAudioVolumeIndicationOfSpeakers 回调。
+
+ @return 0方法调用成功，<0方法调用失败
+ */
+- (int)startRecordingDeviceTest:(int)indicationInterval;
+
+/** 停止麦克风测试 (仅支持 macOS)
+
+ 该方法停止麦克风测试。调用 startRecordingDeviceTest 后，必须调用该方法停止测试。
+
+ @return 0方法调用成功，<0方法调用失败
+ */
+- (int)stopRecordingDeviceTest;
+
+ /** 启动音频播放设备测试 (仅支持 macOS)
+
+  该方法测试音频播放设备是否能正常工作。启动测试后，SDK 播放指定的音频文件，测试者如果能听到声音，说明播放设备能正常工作。
+
+  调用该方法后，SDK 会每隔 100 ms 触发一次 reportAudioVolumeIndicationOfSpeakers 回调，报告 uid = "1" 及播放设备的音量信息。
+  
+**Note:** 该方法需要在加入频道前调用。
+
+ @param audioFileName 指定音频文件的绝对路径，路径字符串使用UTF-8编码格式:
+  - 支持的文件格式: wav，mp3，m4a，aac
+  - 支持的文件采样率: 8000，16000，32000，44100，48000
+
+ @return 0方法调用成功，<0方法调用失败
+ */
+- (int)startPlaybackDeviceTest:(NSString * _Nonnull)audioFileName;
+
+/** 停止播放设备测试 (仅支持 macOS)
+
+ 该方法停止播放设备测试。调用 startPlaybackDeviceTest 后，必须调用该方法停止测试。
+ 
+**Note:** 该方法需要在加入频道前调用。
+
+ @return 0方法调用成功，<0方法调用失败
+ */
+- (int)stopPlaybackDeviceTest;
+
+/** 启动视频采集设备测试 (仅支持 macOS)
+
+ 用于测试当前视频采集设备是否工作正常，使用前需保证已调用过 enableVideo ，且传入参数的 view 窗口有效。
+ 
+**Note:** 该方法需要在加入频道前调用。
+ 
+ @param view 输入参数，用于显示图像的窗口
+
+ @return 0方法调用成功，<0方法调用失败
+ */
+- (int)startCaptureDeviceTest:(NSView * _Nonnull)view;
+
+/** 停止视频采集设备测试 (仅支持 macOS)
+
+ 停止视频采集设备测试，如果之前调用了 startCaptureDeviceTest，必须通过该方法停止测试。
+ 
+**Note:** 该方法需要在加入频道前调用。
+
+ @return 0方法调用成功，<0方法调用失败
+ */
+- (int)stopCaptureDeviceTest;
+
+/** 开始音频设备回路测试 (仅支持 macOS)
+
+ 该方法测试音频采集和播放设备是否能正常工作。一旦测试开始，音频采集设备会采集本地音频，然后使用音频播放设备播放出来。SDK 会按设置的时间间隔触发 两个 reportAudioVolumeIndicationOfSpeakers 回调，分别报告音频采集设备（uid = 0）和音频播放设备（uid = 1）的音量信息。
+
+**Note:**
+
+ - 该方法仅在本地进行音频设备测试，不涉及网络连接。
+ - 该方法需要在加入频道前调用。
+
+@param indicationInterval SDK 返回 reportAudioVolumeIndicationOfSpeakers 回调的时间间隔，单位为毫秒。建议设置为大于 200 毫秒。 不得少于 10 毫秒，否则会收不到 reportAudioVolumeIndicationOfSpeakers 回调。
+
+@return 0方法调用成功，<0方法调用失败
+*/
+-(int)startAudioDeviceLoopbackTest:(int)indicationInterval;
+
+/** 停止音频设备回路测试 (仅支持 macOS)
+
+ 在调用 startAudioDeviceLoopbackTest 后，必须调用该方法停止音频设备回路测试。
+ 
+**Note:** 该方法需要在加入频道前调用。
+
+@return 0方法调用成功，<0方法调用失败
+*/
+-(int)stopAudioDeviceLoopbackTest;
+
+#endif
 
 //MARK: - 媒体附属信息
 

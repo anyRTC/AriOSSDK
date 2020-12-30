@@ -146,7 +146,7 @@ enum WARN_CODE_TYPE
     /** 111: A timeout occurs when switching to the live video.
     */
     WARN_SWITCH_LIVE_VIDEO_TIMEOUT = 111,
-    /** 118: A timeout occurs when setting the client role in the live broadcast profile.
+    /** 118: A timeout occurs when setting the client role in the live interactive streaming profile.
     */
     WARN_SET_CLIENT_ROLE_TIMEOUT = 118,
     /** 121: The ticket to open the channel is invalid.
@@ -155,41 +155,47 @@ enum WARN_CODE_TYPE
     /** 122: Try connecting to another server.
     */
     WARN_OPEN_CHANNEL_TRY_NEXT_VOS = 122,
+    /** 131: The channel connection cannot be recovered.
+     */
     WARN_CHANNEL_CONNECTION_UNRECOVERABLE = 131,
+    /** 132: The IP address has changed.
+     */
     WARN_CHANNEL_CONNECTION_IP_CHANGED = 132,
+    /** 133: The port has changed.
+     */
     WARN_CHANNEL_CONNECTION_PORT_CHANGED = 133,
+    /** 134: The socket error occurs, try to rejoin channel.
+     */
+    WARN_CHANNEL_SOCKET_ERROR = 134,
     /** 701: An error occurs in opening the audio mixing file.
     */
     WARN_AUDIO_MIXING_OPEN_ERROR = 701,
-    /** 1014: Audio Device Module: a warning occurs in the playback device.
+    /** 1014: Audio Device Module: A warning occurs in the playback device.
     */
     WARN_ADM_RUNTIME_PLAYOUT_WARNING = 1014,
     /** 1016: Audio Device Module: a warning occurs in the recording device.
     */
     WARN_ADM_RUNTIME_RECORDING_WARNING = 1016,
-    /** 1019: Audio Device Module: no valid audio data is collected.
+    /** 1019: Audio Device Module: no valid audio data is recorded.
     */
     WARN_ADM_RECORD_AUDIO_SILENCE = 1019,
-    /** 1020: Audio Device Module: the playback device fails.
+    /** 1020: Audio device module: The audio playback frequency is abnormal, which may cause audio freezes. This abnormality is caused by high CPU usage. AR recommends stopping other apps.
     */
     WARN_ADM_PLAYOUT_MALFUNCTION = 1020,
-    /** 1021: Audio Device Module: the recording device fails.
+    /** 1021: Audio device module: the audio recording frequency is abnormal, which may cause audio freezes. This abnormality is caused by high CPU usage. AR recommends stopping other apps.
     */
     WARN_ADM_RECORD_MALFUNCTION = 1021,
     /** 1025: The audio playback or recording is interrupted by system events (such as a phone call).
     */
     WARN_ADM_CALL_INTERRUPTION = 1025,
-    /** 1029: During a call, the audio session category should be set to 
-     * AVAudioSessionCategoryPlayAndRecord, and RtcEngine monitors this value. 
-     * If the audio session category is set to other values, this warning code 
-     * is triggered and RtcEngine will forcefully set it back to 
+    /** 1029: During a call, the audio session category should be set to
+     * AVAudioSessionCategoryPlayAndRecord, and RtcEngine monitors this value.
+     * If the audio session category is set to other values, this warning code
+     * is triggered and RtcEngine will forcefully set it back to
      * AVAudioSessionCategoryPlayAndRecord.
     */
     WARN_ADM_IOS_CATEGORY_NOT_PLAYANDRECORD = 1029,
-    /** 
-     */
-    WARN_ADM_IOS_SAMPLERATE_CHANGE = 1030,
-    /** 1031: Audio Device Module: the recorded audio voice is too low.
+    /** 1031: Audio Device Module: The recorded audio voice is too low.
     */
     WARN_ADM_RECORD_AUDIO_LOWLEVEL = 1031,
     /** 1032: Audio Device Module: the playback audio voice is too low.
@@ -206,7 +212,7 @@ enum WARN_CODE_TYPE
      */
     WARN_ADM_WINDOWS_NO_DATA_READY_EVENT = 1040,
     /** 1042: Audio device module: The audio recording device is different from the audio playback device,
-     * which may cause echoes problem. Agora recommends using the same audio device to record and playback
+     * which may cause echoes problem. AR recommends using the same audio device to record and playback
      * audio.
      */
     WARN_ADM_INCONSISTENT_AUDIO_DEVICE = 1042,
@@ -226,20 +232,20 @@ enum WARN_CODE_TYPE
      * Solution: Plug in the audio device.
     */
     WARN_ADM_WIN_CORE_NO_PLAYOUT_DEVICE = 1323,
-    /** Audio device module: The capture device is released improperly. 
-     * Solutions: 
+    /** Audio device module: The capture device is released improperly.
+     * Solutions:
      * - Disable or re-enable the audio device.
      * - Re-enable your device.
      * - Update the sound card drive.
      */
     WARN_ADM_WIN_CORE_IMPROPER_CAPTURE_RELEASE = 1324,
-    /** 1610: Super-resolution warning: The original video dimensions of the remote user exceed 640 * 480.
+    /** 1610: The origin resolution of the remote video is beyond the range where the super-resolution algorithm can be applied.
     */
     WARN_SUPER_RESOLUTION_STREAM_OVER_LIMITATION = 1610,
-    /** 1611: Super-resolution warning: Another user is using super resolution.
+    /** 1611: Another user is already using the super-resolution algorithm.
     */
     WARN_SUPER_RESOLUTION_USER_COUNT_OVER_LIMITATION = 1611,
-    /** 1612: The device is not supported.
+    /** 1612: The device does not support the super-resolution algorithm.
     */
     WARN_SUPER_RESOLUTION_DEVICE_NOT_SUPPORTED = 1612,
     /// @cond

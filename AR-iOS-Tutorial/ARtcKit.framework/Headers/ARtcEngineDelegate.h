@@ -239,6 +239,57 @@
 */
 - (void)rtcEngine:(ARtcEngineKit *_Nonnull)engine firstRemoteVideoFrameOfUid:(NSString *_Nonnull)uid size:(CGSize)size elapsed:(NSInteger)elapsed;
 
+/** 音频发布状态改变回调
+
+ 本地音频的发布状态发生改变时，SDK会触发该回调报告当前的本地音频发布状态。
+ 
+ @param engine     ARtcEngineKit 对象
+ @param channel    频道名
+ @param oldState   之前的发布状态，详见 ARStreamPublishState 。
+ @param newState   当前的发布状态，详见 ARStreamPublishState 。
+ @param elapseSinceLastState 两次状态变化时间间隔（毫秒）。
+ */
+- (void)rtcEngine:(ARtcEngineKit * _Nonnull)engine didAudioPublishStateChange:(NSString *_Nonnull)channel oldState:(ARStreamPublishState)oldState newState:(ARStreamPublishState)newState elapseSinceLastState:(NSInteger)elapseSinceLastState;
+
+
+/** 视频发布状态改变回调
+
+ 本地视频的发布状态发生改变时，SDK会触发该回调报告当前的本地视频发布状态。
+
+ @param engine     ARtcEngineKit 对象
+ @param channel    频道名
+ @param oldState   之前的发布状态，详见 ARStreamPublishState 。
+ @param newState   当前的发布状态，详见 ARStreamPublishState 。
+ @param elapseSinceLastState 两次状态变化时间间隔（毫秒）。
+ */
+- (void)rtcEngine:(ARtcEngineKit * _Nonnull)engine didVideoPublishStateChange:(NSString *_Nonnull)channel oldState:(ARStreamPublishState)oldState newState:(ARStreamPublishState)newState elapseSinceLastState:(NSInteger)elapseSinceLastState;
+
+/** 音频订阅状态发生改变回调
+
+ 本地订阅远程音频的状态发生改变时，SDK会触发该回调报告当前订阅远程音频的状态。
+
+ @param engine    ARtcEngineKit 对象
+ @param channel   频道名
+ @param uid       远端用户的 ID
+ @param oldState 之前的订阅状态，详见 ARStreamSubscribeState 。
+ @param newState  当前的订阅状态，详见 ARStreamSubscribeState 。
+ @param elapseSinceLastState 两次状态变化时间间隔（毫秒）。
+ */
+- (void)rtcEngine:(ARtcEngineKit * _Nonnull)engine didAudioSubscribeStateChange:(NSString *_Nonnull)channel withUid:(NSString * _Nonnull)uid oldState:(ARStreamSubscribeState)oldState newState:(ARStreamSubscribeState)newState elapseSinceLastState:(NSInteger)elapseSinceLastState;
+
+/** 视频订阅状态发生改变回调
+
+ 本地订阅远程视频的状态发生改变时，SDK会触发该回调报告当前订阅远程视频的状态。
+
+ @param engine    ARtcEngineKit 对象
+ @param channel   频道名
+ @param uid       远端用户的 ID
+ @param oldState  之前的订阅状态，详见 ARStreamSubscribeState 。
+ @param newState  当前的订阅状态，详见 ARStreamSubscribeState 。
+ @param elapseSinceLastState 两次状态变化时间间隔（毫秒）。
+ */
+- (void)rtcEngine:(ARtcEngineKit * _Nonnull)engine didVideoSubscribeStateChange:(NSString *_Nonnull)channel withUid:(NSString * _Nonnull)uid oldState:(ARStreamSubscribeState)oldState newState:(ARStreamSubscribeState)newState elapseSinceLastState:(NSInteger)elapseSinceLastState;
+
 /** 本地或远端视频大小和旋转信息发生改变回调
 
  @param engine   ARtcEngineKit 对象
@@ -299,6 +350,17 @@
  */
 - (void)rtcEngine:(ARtcEngineKit * _Nonnull)engine reportRtcStats:(ARChannelStats * _Nonnull)stats;
 
+/** 通话前网络上下行 last mile 质量报告回调
+
+ 该回调描述本地用户在加入频道前的 last mile 网络探测的结果，其中 last mile 是指设备到 边缘服务器的网络状态。
+
+ 在调用 enableLastmileTest 之后，该回调每 2 秒触发一次。
+
+ @param engine  ARtcEngineKit 对象。
+ @param quality 网络上下行质量，基于上下行网络的丢包率和抖动计算，探测结果主要反映上行网络的状态。详见 ARNetworkQuality。
+ */
+- (void)rtcEngine:(ARtcEngineKit * _Nonnull)engine lastmileQuality:(ARNetworkQuality)quality;
+
 /** 通话中每个用户的网络上下行 last mile 质量报告回调
 
  该回调描述每个用户在通话中的 last mile 网络状态，其中 last mile 是指设备到 ar云平台 边缘服务器的网络状态。
@@ -316,6 +378,15 @@
  @param rxQuality 该用户的下行网络质量。基于下行网络的丢包率、平均往返延时和网络抖动计算。详见 ARNetworkQuality。
  */
 - (void)rtcEngine:(ARtcEngineKit * _Nonnull)engine networkQuality:(NSString * _Nonnull)uid txQuality:(ARNetworkQuality)txQuality rxQuality:(ARNetworkQuality)rxQuality;
+
+/** 通话前网络质量探测报告回调
+
+ 通话前网络上下行 last mile 质量探测报告回调。在调用 startLastmileProbeTest 之后，SDK 会在约 30 秒内返回该回调。
+
+ @param engine ARtcEngineKit 对象
+ @param result 上下行 last mile 质量探测结果，详见 ARLastmileProbeResult。
+ */
+- (void)rtcEngine:(ARtcEngineKit * _Nonnull)engine lastmileProbeTestResult:(ARLastmileProbeResult * _Nonnull)result;
 
 /** 本地视频流统计信息回调
 
@@ -458,7 +529,36 @@
  */
 - (void)rtcEngine:(ARtcEngineKit *_Nonnull)engine streamInjectedStatusOfUrl:(NSString *_Nonnull)url uid:(NSString * _Nonnull)uid status:(ARInjectStreamStatus)status;
 
-//MARK: - Stream Message Delegate Methods
+//MARK: - 数据流事件回调
+
+/**-----------------------------------------------------------------------------
+ * @name 数据流事件回调
+ * -----------------------------------------------------------------------------
+ */
+
+/** 接收到对方数据流消息的回调
+
+ 该回调表示本地用户收到了远端用户调用 sendStreamMessage 方法发送的流消息。
+
+ @param engine   ARtcEngineKit 对象
+ @param uid      用户ID
+ @param streamId 数据流 ID
+ @param data     接收到的数据
+ */
+- (void)rtcEngine:(ARtcEngineKit * _Nonnull)engine receiveStreamMessageFromUid:(NSString * _Nonnull)uid streamId:(NSInteger)streamId data:(NSData * _Nonnull)data;
+
+/** 接收对方数据流消息错误的回调
+
+ 该回调表示本地用户未收到远端用户调用 sendStreamMessage 方法发送的流消息。
+
+ @param engine   ARtcEngineKit 对象
+ @param uid      用户 ID
+ @param streamId 数据流 ID
+ @param error   错误代码: ARErrorCode
+ @param missed 丢失的消息数量
+ @param cached 数据流中断时，后面缓存的消息数量
+ */
+- (void)rtcEngine:(ARtcEngineKit * _Nonnull)engine didOccurStreamMessageErrorFromUid:(NSString * _Nonnull)uid streamId:(NSInteger)streamId error:(NSInteger)error missed:(NSInteger)missed cached:(NSInteger)cached;
 
 //MARK: - Miscellaneous Delegate Methods
 
@@ -490,6 +590,22 @@
 * @name 媒体设备事件回调
 * -----------------------------------------------------------------------------
 */
+
+#if (!(TARGET_OS_IPHONE) && (TARGET_OS_MAC))
+
+/** 设备状态改变回调 (仅支持 macOS)
+
+ @param engine     ARtcEngineKit 对象
+ @param deviceId   设备ID
+ @param deviceType 设备类型，详见 ARMediaDeviceType
+ @param state      设备的状态：
+ - 0: 已添加。
+ - 1: 删除。
+ */
+- (void)rtcEngine:(ARtcEngineKit * _Nonnull)engine device:(NSString * _Nonnull)deviceId type:(ARMediaDeviceType)deviceType stateChanged:(NSInteger) state;
+
+#endif
+
 /** 语音路由已发生变化回调
 
 当语音路由发生变化时，SDK 会触发此回调。

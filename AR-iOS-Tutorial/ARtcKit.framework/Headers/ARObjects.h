@@ -933,3 +933,336 @@ __attribute__((visibility("default"))) @interface ARLiveTranscoding: NSObject
 -(int)removeUser:(NSString *_Nonnull)uid;
 
 @end
+
+/** Last mile 网络探测配置 */
+__attribute__((visibility("default"))) @interface ARLastmileProbeConfig : NSObject
+/** 是否探测上行网络带宽。有些用户不需要进行网络探测，如直播频道中的普通观众。
+
+- NO：不探测
+- YES：探测
+*/
+@property (assign, nonatomic) BOOL probeUplink;
+/** 是否探测下行网络带宽
+
+- NO：不探测
+- YES：探测
+*/
+@property (assign, nonatomic) BOOL probeDownlink;
+/** 用户期望的最高发送码率
+
+ 单位为 bps，范围为 [100000,5000000]。anyRTC 推荐参考 setVideoEncoderConfiguration 中的码率值设置该参数的值。 */
+@property (assign, nonatomic) NSUInteger expectedUplinkBitrate;
+/** 用户期望的最高接收码率
+
+ 单位为 bps，范围为 [100000,5000000]。
+*/
+@property (assign, nonatomic) NSUInteger expectedDownlinkBitrate;
+@end
+
+/** 单向网络质量探测结果 */
+__attribute__((visibility("default"))) @interface ARLastmileProbeOneWayResult : NSObject
+/** 网络丢包率，范围 [0,100]。 */
+@property (assign, nonatomic) NSUInteger packetLossRate;
+/** 网络抖动，单位为毫秒。*/
+@property (assign, nonatomic) NSUInteger jitter;
+/** 可用网络带宽预估，单位为 Kbps。*/
+@property (assign, nonatomic) NSUInteger availableBandwidth;
+@end
+
+/** 上下行 last mile 质量探测结果 */
+__attribute__((visibility("default"))) @interface ARLastmileProbeResult : NSObject
+/* Last mile 质量探测结果的状态
+*/
+@property (assign, nonatomic) ARLastmileProbeResultState state;
+/** 往返时延，单位为毫秒 */
+@property (assign, nonatomic) NSUInteger rtt;
+/** 上行网络质量报告
+
+ 包含丢包率、网络抖动和可用带宽预估，详见 ARLastmileProbeOneWayResult。
+*/
+@property (strong, nonatomic) ARLastmileProbeOneWayResult *_Nonnull uplinkReport;
+/** 下行网络质量报告
+
+ 包含丢包率、网络抖动和可用带宽预估，详见 ARLastmileProbeOneWayResult。
+*/
+@property (strong, nonatomic) ARLastmileProbeOneWayResult *_Nonnull downlinkReport;
+@end
+
+/** 设置屏幕共享编码配置的类
+ */
+__attribute__((visibility("default"))) @interface ARScreenCaptureParameters: NSObject
+/**  屏幕共享视频发送的最大像素值
+
+ 默认值为 1920 * 1080，即 2073600 像素。该像素值为计费标准。
+
+ 当共享的屏幕分辨率宽高比与该值设置不一致时，SDK 按如下策略进行编码。假设 dimensions 为 1920 * 1080：
+
+ - 如果屏幕分辨率小于 dimensions，如 1000 * 1000，SDK 直接按 1000 * 1000 进行编码。
+ - 如果屏幕分辨率大于 dimensions，如 2000 * 1500，SDK 按屏幕分辨率的宽高比，即 4：3，取 dimensions 以内的最大分辨率进行编码，即 1440 * 1080。
+ 无论实际编码分辨率如何，均按 dimensions 设置的值计费。
+ */
+@property (assign, nonatomic) CGSize dimensions;
+
+/** 共享视频的帧率，单位为 fps；默认值为 5，建议不要超过 15。
+ */
+@property (assign, nonatomic) NSInteger frameRate;
+
+/** 共享视频的码率，单位为 Kbps；默认值为 0，表示由 SDK 根据当前共享的分辨率计算出一个合理的值。
+ */
+@property (assign, nonatomic) NSInteger bitrate;
+
+/** 是否采集鼠标用于屏幕共享
+
+- YES：（默认）采集鼠标
+- NO：不采集鼠标
+ */
+@property (assign, nonatomic) BOOL captureMouseCursor;
+
+/** 调用 startScreenCaptureByWindowId 方法共享窗口时，是否将该窗口前置。
+ 
+ - YES：前置窗口。
+ - NO: （默认）不前置窗口。
+ */
+@property (assign, nonatomic) BOOL windowFocus;
+
+/** 待屏蔽窗口的 ID 列表。
+ 
+ 调用 startScreenCaptureByDisplayId 开启主屏幕共享 （即屏幕 ID 为 0）时，你可以通过该参数屏蔽指定的窗口。开启主屏幕共享后，你可以在调用 updateScreenCaptureParameters 更新屏幕共享的配置参数时，通过该参数动态屏蔽指定的窗口。
+ */
+@property (copy, nonatomic) NSArray * _Nullable excludeWindowList;
+
+@end
+
+#if (!(TARGET_OS_IPHONE) && (TARGET_OS_MAC))
+
+/** 提供设备信息的类
+ */
+__attribute__((visibility("default"))) @interface ARtcDeviceInfo : NSObject
+
+/** 设备类型，详见 ARMediaDeviceType
+ */
+@property (assign, nonatomic) ARMediaDeviceType type;
+
+/** 设备 ID
+ */
+@property (copy, nonatomic) NSString * _Nullable deviceId;
+
+/** 设备名称
+ */
+@property (copy, nonatomic) NSString * _Nullable deviceName;
+
+@end
+
+#endif
+
+/**
+在调用 setLiveTranscoding 时用于管理参与 CDN 直播的视频转码合图的用户
+*/
+__attribute__((visibility("default"))) @interface ARStreamTranscodingUser : NSObject
+
+/** 直播推流的用户 ID
+*/
+@property (nonatomic, copy) NSString * _Nonnull uid;
+
+/** 视频帧左上角的横轴位置
+
+整数，取值范围为 [0,10000]，默认值为 0。
+*/
+@property (nonatomic, assign) int x;
+
+/** 视频帧左上角的纵轴位置
+
+整数，取值范围为 [0,10000]，默认值为 0。
+*/
+@property (nonatomic, assign) int y;
+
+/** 视频帧宽度
+
+整数，取值范围为 [0,10000]，默认值为 640。
+*/
+@property (nonatomic, assign) int width;
+
+/** 视频帧高度
+
+整数，取值范围为 [0,10000]，默认值为 480。
+*/
+@property (nonatomic, assign) int height;
+
+/** 直播视频上用户视频帧的图层编号
+
+整数，取值范围为 [0,100]。
+*/
+@property (nonatomic, assign) int zOrder;
+
+/** 直播视频上用户视频的透明度
+
+- 0.0: 该区域图像完全透明。
+- 1.0: 该区域图像完全不透明。
+*/
+@property (nonatomic, assign) double alpha;
+
+@end
+
+/**
+ 合流参数
+ */
+__attribute__((visibility("default"))) @interface ARStreamliveTranscoding: NSObject
+
+/** 推流视频的总宽度，默认值 640，单位为像素。
+ * - 如果推视频流，width 值不得低于 64，否则 会调整为 64。
+ * - 如果推音频流，请将 width 和 height 设为 0。
+ */
+@property (nonatomic, assign) int width;
+
+/** 推流视频的总高度，默认值 360，单位为像素。
+ * - 如果推视频流，height 值不得低于 64，否则会调整为 64。
+ * - 如果推音频流，请将 width 和 height 设为 0。
+*/
+@property (nonatomic, assign) int height;
+
+/** 用于直播推流的输出视频的码率，单位为 Kbps。
+
+正整数，默认值为 400 Kbps，取值范围为 [1,1000000]。
+
+你可以参考视频分辨率表格进行设置。如果设置的码率超出合理范围，服务器会在合理区间内自动调整码率值。
+*/
+@property (nonatomic, assign) int videoBitrate;
+
+/** 用于直播推流的输出视频的帧率，单位为 fps。
+
+@note 正整数，默认值为 15 fps，取值范围为 [1,30]。服务器会将高于 30 的帧率设置改为 30。
+*/
+@property (nonatomic, assign) int videoFramerate;
+
+/** 用于直播推流的输出视频的 GOP，单位为帧。
+
+正整数，默认值为 30 帧，取值范围为 [1,10000]。
+*/
+@property (nonatomic, assign) int videoGop;
+
+/** 用于直播推流的输出视频的编码规格
+
+@note 可以设置为 66、77 或 100。如果设置其他值，anyRTC 会统一设为默认值 100。
+*/
+@property (nonatomic, assign) ARStreamVideoCodeProfileType videoCodecProfile;
+
+/** 背景色
+ 默认 0x000000，必须是 16 进制格式。 取值范围为 [0x000000, 0xffffff]。
+ */
+@property (strong, nonatomic) COLOR_CLASS * _Nullable backgroundColor;
+
+/** 参与合图的用户数量，默认 0，最多 17 人。
+ */
+@property (nonatomic, assign) int userCount;
+
+/** 用于管理参与直播推流的视频转码合图的用户。
+
+最多支持 17 人同时参与转码合图。具体设置见 ARtmTranscodingUser。
+*/
+@property (nonatomic, strong) NSArray<ARStreamTranscodingUser *> *transcodingUsers;
+
+/** 预留参数：用户自定义的发送到旁路推流客户端的信息，用于填充 H264/H265 视频中 SEI 帧内容。
+ 长度限制：4096 字节。关于 SEI 的详细信息，详见SEI 帧相关问题。
+*/
+@property (nonatomic, copy) NSString * _Nullable transcodingExtraInfo;
+
+/** 用于旁路直播的输出视频上的水印图片
+ 仅支持 PNG 格式的图片。添加后所有旁路直播的观众都可以看到水印。水印图片的定义详见 ARImage
+*/
+@property (nonatomic, strong) ARImage * _Nullable watermark;
+
+/** 用于旁路直播的输出视频上的背景图片
+ 添加后所有旁路直播的观众都可以看到背景图片。背景图片的定义详见 ARImage
+*/
+@property (nonatomic, strong) ARImage * _Nullable backgroundImage;
+
+/** 用于旁路直播的输出音频的采样率，详见 ARAudioSampleRateType
+*/
+@property (nonatomic, assign) ARStreamAudioSampleRateType audioSampleRate;
+
+/** 用于旁路直播的输出音频的码率。单位为 Kbps，默认值为 48，最大值为 128
+*/
+@property (nonatomic, assign) NSInteger audioBitrate;
+
+/** 用于旁路直播的输出音频的声道数，默认值为 1。取值范围为 [1,5] 中的整型，建议取 1 或 2。3、4、5需要特殊播放器支持：
+ - 1: 单声道
+ - 2: 双声道
+ - 3: 三声道
+ - 4: 四声道
+ - 5: 五声道
+*/
+@property (nonatomic, assign) NSInteger audioChannels;
+
+/** 用于旁路直播的输出音频的码率。单位为 Kbps，默认值为 48，最大值为 128
+*/
+@property (nonatomic, assign) ARStreamAudioCodecProfileType audioCodecProfile;
+
+@end
+
+/**
+ 当前rtmp推流状态回调
+ */
+__attribute__((visibility("default"))) @interface ARStreamPushStats : NSObject
+
+/** 视频
+*/
+@property (nonatomic, assign) BOOL hasVideo;
+
+/** 音频
+*/
+@property (nonatomic, assign) BOOL hasAudio;
+
+/** vidMix
+*/
+@property (nonatomic, assign) BOOL vidMix;
+
+/** vidCode
+*/
+@property (nonatomic, copy) NSString * _Nullable vidCode;
+
+/** 宽度
+*/
+@property (nonatomic, assign) int vidWidth;
+
+/** 高度
+*/
+@property (nonatomic, assign) int vidHeight;
+
+/** fps
+*/
+@property (nonatomic, assign) int vidFps;
+
+/** bitrate
+*/
+@property (nonatomic, assign) int vidBitrate;
+
+/** 延迟
+*/
+@property (nonatomic, assign) int delayMs;
+
+/** audCodec
+*/
+@property (nonatomic, copy) NSString * _Nullable audCodec;
+
+/** audBitrate
+*/
+@property (nonatomic, assign) int audBitrate;
+
+@end
+
+/** 配置内置加密模式和密钥
+ */
+__attribute__((visibility("default"))) @interface AREncryptionConfig: NSObject
+
+ /** 内置加密模式，默认为 AREncryptionModeAES128XTS 加密模式。详见 AREncryptionMode 。
+  */
+ @property (assign, nonatomic) AREncryptionMode encryptionMode;
+
+ /** 内置加密密钥，字符串类型。
+ 
+ **Note**
+
+ 如果未指定该参数或将该参数设置为空，则无法启用内置加密，且 SDK 会返回错误码 -2 (ARErrorCodeInvalidArgument)。
+  */
+ @property (copy, nonatomic) NSString * _Nullable encryptionKey;
+ @end

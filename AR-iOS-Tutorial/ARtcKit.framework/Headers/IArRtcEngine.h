@@ -264,6 +264,19 @@ enum LOCAL_VIDEO_STREAM_ERROR {
     /** 11: The shared window is minimized when you call \ref IRtcEngine::startScreenCaptureByWindowId "startScreenCaptureByWindowId" to share a window.
      */
     LOCAL_VIDEO_STREAM_ERROR_SCREEN_CAPTURE_WINDOW_MINIMIZED = 11,
+    /** 12: The error code indicates that a window shared by the window ID has been closed, or a full-screen window
+     * shared by the window ID has exited full-screen mode.
+     * After exiting full-screen mode, remote users cannot see the shared window. To prevent remote users from seeing a
+     * black screen, AR recommends that you immediately stop screen sharing.
+     *
+     * Common scenarios for reporting this error code:
+     * - When the local user closes the shared window, the SDK reports this error code.
+     * - The local user shows some slides in full-screen mode first, and then shares the windows of the slides. After
+     * the user exits full-screen mode, the SDK reports this error code.
+     * - The local user watches web video or reads web document in full-screen mode first, and then shares the window of
+     * the web video or document. After the user exits full-screen mode, the SDK reports this error code.
+     */
+    LOCAL_VIDEO_STREAM_ERROR_SCREEN_CAPTURE_WINDOW_CLOSED = 12,
 };
 
 /** Local audio state types.
@@ -585,47 +598,90 @@ enum AUDIO_PROFILE_TYPE // sample rate, bit rate, mono/stereo, speech/music code
 */
 enum AUDIO_SCENARIO_TYPE // set a suitable scenario for your app type
 {
-    /** 0: Default. */
+    /** 0: Default audio scenario. */
     AUDIO_SCENARIO_DEFAULT = 0,
-    /** 1: Entertainment scenario, supporting voice during gameplay. */
+    /** 1: Entertainment scenario where users need to frequently switch the user role. */
     AUDIO_SCENARIO_CHATROOM_ENTERTAINMENT = 1,
-    /** 2: Education scenario, prioritizing smoothness and stability. */
+    /** 2: Education scenario where users want smoothness and stability. */
     AUDIO_SCENARIO_EDUCATION = 2,
-    /** 3: Live gaming scenario, enabling the gaming audio effects in the speaker mode in the interactive live streaming scenario. Choose this scenario for high-fidelity music playback. */
+    /** 3: High-quality audio chatroom scenario where hosts mainly play music. */
     AUDIO_SCENARIO_GAME_STREAMING = 3,
-    /** 4: Showroom scenario, optimizing the audio quality with external professional equipment. */
+    /** 4: Showroom scenario where a single host wants high-quality audio. */
     AUDIO_SCENARIO_SHOWROOM = 4,
-    /** 5: Gaming scenario. */
+    /** 5: Gaming scenario for group chat that only contains the human voice. */
     AUDIO_SCENARIO_CHATROOM_GAMING = 5,
-    /** 6: Applicable to the IoT scenario. */
+    /** 6: IoT (Internet of Things) scenario where users use IoT devices with low power consumption. */
     AUDIO_SCENARIO_IOT = 6,
-    AUDIO_SCENARIO_NUM = 7,
+    /** 8: Meeting scenario that mainly contains the human voice.
+     *
+     * @since v3.2.0
+     */
+    AUDIO_SCENARIO_MEETING = 8,
+    /** The number of elements in the enumeration.
+     */
+    AUDIO_SCENARIO_NUM = 9,
 };
 
  /** The channel profile of the AR RtcEngine.
  */
 enum CHANNEL_PROFILE_TYPE
 {
-   /** (Default) The Communication profile. Use this profile in one-on-one calls or group calls, where all users can talk freely.
+   /** (Default) Communication. This profile applies to scenarios such as an audio call or video call,
+    * where all users can publish and subscribe to streams.
     */
-	CHANNEL_PROFILE_COMMUNICATION = 0,
-   /** The Live-Broadcast profile. Users in a live-broadcast channel have a role as either broadcaster or audience. 
-    A broadcaster can both send and receive streams; an audience can only receive streams.
+    CHANNEL_PROFILE_COMMUNICATION = 0,
+   /** Live streaming. In this profile, uses have roles, namely, host and audience (default).
+    * A host both publishes and subscribes to streams, while an audience subscribes to streams only.
+    * This profile applies to scenarios such as a chat room or interactive video streaming.
     */
-	CHANNEL_PROFILE_LIVE_BROADCASTING = 1,
-   /** 2: The Gaming profile. This profile uses a codec with a lower bitrate and consumes less power. Applies to the gaming scenario, where all game players can talk freely.
+    CHANNEL_PROFILE_LIVE_BROADCASTING = 1,
+   /** 2: Gaming. This profile uses a codec with a lower bitrate and consumes less power. Applies to the gaming scenario, where all game players can talk freely.
+    *
+    * @note AR does not recommend using this setting.
     */
     CHANNEL_PROFILE_GAME = 2,
 };
-
-/** Client roles in a live broadcast. */
+/// @cond
+/** The role of a user in a live interactive streaming. */
 enum CLIENT_ROLE_TYPE
 {
-    /** 1: Host */
+    /** 1: Host. A host can both send and receive streams. */
     CLIENT_ROLE_BROADCASTER = 1,
-        /** 2: Audience */
+    /** 2: (Default) Audience. An `audience` member can only receive streams. */
     CLIENT_ROLE_AUDIENCE = 2,
 };
+
+/** The latency level of an audience member in a live interactive streaming.
+ *
+ * @note Takes effect only when the user role is `CLIENT_ROLE_BROADCASTER`.
+ */
+enum AUDIENCE_LATENCY_LEVEL_TYPE
+{
+    /** 1: Low latency. */
+    AUDIENCE_LATENCY_LEVEL_LOW_LATENCY = 1,
+    /** 2: (Default) Ultra low latency. */
+    AUDIENCE_LATENCY_LEVEL_ULTRA_LOW_LATENCY = 2,
+};
+/// @cond
+/** The reason why the super-resolution algorithm is not successfully enabled.
+ */
+enum SUPER_RESOLUTION_STATE_REASON
+{
+    /** 0: The super-resolution algorithm is successfully enabled.
+     */
+    SR_STATE_REASON_SUCCESS = 0,
+    /** 1: The origin resolution of the remote video is beyond the range where
+     * the super-resolution algorithm can be applied.
+     */
+    SR_STATE_REASON_STREAM_OVER_LIMITATION = 1,
+    /** 2: Another user is already using the super-resolution algorithm.
+     */
+    SR_STATE_REASON_USER_COUNT_OVER_LIMITATION = 2,
+    /** 3: The device does not support the super-resolution algorithm.
+     */
+    SR_STATE_REASON_DEVICE_NOT_SUPPORTED = 3,
+};
+/// @endcond
 
 /** Reasons for a user being offline. */
 enum USER_OFFLINE_REASON_TYPE
@@ -689,6 +745,9 @@ enum RTMP_STREAM_PUBLISH_ERROR
   RTMP_STREAM_PUBLISH_ERROR_STREAM_NOT_FOUND = 9,
   /** The format of the RTMP streaming URL is not supported. Check whether the URL format is correct. */
   RTMP_STREAM_PUBLISH_ERROR_FORMAT_NOT_SUPPORTED = 10,
+  /** 推流中的背景图片或者水印地址无法拉取 **/
+  RTMP_STREAMING_ERROR_FAILED_LOAD_IMAGE = 11,
+
 };
 
 /** Events during the RTMP streaming. */
@@ -776,6 +835,13 @@ enum VIDEO_CODEC_TYPE {
     VIDEO_CODEC_EVP = 3,
     /** Enhanced H264 */
     VIDEO_CODEC_E264 = 4,
+};
+
+/** Video Codec types for publishing streams. */
+enum VIDEO_CODEC_TYPE_FOR_STREAM
+{
+    VIDEO_CODEC_H264_FOR_STREAM = 1,
+    VIDEO_CODEC_H265_FOR_STREAM = 2,
 };
 
 /** Audio equalization band frequencies. */
@@ -973,7 +1039,206 @@ enum AUDIO_REVERB_PRESET {
      * To achieve better virtual stereo reverberation, AR recommends setting `profile` in `setAudioProfile`
      * as `AUDIO_PROFILE_MUSIC_HIGH_QUALITY_STEREO(5)`.
      */
-    AUDIO_VIRTUAL_STEREO = 0x00200001
+    AUDIO_VIRTUAL_STEREO = 0x00200001,
+    /** 1: Electronic Voice.*/
+    AUDIO_ELECTRONIC_VOICE = 0x00300001,
+    /** 1: 3D Voice.*/
+    AUDIO_THREEDIM_VOICE = 0x00400001
+};
+/** The options for SDK preset voice beautifier effects.
+ */
+enum VOICE_BEAUTIFIER_PRESET
+{
+    /** Turn off voice beautifier effects and use the original voice.
+     */
+    VOICE_BEAUTIFIER_OFF = 0x00000000,
+    /** A more magnetic voice.
+     *
+     * @note AR recommends using this enumerator to process a male-sounding voice; otherwise, you may experience vocal distortion.
+     */
+    CHAT_BEAUTIFIER_MAGNETIC = 0x01010100,
+    /** A fresher voice.
+     *
+     * @note AR recommends using this enumerator to process a female-sounding voice; otherwise, you may experience vocal distortion.
+     */
+    CHAT_BEAUTIFIER_FRESH = 0x01010200,
+    /** A more vital voice.
+     *
+     * @note AR recommends using this enumerator to process a female-sounding voice; otherwise, you may experience vocal distortion.
+     */
+    CHAT_BEAUTIFIER_VITALITY = 0x01010300,
+    /** A more vigorous voice.
+     */
+    TIMBRE_TRANSFORMATION_VIGOROUS = 0x01030100,
+    /** A deeper voice.
+     */
+    TIMBRE_TRANSFORMATION_DEEP = 0x01030200,
+    /** A mellower voice.
+     */
+    TIMBRE_TRANSFORMATION_MELLOW = 0x01030300,
+    /** A falsetto voice.
+     */
+    TIMBRE_TRANSFORMATION_FALSETTO = 0x01030400,
+    /** A falsetto voice.
+     */
+    TIMBRE_TRANSFORMATION_FULL = 0x01030500,
+    /** A clearer voice.
+     */
+    TIMBRE_TRANSFORMATION_CLEAR = 0x01030600,
+    /** A more resounding voice.
+     */
+    TIMBRE_TRANSFORMATION_RESOUNDING = 0x01030700,
+    /** A more ringing voice.
+     */
+    TIMBRE_TRANSFORMATION_RINGING = 0x01030800
+};
+/** The options for SDK preset audio effects.
+ */
+enum AUDIO_EFFECT_PRESET
+{
+    /** Turn off audio effects and use the original voice.
+     */
+    AUDIO_EFFECT_OFF = 0x00000000,
+    /** An audio effect typical of a KTV venue.
+     *
+     * @note To achieve better audio effect quality, AR recommends calling \ref IRtcEngine::setAudioProfile "setAudioProfile"
+     * and setting the `profile` parameter to `AUDIO_PROFILE_MUSIC_HIGH_QUALITY(4)` or `AUDIO_PROFILE_MUSIC_HIGH_QUALITY_STEREO(5)`
+     * before setting this enumerator.
+     */
+    ROOM_ACOUSTICS_KTV = 0x02010100,
+    /** An audio effect typical of a concert hall.
+     *
+     * @note To achieve better audio effect quality, AR recommends calling \ref IRtcEngine::setAudioProfile "setAudioProfile"
+     * and setting the `profile` parameter to `AUDIO_PROFILE_MUSIC_HIGH_QUALITY(4)` or `AUDIO_PROFILE_MUSIC_HIGH_QUALITY_STEREO(5)`
+     * before setting this enumerator.
+     */
+    ROOM_ACOUSTICS_VOCAL_CONCERT = 0x02010200,
+    /** An audio effect typical of a recording studio.
+     *
+     * @note To achieve better audio effect quality, AR recommends calling \ref IRtcEngine::setAudioProfile "setAudioProfile"
+     * and setting the `profile` parameter to `AUDIO_PROFILE_MUSIC_HIGH_QUALITY(4)` or `AUDIO_PROFILE_MUSIC_HIGH_QUALITY_STEREO(5)`
+     * before setting this enumerator.
+     */
+    ROOM_ACOUSTICS_STUDIO = 0x02010300,
+    /** An audio effect typical of a vintage phonograph.
+     *
+     * @note To achieve better audio effect quality, AR recommends calling \ref IRtcEngine::setAudioProfile "setAudioProfile"
+     * and setting the `profile` parameter to `AUDIO_PROFILE_MUSIC_HIGH_QUALITY(4)` or `AUDIO_PROFILE_MUSIC_HIGH_QUALITY_STEREO(5)`
+     * before setting this enumerator.
+     */
+    ROOM_ACOUSTICS_PHONOGRAPH = 0x02010400,
+    /** A virtual stereo effect that renders monophonic audio as stereo audio.
+     *
+     * @note Call \ref IRtcEngine::setAudioProfile "setAudioProfile" and set the `profile` parameter to
+     * `AUDIO_PROFILE_MUSIC_STANDARD_STEREO(3)` or `AUDIO_PROFILE_MUSIC_HIGH_QUALITY_STEREO(5)` before setting this
+     * enumerator; otherwise, the enumerator setting does not take effect.
+     */
+    ROOM_ACOUSTICS_VIRTUAL_STEREO = 0x02010500,
+    /** A more spatial audio effect.
+     *
+     * @note To achieve better audio effect quality, AR recommends calling \ref IRtcEngine::setAudioProfile "setAudioProfile"
+     * and setting the `profile` parameter to `AUDIO_PROFILE_MUSIC_HIGH_QUALITY(4)` or `AUDIO_PROFILE_MUSIC_HIGH_QUALITY_STEREO(5)`
+     * before setting this enumerator.
+     */
+    ROOM_ACOUSTICS_SPACIAL = 0x02010600,
+    /** A more ethereal audio effect.
+     *
+     * @note To achieve better audio effect quality, AR recommends calling \ref IRtcEngine::setAudioProfile "setAudioProfile"
+     * and setting the `profile` parameter to `AUDIO_PROFILE_MUSIC_HIGH_QUALITY(4)` or `AUDIO_PROFILE_MUSIC_HIGH_QUALITY_STEREO(5)`
+     * before setting this enumerator.
+     */
+    ROOM_ACOUSTICS_ETHEREAL = 0x02010700,
+    /** A 3D voice effect that makes the voice appear to be moving around the user. The default cycle period of the 3D
+     * voice effect is 10 seconds. To change the cycle period, call \ref IRtcEngine::setAudioEffectParameters "setAudioEffectParameters"
+     * after this method.
+     *
+     * @note
+     * - Call \ref IRtcEngine::setAudioProfile "setAudioProfile" and set the `profile` parameter to `AUDIO_PROFILE_MUSIC_STANDARD_STEREO(3)`
+     * or `AUDIO_PROFILE_MUSIC_HIGH_QUALITY_STEREO(5)` before setting this enumerator; otherwise, the enumerator setting does not take effect.
+     * - If the 3D voice effect is enabled, users need to use stereo audio playback devices to hear the anticipated voice effect.
+     */
+    ROOM_ACOUSTICS_3D_VOICE = 0x02010800,
+    /** The voice of an uncle.
+     *
+     * @note
+     * - AR recommends using this enumerator to process a male-sounding voice; otherwise, you may not hear the anticipated voice effect.
+     * - To achieve better audio effect quality, AR recommends calling \ref IRtcEngine::setAudioProfile "setAudioProfile" and
+     * setting the `profile` parameter to `AUDIO_PROFILE_MUSIC_HIGH_QUALITY(4)` or `AUDIO_PROFILE_MUSIC_HIGH_QUALITY_STEREO(5)` before
+     * setting this enumerator.
+     */
+    VOICE_CHANGER_EFFECT_UNCLE = 0x02020100,
+    /** The voice of an old man.
+     *
+     * @note
+     * - AR recommends using this enumerator to process a male-sounding voice; otherwise, you may not hear the anticipated voice effect.
+     * - To achieve better audio effect quality, AR recommends calling \ref IRtcEngine::setAudioProfile "setAudioProfile" and setting
+     * the `profile` parameter to `AUDIO_PROFILE_MUSIC_HIGH_QUALITY(4)` or `AUDIO_PROFILE_MUSIC_HIGH_QUALITY_STEREO(5)` before setting
+     * this enumerator.
+     */
+    VOICE_CHANGER_EFFECT_OLDMAN = 0x02020200,
+    /** The voice of a boy.
+     *
+     * @note
+     * - AR recommends using this enumerator to process a male-sounding voice; otherwise, you may not hear the anticipated voice effect.
+     * - To achieve better audio effect quality, AR recommends calling \ref IRtcEngine::setAudioProfile "setAudioProfile" and setting
+     * the `profile` parameter to `AUDIO_PROFILE_MUSIC_HIGH_QUALITY(4)` or `AUDIO_PROFILE_MUSIC_HIGH_QUALITY_STEREO(5)` before
+     * setting this enumerator.
+     */
+    VOICE_CHANGER_EFFECT_BOY = 0x02020300,
+    /** The voice of a young woman.
+     *
+     * @note
+     * - AR recommends using this enumerator to process a female-sounding voice; otherwise, you may not hear the anticipated voice effect.
+     * - To achieve better audio effect quality, AR recommends calling \ref IRtcEngine::setAudioProfile "setAudioProfile" and setting
+     * the `profile` parameter to `AUDIO_PROFILE_MUSIC_HIGH_QUALITY(4)` or `AUDIO_PROFILE_MUSIC_HIGH_QUALITY_STEREO(5)` before
+     * setting this enumerator.
+     */
+    VOICE_CHANGER_EFFECT_SISTER = 0x02020400,
+    /** The voice of a girl.
+     *
+     * @note
+     * - AR recommends using this enumerator to process a female-sounding voice; otherwise, you may not hear the anticipated voice effect.
+     * - To achieve better audio effect quality, AR recommends calling \ref IRtcEngine::setAudioProfile "setAudioProfile" and setting
+     * the `profile` parameter to `AUDIO_PROFILE_MUSIC_HIGH_QUALITY(4)` or `AUDIO_PROFILE_MUSIC_HIGH_QUALITY_STEREO(5)` before
+     * setting this enumerator.
+     */
+    VOICE_CHANGER_EFFECT_GIRL = 0x02020500,
+    /** The voice of Pig King, a character in Journey to the West who has a voice like a growling bear.
+     *
+     * @note To achieve better audio effect quality, AR recommends calling \ref IRtcEngine::setAudioProfile "setAudioProfile" and
+     * setting the `profile` parameter to `AUDIO_PROFILE_MUSIC_HIGH_QUALITY(4)` or `AUDIO_PROFILE_MUSIC_HIGH_QUALITY_STEREO(5)` before
+     * setting this enumerator.
+     */
+    VOICE_CHANGER_EFFECT_PIGKING = 0x02020600,
+    /** The voice of Hulk.
+     *
+     * @note To achieve better audio effect quality, AR recommends calling \ref IRtcEngine::setAudioProfile "setAudioProfile" and
+     * setting the `profile` parameter to `AUDIO_PROFILE_MUSIC_HIGH_QUALITY(4)` or `AUDIO_PROFILE_MUSIC_HIGH_QUALITY_STEREO(5)` before
+     * setting this enumerator.
+     */
+    VOICE_CHANGER_EFFECT_HULK = 0x02020700,
+    /** An audio effect typical of R&B music.
+     *
+     * @note To achieve better audio effect quality, AR recommends calling \ref IRtcEngine::setAudioProfile "setAudioProfile" and
+     * setting the `profile` parameter to `AUDIO_PROFILE_MUSIC_HIGH_QUALITY(4)` or `AUDIO_PROFILE_MUSIC_HIGH_QUALITY_STEREO(5)` before
+     * setting this enumerator.
+     */
+    STYLE_TRANSFORMATION_RNB = 0x02030100,
+    /** An audio effect typical of popular music.
+     *
+     * @note To achieve better audio effect quality, AR recommends calling \ref IRtcEngine::setAudioProfile "setAudioProfile" and
+     * setting the `profile` parameter to `AUDIO_PROFILE_MUSIC_HIGH_QUALITY(4)` or `AUDIO_PROFILE_MUSIC_HIGH_QUALITY_STEREO(5)` before
+     * setting this enumerator.
+     */
+    STYLE_TRANSFORMATION_POPULAR = 0x02030200,
+    /** A pitch correction effect that corrects the user's pitch based on the pitch of the natural C major scale.
+     * To change the basic mode and tonic pitch, call \ref IRtcEngine::setAudioEffectParameters "setAudioEffectParameters" after this method.
+     *
+     * @note To achieve better audio effect quality, AR recommends calling \ref IRtcEngine::setAudioProfile "setAudioProfile" and
+     * setting the `profile` parameter to `AUDIO_PROFILE_MUSIC_HIGH_QUALITY(4)` or `AUDIO_PROFILE_MUSIC_HIGH_QUALITY_STEREO(5)` before
+     * setting this enumerator.
+     */
+    PITCH_CORRECTION = 0x02040100
 };
 /** Audio codec profile types. The default value is LC_ACC. */
 enum AUDIO_CODEC_PROFILE_TYPE
@@ -1125,9 +1390,38 @@ enum STREAM_SUBSCRIBE_STATE {
     SUB_STATE_SUBSCRIBED = 3
 };
 
+/** The remote video frozen type. */
+enum XLA_REMOTE_VIDEO_FROZEN_TYPE {
+    /** 0: 500ms video frozen type.
+     */
+    XLA_REMOTE_VIDEO_FROZEN_500MS = 0,
+    /** 1: 200ms video frozen type.
+     */
+    XLA_REMOTE_VIDEO_FROZEN_200MS = 1,
+    /** 2: 600ms video frozen type.
+     */
+    XLA_REMOTE_VIDEO_FROZEN_600MS = 2,
+    /** 3: max video frozen type.
+     */
+    XLA_REMOTE_VIDEO_FROZEN_TYPE_MAX = 3,
+};
+
+/** The remote audio frozen type. */
+enum XLA_REMOTE_AUDIO_FROZEN_TYPE {
+    /** 0: 80ms audio frozen.
+     */
+    XLA_REMOTE_AUDIO_FROZEN_80MS = 0,
+    /** 1: 200ms audio frozen.
+     */
+    XLA_REMOTE_AUDIO_FROZEN_200MS = 1,
+    /** 2: max audio frozen type.
+     */
+    XLA_REMOTE_AUDIO_FROZEN_TYPE_MAX = 2,
+};
+
 /** The reason for the remote video state change. */
 enum REMOTE_VIDEO_STATE_REASON {
-    /** 0: Internal reasons.
+    /** 0: The SDK reports this reason when the video state changes.
      */
     REMOTE_VIDEO_STATE_REASON_INTERNAL = 0,
 
@@ -1326,7 +1620,13 @@ enum CONNECTION_CHANGED_REASON_TYPE
   CONNECTION_CHANGED_INVALID_TOKEN = 8,
   /** 9: The connection failed since token is expired. */
   CONNECTION_CHANGED_TOKEN_EXPIRED = 9,
-  /** 10: The connection is rejected by server. */
+  /** 10: The connection is rejected by server. This error usually occurs in the following situations:
+   * - When the user is already in the channel, and still calls the method to join the channel, for example,
+   * \ref IRtcEngine::joinChannel "joinChannel".
+   * - When the user tries to join a channel during \ref IRtcEngine::startEchoTest "startEchoTest". Once you
+   * call \ref IRtcEngine::startEchoTest "startEchoTest", you need to call \ref IRtcEngine::stopEchoTest "stopEchoTest" before joining a channel.
+   *
+   */
   CONNECTION_CHANGED_REJECTED_BY_SERVER = 10,
   /** 11: The connection changed to reconnecting since SDK has set a proxy server. */
   CONNECTION_CHANGED_SETTING_PROXY_SERVER = 11,
@@ -1492,7 +1792,18 @@ struct AudioVolumeInfo
      */
     const char * channelId;
 };
-
+/// @cond
+/** The detailed options of a user.
+ */
+struct ClientRoleOptions
+{
+    /** The latency level of an audience member in a live interactive streaming. See #AUDIENCE_LATENCY_LEVEL_TYPE.
+     */
+    AUDIENCE_LATENCY_LEVEL_TYPE audienceLatencyLevel;
+    ClientRoleOptions()
+        : audienceLatencyLevel(AUDIENCE_LATENCY_LEVEL_ULTRA_LOW_LATENCY) {}
+};
+/// @endcond
 /** Statistics of the channel.
  */
 struct RtcStats
@@ -2210,6 +2521,10 @@ typedef struct LiveTranscoding {
     /** The background color in RGB hex value. Value only. Do not include a preceeding #. For example, 0xFFB6C1 (light pink). The default value is 0x000000 (black).
      */
     unsigned int backgroundColor;
+
+    /** video codec type */
+    VIDEO_CODEC_TYPE_FOR_STREAM videoCodecType;
+
     /** The number of users in the live interactive streaming.
      */
     unsigned int userCount;
@@ -2273,6 +2588,7 @@ typedef struct LiveTranscoding {
         , videoGop(30)
         , videoCodecProfile(VIDEO_CODEC_PROFILE_HIGH)
         , backgroundColor(0x000000)
+        , videoCodecType(VIDEO_CODEC_H264_FOR_STREAM)
         , userCount(0)
         , transcodingUsers(NULL)
         , transcodingExtraInfo(NULL)
@@ -2691,7 +3007,7 @@ struct UserInfo {
 };
 
 /**
- * IP areas.
+ *  Regions for connetion.
  */
 enum AREA_CODE {
     /**
@@ -3711,6 +4027,10 @@ public:
     /**
      Occurs when the SDK decodes the first remote audio frame for playback.
 
+     @deprecated v3.0.0
+
+     This callback is deprecated. Use `onRemoteAudioStateChanged` instead.
+
      This callback is triggered in either of the following scenarios:
 
      - The remote user joins the channel and sends the audio stream.
@@ -3859,6 +4179,27 @@ public:
     /** Occurs when the media engine call starts.*/
     virtual void onMediaEngineStartCallSuccess() {
     }
+    /// @cond
+    /** Reports whether the super-resolution algorithm is enabled.
+     *
+     * @since v3.2.0
+     *
+     * After calling \ref IRtcEngine::enableRemoteSuperResolution "enableRemoteSuperResolution", the SDK triggers this
+     * callback to report whether the super-resolution algorithm is successfully enabled. If not successfully enabled,
+     * you can use reason for troubleshooting.
+     *
+     * @param uid The ID of the remote user.
+     * @param enabled Whether the super-resolution algorithm is successfully enabled:
+     * - true: The super-resolution algorithm is successfully enabled.
+     * - false: The super-resolution algorithm is not successfully enabled.
+     * @param reason The reason why the super-resolution algorithm is not successfully enabled. See #SUPER_RESOLUTION_STATE_REASON.
+     */
+    virtual void onUserSuperResolutionEnabled(uid_t uid, bool enabled, SUPER_RESOLUTION_STATE_REASON reason) {
+        (void)uid;
+        (void)enabled;
+        (void)reason;
+    }
+    /// @endcond
 
     /** Occurs when the state of the media stream relay changes.
      *
@@ -4869,7 +5210,48 @@ public:
      *  - -7(ERR_NOT_INITIALIZED): The SDK is not initialized.
      */
     virtual int setClientRole(CLIENT_ROLE_TYPE role) = 0;
-    
+    /// @cond
+    /** Sets the role of a user in a live interactive streaming.
+     *
+     * @since v3.2.0
+     *
+     * You can call this method either before or after joining the channel to set the user role as audience or host. If
+     * you call this method to switch the user role after joining the channel, the SDK triggers the following callbacks:
+     * - The local client: \ref IRtcEngineEventHandler::onClientRoleChanged "onClientRoleChanged".
+     * - The remote client: \ref IRtcEngineEventHandler::onUserJoined "onUserJoined"
+     * or \ref IRtcEngineEventHandler::onUserOffline "onUserOffline".
+     *
+     * @note
+     * - This method applies to the `LIVE_BROADCASTING` profile only (when the `profile` parameter in
+     * \ref IRtcEngine::setChannelProfile "setChannelProfile" is set as `CHANNEL_PROFILE_LIVE_BROADCASTING`).
+     * - The difference between this method and \ref IRtcEngine::setClientRole(CLIENT_ROLE_TYPE) "setClientRole1" is that
+     * this method can set the user level in addition to the user role.
+     *  - The user role determines the permissions that the SDK grants to a user, such as permission to send local
+     * streams, receive remote streams, and push streams to a CDN address.
+     *  - The user level determines the level of services that a user can enjoy within the permissions of the user's
+     * role. For example, an audience can choose to receive remote streams with low latency or ultra low latency. Levels
+     * affect prices.
+     *
+     * **Example**
+     * ```cpp
+     * ClientRoleOptions options;
+     * options.audienceLatencyLevel = AUDIENCE_LATENCY_LEVEL_ULTRA_LOW_LATENCY;
+     * options.audienceLatencyLevel = AUDIENCE_LATENCY_LEVEL_LOW_LATENCY;
+     * agoraEngine->setClientRole(role, options);
+     * ```
+     *
+     * @param role The role of a user in a live interactive streaming. See #CLIENT_ROLE_TYPE.
+     * @param options The detailed options of a user, including user level. See ClientRoleOptions.
+     *
+     * @return
+     * - 0(ERR_OK): Success.
+     * - < 0: Failure.
+     *  - -1(ERR_FAILED): A general error occurs (no specified reason).
+     *  - -2(ERR_INALID_ARGUMENT): The parameter is invalid.
+     *  - -7(ERR_NOT_INITIALIZED): The SDK is not initialized.
+     */
+    virtual int setClientRole(CLIENT_ROLE_TYPE role, const ClientRoleOptions& options) = 0;
+    /// @endcond
     /** Joins a channel with the user ID.
 
      Users in the same channel can talk to each other, and multiple users in the same channel can start a group chat. Users with different App IDs cannot call each other.
@@ -6067,20 +6449,163 @@ public:
      - < 0: Failure.
      */
     virtual int setLocalVoiceReverbPreset(AUDIO_REVERB_PRESET reverbPreset) = 0;
-
-    /** Specifies an SDK output log file.
-
-     The log file records all SDK operations during runtime. If it does not exist, the SDK creates one.
-
-     @note
-     - The default log file is located at: C:\Users\<user_name>\AppData\Local\AR\<process_name>.
-     - Ensure that you call this method immediately after calling the \ref ar::rtc::IRtcEngine::initialize "initialize" method, otherwise the output log may not be complete.
-
-     @param filePath File path of the log file. The string of the log file is in UTF-8.
-
-     @return
-     - 0: Success.
-     - < 0: Failure.
+    /** Sets an SDK preset voice beautifier effect.
+     *
+     * @since v3.2.0
+     *
+     * Call this method to set an SDK preset voice beautifier effect for the local user who sends an audio stream. After
+     * setting a voice beautifier effect, all users in the channel can hear the effect.
+     *
+     * You can set different voice beautifier effects for different scenarios. See *Set the Voice Beautifier and Audio Effects*.
+     *
+     * To achieve better audio effect quality, AR recommends calling \ref IRtcEngine::setAudioProfile "setAudioProfile" and
+     * setting the `scenario` parameter to `AUDIO_SCENARIO_GAME_STREAMING(3)` and the `profile` parameter to
+     * `AUDIO_PROFILE_MUSIC_HIGH_QUALITY(4)` or `AUDIO_PROFILE_MUSIC_HIGH_QUALITY_STEREO(5)` before calling this method.
+     *
+     * @note
+     * - You can call this method either before or after joining a channel.
+     * - Do not set the `profile` parameter of \ref IRtcEngine::setAudioProfile "setAudioProfile" to `AUDIO_PROFILE_SPEECH_STANDARD(1)`
+     * or `AUDIO_PROFILE_IOT(6)`; otherwise, this method call fails.
+     * - This method works best with the human voice. AR does not recommend using this method for audio containing music.
+     * - After calling this method, AR recommends not calling the following methods, because they can override \ref IRtcEngine::setAudioEffectParameters "setAudioEffectParameters":
+     *  - \ref IRtcEngine::setAudioEffectPreset "setAudioEffectPreset"
+     *  - \ref IRtcEngine::setVoiceBeautifierPreset "setVoiceBeautifierPreset"
+     *  - \ref IRtcEngine::setLocalVoiceReverbPreset "setLocalVoiceReverbPreset"
+     *  - \ref IRtcEngine::setLocalVoiceChanger "setLocalVoiceChanger"
+     *  - \ref IRtcEngine::setLocalVoicePitch "setLocalVoicePitch"
+     *  - \ref IRtcEngine::setLocalVoiceEqualization "setLocalVoiceEqualization"
+     *  - \ref IRtcEngine::setLocalVoiceReverb "setLocalVoiceReverb"
+     *
+     * @param preset The options for SDK preset voice beautifier effects: #VOICE_BEAUTIFIER_PRESET.
+     *
+     * @return
+     * - 0: Success.
+     * - < 0: Failure.
+     */
+    virtual int setVoiceBeautifierPreset(VOICE_BEAUTIFIER_PRESET preset) = 0;
+    /** Sets an SDK preset audio effect.
+     *
+     * @since v3.2.0
+     *
+     * Call this method to set an SDK preset audio effect for the local user who sends an audio stream. This audio effect
+     * does not change the gender characteristics of the original voice. After setting an audio effect, all users in the
+     * channel can hear the effect.
+     *
+     * You can set different audio effects for different scenarios. See *Set the Voice Beautifier and Audio Effects*.
+     *
+     * To achieve better audio effect quality, AR recommends calling \ref IRtcEngine::setAudioProfile "setAudioProfile"
+     * and setting the `scenario` parameter to `AUDIO_SCENARIO_GAME_STREAMING(3)` before calling this method.
+     *
+     * @note
+     * - You can call this method either before or after joining a channel.
+     * - Do not set the profile `parameter` of `setAudioProfile` to `AUDIO_PROFILE_SPEECH_STANDARD(1)` or `AUDIO_PROFILE_IOT(6)`;
+     * otherwise, this method call fails.
+     * - This method works best with the human voice. AR does not recommend using this method for audio containing music.
+     * - If you call this method and set the `preset` parameter to enumerators except `ROOM_ACOUSTICS_3D_VOICE` or `PITCH_CORRECTION`,
+     * do not call \ref IRtcEngine::setAudioEffectParameters "setAudioEffectParameters"; otherwise, `setAudioEffectParameters`
+     * overrides this method.
+     * - After calling this method, AR recommends not calling the following methods, because they can override `setAudioEffectPreset`:
+     *  - \ref IRtcEngine::setVoiceBeautifierPreset "setVoiceBeautifierPreset"
+     *  - \ref IRtcEngine::setLocalVoiceReverbPreset "setLocalVoiceReverbPreset"
+     *  - \ref IRtcEngine::setLocalVoiceChanger "setLocalVoiceChanger"
+     *  - \ref IRtcEngine::setLocalVoicePitch "setLocalVoicePitch"
+     *  - \ref IRtcEngine::setLocalVoiceEqualization "setLocalVoiceEqualization"
+     *  - \ref IRtcEngine::setLocalVoiceReverb "setLocalVoiceReverb"
+     *
+     * @param preset The options for SDK preset audio effects. See #AUDIO_EFFECT_PRESET.
+     *
+     * @return
+     * - 0: Success.
+     * - < 0: Failure.
+     */
+    virtual int setAudioEffectPreset(AUDIO_EFFECT_PRESET preset) = 0;
+    /** Sets parameters for SDK preset audio effects.
+     *
+     * @since v3.2.0
+     *
+     * Call this method to set the following parameters for the local user who send an audio stream:
+     * - 3D voice effect: Sets the cycle period of the 3D voice effect.
+     * - Pitch correction effect: Sets the basic mode and tonic pitch of the pitch correction effect. Different songs
+     * have different modes and tonic pitches. AR recommends bounding this method with interface elements to enable
+     * users to adjust the pitch correction interactively.
+     *
+     * After setting parameters, all users in the channel can hear the relevant effect.
+     *
+     * You can call this method directly or after \ref IRtcEngine::setAudioEffectPreset "setAudioEffectPreset". If you
+     * call this method after \ref IRtcEngine::setAudioEffectPreset "setAudioEffectPreset", ensure that you set the preset
+     * parameter of `setAudioEffectPreset` to `ROOM_ACOUSTICS_3D_VOICE` or `PITCH_CORRECTION` and then call this method
+     * to set the same enumerator; otherwise, this method overrides `setAudioEffectPreset`.
+     *
+     * @note
+     * - You can call this method either before or after joining a channel.
+     * - To achieve better audio effect quality, AR recommends calling \ref IRtcEngine::setAudioProfile "setAudioProfile"
+     * and setting the `scenario` parameter to `AUDIO_SCENARIO_GAME_STREAMING(3)` before calling this method.
+     * - Do not set the `profile` parameter of \ref IRtcEngine::setAudioProfile "setAudioProfile" to `AUDIO_PROFILE_SPEECH_STANDARD(1)` or
+     * `AUDIO_PROFILE_IOT(6)`; otherwise, this method call fails.
+     * - This method works best with the human voice. AR does not recommend using this method for audio containing music.
+     * - After calling this method, AR recommends not calling the following methods, because they can override `setAudioEffectParameters`:
+     *  - \ref IRtcEngine::setAudioEffectPreset "setAudioEffectPreset"
+     *  - \ref IRtcEngine::setVoiceBeautifierPreset "setVoiceBeautifierPreset"
+     *  - \ref IRtcEngine::setLocalVoiceReverbPreset "setLocalVoiceReverbPreset"
+     *  - \ref IRtcEngine::setLocalVoiceChanger "setLocalVoiceChanger"
+     *  - \ref IRtcEngine::setLocalVoicePitch "setLocalVoicePitch"
+     *  - \ref IRtcEngine::setLocalVoiceEqualization "setLocalVoiceEqualization"
+     *  - \ref IRtcEngine::setLocalVoiceReverb "setLocalVoiceReverb"
+     *
+     * @param preset The options for SDK preset audio effects:
+     * - 3D voice effect: `ROOM_ACOUSTICS_3D_VOICE`.
+     *  - Call \ref IRtcEngine::setAudioProfile "setAudioProfile" and set the `profile` parameter to `AUDIO_PROFILE_MUSIC_STANDARD_STEREO(3)`
+     * or `AUDIO_PROFILE_MUSIC_HIGH_QUALITY_STEREO(5)` before setting this enumerator; otherwise, the enumerator setting does not take effect.
+     *  - If the 3D voice effect is enabled, users need to use stereo audio playback devices to hear the anticipated voice effect.
+     * - Pitch correction effect: `PITCH_CORRECTION`. To achieve better audio effect quality, AR recommends calling
+     * \ref IRtcEngine::setAudioProfile "setAudioProfile" and setting the `profile` parameter to `AUDIO_PROFILE_MUSIC_HIGH_QUALITY(4)` or
+     * `AUDIO_PROFILE_MUSIC_HIGH_QUALITY_STEREO(5)` before setting this enumerator.
+     * @param param1
+     * - If you set `preset` to `ROOM_ACOUSTICS_3D_VOICE`, the `param1` sets the cycle period of the 3D voice effect.
+     * The value range is [1,60] and the unit is a second. The default value is 10 seconds, indicating that the voice moves
+     * around you every 10 seconds.
+     * - If you set `preset` to `PITCH_CORRECTION`, `param1` sets the basic mode of the pitch correction effect:
+     *  - `1`: (Default) Natural major scale.
+     *  - `2`: Natural minor scale.
+     *  - `3`: Japanese pentatonic scale.
+     * @param param2
+     * - If you set `preset` to `ROOM_ACOUSTICS_3D_VOICE`, you do not need to set `param2`.
+     * - If you set `preset` to `PITCH_CORRECTION`, `param2` sets the tonic pitch of the pitch correction effect:
+     *  - `1`: A
+     *  - `2`: A#
+     *  - `3`: B
+     *  - `4`: (Default) C
+     *  - `5`: C#
+     *  - `6`: D
+     *  - `7`: D#
+     *  - `8`: E
+     *  - `9`: F
+     *  - `10`: F#
+     *  - `11`: G
+     *  - `12`: G#
+     *
+     * @return
+     * - 0: Success.
+     * - < 0: Failure.
+     */
+    virtual int setAudioEffectParameters(AUDIO_EFFECT_PRESET preset, int param1, int param2) = 0;
+    /** Sets the log files that the SDK outputs.
+     *
+     * By default, the SDK outputs five log files, `agorasdk.log`, `agorasdk_1.log`, `agorasdk_2.log`, `agorasdk_3.log`, `agorasdk_4.log`, each with a default size of 1024 KB.
+     * These log files are encoded in UTF-8. The SDK writes the latest logs in `agorasdk.log`. When `agorasdk.log` is full, the SDK deletes the log file with the earliest
+     * modification time among the other four, renames `agorasdk.log` to the name of the deleted log file, and create a new `agorasdk.log` to record latest logs.
+     *
+     * @note Ensure that you call this method immediately after calling \ref agora::rtc::IRtcEngine::initialize "initialize" , otherwise the output logs may not be complete.
+     *
+     * @see \ref IRtcEngine::setLogFileSize "setLogFileSize"
+     * @see \ref IRtcEngine::setLogFilter "setLogFilter"
+     *
+     * @param filePath The absolute path of log files. The default file path is `C: \Users\<user_name>\AppData\Local\AR\<process_name>\agorasdk.log`.
+     * Ensure that the directory for the log files exists and is writable. You can use this parameter to rename the log files.
+     *
+     * @return
+     * - 0: Success.
+     * - < 0: Failure.
      */
 	virtual int setLogFile(const char* filePath) = 0;
     /** Sets the output log level of the SDK.
@@ -7298,6 +7823,63 @@ public:
      @return #CONNECTION_STATE_TYPE.
      */
     virtual CONNECTION_STATE_TYPE getConnectionState() = 0;
+    /// @cond
+    /** Enables/Disables the super-resolution algorithm for a remote user's video stream.
+     *
+     * @since v3.2.0
+     *
+     * The algorithm effectively improves the resolution of the specified remote user's video stream. When the original
+     * resolution of the remote video stream is axb pixels, you can receive and render the stream at a higher
+     * resolution (2ax2b pixels) by enabling the algorithm.
+     *
+     * After calling this method, the SDK triggers the
+     * \ref IRtcEngineEventHandler::onUserSuperResolutionEnabled "onUserSuperResolutionEnabled" callback to report
+     * whether you have successfully enabled the super-resolution algorithm.
+     *
+     * @warning The super-resolution algorithm requires extra system resources.
+     * To balance the visual experience and system usage, the SDK poses the following restrictions:
+     * - The algorithm can only be used for a single user at a time.
+     * - On the Android platform, the original resolution of the remote video must not exceed 640x360 pixels.
+     * - On the iOS platform, the original resolution of the remote video must not exceed 640x480 pixels.
+     * If you exceed these limitations, the SDK triggers the \ref IRtcEngineEventHandler::onWarning "onWarning"
+     * callback with the corresponding warning codes:
+     * - #WARN_SUPER_RESOLUTION_STREAM_OVER_LIMITATION (1610): The origin resolution of the remote video is beyond the range where the super-resolution algorithm can be applied.
+     * - #WARN_SUPER_RESOLUTION_USER_COUNT_OVER_LIMITATION (1611): Another user is already using the super-resolution algorithm.
+     * - #WARN_SUPER_RESOLUTION_DEVICE_NOT_SUPPORTED (1612): The device does not support the super-resolution algorithm.
+     *
+     * @note
+     * - This method applies to Android and iOS only.
+     * - Requirements for the user's device:
+     *  - Android: The following devices are known to support the method:
+     *    - VIVO: V1821A, NEX S, 1914A, 1916A, and 1824BA
+     *    - OPPO: PCCM00
+     *    - OnePlus: A6000
+     *    - Xiaomi: Mi 8, Mi 9, MIX3, and Redmi K20 Pro
+     *    - SAMSUNG: SM-G9600, SM-G9650, SM-N9600, SM-G9708, SM-G960U, and SM-G9750
+     *    - HUAWEI: SEA-AL00, ELE-AL00, VOG-AL00, YAL-AL10, HMA-AL00, and EVR-AN00
+     *  - iOS: This method is supported on devices running iOS 12.0 or later. The following
+     * device models are known to support the method:
+     *      - iPhone XR
+     *      - iPhone XS
+     *      - iPhone XS Max
+     *      - iPhone 11
+     *      - iPhone 11 Pro
+     *      - iPhone 11 Pro Max
+     *      - iPad Pro 11-inch (3rd Generation)
+     *      - iPad Pro 12.9-inch (3rd Generation)
+     *      - iPad Air 3 (3rd Generation)
+     *
+     * @param userId The ID of the remote user.
+     * @param enable Whether to enable the super-resolution algorithm:
+     * - true: Enable the super-resolution algorithm.
+     * - false: Disable the super-resolution algorithm.
+     *
+     * @return
+     * - 0: Success.
+     * - < 0: Failure.
+     */
+    virtual int enableRemoteSuperResolution(uid_t userId, bool enable) = 0;
+    /// @endcond
 
     /** Registers the metadata observer.
 
@@ -7790,131 +8372,7 @@ public:
                                                   "che.audio.game_resume_all_effects", true) : -ERR_NOT_INITIALIZED;
     }
 
-	/** Retrieves the playback position (ms) of specified audio effect.
 
-	Call this method when you are in a channel.
-
-	@param soundId ID of the audio effect. Each audio effect has a unique ID.
-
-	@return >= 0: The current playback position of the audio effect, if this method call is successful.
-	< 0: Failure.
-	*/
-	int getEffectCurrentPosition(int soundId) {
-		int position = 0;
-		char key[512];
-		sprintf(key, "che.audio.get_effect_file_position:%d", soundId);
-		int r = m_parameter ? m_parameter->getInt(key, position) : -ERR_NOT_INITIALIZED;
-		if (r == 0)
-			r = position;
-		return r;
-	}
-
-	/** Sets the instantaneous playback position of specified audio effect file.
-
-	 @param soundId ID of the audio effect. Each audio effect has a unique ID.
-	 @param pos The instantaneous playback position (ms) of the audio effect file.
-
-	 @return * 0: Success.
-	 * < 0: Failure.
-	 */
-	int setEffectPosition(int soundId, int pos) {
-		return setObject(
-			"che.audio.set_effect_file_position",
-			"{\"soundId\":%d, \"effectPos\":%d}",
-			soundId, pos);
-	}
-
-	/** Adjusts the volume of specified audio effect for local playback..
-
-	 Call this method when you are in a channel.
-
-	 @param soundId ID of the audio effect. Each audio effect has a unique ID.
-	 @param volume Volume of specified audio effect for local playback. The value ranges between 0 and 100 (default).
-
-	 @return * 0: Success.
-	 * < 0: Failure.
-	 */
-	int adjustEffectPlayoutVolume(int soundId, int volume) {
-		return setObject(
-			"che.audio.set_effect_file_playout_volume",
-			"{\"soundId\":%d, \"effectPlayoutVolume\":%d}",
-			soundId, volume);
-	}
-
-	/** Adjusts the volume of specified audio effect for publishing (sending to other users).
-
-	 Call this method when you are in a channel.
-
-	 @param soundId ID of the audio effect. Each audio effect has a unique ID.
-	 @param volume Volume of specified audio effect for publishing. The value ranges between 0 and 100 (default).
-
-	 @return * 0: Success.
-	 * < 0: Failure.
-	 */
-	int adjustEffectPublishVolume(int soundId, int volume) {
-		return setObject(
-			"che.audio.set_effect_file_publish_volume",
-			"{\"soundId\":%d, \"effectPublishVolume\":%d}",
-			soundId, volume);
-	}
-
-	/** Retrieves the volume of specified audio effect for local playback.
-
-	 Call this method when you are in a channel.
-
-	 @param soundId ID of the audio effect. Each audio effect has a unique ID.
-
-	 @return >= 0: The current local playback volume of specified audio effect, if this method call is successful.
-	 * < 0: Failure.
-	 */
-	int getEffectPlayoutVolume(int soundId) {
-		int volume = 0;
-		char key[512];
-		sprintf(key, "che.audio.get_effect_file_playout_volume:%d", soundId);
-		int r = m_parameter ? m_parameter->getInt(key, volume) : -ERR_NOT_INITIALIZED;
-		if (r == 0)
-			r = volume;
-		return r;
-	}
-
-	/** Retrieves the volume of specified audio effect for publishing (sending to other users).
-
-	 Call this method when you are in a channel.
-
-	 @param soundId ID of the audio effect. Each audio effect has a unique ID.
-
-	 @return >= 0: The current publish volume of specified audio effect, if this method call is successful.
-	 * < 0: Failure.
-	 */
-	int getEffectPublishVolume(int soundId) {
-		int volume = 0;
-		char key[512];
-		sprintf(key, "che.audio.get_effect_file_publish_volume:%d", soundId);
-		int r = m_parameter ? m_parameter->getInt(key, volume) : -ERR_NOT_INITIALIZED;
-		if (r == 0)
-			r = volume;
-		return r;
-	}
-
-	/** Retrieves the duration (ms) of specified audio effect.
-
-	 Call this method when you are in a channel.
-
-	 @param soundId ID of the audio effect. Each audio effect has a unique ID.
-
-	 @return >= 0: The duration (ms) of specified audio effect, if this method call is successful.
-	 * < 0: Failure.
-	 */
-	int getEffectDuration(const char* filePath) {
-		int duration = 0;
-		char key[512];
-		sprintf(key, "che.audio.get_effect_file_duration:%s", filePath);
-		int r = m_parameter ? m_parameter->getInt(key, duration) : -ERR_NOT_INITIALIZED;
-		if (r == 0)
-			r = duration;
-		return r;
-	}
-    
     int enableSoundPositionIndication(bool enabled) {
         return m_parameter ? m_parameter->setBool(
                                                   "che.audio.enable_sound_position", enabled) : -ERR_NOT_INITIALIZED;
@@ -7948,50 +8406,171 @@ public:
 
     
     int setLocalVoiceChanger(VOICE_CHANGER_PRESET voiceChanger) {
-        if(voiceChanger == 0x00000000)
-        {
-            return m_parameter ? m_parameter->setInt("che.audio.morph.voice_changer", static_cast<int>(voiceChanger)) : -ERR_NOT_INITIALIZED;
-        }
-        else if(voiceChanger > 0x00000000 && voiceChanger < 0x00100000)
-        {
-            return m_parameter ? m_parameter->setInt("che.audio.morph.voice_changer", static_cast<int>(voiceChanger)) : -ERR_NOT_INITIALIZED;
-        }
-        else if(voiceChanger > 0x00100000 && voiceChanger < 0x00200000)
-        {
-            return m_parameter ? m_parameter->setInt("che.audio.morph.voice_changer", static_cast<int>(voiceChanger - 0x00100000 + 6)) : -ERR_NOT_INITIALIZED;
-        }
-        else if(voiceChanger > 0x00200000 && voiceChanger < 0x00300000)
-        {
-            return m_parameter ? m_parameter->setInt("che.audio.morph.beauty_voice", static_cast<int>(voiceChanger - 0x00200000)) : -ERR_NOT_INITIALIZED;
-        }
-        else
-        {
+        if(!m_parameter)
             return -ERR_NOT_INITIALIZED;
+        if(voiceChanger == 0x00000000) {
+            return m_parameter->setInt("che.audio.morph.voice_changer", static_cast<int>(voiceChanger));
+        }
+        else if(voiceChanger > 0x00000000 && voiceChanger < 0x00100000) {
+            return m_parameter->setInt("che.audio.morph.voice_changer", static_cast<int>(voiceChanger));
+        }
+        else if(voiceChanger > 0x00100000 && voiceChanger < 0x00200000) {
+            return m_parameter->setInt("che.audio.morph.voice_changer", static_cast<int>(voiceChanger - 0x00100000 + 6));
+        }
+        else if(voiceChanger > 0x00200000 && voiceChanger < 0x00300000) {
+            return m_parameter->setInt("che.audio.morph.beauty_voice", static_cast<int>(voiceChanger - 0x00200000));
+        }
+        else {
+            return -ERR_INVALID_ARGUMENT;
         }
     }
 
     
     int setLocalVoiceReverbPreset(AUDIO_REVERB_PRESET reverbPreset) {
-        if(reverbPreset == 0x00000000)
-        {
-            return m_parameter ? m_parameter->setInt("che.audio.morph.reverb_preset", static_cast<int>(reverbPreset)) : -ERR_NOT_INITIALIZED;
-        }
-        else if(reverbPreset > 0x00000000 && reverbPreset < 0x00100000)
-        {
-            return m_parameter ? m_parameter->setInt("che.audio.morph.reverb_preset", static_cast<int>(reverbPreset + 8)) : -ERR_NOT_INITIALIZED;
-        }
-        else if(reverbPreset > 0x00100000 && reverbPreset < 0x00200000)
-        {
-            return m_parameter ? m_parameter->setInt("che.audio.morph.reverb_preset", static_cast<int>(reverbPreset - 0x00100000)) : -ERR_NOT_INITIALIZED;
-        }
-        else if(reverbPreset > 0x00200000 && reverbPreset < 0x00200002)
-        {
-            return m_parameter ? m_parameter->setInt("che.audio.morph.virtual_stereo", static_cast<int>(reverbPreset - 0x00200000)) : -ERR_NOT_INITIALIZED;
-        }
-        else
-        {
+        if(!m_parameter)
             return -ERR_NOT_INITIALIZED;
+        if(reverbPreset == 0x00000000) {
+            return m_parameter->setInt("che.audio.morph.reverb_preset", static_cast<int>(reverbPreset));
         }
+        else if(reverbPreset > 0x00000000 && reverbPreset < 0x00100000) {
+            return m_parameter->setInt("che.audio.morph.reverb_preset", static_cast<int>(reverbPreset + 8));
+        }
+        else if(reverbPreset > 0x00100000 && reverbPreset < 0x00200000) {
+            return m_parameter->setInt("che.audio.morph.reverb_preset", static_cast<int>(reverbPreset - 0x00100000));
+        }
+        else if(reverbPreset > 0x00200000 && reverbPreset < 0x00200002) {
+            return m_parameter->setInt("che.audio.morph.virtual_stereo", static_cast<int>(reverbPreset - 0x00200000));
+        }
+        else if (reverbPreset > (AUDIO_REVERB_PRESET) 0x00300000 && reverbPreset < (AUDIO_REVERB_PRESET) 0x00300002)
+            return setObject( "che.audio.morph.electronic_voice", "{\"key\":%d,\"value\":%d}", 1, 4);
+        else if (reverbPreset > (AUDIO_REVERB_PRESET) 0x00400000 && reverbPreset < (AUDIO_REVERB_PRESET) 0x00400002)
+            return m_parameter->setInt("che.audio.morph.threedim_voice", 10);
+        else {
+            return -ERR_INVALID_ARGUMENT;
+        }
+    }
+
+    int setAudioEffectPreset(AUDIO_EFFECT_PRESET preset){
+        if(!m_parameter)
+            return -ERR_NOT_INITIALIZED;
+        if(preset == AUDIO_EFFECT_OFF) {
+            return m_parameter->setInt("che.audio.morph.voice_changer", 0);
+        }
+        if(preset == ROOM_ACOUSTICS_KTV){
+            return m_parameter->setInt("che.audio.morph.reverb_preset", 1);
+        }
+        if(preset == ROOM_ACOUSTICS_VOCAL_CONCERT) {
+            return m_parameter->setInt("che.audio.morph.reverb_preset", 2);
+        }
+        if(preset == ROOM_ACOUSTICS_STUDIO) {
+            return m_parameter->setInt("che.audio.morph.reverb_preset", 5);
+        }
+        if(preset == ROOM_ACOUSTICS_PHONOGRAPH) {
+            return m_parameter->setInt("che.audio.morph.reverb_preset", 8);
+        }
+        if(preset == ROOM_ACOUSTICS_VIRTUAL_STEREO) {
+            return m_parameter->setInt("che.audio.morph.virtual_stereo", 1);
+        }
+        if(preset == ROOM_ACOUSTICS_SPACIAL) {
+            return m_parameter->setInt("che.audio.morph.voice_changer", 15);
+        }
+        if(preset == ROOM_ACOUSTICS_ETHEREAL) {
+            return m_parameter->setInt("che.audio.morph.voice_changer", 5);
+        }
+        if(preset == ROOM_ACOUSTICS_3D_VOICE) {
+            return m_parameter->setInt("che.audio.morph.threedim_voice", 10);
+        }
+        if(preset == VOICE_CHANGER_EFFECT_UNCLE) {
+            return m_parameter->setInt("che.audio.morph.reverb_preset", 3);
+        }
+        if(preset == VOICE_CHANGER_EFFECT_OLDMAN) {
+            return m_parameter->setInt("che.audio.morph.voice_changer", 1);
+        }
+        if(preset == VOICE_CHANGER_EFFECT_BOY) {
+            return m_parameter->setInt("che.audio.morph.voice_changer", 2);
+        }
+        if(preset == VOICE_CHANGER_EFFECT_SISTER) {
+            return m_parameter->setInt("che.audio.morph.reverb_preset", 4);
+        }
+        if(preset == VOICE_CHANGER_EFFECT_GIRL) {
+            return m_parameter->setInt("che.audio.morph.voice_changer", 3);
+        }
+        if(preset == VOICE_CHANGER_EFFECT_PIGKING) {
+            return m_parameter->setInt("che.audio.morph.voice_changer", 4);
+        }
+        if(preset == VOICE_CHANGER_EFFECT_HULK) {
+            return m_parameter->setInt("che.audio.morph.voice_changer", 6);
+        }
+        if(preset == STYLE_TRANSFORMATION_RNB) {
+            return m_parameter->setInt("che.audio.morph.reverb_preset", 7);
+        }
+        if(preset == STYLE_TRANSFORMATION_POPULAR) {
+            return m_parameter->setInt("che.audio.morph.reverb_preset", 6);
+        }
+        if(preset == PITCH_CORRECTION) {
+            return setObject( "che.audio.morph.electronic_voice", "{\"key\":%d,\"value\":%d}", 1, 4);
+        }
+        return -ERR_INVALID_ARGUMENT;
+    }
+
+    int setVoiceBeautifierPreset(VOICE_BEAUTIFIER_PRESET preset) {
+        if(!m_parameter)
+            return -ERR_NOT_INITIALIZED;
+        if(preset == VOICE_BEAUTIFIER_OFF) {
+            return m_parameter->setInt("che.audio.morph.voice_changer", 0);
+        }
+        if(preset == CHAT_BEAUTIFIER_MAGNETIC) {
+            return m_parameter->setInt("che.audio.morph.beauty_voice", 1);
+        }
+        if(preset == CHAT_BEAUTIFIER_FRESH) {
+            return m_parameter->setInt("che.audio.morph.beauty_voice", 2);
+        }
+        if(preset == CHAT_BEAUTIFIER_VITALITY) {
+            return m_parameter->setInt("che.audio.morph.beauty_voice", 3);
+        }
+        /*if(preset == SINGING_BEAUTIFICATION_MAN) {
+            return m_parameter->setInt("che.audio.morph.beauty_sing", 1);
+        }
+        if(preset == SINGING_BEAUTIFICATION_WOMAN) {
+            return m_parameter->setInt("che.audio.morph.beauty_sing", 2);
+        }*/
+        if(preset == TIMBRE_TRANSFORMATION_VIGOROUS) {
+            return m_parameter->setInt("che.audio.morph.voice_changer", 7);
+        }
+        if(preset == TIMBRE_TRANSFORMATION_DEEP) {
+            return m_parameter->setInt("che.audio.morph.voice_changer", 8);
+        }
+        if(preset == TIMBRE_TRANSFORMATION_MELLOW) {
+            return m_parameter->setInt("che.audio.morph.voice_changer", 9);
+        }
+        if(preset == TIMBRE_TRANSFORMATION_FALSETTO) {
+            return m_parameter->setInt("che.audio.morph.voice_changer", 10);
+        }
+        if(preset == TIMBRE_TRANSFORMATION_FULL) {
+            return m_parameter->setInt("che.audio.morph.voice_changer", 11);
+        }
+        if(preset == TIMBRE_TRANSFORMATION_CLEAR) {
+            return m_parameter->setInt("che.audio.morph.voice_changer", 12);
+        }
+        if(preset == TIMBRE_TRANSFORMATION_RESOUNDING) {
+            return m_parameter->setInt("che.audio.morph.voice_changer", 13);
+        }
+        if(preset == TIMBRE_TRANSFORMATION_RINGING) {
+            return m_parameter->setInt("che.audio.morph.voice_changer", 14);
+        }
+        return -ERR_INVALID_ARGUMENT;
+    }
+
+    int setAudioEffectParameters(AUDIO_EFFECT_PRESET preset, int param1, int param2){
+        if(!m_parameter)
+            return -ERR_NOT_INITIALIZED;
+        if(preset == PITCH_CORRECTION){
+            return setObject( "che.audio.morph.electronic_voice", "{\"key\":%d,\"value\":%d}", param1, param2);
+        }
+        if(preset == ROOM_ACOUSTICS_3D_VOICE){
+            return m_parameter->setInt("che.audio.morph.threedim_voice", param1);
+        }
+        return -ERR_INVALID_ARGUMENT;
     }
 
     /** **DEPRECATED** Use \ref IRtcEngine::disableAudio "disableAudio" instead. Disables the audio function in the channel.
