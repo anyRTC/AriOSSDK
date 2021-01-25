@@ -11,6 +11,8 @@
 
 @protocol ARtcChannelDelegate <NSObject>
 
+@optional
+
 /** 发生警告回调
 
 @param rtcChannel   ARtcChannel 类。

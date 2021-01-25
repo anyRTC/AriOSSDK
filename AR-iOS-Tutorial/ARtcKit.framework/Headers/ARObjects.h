@@ -440,6 +440,15 @@ __attribute__((visibility("default"))) @interface ARtcLocalVideoStats : NSObject
  * ARVideoCodecTypeH264 = 2: （默认值）H.264。
  */
 @property (assign, nonatomic) ARVideoCodecType codecType;
+
+/** 弱网对抗前本端到边缘服务器的视频丢包率 (%)。
+ */
+@property (assign, nonatomic) NSInteger txPacketLossRate;
+
+/** 本地视频采集帧率 (fps)。
+ */
+@property (assign, nonatomic) NSInteger captureFrameRate;
+
 @end
 
 /** 本地音频统计信息
@@ -454,6 +463,9 @@ __attribute__((visibility("default"))) @interface ARtcLocalAudioStats : NSObject
 /** 发送码率的平均值，单位为 Kbps。
  */
 @property (assign, nonatomic) NSUInteger sentBitrate;
+/** 弱网对抗前本端到边缘服务器的音频丢包率 (%)。
+ */
+@property (assign, nonatomic) NSUInteger txPacketLossRate;
 @end
 
 /** 远端视频统计回调。
@@ -1054,201 +1066,6 @@ __attribute__((visibility("default"))) @interface ARtcDeviceInfo : NSObject
 @end
 
 #endif
-
-/**
-在调用 setLiveTranscoding 时用于管理参与 CDN 直播的视频转码合图的用户
-*/
-__attribute__((visibility("default"))) @interface ARStreamTranscodingUser : NSObject
-
-/** 直播推流的用户 ID
-*/
-@property (nonatomic, copy) NSString * _Nonnull uid;
-
-/** 视频帧左上角的横轴位置
-
-整数，取值范围为 [0,10000]，默认值为 0。
-*/
-@property (nonatomic, assign) int x;
-
-/** 视频帧左上角的纵轴位置
-
-整数，取值范围为 [0,10000]，默认值为 0。
-*/
-@property (nonatomic, assign) int y;
-
-/** 视频帧宽度
-
-整数，取值范围为 [0,10000]，默认值为 640。
-*/
-@property (nonatomic, assign) int width;
-
-/** 视频帧高度
-
-整数，取值范围为 [0,10000]，默认值为 480。
-*/
-@property (nonatomic, assign) int height;
-
-/** 直播视频上用户视频帧的图层编号
-
-整数，取值范围为 [0,100]。
-*/
-@property (nonatomic, assign) int zOrder;
-
-/** 直播视频上用户视频的透明度
-
-- 0.0: 该区域图像完全透明。
-- 1.0: 该区域图像完全不透明。
-*/
-@property (nonatomic, assign) double alpha;
-
-@end
-
-/**
- 合流参数
- */
-__attribute__((visibility("default"))) @interface ARStreamliveTranscoding: NSObject
-
-/** 推流视频的总宽度，默认值 640，单位为像素。
- * - 如果推视频流，width 值不得低于 64，否则 会调整为 64。
- * - 如果推音频流，请将 width 和 height 设为 0。
- */
-@property (nonatomic, assign) int width;
-
-/** 推流视频的总高度，默认值 360，单位为像素。
- * - 如果推视频流，height 值不得低于 64，否则会调整为 64。
- * - 如果推音频流，请将 width 和 height 设为 0。
-*/
-@property (nonatomic, assign) int height;
-
-/** 用于直播推流的输出视频的码率，单位为 Kbps。
-
-正整数，默认值为 400 Kbps，取值范围为 [1,1000000]。
-
-你可以参考视频分辨率表格进行设置。如果设置的码率超出合理范围，服务器会在合理区间内自动调整码率值。
-*/
-@property (nonatomic, assign) int videoBitrate;
-
-/** 用于直播推流的输出视频的帧率，单位为 fps。
-
-@note 正整数，默认值为 15 fps，取值范围为 [1,30]。服务器会将高于 30 的帧率设置改为 30。
-*/
-@property (nonatomic, assign) int videoFramerate;
-
-/** 用于直播推流的输出视频的 GOP，单位为帧。
-
-正整数，默认值为 30 帧，取值范围为 [1,10000]。
-*/
-@property (nonatomic, assign) int videoGop;
-
-/** 用于直播推流的输出视频的编码规格
-
-@note 可以设置为 66、77 或 100。如果设置其他值，anyRTC 会统一设为默认值 100。
-*/
-@property (nonatomic, assign) ARStreamVideoCodeProfileType videoCodecProfile;
-
-/** 背景色
- 默认 0x000000，必须是 16 进制格式。 取值范围为 [0x000000, 0xffffff]。
- */
-@property (strong, nonatomic) COLOR_CLASS * _Nullable backgroundColor;
-
-/** 参与合图的用户数量，默认 0，最多 17 人。
- */
-@property (nonatomic, assign) int userCount;
-
-/** 用于管理参与直播推流的视频转码合图的用户。
-
-最多支持 17 人同时参与转码合图。具体设置见 ARtmTranscodingUser。
-*/
-@property (nonatomic, strong) NSArray<ARStreamTranscodingUser *> *transcodingUsers;
-
-/** 预留参数：用户自定义的发送到旁路推流客户端的信息，用于填充 H264/H265 视频中 SEI 帧内容。
- 长度限制：4096 字节。关于 SEI 的详细信息，详见SEI 帧相关问题。
-*/
-@property (nonatomic, copy) NSString * _Nullable transcodingExtraInfo;
-
-/** 用于旁路直播的输出视频上的水印图片
- 仅支持 PNG 格式的图片。添加后所有旁路直播的观众都可以看到水印。水印图片的定义详见 ARImage
-*/
-@property (nonatomic, strong) ARImage * _Nullable watermark;
-
-/** 用于旁路直播的输出视频上的背景图片
- 添加后所有旁路直播的观众都可以看到背景图片。背景图片的定义详见 ARImage
-*/
-@property (nonatomic, strong) ARImage * _Nullable backgroundImage;
-
-/** 用于旁路直播的输出音频的采样率，详见 ARAudioSampleRateType
-*/
-@property (nonatomic, assign) ARStreamAudioSampleRateType audioSampleRate;
-
-/** 用于旁路直播的输出音频的码率。单位为 Kbps，默认值为 48，最大值为 128
-*/
-@property (nonatomic, assign) NSInteger audioBitrate;
-
-/** 用于旁路直播的输出音频的声道数，默认值为 1。取值范围为 [1,5] 中的整型，建议取 1 或 2。3、4、5需要特殊播放器支持：
- - 1: 单声道
- - 2: 双声道
- - 3: 三声道
- - 4: 四声道
- - 5: 五声道
-*/
-@property (nonatomic, assign) NSInteger audioChannels;
-
-/** 用于旁路直播的输出音频的码率。单位为 Kbps，默认值为 48，最大值为 128
-*/
-@property (nonatomic, assign) ARStreamAudioCodecProfileType audioCodecProfile;
-
-@end
-
-/**
- 当前rtmp推流状态回调
- */
-__attribute__((visibility("default"))) @interface ARStreamPushStats : NSObject
-
-/** 视频
-*/
-@property (nonatomic, assign) BOOL hasVideo;
-
-/** 音频
-*/
-@property (nonatomic, assign) BOOL hasAudio;
-
-/** vidMix
-*/
-@property (nonatomic, assign) BOOL vidMix;
-
-/** vidCode
-*/
-@property (nonatomic, copy) NSString * _Nullable vidCode;
-
-/** 宽度
-*/
-@property (nonatomic, assign) int vidWidth;
-
-/** 高度
-*/
-@property (nonatomic, assign) int vidHeight;
-
-/** fps
-*/
-@property (nonatomic, assign) int vidFps;
-
-/** bitrate
-*/
-@property (nonatomic, assign) int vidBitrate;
-
-/** 延迟
-*/
-@property (nonatomic, assign) int delayMs;
-
-/** audCodec
-*/
-@property (nonatomic, copy) NSString * _Nullable audCodec;
-
-/** audBitrate
-*/
-@property (nonatomic, assign) int audBitrate;
-
-@end
 
 /** 配置内置加密模式和密钥
  */

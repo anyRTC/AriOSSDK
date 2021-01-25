@@ -1668,4 +1668,122 @@ typedef NS_ENUM(NSInteger, AREncryptionMode) {
     AREncryptionModeEnd,
 };
 
+/** 语音音效均衡波段的中心频率 */
+typedef NS_ENUM(NSInteger, ARAudioEqualizationBandFrequency) {
+    /** 31 Hz. */
+    ARAudioEqualizationBand31 = 0,
+    /** 62 Hz. */
+    ARAudioEqualizationBand62 = 1,
+    /** 125 Hz. */
+    ARAudioEqualizationBand125 = 2,
+    /** 250 Hz. */
+    ARAudioEqualizationBand250 = 3,
+    /** 500 Hz */
+    ARAudioEqualizationBand500 = 4,
+    /** 1 kHz. */
+    ARAudioEqualizationBand1K = 5,
+    /** 2 kHz. */
+    ARAudioEqualizationBand2K = 6,
+    /** 4 kHz. */
+    ARAudioEqualizationBand4K = 7,
+    /** 8 kHz. */
+    ARAudioEqualizationBand8K = 8,
+    /** 16 kHz. */
+    ARAudioEqualizationBand16K = 9,
+};
+
+/** 音频混响类型 */
+typedef NS_ENUM(NSInteger, ARAudioReverbType) {
+    /** 原始音频强度，即所谓的 dry signal，取值范围 [-20,10]，单位为 dB */
+    ARAudioReverbDryLevel = 0,
+    /** 早期反射信号强度，即所谓的 wet signal，取值范围 [-20,10]，单位为 dB */
+    ARAudioReverbWetLevel = 1,
+    /** 所需混响效果的房间尺寸，一般房间越大，混响越强，取值范围 [0,100] */
+    ARAudioReverbRoomSize = 2,
+    /** wet signal 的初始延迟长度，取值范围 [0,200]，单位为 ms*/
+    ARAudioReverbWetDelay = 3,
+     /** 混响持续的强度，取值范围 [0,100] */
+    ARAudioReverbStrength = 4,
+};
+
+/** 本地语音变声、美音或语聊美声效果选项 */
+typedef NS_ENUM(NSInteger, ARAudioVoiceChanger) {
+    /** 原声，即关闭本地语音的变声、美音或语聊美声效果。*/
+    ARAudioVoiceChangerOff = 0x00000000,
+    /** 变声：老年男性 */
+    ARAudioVoiceChangerOldMan = 0x00000001,
+    /** 变声：小男孩 */
+    ARAudioVoiceChangerBabyBoy = 0x00000002,
+    /** 变声：小女孩 */
+    ARAudioVoiceChangerBabyGirl = 0x00000003,
+    /** 变声：猪八戒 */
+    ARAudioVoiceChangerZhuBaJie = 0x00000004,
+    /** 变声：空灵 */
+    ARAudioVoiceChangerEthereal = 0x00000005,
+    /** 变声：绿巨人 */
+    ARAudioVoiceChangerHulk = 0x00000006,
+    /** 美音：浑厚 */
+    ARAudioVoiceBeautyVigorous = 0x00100001,
+    /** 美音：低沉 */
+    ARAudioVoiceBeautyDeep = 0x00100002,
+    /** 美音：圆润 */
+    ARAudioVoiceBeautyMellow = 0x00100003,
+    /** 美音：假音 */
+    ARAudioVoiceBeautyFalsetto = 0x00100004,
+    /** 美音：饱满 */
+    ARAudioVoiceBeautyFull = 0x00100005,
+    /** 美音：清澈 */
+    ARAudioVoiceBeautyClear = 0x00100006,
+    /** 美音：高亢 */
+    ARAudioVoiceBeautyResounding = 0x00100007,
+    /** 美音：嘹亮 */
+    ARAudioVoiceBeautyRinging = 0x00100008,
+    /** 美音：空旷 */
+    ARAudioVoiceBeautySpacial = 0x00100009,
+    /** 语聊美声：磁性（男）。此枚举为男声定制化效果，不适用于女声。若女声使用此音效设置，则音频可能会产生失真。 */
+    ARAudioGeneralBeautyVoiceMaleMagnetic = 0x00200001,
+    /** 语聊美声：清新（女）。此枚举为女声定制化效果，不适用于男声。若男声使用此音效设置，则音频可能会产生失真。*/
+    ARAudioGeneralBeautyVoiceFemaleFresh = 0x00200002,
+    /** 语聊美声：活力（女）。此枚举为女声定制化效果，不适用于男声。若男声使用此音效设置，则音频可能会产生失真。 */
+    ARAudioGeneralBeautyVoiceFemaleVitality = 0x00200003,
+};
+
+/** 本地语音混响选项 */
+typedef NS_ENUM(NSInteger, ARAudioReverbPreset) {
+    /** 原声，即关闭本地语音混响。*/
+    ARAudioReverbPresetOff = 0x00000000,
+    /** KTV（增强版）  */
+    ARAudioReverbPresetFxKTV = 0x00100001,
+    /** 演唱会（增强版）*/
+    ARAudioReverbPresetFxVocalConcert = 0x00100002,
+    /** 大叔 */
+    ARAudioReverbPresetFxUncle = 0x00100003,
+    /** 小姐姐 */
+    ARAudioReverbPresetFxSister = 0x00100004,
+    /** 录音棚（增强版） */
+    ARAudioReverbPresetFxStudio = 0x00100005,
+    /** 流行（增强版） */
+    ARAudioReverbPresetFxPopular = 0x00100006,
+    /** R&B（增强版） */
+    ARAudioReverbPresetFxRNB = 0x00100007,
+    /** 留声机 */
+    ARAudioReverbPresetFxPhonograph = 0x00100008,
+    /** 流行 */
+    ARAudioReverbPresetPopular = 0x00000001,
+    /** R&B */
+    ARAudioReverbPresetRnB = 0x00000002,
+    /** 摇滚 */
+    ARAudioReverbPresetRock = 0x00000003,
+    /** 嘻哈 */
+    ARAudioReverbPresetHipHop = 0x00000004,
+    /** 演唱会  */
+    ARAudioReverbPresetVocalConcert = 0x00000005,
+    /** KTV */
+    ARAudioReverbPresetKTV = 0x00000006,
+    /** 录音棚 */
+    ARAudioReverbPresetStudio = 0x00000007,
+    /** 虚拟立体声。虚拟立体声是指将单声道的音轨渲染出立体声的效果，使频道内所有用户听到有空间感的声音效果。为达到更好的虚拟立体声效果，AR 推荐在调用该方法前将 setAudioProfile 的 profile 参数设置为 ARAudioProfileMusicHighQualityStereo(5)。*/
+    ARAudioReverbPresetVirtualStereo = 0x00200001
+};
+
 #endif /* AREnumerates_h */

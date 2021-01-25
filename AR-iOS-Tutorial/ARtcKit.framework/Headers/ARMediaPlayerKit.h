@@ -401,6 +401,13 @@ __attribute__((visibility("default"))) @interface ARMediaPlayer : NSObject
  * 方法调用失败，返回 nil
  */
 - (ARMediaStreamInfo *_Nullable)getStreamByIndex:(int)index;
+
+/** 销毁 ARMediaPlayerKit 实例
+
+ 调用该方法后，你将无法再使用 Player 提供的其他 API。如果你需要重新使用 Player， 你需要调用 initWithDelegate 方法，重新创建一个 ARMediaPlayerKit 实例。
+ */
+- (void)destroy;
+
 @end
 
 NS_ASSUME_NONNULL_END

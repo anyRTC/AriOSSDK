@@ -96,7 +96,7 @@ class VideoChatViewController: UIViewController {
         // same channel successfully using the same app id.
         // 2. One token is only valid for the channel name that
         // you use to generate this token.
-        rtcKit.joinChannel(byToken: "", channelId: "808080", uid: nil) { [unowned self] (channel, uid, elapsed) -> Void in
+        rtcKit.joinChannel(byToken: "", channelId: "909090", uid: nil) { [unowned self] (channel, uid, elapsed) -> Void in
             // Did join channel "demoChannel1"
             self.logVC?.log(type: .info, content: "did join channel")
             self.localVideo.uid = uid
@@ -134,6 +134,15 @@ class VideoChatViewController: UIViewController {
         rtcKit.leaveChannel(nil)
         UIApplication.shared.isIdleTimerDisabled = false
         self.logVC?.log(type: .info, content: "did leave channel")
+    }
+    
+    func toJSONString(dict:NSDictionary?)->String {
+
+        let data = try? JSONSerialization.data(withJSONObject: dict!, options: JSONSerialization.WritingOptions.prettyPrinted)
+
+        let strJson = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+
+        return strJson! as String
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -335,5 +344,9 @@ extension VideoChatViewController: ARtcEngineDelegate {
     
     func rtcEngine(_ engine: ARtcEngineKit, reportRtcStats stats: ARChannelStats) {
         statsLabel.text = String(format: "CPU：%.2f%% ", stats.cpuAppUsage) + String(format: "Memory：%.2fM", Float(stats.memoryAppUsageInKbytes)/1024.00)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print(AVAudioSession.sharedInstance().outputNumberOfChannels)
     }
 }

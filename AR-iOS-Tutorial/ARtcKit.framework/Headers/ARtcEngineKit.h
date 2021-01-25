@@ -796,6 +796,58 @@ __attribute__((visibility("default"))) @interface ARtcEngineKit : NSObject
 
 //MARK: - 语音音效设置
 
+/**-----------------------------------------------------------------------------
+ * @name 美声与音效
+ * -----------------------------------------------------------------------------
+ */
+
+/** 设置本地语音音调
+ 
+ 该方法改变本地说话人声音的音调。该方法在加入频道前后都能调用。
+
+ @param pitch  语音频率。可以在 [0.5,2.0] 范围内设置。取值越小，则音调越低。默认值为 1.0，表示不需要修改音调。
+
+ @return 0方法调用成功，<0方法调用失败
+ */
+- (int)setLocalVoicePitch:(double)pitch;
+
+/** 设置本地语音音效均衡
+
+ @param bandFrequency 频谱子带索引，取值范围是 [0,9]，分别代表 10 个 频带，对应的中心频率是 [31，62，125，250，500，1k，2k，4k，8k，16k] Hz，详见 ARAudioEqualizationBandFrequency 。
+ @param gain  每个 band 的增益，单位是 dB，每一个值的范围是 [-15,15]，默认值为 0。
+
+ @return 0方法调用成功，<0方法调用失败
+*/
+-(int)setLocalVoiceEqualizationOfBandFrequency:(ARAudioEqualizationBandFrequency)bandFrequency withGain:(NSInteger)gain;
+
+/** 设置本地音效混响
+
+ 提供一个使用更为简便的接口 setLocalVoiceReverbPreset，通过一系列内置参数的调整，直接实现流行、R&B、摇滚、嘻哈等预置的混响效果。
+ 
+ 该方法在加入频道前后都能调用。
+ 
+ @param reverbType 混响音效类型，详见 ARAudioReverbType
+ @param value     设置混响音效的效果数值，各混响音效对应的取值范围请参考 ARAudioReverbType
+
+ @return 0方法调用成功，<0方法调用失败
+ */
+- (int)setLocalVoiceReverbOfType:(ARAudioReverbType)reverbType withValue:(NSInteger)value;
+
+/** 设置本地语音混响（含虚拟立体声效果）。
+
+**Note:**
+
+ 当使用以 ARAudioReverbPresetFx 为前缀的枚举值时，请确保在调用该方法前将 setAudioProfile 的 profile 参数设置为 ARAudioProfileMusicHighQuality(4) 或 ARAudioProfileMusicHighQualityStereo(5)，否则该方法设置无效。
+ 当使用 ARAudioReverbPresetVirtualStereo 时，AR 推荐在调用该方法前将 setAudioProfile 的 profile 参数设置为 ARAudioProfileMusicHighQualityStereo(5)。
+ 该方法对人声的处理效果最佳，AR 不推荐调用该方法处理含人声和音乐的音频数据。
+ 该方法不能与 setLocalVoiceChanger 方法一同使用，否则先调的方法会不生效。更多注意事项，详见《变声与混响》。
+
+ @param reverbPreset 本地语音混响选项，默认值为 ARAudioReverbPresetOff，即原声。详见 ARAudioReverbPreset。
+
+ @return 0: 方法调用成功。< 0: 方法调用失败。请检查输入的枚举值是否正确。
+ */
+- (int)setLocalVoiceReverbPreset:(ARAudioReverbPreset)reverbPreset;
+
 //MARK: - 音乐文件播放及混音设置
 /**-----------------------------------------------------------------------------
 * @name 音乐文件播放及混音设置
@@ -1399,7 +1451,7 @@ SDK 支持通话过程中在客户端进行录音。调用该方法后，你可�
  @return 0方法调用成功，<0方法调用失败
 
  -2 (ARErrorCodeInvalidArgument): 调用了无效的参数。需重新指定参数。
- -7 (ARErrorCodeNotInitialized): SDK 尚未初始化。需在调用 API 之前已创建 AgoraRtcEngineKit 对象并完成初始化。
+ -7 (ARErrorCodeNotInitialized): SDK 尚未初始化。需在调用 API 之前已创建 ARRtcEngineKit 对象并完成初始化。
  -4 (ARErrorCodeNotSupported): 设置的加密模式不正确或加载外部加密库失败。需检查枚举值是否正确或重新加载外部加密库。
  */
 - (int)enableEncryption:(bool)enabled encryptionConfig:(AREncryptionConfig *)config;

@@ -23,6 +23,7 @@ FOUNDATION_EXPORT const unsigned char ARtcKitVersionString[];
 #import <ARtcKit/ARtcChannel.h>
 #import <ARtcKit/ARtcChannelDelegate.h>
 #import <ARtcKit/ARMediaPlayerKit.h>
+#import <ARtcKit/ARStreamingKit.h>
 
 
 

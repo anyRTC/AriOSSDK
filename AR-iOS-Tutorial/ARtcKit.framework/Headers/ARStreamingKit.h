@@ -26,12 +26,10 @@ NS_ASSUME_NONNULL_BEGIN
 开始推Rtmp的流
 
 @param url  rtmp流地址
- 
-@param mode 推流模式，详见ARStreamPushMode。
 
 @return 0方法调用成功，<0方法调用失败
 */
-- (int)pushStream:(NSString *_Nonnull)url pushMode:(ARStreamPushMode)mode;
+- (int)pushStream:(NSString *_Nonnull)url;
 
 /**
 停止推Rtmp的流
@@ -52,9 +50,14 @@ NS_ASSUME_NONNULL_BEGIN
 /**
 设置合流参数
 
-@param transcoding  合流参数，详见ARStreamliveTranscoding。
+@param transcoding  合流参数，详见ARLiveTranscoding。
 */
-- (void)setLiveTranscoding:(ARStreamliveTranscoding *_Nonnull)transcoding;
+- (int)setLiveTranscoding:(ARLiveTranscoding *_Nonnull)transcoding;
+
+/**
+ 销毁 ARStreamingKit 实例
+*/
+- (void)destroy;
 
 @end
 
