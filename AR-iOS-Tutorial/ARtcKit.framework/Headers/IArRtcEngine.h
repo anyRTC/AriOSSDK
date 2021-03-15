@@ -835,6 +835,39 @@ enum VIDEO_CODEC_TYPE {
     VIDEO_CODEC_EVP = 3,
     /** Enhanced H264 */
     VIDEO_CODEC_E264 = 4,
+	/** Standard Jpeg*/
+	VIDEO_CODEC_MJPG = 5,
+};
+
+/**
+ * Audio codec type list.
+ */
+enum AUDIO_CODEC_TYPE {
+	/**
+	 * 1: OPUS
+	 */
+	AUDIO_CODEC_OPUS = 1,
+	/**
+	 * 3: G711
+	 */
+	AUDIO_CODEC_G711A = 3,
+	AUDIO_CODEC_G711U = 4,
+	/**
+	 * 5: G722
+	 */
+	AUDIO_CODEC_G722 = 5,
+	/**
+	 * 8: AACLC
+	 */
+	AUDIO_CODEC_AACLC = 8,
+	/**
+	 * 9: HEAAC
+	 */
+	AUDIO_CODEC_HEAAC = 9,
+	/**
+	 * 253: GENERIC
+	 */
+	AUDIO_CODEC_GENERIC = 253,
 };
 
 /** Video Codec types for publishing streams. */

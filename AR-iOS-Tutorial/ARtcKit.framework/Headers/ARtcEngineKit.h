@@ -594,7 +594,7 @@ __attribute__((visibility("default"))) @interface ARtcEngineKit : NSObject
 
 @param uid   用户 ID
 @param renderMode   远端用户视图的渲染模式，详见 ARVideoRenderMode ；
-@param mirrorMode   远端用户视图的镜像模式，详见 ARVideoMirrorMode 。
+@param mirrorMode   远端用户视图的镜像模式，详见 ARVideoMirrorMode，SDK 默认关闭远端用户视图的镜像模式 。
 
 @return 0方法调用成功，<0方法调用失败
 */
