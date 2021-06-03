@@ -53,7 +53,7 @@ class VideoChatViewController: UIViewController {
     func initializeEngine() {
         // init ARtcEngineKit
         rtcKit = ARtcEngineKit.sharedEngine(withAppId: AppID, delegate: self)
-        rtcKit.setChannelProfile(.profileiveBroadcasting)
+        rtcKit.setChannelProfile(.liveBroadcasting)
     }
 
     func setupVideo() {
@@ -76,7 +76,7 @@ class VideoChatViewController: UIViewController {
         // joining the channel successfully.
         let videoCanvas = ARtcVideoCanvas()
         
-        videoCanvas.view = localVideo
+        videoCanvas.view = localVideo.renderView
         videoCanvas.renderMode = .hidden
         rtcKit.setupLocalVideo(videoCanvas);
         
@@ -290,7 +290,7 @@ extension VideoChatViewController: ARtcEngineDelegate {
         // view tagged as this uid.
         let videoCanvas = ARtcVideoCanvas()
         videoCanvas.uid = uid
-        videoCanvas.view = remoteView
+        videoCanvas.view = remoteView.renderView
         videoCanvas.renderMode = .hidden
         rtcKit.setupRemoteVideo(videoCanvas)
         videoLayout()
@@ -302,6 +302,12 @@ extension VideoChatViewController: ARtcEngineDelegate {
             if videoVideo.uid == uid {
                 videoArr.remove(videoVideo)
                 videoVideo.removeFromSuperview()
+                
+                // Unbind the view
+                let videoCanvas = ARtcVideoCanvas()
+                videoCanvas.uid = uid
+                videoCanvas.view = nil
+                rtcKit.setupRemoteVideo(videoCanvas)
             }
         })
         videoLayout()

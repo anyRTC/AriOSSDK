@@ -9,7 +9,8 @@
 import UIKit
 
 class ARVideoView: UIView {
-    //占位图
+    @IBOutlet weak var renderView: UIView!
+    // 占位图
     @IBOutlet weak var videoMutedIndicator: UIView!
     @IBOutlet weak var audioMutedIndicator: UIImageView!
     
