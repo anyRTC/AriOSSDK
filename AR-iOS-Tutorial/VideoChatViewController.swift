@@ -74,11 +74,10 @@ class VideoChatViewController: UIViewController {
         // Our server will assign one and return the uid via the block
         // callback (joinSuccessBlock) after
         // joining the channel successfully.
-        let videoCanvas = ARtcVideoCanvas()
         
+        let videoCanvas = ARtcVideoCanvas()
         videoCanvas.view = localVideo.renderView
-        videoCanvas.renderMode = .hidden
-        rtcKit.setupLocalVideo(videoCanvas);
+        rtcKit.setupLocalVideo(videoCanvas)
         
         placeholderView = ARVideoView.loadVideoView(uid: "")
         placeholderView.frame = view.bounds
@@ -136,15 +135,6 @@ class VideoChatViewController: UIViewController {
         self.logVC?.log(type: .info, content: "did leave channel")
     }
     
-    func toJSONString(dict:NSDictionary?)->String {
-
-        let data = try? JSONSerialization.data(withJSONObject: dict!, options: JSONSerialization.WritingOptions.prettyPrinted)
-
-        let strJson = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
-
-        return strJson! as String
-    }
-    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -177,7 +167,7 @@ class VideoChatViewController: UIViewController {
                 let video_width = view.frame.size.width/2
                 let video_height = video_width * 4/3
                 
-                for (index,video) in allVideo.enumerated() {
+                for (index, video) in allVideo.enumerated() {
                     let videoView = video as! ARVideoView
                     if index == 0 {
                         videoView.frame = CGRect.init(x: (view.frame.size.width - video_width)/2, y: 0, width: video_width, height: video_height)
@@ -204,7 +194,7 @@ class VideoChatViewController: UIViewController {
             let video_width: CGFloat = view.frame.size.width/CGFloat(column)
             let video_height: CGFloat = video_width * rate;
             
-            for (index,video) in allVideo.enumerated() {
+            for (index, video) in allVideo.enumerated() {
                 let row: NSInteger = index / column
                 let col: NSInteger = index % column
                 //let margin: CGFloat = (CGFloat(view.frame.size.width) - (video_width * CGFloat(column))) / CGFloat(column + 1)
@@ -291,7 +281,6 @@ extension VideoChatViewController: ARtcEngineDelegate {
         let videoCanvas = ARtcVideoCanvas()
         videoCanvas.uid = uid
         videoCanvas.view = remoteView.renderView
-        videoCanvas.renderMode = .hidden
         rtcKit.setupRemoteVideo(videoCanvas)
         videoLayout()
     }
@@ -338,7 +327,7 @@ extension VideoChatViewController: ARtcEngineDelegate {
                 }
             }
         }
-    };
+    }
     
     func rtcEngine(_ engine: ARtcEngineKit, didOccurWarning warningCode: ARWarningCode) {
         logVC?.log(type: .warning, content: "did occur warning, code: \(warningCode.rawValue)")
@@ -350,9 +339,5 @@ extension VideoChatViewController: ARtcEngineDelegate {
     
     func rtcEngine(_ engine: ARtcEngineKit, reportRtcStats stats: ARChannelStats) {
         statsLabel.text = String(format: "CPU：%.2f%% ", stats.cpuAppUsage) + String(format: "Memory：%.2fM", Float(stats.memoryAppUsageInKbytes)/1024.00)
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print(AVAudioSession.sharedInstance().outputNumberOfChannels)
     }
 }
